@@ -1,0 +1,14 @@
+{#a simple template works with ModelAwareMixin#}
+{% extends 'common/admin/generic.form.inc.html' %}
+{% load staticfiles %}
+
+{% block pagecontent_js %}
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    var $form = $('#{{ form_id }}');
+
+    $('#id_image_file', $form).enableAceImageInput(640, 640, 0, 0);
+  });
+</script>
+{% endblock pagecontent_js %}

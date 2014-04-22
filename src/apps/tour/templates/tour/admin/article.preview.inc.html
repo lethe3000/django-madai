@@ -1,0 +1,16 @@
+{% extends 'admin/simple.base.inc.html' %}
+
+{% block pagenav %}
+  预览{{ model_verbose_name }}
+{% endblock pagenav %}
+
+{% block pagecontent %}
+
+<h3><img class="large-icon" src="{{ object.title_image_url }}"> {{ object.title }}</h3>
+<h4>{{ object.summary }}</h4>
+<div class="well">
+{% autoescape off %}
+ {{ object.content_html }}
+{% endautoescape %}
+</div>
+{% endblock pagecontent %}

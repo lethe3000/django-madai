@@ -1,0 +1,15 @@
+{% extends 'website/website.base.inc.html' %}
+{% load static %}
+
+{% block title %} 注册账号 {% endblock title %}
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'customer/styles/app.css' %}"/>
+{% endblock extracss %}
+{% block main_content %}
+  <div class="sign_up_box">
+    <div class="success">
+      <h1>激活邮件发送成功。</h1>
+      <p>我们已经发送了一封验证邮件到您的邮箱，现在就去激活。</p>
+    </div>
+  </div>
+{% endblock main_content %}

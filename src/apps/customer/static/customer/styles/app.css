@@ -1,0 +1,13 @@
+#reset-password-form em {
+    color: #FF0000;
+    display: block;
+}
+
+#reset-password-form input {
+    display: block;
+}
+
+#reset-password-confirm-form em {
+    color: #FF0000;
+    display: block;
+}

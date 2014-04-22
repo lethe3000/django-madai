@@ -1,0 +1,82 @@
+{% extends 'customer/website/customer.base.html' %}
+{% load static %}
+
+{% block customer_main_content %}
+<!-- row -->
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12 profile">
+
+  <div class="profile-header">
+    <div class="row">
+      <div class="active col-md-2 center-box"><a href="{% url 'website:customer:customer_profile' %}">基本信息</a></div>
+      <div class="col-md-2 center-box"><a href="{% url 'website:customer:customer_change_password' %}">账号安全</a></div>
+    </div>
+  </div>
+
+  <form id="id-profile-form" action="{% url 'website:customer:customer_profile' %}"
+        method="post" class="form-horizontal form-margin" role="form">{% csrf_token %}
+    {% if saved == 'true' %}
+      <div class="form-group">
+        <div class="col-sm-2 control-label"><div class="icon_done pull-right"></div></div>
+        <div class="col-sm-5">
+          <label class="control-label">已设置</label>
+        </div>
+      </div>
+    {% endif %}
+    <div class="form-group">
+      <label class="col-sm-2 control-label fg-light-gray" for="id_account">登陆账号</label>
+      <div class="col-sm-5">
+        <label class="control-label">{{ user.email }}</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label fg-light-gray">会员类型</label>
+      <div class="col-sm-5">
+        <label class="control-label">普通账号</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label fg-light-gray" for="id_phone">手机号码</label>
+      <div class="col-sm-5">
+        {{ form.phone }}
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label fg-light-gray" for="id_email">绑定邮箱</label>
+      <div class="col-sm-5">
+        <label class="control-label">{{ user.email }}</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label fg-light-gray" for="id_address">来自</label>
+      <div class="col-sm-5">
+        {{ form.address }}
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label fg-light-gray" for="id_register_time">注册时间</label>
+      <div class="col-sm-5">
+        <label class="control-label">{{ customer.date_joined | date:'Y-m-d H:i' }}</label>
+      </div>
+    </div>
+    <div class="dashed-line"></div>
+    <input type="submit" class="btn btn_blue_large pull-right fg-white" value="保存" />
+  </form>
+  </div>
+</div>
+
+{% endblock customer_main_content %}
+
+{% block extrajs %}
+  <script>
+    $(document).ready(function() {
+      $("nav > ul > :first-child").addClass('active');
+
+      $(".product-title-image").click(function () {
+        window.location.href = $(this).data('url');
+      });
+      $( '#id-profile-form').validate();
+      {% include 'website/form.errors.inc.html' with form_id='id-profile-form' %}
+    });
+  </script>
+{% endblock extrajs %}

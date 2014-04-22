@@ -1,0 +1,42 @@
+{% extends 'website/website.base.inc.html' %}
+{% load static %}
+
+{% block title %} 登录 {% endblock title %}
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'customer/styles/app.css' %}"/>
+{% endblock extracss %}
+{% block main_content %}
+  <form id="id_login_form" action="{% url 'website:customer:login' %}?next={{ next }}" method="post" role="form">{% csrf_token %}
+    <div style="width: 970px;">
+      <img src="{% static 'website/img/login_banner.png' %}" class="pull-left">
+      <div id="login-form" class="pull-left">
+        <div class="form-group">
+          <label>登录名</label>
+          {{ form.name }}
+        </div>
+        <div class="form-group">
+          <label>登陆密码</label>
+          {{ form.password }}
+        </div>
+        <div class="form-group">
+          <p class="pull-right"><a href="{% url 'website:customer:customer_reset_password' %}">忘记密码了？</a></p>
+          <input type="submit" class="btn" value="登 录" class="text-align-center">
+          <div class="clearfix"></div>
+        </div>
+        <div class="form-group">
+          <p class="pull-right small-text">还没有账号？<a href="{% url 'website:customer:sign_up' %}" style="color: #799f1e">注册新用户</a></p>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </form>
+{% endblock main_content %}
+{% block extrajs %}
+  <script>
+    $(document).ready(function() {
+      $form = $('#id_login_form');
+      $form.validate();
+      {% include 'website/form.errors.inc.html' with form_id='id_login_form' %}
+    });
+  </script>
+{% endblock extrajs %}

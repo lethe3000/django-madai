@@ -1,0 +1,78 @@
+{% extends 'website/website.base.inc.html' %}
+{% load static %}
+
+{% block title %} 注册账号 {% endblock title %}
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'customer/styles/app.css' %}"/>
+{% endblock extracss %}
+{% block header-nav %}
+<div style="padding-top: 50px;">
+  <p class="fg-light-gray">已有账号了？<a style="color:#08499C;margin-right:25px" href="{% url 'website:customer:login' %}">登陆</a></p>
+</div>
+{% endblock header-nav %}
+{% block main_content %}
+  <div class="sign_up_box">
+    <h1 class="indent-10">现在就加入<strong>应用工厂</strong></h1>
+    <div class="space-vertical-5"></div>
+    <div class="space-vertical-5"></div>
+    <div class="space-vertical-5"></div>
+    <form action="{% url 'website:customer:sign_up' %}" method="post" id="id_signup_form" class="center-block">
+      {% csrf_token %}
+
+    {% for field in form %}
+      <div class="form-group">
+        <label class="indent-10" for="id_{{ field.name }}">{{ field.label }}</label>
+        <div class="space-vertical-5"></div>
+        <div class="space-vertical-5"></div>
+        <div class="row">
+          <div class="col-md-8">
+          {{ field }}
+          </div>
+          <div class="col-md-4">
+           {% if field.help_text %}
+             <div class="space-vertical-5"></div>
+             <div class="space-vertical-5"></div>
+             <p class="fg-light-gray" for="id_{{ field.name }}">{{field.help_text}}</p>
+           {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+      <div class="space-vertical-5"></div>
+      <div class="space-vertical-5"></div>
+      <div class="form-group" style="height: 43px;">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="controls">
+              <input type="submit" id="id_register_submit_button" value="同意协议并注册"
+                     class="btn btn_green_sign_up fg-white" />
+              <a class="center" href="#">阅读《应用工厂服务协议》</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock main_content %}
+
+{% block extrajs %}
+  <script>
+    $(document).ready(function() {
+      $(".captcha").before('&nbsp;<a class="pull-right" id="id_captcha_refresh" href="#">换一张</a>');
+
+      var $form = $('#id_signup_form');
+      $("#id_captcha_refresh").click(function() {
+        var $captcha_img = $('.captcha');
+        var $captcha_input = $('#id_captcha_0');
+        $.getJSON('{% url 'captcha-refresh' %}', {}, function(json) {
+          $captcha_img.attr('src', json.image_url);
+          $captcha_input.attr('value', json.key);
+        });
+        return false;
+      });
+
+      $form.validate();
+      {% include 'website/form.errors.inc.html' with form_id='id_signup_form' %}
+    });
+  </script>
+{% endblock extrajs %}

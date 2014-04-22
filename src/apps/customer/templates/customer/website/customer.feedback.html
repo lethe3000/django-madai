@@ -1,0 +1,65 @@
+{% extends 'customer/website/customer.base.html' %}
+{% load staticfiles %}
+{% block customer_main_content %}
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12 profile">
+
+  <div class="profile-header">
+    <div class="row">
+      <div class="active col-md-2 center-box" style="width: 212px;"><a href="{% url 'website:customer:customer_feedback' %}">我们的意见或建议</a></div>
+    </div>
+  </div>
+
+  <form id="id-msg-form"
+        novalidate="novalidate"
+        method="post"
+        enctype="application/json"
+        action="{% url 'website:customer:customer_feedback' %}"
+        class="form-horizontal form-margin"
+        role="form">
+        {% csrf_token %}
+
+    <div class="form-group">
+      <div class="col-sm-9">
+        <p class="fg-light-gray" style="padding-left: 50px;">
+          如果您对我们的商品或者服务有不满之处，请在此提交投诉，我们会尽快给予答复或处理，
+          同时您也可以拨打我们的服务热线：<strong>400-879-3988</strong>
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label fg-light-gray" for="id_remarks_textarea">建议内容</label>
+      <div class="col-sm-7">
+        <textarea class="form-control" name="remarks" id="id_remarks_textarea" maxlength="500"
+                  autocomplete="off" rows="5"></textarea>
+      </div>
+    </div>
+    <div class="dashed-line"></div>
+    <input type="submit" class="btn btn_blue_large pull-right fg-white" id="id_send_button" disabled="disabled" value="提交我的建议" />
+
+  </form>
+
+  </div>
+</div>
+{% endblock %}
+{% block extrajs %}
+  <script src="{% static 'js/jquery.InputLimiter.1.3.1.min.js' %}"></script>
+  <script>
+    $(document).ready(function() {
+      $('#id_remarks_textarea').each(input_limit_func).on('keyup', function() {
+        $('#id_send_button').attr('disabled', false);
+      })
+    });
+
+    // 文本输入框长度限制提示
+    function input_limit_func() {
+      var limit = parseInt($(this).attr('maxlength')) || parseInt($(this).attr('data-maxlength')) || 100;
+      $(this).inputlimiter({
+        "limit": limit,
+        remText: '还可以输入%n字',
+        limitText: ''
+      });
+    }
+  </script>
+{% endblock extrajs %}

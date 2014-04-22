@@ -1,0 +1,78 @@
+[
+  {
+    "pk": 101,
+    "model": "account.user",
+    "password": "123456",
+    "fields": {
+      "email": "customer1@tourguide.com",
+      "name": "customer1",
+      "phone": "",
+      "gender": "M",
+      "is_active": true,
+      "is_superuser": false,
+      "is_staff": false,
+      "last_login": "2013-12-27T10:15:29.729",
+      "groups": [],
+      "user_permissions": [],
+      "password": "pbkdf2_sha256$10000$JcIDIVlij6lL$96WrdBIgwjQYbXs7hOPEwUGwhrR+6g2Ur5oaBMHlX4I=",
+      "date_joined": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 101,
+    "model": "customer.customer",
+    "fields": {
+      "groups": [],
+      "user_permissions": [],
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "authtoken.token",
+    "fields": {
+      "key": "1",
+      "user": 101,
+      "created": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 102,
+    "model": "account.user",
+    "password": "123456",
+    "fields": {
+      "email": "customer2@tourguide.com",
+      "name": "customer2",
+      "phone": "",
+      "gender": "M",
+      "is_active": true,
+      "is_superuser": false,
+      "is_staff": false,
+      "last_login": "2013-12-27T10:15:29.729",
+      "groups": [],
+      "user_permissions": [],
+      "password": "pbkdf2_sha256$10000$JcIDIVlij6lL$96WrdBIgwjQYbXs7hOPEwUGwhrR+6g2Ur5oaBMHlX4I=",
+      "date_joined": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 102,
+    "model": "customer.customer",
+    "fields": {
+      "groups": [],
+      "user_permissions": [],
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "authtoken.token",
+    "fields": {
+      "key": "2",
+      "user": 102,
+      "created": "2013-12-27T10:09:15.020"
+    }
+  }
+]
+
+

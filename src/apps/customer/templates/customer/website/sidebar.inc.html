@@ -1,0 +1,52 @@
+  {% load static %}
+<div id="sidebar">
+<div>
+  <a href="#" class="btn_backhome"><b class="icon_back_home"></b><h4>回到首页</h4></a>
+  <div class="background bg_homepage">用户中心</div>
+</div>
+<nav>
+  <ul>
+    <li>
+      <a href="#" title="Dashboard">{{ user.name }}&nbsp;的用户中心</a>
+    </li>
+    <li class="">
+      <a href="#" class="gray-bg"><span class="menu-item-parent">账户管理</span></a>
+      <ul>
+        <li class="unfold">
+          <a href="{% url 'website:customer:customer_profile' %}">账户信息</a>
+        </li>
+      </ul>
+    </li>
+
+{#    <li class="">#}
+{#      <a href="#" class="gray-bg"><span class="menu-item-parent">订单管理</span></a>#}
+{#      <ul>#}
+{#        <li class="unfold">#}
+{#          <a href="#">我的订单</a>#}
+{#        </li>#}
+{#        <li>#}
+{#          <a href="#">我的购物车(4)</a>#}
+{#        </li>#}
+{#      </ul>#}
+{#    </li>#}
+
+    <li class="">
+      <a href="#" class="gray-bg"><span class="menu-item-parent">客户服务</span></a>
+      <ul>
+{#        <li class="unfold">#}
+{#          <a href="#">退换货</a>#}
+{#        </li>#}
+        <li class="unfold">
+          <a href="{% url 'website:customer:customer_feedback' %}">意见反馈</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<nav>
+  <ul>
+    <li><h3 style="margin:8px 15px">热门推荐</h3></li>
+    <li><img style="margin:0 8px" width="215px" src="{% static 'website/img/demo/152eb026.sidebar-promote.png' %}" alt=""></li>
+  </ul>
+</nav>
+</div>

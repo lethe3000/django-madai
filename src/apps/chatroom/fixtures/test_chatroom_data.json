@@ -1,0 +1,17 @@
+[
+  {
+    "pk": 1,
+    "model": "chatroom.chatroom",
+    "fields": {
+      "name": "聊天室Test",
+      "description": "一段描述",
+      "owner": 101,
+      "creator": 101,
+      "is_active": true,
+      "created": "2013-12-24T13:07:46.697",
+      "updated": "2013-12-24T13:07:46.697",
+      "members": [101],
+      "verify_code": "123"
+    }
+  }
+]

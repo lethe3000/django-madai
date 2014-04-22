@@ -1,0 +1,374 @@
+[
+  {
+    "pk": 1,
+    "model": "tour.scenery",
+    "fields": {
+      "display_order": 1000,
+      "is_active": true,
+      "is_virtual": true,
+      "name": "旅游局",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "tour.scenery",
+    "fields": {
+      "display_order": 1001,
+      "is_active": true,
+      "is_virtual": true,
+      "name": "其他",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "tour.scenery",
+    "fields": {
+      "display_order": 2,
+      "is_active": true,
+      "name": "都江堰",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020",
+      "image_file": "images/scenery_dujiangyan.jpg",
+      "summary": "国家级旅游景区。"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "tour.scenery",
+    "fields": {
+      "display_order": 2,
+      "is_active": true,
+      "name": "青城山",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020",
+      "image_file": "images/scenery_qingchengshan.jpg",
+      "summary": "国家级旅游景区。"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "tour.scenery",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "峨眉山",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020",
+      "image_file": "images/home_img_1.png",
+      "summary": "国家级旅游景区。位于四川省乐山市峨眉山市境内，景区面积154平方公里，最高峰万佛顶海拔3099米。地势陡峭，风景秀丽，有“秀甲天下”之美誉。"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "tour.scenery",
+    "fields": {
+      "display_order": 1,
+      "is_active": true,
+      "name": "九寨沟",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020",
+      "image_file": "images/home_img_3.png",
+      "summary": "国家级旅游景区。"
+    }
+  },
+  {
+    "pk": 14,
+    "model": "tour.scenery",
+    "fields": {
+      "display_order": 2,
+      "is_active": true,
+      "name": "乐山大佛",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020",
+      "image_file": "images/scenery_leshandafo.jpg",
+      "summary": "国家级旅游景区。"
+    }
+  },
+  {
+    "pk": 15,
+    "model": "tour.scenery",
+    "fields": {
+      "display_order": 2,
+      "is_active": true,
+      "name": "海螺沟",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020",
+      "image_file": "images/scenery_hailuogou.jpg",
+      "summary": "国家级旅游景区。"
+    }
+  },
+  {
+    "pk": 16,
+    "model": "tour.scenery",
+    "fields": {
+      "display_order": 2,
+      "is_active": true,
+      "name": "蜀南竹海",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020",
+      "image_file": "images/scenery_shunanzhuhai.jpg",
+      "summary": "国家级旅游景区。"
+    }
+  },
+  {
+    "pk": 17,
+    "model": "tour.scenery",
+    "fields": {
+      "display_order": 1,
+      "is_active": true,
+      "name": "大英中国死海",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020",
+      "image_file": "images/home_img_2.png",
+      "summary": "国家级旅游景区。"
+    }
+  },
+  {
+    "pk": 18,
+    "model": "tour.scenery",
+    "fields": {
+      "display_order": 2,
+      "is_active": true,
+      "name": "阆中古城",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020",
+      "image_file": "images/scenery_langzhonggucheng.jpg",
+      "summary": "国家级旅游景区。"
+    }
+  },
+
+  {
+    "pk": 19,
+    "model": "tour.scenery",
+    "fields": {
+      "display_order": 2,
+      "is_active": true,
+      "name": "武侯祠",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020",
+      "image_file": "images/scenery_wuhouci.jpg",
+      "summary": "国家级旅游景区。"
+    }
+  },
+
+  {
+    "pk": 1,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "公告",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020",
+      "image_file": "images/icon_guide_news.png"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "热门攻略",
+      "image_file": "images/icon_guide_first.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "专题",
+      "image_file": "images/icon_guide_first.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "概况",
+      "image_file": "images/icon_guide_first.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "地图",
+      "image_file": "images/icon_guide_location.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "亮点",
+      "image_file": "images/icon_guide_first.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "景点",
+      "image_file": "images/icon_guide_scenic.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 14,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "住宿",
+      "image_file": "images/icon_guide_hotel.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 15,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "美食",
+      "image_file": "images/icon_guide_food.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 16,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "购物",
+      "image_file": "images/icon_guide_shop.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 17,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "娱乐",
+      "image_file": "images/icon_guide_flag.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 18,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "行程推荐",
+      "image_file": "images/icon_guide_first.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 19,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "节庆",
+      "image_file": "images/icon_guide_first.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 20,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "实用信息",
+      "image_file": "images/icon_guide_first.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 21,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "外部交通",
+      "image_file": "images/icon_guide_bus.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 22,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "内部交通",
+      "image_file": "images/icon_guide_bus.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 23,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "旅行路上",
+      "image_file": "images/icon_guide_route.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  },
+  {
+    "pk": 24,
+    "model": "tour.guidetype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "游记",
+      "image_file": "images/icon_guide_first.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  }
+]

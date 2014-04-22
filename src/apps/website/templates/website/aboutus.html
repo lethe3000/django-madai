@@ -1,0 +1,37 @@
+{% load static %}
+<!doctype html>
+
+<head>
+  <meta charset="utf-8">
+  <title> e游 </title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- Basic Styles -->
+  <link rel="stylesheet" href="{% static 'website/styles/bootstrap.css' %}" media="screen"/>
+  <link rel="stylesheet" href="{% static 'website/styles/font-awesome.css' %}" media="screen"/>
+  <link rel="stylesheet" href="{% static 'website/styles/project.css' %}" media="screen"/>
+  <!-- FAVICONS -->
+  <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+  <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+  <!-- GOOGLE FONT -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+
+  <link rel="stylesheet" href="{% static 'website/styles/app.css' %}" media="screen"/>
+
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12 col-md-12">
+      <div class="aboutus">
+        <p>四川公用信息产业有限责任公司是中国电信股份有限公司的业务孵化基地、机制创新基地、人才培育基地和对外合作发展的平台。负责号百业务、数据业务、信息安全等综合信息服务的运营支撑工作，同时承担移动互联网等全新领域探索、孵化、运营的任务。</p>
+        <h3>公司地址</h3>
+        <p>四川省成都市高新区益州大道中段1666号</p>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- GOOGLE ANALYTICS CODE -->
+  {% include "website/ga.html" %}
+</body>
+</html>

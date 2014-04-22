@@ -1,0 +1,23 @@
+[
+  {
+    "pk": 1,
+    "model": "account.user",
+    "password": "zoomteam@123",
+    "fields": {
+      "name": "admin",
+      "email": "admin",
+      "nick_name": "管理员",
+      "phone": "",
+      "gender": "M",
+      "is_active": true,
+      "is_superuser": true,
+      "is_staff": true,
+      "last_login": "2013-12-24T13:08:16.579",
+      "groups": [],
+      "user_permissions": [],
+
+      "password": "pbkdf2_sha256$10000$jB9GUEOu6AUd$6yyH+yk5rak7vXtMsyN0teQxpyPd6LvUJ9s4t9J1IKQ=",
+      "date_joined": "2013-12-24T13:07:46.697"
+    }
+  }
+]

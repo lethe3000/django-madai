@@ -1,0 +1,40 @@
+Django==1.5.5
+South==0.8.4
+fabric
+
+#use it to recognize the timezone with name like "Asia/Chongqing"
+pytz==2013b
+
+# execel reader and writer
+xlwt==0.7.5
+xlrd
+
+# NOTE:
+# 1. MUST install native libjpeg before install to support JPEG
+#    cmd = "sudo yum install  libjpeg-devel.x86_64"
+# 2. MUST install FreeType support
+#    should install X11 from xquartz. see http://xquartz.macosforge.org/landing/
+#    osx_cmd = "brew install freetype"
+#    linux_cmd = "yum install freetype-devel.x86_64 "
+
+Pillow
+
+# Adding captcha images to any Django form.
+# To use django-simple-captcha we need to run "python manage.py migrate" at the first time.
+django-simple-captcha
+
+# rest api
+djangorestframework==2.3.8
+# rest api doc. access it from http://host/api/docs/
+django-rest-swagger>=0.1.14
+
+# used packages by imagestore from https://github.com/hovel/imagestore
+sorl-thumbnail
+
+requests==2.2.1
+
+# redis support
+redis
+hiredis
+# redis cache backend. see https://github.com/sebleier/django-redis-cache
+django-redis-cache

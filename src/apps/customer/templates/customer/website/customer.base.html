@@ -1,0 +1,21 @@
+{% extends 'website/website.base.inc.html' %}
+{% load static %}
+{% block title %} 中国电信应用工厂 {% endblock title %}
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'customer/styles/app.css' %}"/>
+{% endblock extracss %}
+
+{% block sidebar %}
+{% include 'customer/website/sidebar.inc.html' %}
+{% endblock sidebar %}
+
+{% block main_content %}
+  <div id="content" class="col-lg-9 col-sm-9 col-md-9">
+  <!-- widget grid -->
+  <section id="widget-grid">
+    {% block customer_main_content %}
+    {% endblock customer_main_content %}
+  </section>
+  </div>
+{% endblock main_content %}
