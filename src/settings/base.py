@@ -237,11 +237,11 @@ INSTALLED_APPS = (
 INSTALLED_APPS += (
     # Database migration helpers:
     'south',
-    'rest_framework.authtoken',
-    'rest_framework_swagger',
-    'sorl.thumbnail',
+    # 'rest_framework.authtoken',
+    # 'rest_framework_swagger',
+    # 'sorl.thumbnail',
     # Captcha images
-    'captcha',
+    # 'captcha',
 )
 
 PROJECT_APPS = (
@@ -252,12 +252,12 @@ PROJECT_APPS = (
     'apps.foundation',
     'apps.customer',
     'apps.tour',
-    'apps.api',
+    # 'apps.api',
     # customize from https://github.com/hovel/imagestore
-    'apps.imagestore',
+    # 'apps.imagestore',
     # maintain the stuff from thirdparty like webcamera
-    'apps.thirdparty',
-    'apps.chatroom',
+    # 'apps.thirdparty',
+    # 'apps.chatroom',
 )
 
 # Apps specific for this project go here.
@@ -400,10 +400,10 @@ EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.exmail.qq.com')
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-host-password
 #EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '189worksCOM')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '189worksCOM')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'xxx')
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'service@189works.com')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'xxx@qq.com')
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
@@ -411,7 +411,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 EMAIL_PORT = os.environ.get('EMAIL_PORT', 25)
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-subject-prefix
-EMAIL_SUBJECT_PREFIX = u'电子旅游导游'
+EMAIL_SUBJECT_PREFIX = u'小麻袋'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-use-tls
 EMAIL_USE_TLS = False
@@ -420,7 +420,7 @@ EMAIL_USE_TLS = False
 SERVER_EMAIL = EMAIL_HOST_USER
 
 #tourguide官方邮箱地址.
-FAC_OFFICIAL_EMAIL = 'business@app2b.cn'
+FAC_OFFICIAL_EMAIL = 'xiaomadai@qq.com'
 ########## END EMAIL CONFIGURATION
 
 
