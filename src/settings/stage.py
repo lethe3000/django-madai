@@ -27,10 +27,10 @@ TEMPLATE_DEBUG = DEBUG
 ########## DJANGO SITE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#sites
 SITE_ID = 1
-SITE_NAME = 'stage.tourguide.app2b.cn'
+SITE_NAME = 'stage.xiaomadai.com'
 
 # 邮件接收地址
-FAC_OFFICIAL_EMAIL = "zoomtest@163.com"
+FAC_OFFICIAL_EMAIL = "20796964@qq.com"
 
 ########## DATABASE CONFIGURATION
 # CREATE DATABASE webstore;
@@ -38,8 +38,8 @@ FAC_OFFICIAL_EMAIL = "zoomtest@163.com"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tourguide',
-        'USER': 'tourguide',
+        'NAME': 'xiaomadai',
+        'USER': 'xiaomadai',
         'PASSWORD': 'f112b2d1d8c89',
         'HOST': 'localhost',
         'PORT': '3306',

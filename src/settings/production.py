@@ -22,7 +22,7 @@ def get_env_setting(setting):
 ########## DJANGO SITE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#sites
 SITE_ID = 2
-SITE_NAME = 'tourguide.app2b.cn'
+SITE_NAME = 'xiaomadai.com'
 
 ########## DATABASE CONFIGURATION
 # CREATE DATABASE SITE_NAME;
@@ -30,10 +30,10 @@ SITE_NAME = 'tourguide.app2b.cn'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tourguide',
-        'USER': 'tourguide',
+        'NAME': 'xiaomadai',
+        'USER': 'xiaomadai',
         'PASSWORD': 'f112b2d1d8c89',
-        'HOST': '10.90.0.236',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
