@@ -23,6 +23,9 @@ master-password=f112b2d1d8c89
 master-port=3306
 master-connect-retry=10
 replicate-do-db=tourguide
+relay-log=/var/log/mysql/mysql-relay-bin.log
+log_bin=/var/log/mysql/mysql-bin.log
+binlog_do_db=tourguide
 
 [mysqld_safe]
 log-error=/var/log/mysqld.log
