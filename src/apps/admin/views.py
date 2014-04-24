@@ -47,6 +47,11 @@ def build_menu(request):
         ('聊天室列表', reverse('admin:chatroom:chatroom_list'), None)
     ]
 
+    SUBMENU_PRODUCT = [
+        ('酒店列表', reverse('admin:product:hotel_list'), None),
+        ('航班列表', reverse('admin:product:flight_list'), None)
+    ]
+
     MENU = (
         {'menu': '系统信息', 'url': reverse('admin:dashboard'), 'icon': 'icon-dashboard', 'submenu': []},
         {'menu': '账号', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_ACCOUNT},
@@ -54,7 +59,8 @@ def build_menu(request):
         {'menu': '客户', 'url': '', 'icon': 'icon-user', 'submenu': SUBMENU_CUSTOMER},
         {'menu': '旅游', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_TOUR},
         {'menu': '景区', 'url': '', 'icon': 'icon-bookmark', 'submenu': build_sencery_submenu()},
-        {'menu': '聊天室', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_CHATROOM},
+        # {'menu': '聊天室', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_CHATROOM},
+        {'menu': '产品', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_PRODUCT},
     )
     menus = []
     for item in MENU:
