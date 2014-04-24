@@ -55,10 +55,10 @@ def build_menu(request):
     MENU = (
         {'menu': '系统信息', 'url': reverse('admin:dashboard'), 'icon': 'icon-dashboard', 'submenu': []},
         {'menu': '账号', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_ACCOUNT},
-        {'menu': '基础数据', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_FOUNDATION},
+        # {'menu': '基础数据', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_FOUNDATION},
         {'menu': '客户', 'url': '', 'icon': 'icon-user', 'submenu': SUBMENU_CUSTOMER},
-        {'menu': '旅游', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_TOUR},
-        {'menu': '景区', 'url': '', 'icon': 'icon-bookmark', 'submenu': build_sencery_submenu()},
+        # {'menu': '旅游', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_TOUR},
+        # {'menu': '景区', 'url': '', 'icon': 'icon-bookmark', 'submenu': build_sencery_submenu()},
         # {'menu': '聊天室', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_CHATROOM},
         {'menu': '产品', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_PRODUCT},
     )
