@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 import os
 from django import forms
 # from apps.tour.models import Article
-from apps.product.models import Hotel
+from apps.product.models import Hotel, Flight
 from apps.common.ace import AceClearableFileInput, AceBooleanField
 from apps.common.admin.datatables import DatatablesIdColumn, DatatablesBuilder, DatatablesImageColumn, DatatablesTextColumn,\
     DatatablesBooleanColumn, DatatablesUserChoiceColumn, DatatablesDateTimeColumn, DatatablesColumnActionsRender,\
@@ -40,7 +40,6 @@ class HotelForm(forms.ModelForm):
     class Meta:
         model = Hotel
         fields = (
-            # 'title', 'title_image_file', 'scenery', 'guide_type', "summary", 'web_link', 'is_pinned', 'display_order', 'source', 'desc', 'content_html')
             'name', 'price', 'address', 'phone', 'title', 'title_image_file', "summary", 'web_link', 'is_pinned', 'display_order', 'source', 'desc', 'content_html')
 
         widgets = {
@@ -135,7 +134,7 @@ class HotelDatatablesBuilder(DatatablesBuilder):
     updated = DatatablesDateTimeColumn(label='修改时间')
 
     def actions_render(request, model, field_name):
-        action_url_builder = lambda model, action: reverse('admin:tour:article_update', kwargs={'pk': model.id, 'action_method': action})
+        action_url_builder = lambda model, action: reverse('admin:product:hotel_update', kwargs={'pk': model.id, 'action_method': action})
         if model.is_published:
             actions = [{'is_link': False, 'css_class': 'btn-yellow', 'name': 'cancel', 'url': action_url_builder(model, 'cancel'),
                         'text': u'撤销', 'icon': 'icon-cut'}]
@@ -143,7 +142,6 @@ class HotelDatatablesBuilder(DatatablesBuilder):
             actions = [{'is_link': True, 'css_class': 'btn-info', 'name': 'edit', 'text': u'编辑', 'icon': 'icon-edit'},
                        {'is_link': False, 'css_class': 'btn-warning', 'name': 'publish',
                         'url': action_url_builder(model, 'publish'), 'text': u'发布', 'icon': 'icon-save'}]
-        #actions.append({'is_link': True, 'css_class': 'btn-pink', 'name': 'preview', 'text': u'预览', 'icon': 'icon-camera'})
         actions.append({'is_link': False, 'css_class': 'btn-warning', 'name': 'delete', 'text': u'删除', 'icon': 'icon-remove'})
         return DatatablesColumnActionsRender(actions=actions).render(request, model, field_name)
 
@@ -169,10 +167,71 @@ class SceneryForm(forms.ModelForm):
         }
 
 
+class FlightForm(HotelForm):
+    class Meta:
+        model = Flight
+        fields = (
+            'name', 'price', 'address', 'phone', 'title', 'title_image_file', "summary", 'web_link', 'is_pinned', 'display_order', 'source', 'desc', 'content_html')
+
+        widgets = {
+            # use FileInput widget to avoid show clearable link and text
+            'title_image_file': AceClearableFileInput(),
+            }
+
+    def clean(self):
+        cleaned_data = super(FlightForm, self).clean()
+        # keep the old image and delete it if changed at save()
+        self.old_title_image_file = self.instance.title_image_file
+        return cleaned_data
+
+    # responsive header for mobile display.
+    # 1. don't allow scale the content view
+    # 2. scale the image according to device width.
+    RESPONSIVE_HEADER = """\
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <style>
+    img {
+        display: block;
+        height: auto;
+        max-width: 100%;
+    }
+    </style>
+</head>
+"""
+    def save(self, commit=False):
+        flight = super(FlightForm, self).save(commit)
+        #mock a html file to feed to article.content_file
+        if flight.content_file:
+            # update it if has content file
+            with open(flight.content_file.path, 'w') as f:
+                f.write(self.cleaned_data['content_html'].encode('utf-8'))
+        else:
+            buf = StringIO.StringIO(self.cleaned_data['content_html'].encode('utf-8'))
+            flight.content_file = SimpleUploadedFile("content.html", self.RESPONSIVE_HEADER + buf.read())
+
+        if not hasattr(flight, "creator"):
+            flight.creator = self.initial['request'].user
+        flight.save()
+        # return id to avoid caller to model.save() again
+        return flight
+
+
 class FlightDatatablesBuilder(HotelDatatablesBuilder):
     name = DatatablesTextColumn(label=u'航班名',
                                 is_searchable=True)
-
+    def actions_render(request, model, field_name):
+        action_url_builder = lambda model, action: reverse('admin:product:hotel_update', kwargs={'pk': model.id, 'action_method': action})
+        if model.is_published:
+            actions = [{'is_link': False, 'css_class': 'btn-yellow', 'name': 'cancel', 'url': action_url_builder(model, 'cancel'),
+                        'text': u'撤销', 'icon': 'icon-cut'}]
+        else:
+            actions = [{'is_link': True, 'css_class': 'btn-info', 'name': 'edit', 'text': u'编辑', 'icon': 'icon-edit'},
+                       {'is_link': False, 'css_class': 'btn-warning', 'name': 'publish',
+                        'url': action_url_builder(model, 'publish'), 'text': u'发布', 'icon': 'icon-save'}]
+        actions.append({'is_link': False, 'css_class': 'btn-warning', 'name': 'delete', 'text': u'删除', 'icon': 'icon-remove'})
+        return DatatablesColumnActionsRender(actions=actions).render(request, model, field_name)
 
 class SceneryDatatablesBuilder(DatatablesBuilder):
 

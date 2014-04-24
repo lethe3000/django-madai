@@ -50,7 +50,7 @@ class BaseModel(TimeBaseModel):
 
 class ProductBaseModel(BaseModel):
     # 基本信息
-    name = models.CharField(verbose_name=u'酒店名',
+    name = models.CharField(verbose_name=u'名称',
                             max_length=128,
                             default="",
                             blank=True)

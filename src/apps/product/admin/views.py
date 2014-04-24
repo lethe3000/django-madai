@@ -8,7 +8,7 @@ from apps.tour.models import Scenery, GuideType, Article
 from apps.product.models import Hotel, Flight, Combo
 from apps.common.admin.views import AjaxSimpleUpdateView, ModelAwareMixin, AjaxDetailView, RequestAwareMixin,\
     NavigationHomeMixin, DatatablesBuilderMixin, AjaxListView, AjaxCreateView, AjaxUpdateView, AjaxDatatablesView, ModelActiveView, AdminRequiredMixin
-from .forms import HotelForm, HotelDatatablesBuilder, FlightDatatablesBuilder, SceneryDatatablesBuilder, SceneryForm, GuideTypeForm, GuideTypeDatatablesBuilder
+from .forms import HotelForm, FlightForm, HotelDatatablesBuilder, FlightDatatablesBuilder, SceneryDatatablesBuilder, SceneryForm, GuideTypeForm, GuideTypeDatatablesBuilder
 from utils.db.queryutil import get_object_or_none
 
 HERE = os.path.dirname(__file__)
@@ -102,16 +102,15 @@ class FlightListDatatablesView(AjaxDatatablesView):
 
 class FlightCreateView(RequestAwareMixin, ModelAwareMixin, AjaxCreateView):
     model = Flight
-    form_class = HotelForm
-    form_action_url_name = 'admin:product:hotel_create'
-    # template_name = 'tour/admin/article.form.inc.html'
+    form_class = FlightForm
+    form_action_url_name = 'admin:product:flight_create'
     template_name = 'product/admin/hotel.form.inc.html'
 
 
 class FlightEditView(ModelAwareMixin, AjaxUpdateView):
     model = Flight
-    form_class = HotelForm
-    form_action_url_name = 'admin:product:hotel_edit'
+    form_class = FlightForm
+    form_action_url_name = 'admin:product:flight_edit'
     template_name = 'product/admin/hotel.form.inc.html'
 
     def get_initial(self):
@@ -122,16 +121,16 @@ class FlightEditView(ModelAwareMixin, AjaxUpdateView):
 
 
 class FlightDeleteView(ModelActiveView):
-    model = Hotel
+    model = Flight
 
 
 class FlightPreviewView(ModelAwareMixin, AjaxDetailView):
-    model = Hotel
+    model = Flight
     template_name = 'product/admin/hotel.preview.inc.html'
 
 
 class FlightUpdateView(AjaxSimpleUpdateView):
-    model = Hotel
+    model = Flight
 
     def update(self, obj):
         action_method = self.kwargs['action_method']
