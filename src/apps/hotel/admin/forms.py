@@ -159,10 +159,11 @@ class HotelForm(forms.ModelForm):
         super(HotelForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['class'] = "required col-md-10 limited"
         self.fields['summary'].widget.attrs['class'] = "col-md-10 limited"
+        self.fields['advantages'].widget.attrs['class'] = "col-md-10"
 
     class Meta:
         model = Hotel
-        fields = ('name', 'image_file', 'summary', 'display_order', 'phone_contact', 'phone_sos')
+        fields = ('name', 'image_file', 'summary', 'advantages', 'display_order', 'phone_contact')
 
         widgets = {
             # use FileInput widget to avoid show clearable link and text
@@ -181,11 +182,9 @@ class HotelDatatablesBuilder(DatatablesBuilder):
 
     summary = DatatablesTextColumn(label=u'简介',)
 
-    # is_virtual = DatatablesBooleanColumn(label=u'虚拟景区')
-
     phone = DatatablesBooleanColumn(label=u'电话',
                                     render=(lambda request, model, field_name:
-                                            u'<ul><li>%s</li><li>%s</li></ul>' % (model.phone_contact, model.phone_sos)))
+                                            u'<ul><li>%s</li></ul>' % model.phone_contact))
 
     display_order = DatatablesIntegerColumn(label=u'显示顺序',
                                             is_searchable=True,

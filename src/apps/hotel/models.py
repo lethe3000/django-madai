@@ -210,10 +210,10 @@ class Hotel(TimeBaseModel):
                                default="",
                                blank=True)
 
-    phone_sos = models.CharField(max_length=64,
-                                 verbose_name=u'急救电话',
-                                 default="",
-                                 blank=True)
+    advantages = models.TextField(max_length=512,
+                                  verbose_name=u'优势',
+                                  default="",
+                                  blank=True)
 
     phone_contact = models.CharField(max_length=64,
                                      verbose_name=u'联系电话',
@@ -235,6 +235,10 @@ class Hotel(TimeBaseModel):
 
     def image_url(self):
         return settings.STATIC_DEFAULT_TITLE_IMAGE_URL if not self.image_file else self.image_file.url
+
+    def get_advantages(self):
+        seperator = '\r\n'
+        return filter(lambda x: x, self.advantages.split(seperator))
 
     class Meta:
         verbose_name = u"酒店"
