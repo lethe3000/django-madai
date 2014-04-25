@@ -1,0 +1,98 @@
+/* package */
+
+article {
+  padding: 100px 0;
+  margin: 0 auto;
+  width: 1020px;
+}
+
+.search-info {
+  padding: 0;
+  height: 100px;
+}
+
+.search-info .middle {
+  display: table-cell;
+  vertical-align: middle;
+  width: 1020px;
+  height: 100px;
+}
+
+.search-info h3 {
+  margin: 0;
+}
+
+.search-info .color-blue {
+  color: #7F96AD;
+}
+
+.bg-image-clouds {
+  background-color: #D3E9F6;
+  background-image: url("../../website/img/bg-image-clouds.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+.sorted-list {
+  counter-reset: index-num;
+}
+
+.sorted-list > li {
+  display: block;
+  position: relative;
+  background-color: #FFFFFF;
+  border-color: rgba(0, 0, 0, 0);
+  height: 240px;
+  margin-bottom: 50px;
+}
+
+.sorted-list > li:after {
+  background-color: #b14864;
+  border-radius: 200px;
+  color: #FFFFFF;
+  content: counter(index-num, decimal);
+  counter-increment: index-num;
+  font-family:optima, sans-serif;
+  font-size: 43px;
+  font-weight: 800;
+  height: 67px;
+  left: -30px;
+  line-height: 73px;
+  position: absolute;
+  text-align: center;
+  top: -30px;
+  width: 65px;
+  z-index: 100;
+}
+
+.sorted-list > li .grid {
+  margin-bottom: 0 !important;
+}
+
+.sorted-list > li .row {
+  margin-top: 0 !important;
+}
+
+.sorted-list > li .span4 {
+  width: 320px !important;
+}
+
+.sorted-list > li span.currency {
+  margin-top: 100px;
+  display: block;
+}
+
+.sorted-list > li span.currency strong {
+  color: #CB5977;
+  font-family: futura, sans-serif;
+  font-size: 30px;
+}
+
+a.button.submit {
+  width: 160px;
+  margin: 0 auto;
+  display: block;
+  color: #FFF;
+  background-color: #CB5977 !important;
+}

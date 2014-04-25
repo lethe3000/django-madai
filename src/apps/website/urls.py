@@ -16,3 +16,7 @@ urlpatterns += patterns('',
 urlpatterns += patterns('',
     url(r'^tour/', include('apps.tour.website.urls', namespace='tour')),
 )
+
+urlpatterns += patterns('',
+    url(r'^package/', include('apps.package.website.urls', namespace='package')),
+)
