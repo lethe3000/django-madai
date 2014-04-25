@@ -42,6 +42,14 @@ class ArticleCreateView(RequestAwareMixin, ModelAwareMixin, AjaxCreateView):
             pass
         return initial
 
+    def get_context_data(self, **kwargs):
+        context_data = super(ArticleCreateView, self).get_context_data(**kwargs)
+        try:
+            guidetype = int(self.request.GET['guidetype'])
+        except KeyError:
+            guidetype = -1 # no pre-set guidetype
+        context_data['editor_max_image_side_length'] = 3000 if guidetype == GuideType.GUIDE_TYPE_MAP else 640
+        return context_data
 
 class ArticleEditView(ModelAwareMixin, AjaxUpdateView):
     model = Article
@@ -54,6 +62,11 @@ class ArticleEditView(ModelAwareMixin, AjaxUpdateView):
         if self.object:
             initial["content_html"] = self.object.content_html()
         return initial
+
+    def get_context_data(self, **kwargs):
+        context_data = super(ArticleEditView, self).get_context_data(**kwargs)
+        context_data['editor_max_image_side_length'] = 3000 if self.object.guide_type.id == GuideType.GUIDE_TYPE_MAP else 640
+        return context_data
 
 
 class ArticleDeleteView(ModelActiveView):
@@ -110,7 +123,7 @@ class SceneryCreateView(RequestAwareMixin, ModelAwareMixin, AjaxCreateView):
     template_name = 'tour/admin/scenery.form.inc.html'
 
 
-class SceneryEditView(ModelAwareMixin, AdminRequiredMixin, AjaxUpdateView):
+class SceneryEditView(ModelAwareMixin, AjaxUpdateView):
     model = Scenery
     form_class = SceneryForm
     template_name = 'tour/admin/scenery.form.inc.html'
@@ -153,13 +166,13 @@ class SceneryDashboardView(ListView):
 ##################################################
 
 
-class GuideTypeListView(NavigationHomeMixin, ModelAwareMixin, DatatablesBuilderMixin, AdminRequiredMixin, AjaxListView):
+class GuideTypeListView(NavigationHomeMixin, ModelAwareMixin, DatatablesBuilderMixin, AjaxListView):
     model = GuideType
     queryset = GuideType.objects.get_empty_query_set()
     datatables_builder_class = GuideTypeDatatablesBuilder
 
 
-class GuideTypeListDatatablesView(AdminRequiredMixin, AjaxDatatablesView):
+class GuideTypeListDatatablesView(AjaxDatatablesView):
     model = GuideType
     datatables_builder_class = GuideTypeListView.datatables_builder_class
     queryset = GuideType.objects.all()

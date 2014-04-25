@@ -7,6 +7,7 @@ from django.utils import timezone
 import os
 from django.conf import settings
 from django.db import models
+from apps.common.caches import SimpleCacheManager
 from apps.common.models import BaseModel, ActiveDataManager, TimeBaseModel
 from apps.foundation.models import unique_image_name
 from utils import random
@@ -129,6 +130,8 @@ class Article(BaseModel):
 
     active_objects = ActiveDataManager()
 
+    cache_objects = SimpleCacheManager()
+
     class Meta:
         verbose_name = u"资讯"
         ordering = ('-updated',)
@@ -140,6 +143,8 @@ class GuideType(TimeBaseModel):
     GUIDE_TYPE_HOT = 2
 
     GUIDE_TYPE_EVENT = 3
+
+    GUIDE_TYPE_MAP = 11
 
     name = models.CharField(max_length=64,
                             verbose_name=u'名称',
@@ -163,6 +168,7 @@ class GuideType(TimeBaseModel):
 
     objects = models.Manager()
     active_objects = ActiveDataManager()
+    cache_objects = SimpleCacheManager()
 
     def __unicode__(self):
         return self.name
@@ -184,7 +190,7 @@ class SceneryManager(models.Manager):
         for guidetype in GuideType.active_objects.only('id', 'name'):
             res[guidetype.id] = {"name": guidetype.name, "articles": []}
         # related the article with given guide type
-        for article in Article.objects.filter(scenery=scenery_id).select_related("guide_type").only("title", 'guide_type'):
+        for article in Article.objects.filter(scenery=scenery_id).select_related("guide_type").only("title", 'guide_type__id'):
             res[article.guide_type.id]['articles'].append({"id": article.id, "title": article.title})
         return res
 
@@ -232,6 +238,7 @@ class Scenery(TimeBaseModel):
 
     objects = SceneryManager()
     active_objects = ActiveDataManager()
+    cache_objects = SimpleCacheManager()
 
     def __unicode__(self):
         return self.name

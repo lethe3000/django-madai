@@ -38,3 +38,15 @@ header > .logo {
   top: 10%;
   z-index: 1;
 }
+
+.bg-1 {
+  background-color: #262f36;
+}
+
+.bg-2 {
+  background-color: #465562;
+}
+
+.bg-3 {
+  background-color: #87c0de;
+}

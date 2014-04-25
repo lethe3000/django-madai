@@ -30,9 +30,13 @@ class ArticleForm(forms.ModelForm):
         self.fields['summary'].widget.attrs['class'] = "col-md-10"
         self.fields['desc'].widget.attrs['class'] = "col-md-10"
         self.fields['scenery'].widget.attrs['class'] = "col-md-5"
-        self.fields['scenery'].queryset= Scenery.active_objects.only("name").all()
+        self.fields['scenery'].queryset = Scenery.active_objects.only("name").all()
         self.fields['guide_type'].widget.attrs['class'] = "col-md-5"
-        self.fields['guide_type'].queryset = GuideType.active_objects.only("name").all()
+        guidetype_queryset = GuideType.active_objects.only("name")
+        if kwargs.get('initial').has_key('guide_type'):
+            guidetype = int(kwargs.get('initial').get('guide_type'))
+            guidetype_queryset = guidetype_queryset.filter(id=guidetype)
+        self.fields['guide_type'].queryset = guidetype_queryset.all()
         self.fields['web_link'].widget.attrs['class'] = "col-md-10"
         self.fields['source'].widget.attrs['class'] = "col-md-10"
 
@@ -58,16 +62,17 @@ class ArticleForm(forms.ModelForm):
     RESPONSIVE_HEADER = """\
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0{0}"/>
     <style>
-    img {
+    img {{
         display: block;
         height: auto;
         max-width: 100%;
-    }
+    }}
     </style>
 </head>
 """
+    HEADER_NO_SCALE_FACTOR = ', maximum-scale=1.0'
     def save(self, commit=False):
         article = super(ArticleForm, self).save(commit)
         #mock a html file to feed to article.content_file
@@ -77,6 +82,9 @@ class ArticleForm(forms.ModelForm):
                 f.write(self.cleaned_data['content_html'].encode('utf-8'))
         else:
             buf = StringIO.StringIO(self.cleaned_data['content_html'].encode('utf-8'))
+            self.RESPONSIVE_HEADER = self.RESPONSIVE_HEADER.format(
+                self.HEADER_NO_SCALE_FACTOR if self.instance.guide_type_id != GuideType.GUIDE_TYPE_MAP else ''
+            )
             article.content_file = SimpleUploadedFile("content.html", self.RESPONSIVE_HEADER + buf.read())
 
         if not hasattr(article, "creator"):

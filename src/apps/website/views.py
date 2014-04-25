@@ -22,7 +22,3 @@ def privacy(request):
 
 def aboutus(request):
     return TemplateResponse(request, 'website/aboutus.html')
-
-
-def package_searching(request):
-    return TemplateResponse(request, 'website/package.searching.html')

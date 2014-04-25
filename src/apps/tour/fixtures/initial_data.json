@@ -157,7 +157,7 @@
 
   {
     "pk": 1,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -169,7 +169,7 @@
   },
   {
     "pk": 2,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -181,7 +181,7 @@
   },
   {
     "pk": 3,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -193,7 +193,7 @@
   },
   {
     "pk": 10,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -205,7 +205,7 @@
   },
   {
     "pk": 11,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -217,7 +217,7 @@
   },
   {
     "pk": 12,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -229,7 +229,7 @@
   },
   {
     "pk": 13,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -241,7 +241,7 @@
   },
   {
     "pk": 14,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -253,7 +253,7 @@
   },
   {
     "pk": 15,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -265,7 +265,7 @@
   },
   {
     "pk": 16,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -277,7 +277,7 @@
   },
   {
     "pk": 17,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -289,7 +289,7 @@
   },
   {
     "pk": 18,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -301,7 +301,7 @@
   },
   {
     "pk": 19,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -313,7 +313,7 @@
   },
   {
     "pk": 20,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -325,7 +325,7 @@
   },
   {
     "pk": 21,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -337,7 +337,7 @@
   },
   {
     "pk": 22,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -349,7 +349,7 @@
   },
   {
     "pk": 23,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
@@ -361,7 +361,7 @@
   },
   {
     "pk": 24,
-    "model": "tour.guidetype",
+    "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
