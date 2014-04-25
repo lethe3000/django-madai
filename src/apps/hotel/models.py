@@ -25,18 +25,18 @@ class ArticleManager(models.Manager):
 
     def hot_articles(self):
         return self.published_objects() \
-                   .filter(guide_type=GuideType.GUIDE_TYPE_HOT) \
+                   .filter(info_type=InfoType.INFO_TYPE_HOT) \
                    .order_by('display_order')
 
     def banner_articles(self):
         return self.published_objects().filter(is_pinned=True)
 
     def event_articles(self):
-        return self.published_objects().filter(guide_type=GuideType.GUIDE_TYPE_EVENT)
+        return self.published_objects().filter(info_type=InfoType.INFO_TYPE_EVENT)
 
-    def latest_article(self, scenery_id, guide_type_id):
+    def latest_article(self, hotel_id, info_type_id):
         return self.published_objects()\
-                   .filter(scenery=scenery_id, guide_type=guide_type_id)\
+                   .filter(hotel=hotel_id, info_type=info_type_id)\
                    .latest('created')
 
 
@@ -61,15 +61,15 @@ class Article(BaseModel):
     is_published = models.BooleanField(default=False,
                                        verbose_name=u'是否已发布')
 
-    scenery = models.ForeignKey('Scenery',
-                                verbose_name='景区',
-                                related_name='articles')
+    hotel = models.ForeignKey('Hotel',
+                              verbose_name=u'酒店',
+                              related_name='articles')
 
-    guide_type = models.ForeignKey('GuideType',
-                                   verbose_name='资料类型',
-                                   related_name='articles')
+    info_type = models.ForeignKey('InfoType',
+                                  verbose_name='资料类型',
+                                  related_name='articles')
 
-    desc = models.TextField(verbose_name='描述',
+    desc = models.TextField(verbose_name=u'描述',
                             default="",
                             blank=True)
 
@@ -138,13 +138,13 @@ class Article(BaseModel):
         get_latest_by = "updated"
 
 
-class GuideType(TimeBaseModel):
+class InfoType(TimeBaseModel):
 
-    GUIDE_TYPE_HOT = 2
+    INFO_TYPE_HOT = 2
 
-    GUIDE_TYPE_EVENT = 3
+    INFO_TYPE_EVENT = 3
 
-    GUIDE_TYPE_MAP = 11
+    INFO_TYPE_MAP = 11
 
     name = models.CharField(max_length=64,
                             verbose_name=u'名称',
@@ -177,25 +177,25 @@ class GuideType(TimeBaseModel):
         return settings.STATIC_DEFAULT_TITLE_IMAGE_URL if not self.image_file else self.image_file.url
 
     class Meta:
-        verbose_name = u"景区资料类型"
+        verbose_name = u"酒店资料类型"
         ordering = ('display_order',)
         get_latest_by = "updated"
 
 
-class SceneryManager(models.Manager):
+class HotelManager(models.Manager):
 
-    def guidetypes_with_article(self, scenery_id):
+    def infotypes_with_article(self, hotel_id):
         res = OrderedDict()
-        # fill with all of guide types
-        for guidetype in GuideType.active_objects.only('id', 'name'):
-            res[guidetype.id] = {"name": guidetype.name, "articles": []}
-        # related the article with given guide type
-        for article in Article.objects.filter(scenery=scenery_id).select_related("guide_type").only("title", 'guide_type__id'):
-            res[article.guide_type.id]['articles'].append({"id": article.id, "title": article.title})
+        # fill with all of info types
+        for infotype in InfoType.active_objects.only('id', 'name'):
+            res[infotype.id] = {"name": infotype.name, "articles": []}
+        # related the article with given info type
+        for article in Article.objects.filter(hotel=hotel_id).select_related("info_type").only("title", 'info_type__id'):
+            res[article.info_type.id]['articles'].append({"id": article.id, "title": article.title})
         return res
 
 
-class Scenery(TimeBaseModel):
+class Hotel(TimeBaseModel):
     name = models.CharField(max_length=64,
                             verbose_name=u'名称',
                             unique=True)
@@ -220,23 +220,13 @@ class Scenery(TimeBaseModel):
                                      default="",
                                      blank=True)
 
-    is_virtual = models.BooleanField(verbose_name=u'是否虚拟景区',
-                                     default=False,
-                                     help_text=u'虚拟景区是真实不存在的景区,比如旅游局. 通过它把具体的文章关联起来',
-                                     blank=True,)
-
     display_order = models.IntegerField(verbose_name=u'显示顺序',
                                         default=0)
 
     is_active = models.BooleanField(default=True,
                                     verbose_name=u'激活状态')
 
-    thirdparty_id = models.CharField(max_length=64,
-                                     verbose_name=u'第三方景区ID',
-                                     default="",
-                                     blank=True)
-
-    objects = SceneryManager()
+    objects = HotelManager()
     active_objects = ActiveDataManager()
     cache_objects = SimpleCacheManager()
 
@@ -247,6 +237,6 @@ class Scenery(TimeBaseModel):
         return settings.STATIC_DEFAULT_TITLE_IMAGE_URL if not self.image_file else self.image_file.url
 
     class Meta:
-        verbose_name = u"景区"
+        verbose_name = u"酒店"
         ordering = ('display_order',)
         get_latest_by = "updated"

@@ -12,10 +12,10 @@ urlpatterns = patterns('',
     url(r'^account/', include('apps.account.urls', namespace='account')),
     url(r'^customer/', include('apps.customer.admin.urls', namespace='customer')),
     url(r'^tour/', include('apps.tour.admin.urls', namespace='tour')),
+    url(r'^hotel/', include('apps.hotel.admin.urls', namespace='hotel')),
     url(r'^thirdparty/', include('apps.thirdparty.urls', namespace='thirdparty')),
     url(r'^initdata/$', 'apps.admin.views.initdata'),
     url(r'^chatroom/', include('apps.chatroom.admin.urls', namespace='chatroom')),
-    url(r'^product/', include('apps.product.admin.urls', namespace='product')),
 )
 
 

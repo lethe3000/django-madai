@@ -15,6 +15,7 @@ from django.shortcuts import render_to_response, redirect
 from django.contrib.auth.decorators import login_required
 import os
 from apps.tour.models import Scenery
+from apps.hotel.models import Hotel
 
 HERE = os.path.dirname(__file__)
 logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(HERE)) + '.' + os.path.basename(HERE))
@@ -32,35 +33,18 @@ def build_menu(request):
                                                                           request.user.has_perm('view_customer')),
     ]
 
-    SUBMENU_TOUR = [
-        ('景区', reverse('admin:tour:scenery_list'), None),
-        ('资讯类型', reverse('admin:tour:guidetype_list'), None),
-        ('旅游资讯', reverse('admin:tour:article_list'), None),
-    ]
-
-    SUBMENU_FOUNDATION = [
-        ('客户端APP', reverse('admin:foundation:clientapp_list'), None),
-        ('全球眼', reverse('admin:thirdparty:webcamera'), lambda request: request.user.is_admin()),
-    ]
-
-    SUBMENU_CHATROOM = [
-        ('聊天室列表', reverse('admin:chatroom:chatroom_list'), None)
-    ]
-
-    SUBMENU_PRODUCT = [
-        ('酒店列表', reverse('admin:product:hotel_list'), None),
-        ('航班列表', reverse('admin:product:flight_list'), None)
+    SUBMENU_HOTEL = [
+        ('酒店', reverse('admin:hotel:hotel_list'), None),
+        ('资讯类型', reverse('admin:hotel:infotype_list'), None),
+        ('酒店资讯', reverse('admin:hotel:article_list'), None),
     ]
 
     MENU = (
         {'menu': '系统信息', 'url': reverse('admin:dashboard'), 'icon': 'icon-dashboard', 'submenu': []},
         {'menu': '账号', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_ACCOUNT},
-        # {'menu': '基础数据', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_FOUNDATION},
         {'menu': '客户', 'url': '', 'icon': 'icon-user', 'submenu': SUBMENU_CUSTOMER},
-        # {'menu': '旅游', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_TOUR},
-        # {'menu': '景区', 'url': '', 'icon': 'icon-bookmark', 'submenu': build_sencery_submenu()},
-        # {'menu': '聊天室', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_CHATROOM},
-        {'menu': '产品', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_PRODUCT},
+        {'menu': '酒店', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_HOTEL},
+        {'menu': '酒店dashboard', 'url': '', 'icon': 'icon-bookmark', 'submenu': build_hotel_submenu()},
     )
     menus = []
     for item in MENU:
@@ -78,6 +62,10 @@ def build_menu(request):
 
 def build_sencery_submenu():
     return [(scenery.name, reverse('admin:tour:scenery_dashboard', kwargs={'pk': scenery.id}), None) for scenery in Scenery.active_objects.all()]
+
+
+def build_hotel_submenu():
+    return [(hotel.name, reverse('admin:hotel:hotel_dashboard', kwargs={'pk': hotel.id}), None) for hotel in Hotel.active_objects.all()]
 
 def home(request):
     """

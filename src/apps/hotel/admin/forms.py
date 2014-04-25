@@ -6,12 +6,12 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
 import os
 from django import forms
-from apps.tour.models import Article
+from apps.hotel.models import Article
 from apps.common.ace import AceClearableFileInput, AceBooleanField
 from apps.common.admin.datatables import DatatablesIdColumn, DatatablesBuilder, DatatablesImageColumn, DatatablesTextColumn,\
     DatatablesBooleanColumn, DatatablesUserChoiceColumn, DatatablesDateTimeColumn, DatatablesColumnActionsRender,\
     DatatablesActionsColumn, DatatablesModelChoiceColumn, DatatablesIntegerColumn
-from apps.tour.models import Scenery, GuideType
+from apps.hotel.models import Hotel, InfoType
 
 HERE = os.path.dirname(__file__)
 logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(HERE)) + '.' + os.path.basename(HERE))
@@ -29,21 +29,21 @@ class ArticleForm(forms.ModelForm):
         self.fields['title'].widget.attrs['class'] = "required col-md-10 limited"
         self.fields['summary'].widget.attrs['class'] = "col-md-10"
         self.fields['desc'].widget.attrs['class'] = "col-md-10"
-        self.fields['scenery'].widget.attrs['class'] = "col-md-5"
-        self.fields['scenery'].queryset = Scenery.active_objects.only("name").all()
-        self.fields['guide_type'].widget.attrs['class'] = "col-md-5"
-        guidetype_queryset = GuideType.active_objects.only("name")
-        if kwargs.get('initial').has_key('guide_type'):
-            guidetype = int(kwargs.get('initial').get('guide_type'))
-            guidetype_queryset = guidetype_queryset.filter(id=guidetype)
-        self.fields['guide_type'].queryset = guidetype_queryset.all()
+        self.fields['hotel'].widget.attrs['class'] = "col-md-5"
+        self.fields['hotel'].queryset = Hotel.active_objects.only("name").all()
+        self.fields['info_type'].widget.attrs['class'] = "col-md-5"
+        infotype_queryset = InfoType.active_objects.only("name")
+        if kwargs.get('initial').has_key('info_type'):
+            infotype = int(kwargs.get('initial').get('info_type'))
+            infotype_queryset = infotype_queryset.filter(id=infotype)
+        self.fields['info_type'].queryset = infotype_queryset.all()
         self.fields['web_link'].widget.attrs['class'] = "col-md-10"
         self.fields['source'].widget.attrs['class'] = "col-md-10"
 
     class Meta:
         model = Article
         fields = (
-            'title', 'title_image_file', 'scenery', 'guide_type', "summary", 'web_link', 'is_pinned', 'display_order', 'source', 'desc', 'content_html')
+            'title', 'title_image_file', 'hotel', 'info_type', "summary", 'web_link', 'is_pinned', 'display_order', 'source', 'desc', 'content_html')
 
         widgets = {
             # use FileInput widget to avoid show clearable link and text
@@ -83,7 +83,7 @@ class ArticleForm(forms.ModelForm):
         else:
             buf = StringIO.StringIO(self.cleaned_data['content_html'].encode('utf-8'))
             self.RESPONSIVE_HEADER = self.RESPONSIVE_HEADER.format(
-                self.HEADER_NO_SCALE_FACTOR if self.instance.guide_type_id != GuideType.GUIDE_TYPE_MAP else ''
+                self.HEADER_NO_SCALE_FACTOR if self.instance.info_type_id != InfoType.INFO_TYPE_MAP else ''
             )
             article.content_file = SimpleUploadedFile("content.html", self.RESPONSIVE_HEADER + buf.read())
 
@@ -104,18 +104,18 @@ class ArticleDatatablesBuilder(DatatablesBuilder):
                                          u"<a href='%s' target='_blank'>%s</a>" % (model.content_url(), model.title)))
 
 
-    title_image_file = DatatablesImageColumn(label='标题图片')
+    title_image_file = DatatablesImageColumn(label=u'标题图片')
 
     summary = DatatablesTextColumn(label=u'摘要',
                                    is_searchable=True)
 
-    scenery = DatatablesModelChoiceColumn(label=u'景区',
-                                          is_searchable=True,
-                                          queryset=Scenery.active_objects.only('name').all())
+    hotel = DatatablesModelChoiceColumn(label=u'景区',
+                                        is_searchable=True,
+                                        queryset=Hotel.active_objects.only('name').all())
 
-    guide_type = DatatablesModelChoiceColumn(label='资料类型',
-                                             is_searchable=True,
-                                             queryset=GuideType.active_objects.only('name').all())
+    info_type = DatatablesModelChoiceColumn(label=u'资料类型',
+                                            is_searchable=True,
+                                            queryset=InfoType.active_objects.only('name').all())
 
     is_published = DatatablesBooleanColumn((('', u'全部'), (1, u'发布'), (0, u'草稿')),
                                            label='状态',
@@ -137,7 +137,7 @@ class ArticleDatatablesBuilder(DatatablesBuilder):
     updated = DatatablesDateTimeColumn(label='修改时间')
 
     def actions_render(request, model, field_name):
-        action_url_builder = lambda model, action: reverse('admin:tour:article_update', kwargs={'pk': model.id, 'action_method': action})
+        action_url_builder = lambda model, action: reverse('admin:hotel:article_update', kwargs={'pk': model.id, 'action_method': action})
         if model.is_published:
             actions = [{'is_link': False, 'css_class': 'btn-yellow', 'name': 'cancel', 'url': action_url_builder(model, 'cancel'),
                         'text': u'撤销', 'icon': 'icon-cut'}]
@@ -152,18 +152,17 @@ class ArticleDatatablesBuilder(DatatablesBuilder):
     _actions = DatatablesActionsColumn(render=actions_render)
 
 
-class SceneryForm(forms.ModelForm):
+class HotelForm(forms.ModelForm):
 
-    is_virtual = AceBooleanField(label=u'虚拟景区', required=False)
 
     def __init__(self, *args, **kwargs):
-        super(SceneryForm, self).__init__(*args, **kwargs)
+        super(HotelForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['class'] = "required col-md-10 limited"
         self.fields['summary'].widget.attrs['class'] = "col-md-10 limited"
 
     class Meta:
-        model = Scenery
-        fields = ('name', 'image_file', 'summary', 'display_order', 'is_virtual', 'thirdparty_id', 'phone_contact', 'phone_sos')
+        model = Hotel
+        fields = ('name', 'image_file', 'summary', 'display_order', 'phone_contact', 'phone_sos')
 
         widgets = {
             # use FileInput widget to avoid show clearable link and text
@@ -171,7 +170,7 @@ class SceneryForm(forms.ModelForm):
         }
 
 
-class SceneryDatatablesBuilder(DatatablesBuilder):
+class HotelDatatablesBuilder(DatatablesBuilder):
 
     id = DatatablesIdColumn()
 
@@ -182,7 +181,7 @@ class SceneryDatatablesBuilder(DatatablesBuilder):
 
     summary = DatatablesTextColumn(label=u'简介',)
 
-    is_virtual = DatatablesBooleanColumn(label=u'虚拟景区')
+    # is_virtual = DatatablesBooleanColumn(label=u'虚拟景区')
 
     phone = DatatablesBooleanColumn(label=u'电话',
                                     render=(lambda request, model, field_name:
@@ -201,7 +200,7 @@ class SceneryDatatablesBuilder(DatatablesBuilder):
                                                 u'<span class="label label-warning"> 禁用 </span>'))
 
     def actions_render(request, model, field_name):
-        action_url_builder = lambda model, action: reverse('admin:tour:scenery_update', kwargs={'pk': model.id, 'action_method': action})
+        action_url_builder = lambda model, action: reverse('admin:hotel:hotel_update', kwargs={'pk': model.id, 'action_method': action})
 
         if model.is_active:
             actions = [{'is_link': False, 'name': 'lock', 'text': u'锁定',
@@ -210,21 +209,21 @@ class SceneryDatatablesBuilder(DatatablesBuilder):
             actions = [{'is_link': False, 'name': 'unlock', 'text': u'解锁',
                         'icon': 'icon-unlock', "url": action_url_builder(model, "unlock")}]
         actions.append({'is_link': True, 'name': 'edit', 'text': u'编辑',
-                        'icon': 'icon-edit', 'url_name': 'admin:tour:scenery_edit'})
+                        'icon': 'icon-edit', 'url_name': 'admin:hotel:hotel_edit'})
         return DatatablesColumnActionsRender(actions).render(request, model, field_name)
 
     _actions = DatatablesActionsColumn(render=actions_render)
 
 
-class GuideTypeForm(forms.ModelForm):
+class InfoTypeForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
-        super(GuideTypeForm, self).__init__(*args, **kwargs)
+        super(InfoTypeForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['class'] = "required col-md-10 limited"
         self.fields['summary'].widget.attrs['class'] = "col-md-10 limited"
 
     class Meta:
-        model = GuideType
+        model = InfoType
         fields = ('name', 'image_file', 'summary', 'display_order')
 
         widgets = {
@@ -233,7 +232,7 @@ class GuideTypeForm(forms.ModelForm):
         }
 
 
-class GuideTypeDatatablesBuilder(DatatablesBuilder):
+class InfoTypeDatatablesBuilder(DatatablesBuilder):
 
     id = DatatablesIdColumn()
 
@@ -256,7 +255,7 @@ class GuideTypeDatatablesBuilder(DatatablesBuilder):
                                                 u'<span class="label label-warning"> 禁用 </span>'))
 
     def actions_render(request, model, field_name):
-        action_url_builder = lambda model, action: reverse('admin:tour:guidetype_update', kwargs={'pk': model.id, 'action_method': action})
+        action_url_builder = lambda model, action: reverse('admin:hotel:infotype_update', kwargs={'pk': model.id, 'action_method': action})
         if model.is_active:
             actions = [{'is_link': False, 'name': 'lock', 'text': u'锁定',
                         'icon': 'icon-lock', "url": action_url_builder(model, "lock")}]
@@ -264,7 +263,7 @@ class GuideTypeDatatablesBuilder(DatatablesBuilder):
             actions = [{'is_link': False, 'name': 'unlock', 'text': u'解锁',
                         'icon': 'icon-unlock', "url": action_url_builder(model, "unlock")}]
         actions.append({'is_link': True, 'name': 'edit', 'text': u'编辑',
-                        'icon': 'icon-edit', 'url_name': 'admin:tour:guidetype_edit'})
+                        'icon': 'icon-edit', 'url_name': 'admin:hotel:infotype_edit'})
         return DatatablesColumnActionsRender(actions).render(request, model, field_name)
 
     _actions = DatatablesActionsColumn(render=actions_render)
