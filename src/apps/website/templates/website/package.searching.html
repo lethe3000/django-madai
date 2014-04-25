@@ -1,0 +1,141 @@
+{% extends 'website/website.base.inc.html' %}
+{% load static %}
+{% block title %} 小麻袋 {% endblock title %}
+
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'website/styles/app.css' %}" media="screen"/>
+<link rel="stylesheet" href="{% static 'website/styles/fotorama.css' %}" media="screen"/>
+{% endblock extracss %}
+
+{% block extraincjs %}
+<script src="{% static 'website/scripts/libs/fotorama.js' %}"></script>
+{% endblock extraincjs %}
+
+{% block main_content %}
+{% include 'website/header.inc.html' %}
+<section class="bg-1">
+    <article class="search-info">
+      <div class="middle">
+        <h3 class="text-center color-blue">为您推荐精选以下行程</h3>
+      </div>
+    </article>
+</section>
+<section class="bg-image-clouds">
+  <article>
+    <h1 class="fg-grayDark" style="margin-bottom: 45px;">酒店推荐</h1>
+    <ul class="sorted-list">
+      <li>
+        <div class="grid">
+          <div class="row">
+            <div class="span4">
+              <img src="{% static 'website/img/cms_11_392.jpg' %}"/>
+            </div>
+            <div class="span8">
+              <h2 class="fg-grayDark">天堂岛度假村</h2>
+              <p class="fg-grayLight">天堂岛度假村位于自然淳朴的Ke Ga湾，面对着已有百年历史的古老法式灯塔，以乡村风格的布置为设计特色</p>
+              <span class="currency">
+                <strong>&yen; 1,114</strong>
+                <small>/晚</small>
+              </span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="grid">
+          <div class="row">
+            <div class="span4">
+              <img src="{% static 'website/img/cms_11_807_7276657.jpg'%}"/>
+            </div>
+            <div class="span8">
+              <h2 class="fg-grayDark">天堂岛度假村</h2>
+              <p class="fg-grayLight">天堂岛度假村位于自然淳朴的Ke Ga湾，面对着已有百年历史的古老法式灯塔，以乡村风格的布置为设计特色</p>
+              <span class="currency">
+                <strong>&yen; 1,114</strong>
+                <small>/晚</small>
+              </span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="grid">
+          <div class="row">
+            <div class="span4">
+              <img src="{% static 'website/img/cms_11_392.jpg' %}"/>
+            </div>
+            <div class="span8">
+              <h2 class="fg-grayDark">天堂岛度假村</h2>
+              <p class="fg-grayLight">天堂岛度假村位于自然淳朴的Ke Ga湾，面对着已有百年历史的古老法式灯塔，以乡村风格的布置为设计特色</p>
+              <span class="currency">
+                <strong>&yen; 1,114</strong>
+                <small>/晚</small>
+              </span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <h1 class="fg-grayDark" style="margin-bottom: 45px;">机票推荐</h1>
+    <ul class="sorted-list">
+      <li>
+        <div class="grid">
+          <div class="row">
+            <div class="span4">
+              <img src="{% static 'website/img/cms_11_392.jpg' %}"/>
+            </div>
+            <div class="span8">
+              <h2 class="fg-grayDark">天堂岛度假村</h2>
+              <p class="fg-grayLight">天堂岛度假村位于自然淳朴的Ke Ga湾，面对着已有百年历史的古老法式灯塔，以乡村风格的布置为设计特色</p>
+              <span class="currency">
+                <strong>&yen; 1,114</strong>
+                <small>/晚</small>
+              </span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="grid">
+          <div class="row">
+            <div class="span4">
+              <img src="{% static 'website/img/cms_11_807_7276657.jpg' %}"/>
+            </div>
+            <div class="span8">
+              <h2 class="fg-grayDark">天堂岛度假村</h2>
+              <p class="fg-grayLight">天堂岛度假村位于自然淳朴的Ke Ga湾，面对着已有百年历史的古老法式灯塔，以乡村风格的布置为设计特色</p>
+              <span class="currency">
+                <strong>&yen; 1,114</strong>
+                <small>/晚</small>
+              </span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="grid">
+          <div class="row">
+            <div class="span4">
+              <img src="{% static 'website/img/cms_11_392.jpg' %}"/>
+            </div>
+            <div class="span8">
+              <h2 class="fg-grayDark">天堂岛度假村</h2>
+              <p class="fg-grayLight">天堂岛度假村位于自然淳朴的Ke Ga湾，面对着已有百年历史的古老法式灯塔，以乡村风格的布置为设计特色</p>
+              <span class="currency">
+                <strong>&yen; 1,114</strong>
+                <small>/晚</small>
+              </span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <a class="button large submit" href="#">生成订单</a>
+  </article>
+</section>
+{% endblock main_content %}
+
+{% block extrajs %}
+
+{% endblock extrajs %}
