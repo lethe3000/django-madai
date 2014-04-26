@@ -14,9 +14,9 @@ article {
 }
 
 article .product {
-  border: 1px solid #FFF;
   height: 350px;
-  width: 300px;
+  width: 320px;
+  margin: 0 10px;
 }
 
 .fotorama__nav-wrap {
@@ -35,4 +35,37 @@ article .product {
 .fotorama__nav__frame.fotorama__active .fotorama__dot {
   height: 12px !important;
   width: 12px !important;
+}
+
+.product-group {
+    width: 1020px;
+    height: 350px;
+}
+
+.product > img {
+    width: 320px;
+    height: 240px;
+    display: block;
+}
+
+.product > .product-title {
+    background-color: #FFFFFF;
+    width: 320px;
+    height: 110px;
+    padding: 20px;
+    transition: all 0.1s ease-in-out 0s;
+}
+
+.product > .product-title:hover {
+    background-color: #CB5977;
+}
+
+.product > .product-title > h4 {
+    margin-top: 0;
+    font-size: 16px;
+}
+
+.product > .product-title:hover > h4,
+.product > .product-title:hover > p {
+    color: #FFFFFF;
 }
