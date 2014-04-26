@@ -10,6 +10,8 @@
 
 {% block extraincjs %}
 <script src="{% static 'website/scripts/libs/fotorama.js' %}"></script>
+<script src="{% static 'website/scripts/libs/metro-calendar.js' %}"></script>
+<script src="{% static 'website/scripts/libs/metro-datepicker.js' %}"></script>
 {% endblock extraincjs %}
 
 {% block main_content %}
@@ -27,8 +29,42 @@
   <div class="logo">
     <h1 class="fg-white text-center">小麻袋</h1>
   </div>
+  <div class="date-pick">
+    <div class="margin-0-center">
+      <div class="grid">
+        <div class="row">
+          <div class="span4">
+            <div class="input-control text">
+              <input type="text" class="fg-gray location" />
+              <i class="icon-location fg-grayLight"></i>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="input-control text"
+                 data-role="datepicker"
+                 data-format='yyyy-mm-dd'
+                 data-effect="fade"
+                 data-locale="zhCN">
+              <input type="text" class="fg-gray">
+              <button class="btn-date fg-grayLight"></button>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="input-control text"
+               data-role="datepicker"
+               data-format='yyyy-mm-dd'
+               data-effect="fade"
+               data-locale="zhCN">
+              <input type="text" class="fg-gray">
+              <button class="btn-date fg-grayLight"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
-<nav class="bg-white shadow-bottom">
+<nav class="bg-white shadow-bottom menu">
   <div class="nav-box fixed-width margin-0-center">
     <a class="text-center" href="#"><p class="margin-0">首页</p></a>
     <a class="text-center" href="#"><p class="margin-0">酒店详情</p></a>
@@ -39,85 +75,88 @@
 </nav>
 <section class="bg-1">
   <article>
-    <h2 class="fg-white" style="margin-left: 10px;">限时热销</h2>
+    <h2 class="fg-white category-title">限时热销</h2>
+    <a class="category-showmore place-right" href="#">+ 更多</a>
     <div class="product-group">
-      <div class="product place-left">
+      <a class="product place-left" href="#">
         <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
         <div class="product-title">
           <h4>普吉岛贝尔泳池别墅度假酒店</h4>
           <p>泰国，普吉岛</p>
         </div>
-      </div>
-      <div class="product place-left">
+      </a>
+      <a class="product place-left" href="#">
         <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
         <div class="product-title">
           <h4>普吉岛贝尔泳池别墅度假酒店</h4>
           <p>泰国，普吉岛</p>
         </div>
-      </div>
-      <div class="product place-left">
+      </a>
+      <a class="product place-left" href="#">
         <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
         <div class="product-title">
           <h4>普吉岛贝尔泳池别墅度假酒店</h4>
           <p>泰国，普吉岛</p>
         </div>
-      </div>
+      </a>
     </div>
   </article>
 </section>
 <section class="bg-2">
   <article>
-    <h2 class="fg-white" style="margin-left: 10px;">限时热销</h2>
+    <h2 class="fg-white category-title">限时热销</h2>
+    <a class="category-showmore place-right" href="#">+ 更多</a>
     <div class="product-group">
-      <div class="product place-left">
+      <a class="product place-left" href="#">
         <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
         <div class="product-title">
           <h4>普吉岛贝尔泳池别墅度假酒店</h4>
           <p>泰国，普吉岛</p>
         </div>
-      </div>
-      <div class="product place-left">
+      </a>
+      <a class="product place-left" href="#">
         <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
         <div class="product-title">
           <h4>普吉岛贝尔泳池别墅度假酒店</h4>
           <p>泰国，普吉岛</p>
         </div>
-      </div>
-      <div class="product place-left">
+      </a>
+      <a class="product place-left" href="#">
         <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
         <div class="product-title">
           <h4>普吉岛贝尔泳池别墅度假酒店</h4>
           <p>泰国，普吉岛</p>
         </div>
-      </div>
+      </a>
     </div>
   </article>
 </section>
 <section class="bg-3">
   <article>
-    <h2 class="fg-white" style="margin-left: 10px;">限时热销</h2>
+    <h2 class="fg-white category-title">限时热销</h2>
+    <a class="category-showmore place-right" href="#">+ 更多</a>
     <div class="product-group">
-      <div class="product place-left">
+      <a class="product place-left" href="#">
         <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
         <div class="product-title">
           <h4>普吉岛贝尔泳池别墅度假酒店</h4>
           <p>泰国，普吉岛</p>
         </div>
-      </div>
-      <div class="product place-left">
+      </a>
+      <a class="product place-left" href="#">
         <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
         <div class="product-title">
           <h4>普吉岛贝尔泳池别墅度假酒店</h4>
           <p>泰国，普吉岛</p>
         </div>
-      </div>
-      <div class="product place-left">
+      </a>
+      <a class="product place-left" href="#">
         <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
         <div class="product-title">
           <h4>普吉岛贝尔泳池别墅度假酒店</h4>
           <p>泰国，普吉岛</p>
         </div>
-      </div>
+      </a>
     </div>
   </article>
 </section>

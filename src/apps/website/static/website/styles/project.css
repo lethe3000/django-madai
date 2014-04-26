@@ -50,3 +50,23 @@ header > .logo {
 .bg-3 {
   background-color: #87c0de;
 }
+
+nav.menu {
+    margin: -1px 0 0;
+}
+
+.menu a {
+    transition: all 0.5s ease-in-out 0s;
+}
+
+.menu a > p {
+    transition: all 0.1s ease-in-out 0s;
+}
+
+.menu a:hover {
+    background-color: #CB5977;
+}
+
+.menu a:hover > p {
+    color: #FFFFFF;
+}
