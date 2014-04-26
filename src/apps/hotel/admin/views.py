@@ -123,12 +123,27 @@ class HotelCreateView(RequestAwareMixin, ModelAwareMixin, AjaxCreateView):
     form_class = HotelForm
     template_name = 'hotel/admin/hotel.form.inc.html'
 
+    def get_context_data(self, **kwargs):
+        context_data = super(HotelCreateView, self).get_context_data(**kwargs)
+        context_data['editor_max_image_side_length'] = 3000
+        return context_data
+
 
 class HotelEditView(ModelAwareMixin, AjaxUpdateView):
     model = Hotel
     form_class = HotelForm
     template_name = 'hotel/admin/hotel.form.inc.html'
 
+    def get_initial(self):
+        initial = super(HotelEditView, self).get_initial()
+        if self.object:
+            initial["images_html"] = self.object.images_html()
+        return initial
+
+    def get_context_data(self, **kwargs):
+        context_data = super(HotelEditView, self).get_context_data(**kwargs)
+        context_data['editor_max_image_side_length'] = 3000
+        return context_data
 
 class HotelUpdateView(AjaxSimpleUpdateView):
     model = Hotel

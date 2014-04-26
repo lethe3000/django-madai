@@ -9,6 +9,8 @@
     var $form = $('#{{ form_id }}');
 
     $('#id_image_file', $form).enableAceImageInput(640, 640, 0, 0);
+    var ue1 = new UE.ui.Editor({initialFrameWidth: 1000, maxImageSideLength: {{ editor_max_image_side_length }} });
+    ue1.render('id_images_html');
   });
 </script>
 {% endblock pagecontent_js %}

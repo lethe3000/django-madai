@@ -7,10 +7,16 @@ from django.utils import timezone
 import os
 from django.conf import settings
 from django.db import models
+from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.models import ContentType
+from django.db import models
+from django.utils.safestring import SafeString
+
 from apps.common.caches import SimpleCacheManager
 from apps.common.models import BaseModel, ActiveDataManager, TimeBaseModel
 from apps.foundation.models import unique_image_name
 from utils import random
+from apps.foundation.models import Image
 
 logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(__file__)))
 
@@ -195,6 +201,39 @@ class HotelManager(models.Manager):
         return res
 
 
+class ContentToImage(models.Model):
+    """
+    中间关系model. 记录content和image的关系.
+    """
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = generic.GenericForeignKey()
+
+    image = models.ForeignKey(Image, verbose_name=u'关联图片')
+    display_order = models.PositiveIntegerField(verbose_name=u'显示顺序',
+                                                default=0)
+
+    def __unicode__(self):
+        return unicode(self.image)
+
+    def image_url(self):
+        return self.image.url()
+
+    def image_width(self):
+        return self.image.width
+
+    def image_height(self):
+        return self.image.height
+
+    class Meta:
+        ordering = ('display_order',)
+        abstract = True
+
+
+class HotelImage(ContentToImage):
+    pass
+
+
 class Hotel(TimeBaseModel):
     name = models.CharField(max_length=64,
                             verbose_name=u'名称',
@@ -209,6 +248,13 @@ class Hotel(TimeBaseModel):
                                verbose_name=u'简介',
                                default="",
                                blank=True)
+
+    images = generic.GenericRelation(HotelImage,
+                                     blank=True,
+                                     null=True,
+                                     verbose_name=u'酒店图片集',
+                                     related_name='products',
+                                     help_text=u'用户可以看到的酒店展示图集，比如应用抓图、产品照片等')
 
     advantages = models.TextField(max_length=512,
                                   verbose_name=u'优势',
@@ -235,6 +281,13 @@ class Hotel(TimeBaseModel):
 
     def image_url(self):
         return settings.STATIC_DEFAULT_TITLE_IMAGE_URL if not self.image_file else self.image_file.url
+
+    def images_html(self):
+        html = ""
+        for image in self.images.all().order_by('display_order'):
+            html += '<img src="%s"></img>' % image.image_url()
+        return SafeString(html)
+
 
     def get_advantages(self):
         seperator = '\r\n'

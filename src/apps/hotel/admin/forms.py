@@ -5,13 +5,15 @@ import logging
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
 import os
+import re
 from django import forms
 from apps.hotel.models import Article
 from apps.common.ace import AceClearableFileInput, AceBooleanField
 from apps.common.admin.datatables import DatatablesIdColumn, DatatablesBuilder, DatatablesImageColumn, DatatablesTextColumn,\
     DatatablesBooleanColumn, DatatablesUserChoiceColumn, DatatablesDateTimeColumn, DatatablesColumnActionsRender,\
     DatatablesActionsColumn, DatatablesModelChoiceColumn, DatatablesIntegerColumn
-from apps.hotel.models import Hotel, InfoType
+from apps.hotel.models import Hotel, InfoType, HotelImage
+from apps.foundation.models import Image
 
 HERE = os.path.dirname(__file__)
 logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(HERE)) + '.' + os.path.basename(HERE))
@@ -153,7 +155,9 @@ class ArticleDatatablesBuilder(DatatablesBuilder):
 
 
 class HotelForm(forms.ModelForm):
-
+    images_html = forms.CharField(label=u'酒店图片集',
+                                  widget=forms.Textarea(),
+                                  required=False)
 
     def __init__(self, *args, **kwargs):
         super(HotelForm, self).__init__(*args, **kwargs)
@@ -161,9 +165,39 @@ class HotelForm(forms.ModelForm):
         self.fields['summary'].widget.attrs['class'] = "col-md-10 limited"
         self.fields['advantages'].widget.attrs['class'] = "col-md-10"
 
+    @staticmethod
+    def handle_images(model, image_model, images_text, clear):
+        image_names = HotelForm.extract_images(images_text)
+        images = Image.objects.get_all_for_names(image_names)
+        display_order = 0
+        clear()
+        # NOTE: can't ensure the order fetching from db is match to image_names's order
+        # so should loop image_names one by one
+        for image_name in image_names:
+            for image in images:
+                if image.url().endswith(image_name):
+                    image_model.objects.create(content_object=model, image=image, display_order=display_order)
+                    display_order += 1
+
+    image_re = re.compile(r'<img src=".*?/images/(.*?)"')
+
+    @staticmethod
+    def extract_images(content_plain_text):
+        # the text content like below. I will extract the name from it
+        #   's1s2<img src="/media/images/726d31924b094735b44c1af27ffe37ce.png" _src="/media/images/726d31924b094735b44c1af27ffe37ce.png">s3'
+        return HotelForm.image_re.findall(content_plain_text)
+
+    def save(self, commit=False):
+        hotel = super(HotelForm, self).save(commit)
+        hotel.save()
+        HotelForm.handle_images(hotel, HotelImage, self.cleaned_data['images_html'],
+                                lambda: hotel.images.clear())
+
+        return hotel
+
     class Meta:
         model = Hotel
-        fields = ('name', 'image_file', 'summary', 'advantages', 'display_order', 'phone_contact')
+        fields = ('name', 'image_file', 'summary', 'advantages', 'display_order', 'images_html', 'phone_contact')
 
         widgets = {
             # use FileInput widget to avoid show clearable link and text
