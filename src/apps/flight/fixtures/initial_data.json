@@ -1,0 +1,27 @@
+[
+  {
+    "pk": 1,
+    "model": "flight.flight",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "新加坡航班",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020",
+      "image_file": "images/banner_test.jpg",
+      "summary": "新加坡航班信息"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "flight.infotype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "航班运行时间",
+      "image_file": "images/icon_guide_bus.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
+  }
+]

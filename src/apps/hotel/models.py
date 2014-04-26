@@ -46,7 +46,7 @@ class ArticleManager(models.Manager):
                    .latest('created')
 
 
-class Article(BaseModel):
+class BaseArticle(BaseModel):
     title = models.CharField(max_length=128,
                              verbose_name=u'标题',
                              unique=True)
@@ -67,13 +67,9 @@ class Article(BaseModel):
     is_published = models.BooleanField(default=False,
                                        verbose_name=u'是否已发布')
 
-    hotel = models.ForeignKey('Hotel',
-                              verbose_name=u'酒店',
-                              related_name='articles')
-
-    info_type = models.ForeignKey('InfoType',
-                                  verbose_name='资料类型',
-                                  related_name='articles')
+    # hotel = models.ForeignKey('Hotel',
+    #                           verbose_name=u'酒店',
+    #                           related_name='articles')
 
     desc = models.TextField(verbose_name=u'描述',
                             default="",
@@ -139,7 +135,20 @@ class Article(BaseModel):
     cache_objects = SimpleCacheManager()
 
     class Meta:
-        verbose_name = u"资讯"
+        abstract = True
+
+
+class HotelArticle(BaseArticle):
+    hotel = models.ForeignKey('Hotel',
+                              verbose_name=u'酒店',
+                              related_name='articles')
+
+    info_type = models.ForeignKey('InfoType',
+                                  verbose_name=u'资料类型',
+                                  related_name='articles')
+
+    class Meta:
+        verbose_name = u"酒店资讯"
         ordering = ('-updated',)
         get_latest_by = "updated"
 
@@ -183,7 +192,7 @@ class InfoType(TimeBaseModel):
         return settings.STATIC_DEFAULT_TITLE_IMAGE_URL if not self.image_file else self.image_file.url
 
     class Meta:
-        verbose_name = u"酒店资料类型"
+        verbose_name = u"资料类型"
         ordering = ('display_order',)
         get_latest_by = "updated"
 
@@ -196,7 +205,7 @@ class HotelManager(models.Manager):
         for infotype in InfoType.active_objects.only('id', 'name'):
             res[infotype.id] = {"name": infotype.name, "articles": []}
         # related the article with given info type
-        for article in Article.objects.filter(hotel=hotel_id).select_related("info_type").only("title", 'info_type__id'):
+        for article in HotelArticle.objects.filter(hotel=hotel_id).select_related("info_type").only("title", 'info_type__id'):
             res[article.info_type.id]['articles'].append({"id": article.id, "title": article.title})
         return res
 

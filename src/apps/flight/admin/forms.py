@@ -7,12 +7,12 @@ from django.core.urlresolvers import reverse
 import os
 import re
 from django import forms
-from apps.hotel.models import HotelArticle
+from apps.flight.models import FlightArticle, Flight, FlightImage
 from apps.common.ace import AceClearableFileInput, AceBooleanField
 from apps.common.admin.datatables import DatatablesIdColumn, DatatablesBuilder, DatatablesImageColumn, DatatablesTextColumn,\
     DatatablesBooleanColumn, DatatablesUserChoiceColumn, DatatablesDateTimeColumn, DatatablesColumnActionsRender,\
     DatatablesActionsColumn, DatatablesModelChoiceColumn, DatatablesIntegerColumn
-from apps.hotel.models import Hotel, InfoType, HotelImage
+from apps.flight.models import InfoType
 from apps.foundation.models import Image
 
 HERE = os.path.dirname(__file__)
@@ -31,8 +31,8 @@ class ArticleForm(forms.ModelForm):
         self.fields['title'].widget.attrs['class'] = "required col-md-10 limited"
         self.fields['summary'].widget.attrs['class'] = "col-md-10"
         self.fields['desc'].widget.attrs['class'] = "col-md-10"
-        self.fields['hotel'].widget.attrs['class'] = "col-md-5"
-        self.fields['hotel'].queryset = Hotel.active_objects.only("name").all()
+        self.fields['flight'].widget.attrs['class'] = "col-md-5"
+        self.fields['flight'].queryset = Flight.active_objects.only("name").all()
         self.fields['info_type'].widget.attrs['class'] = "col-md-5"
         infotype_queryset = InfoType.active_objects.only("name")
         if kwargs.get('initial').has_key('info_type'):
@@ -43,9 +43,9 @@ class ArticleForm(forms.ModelForm):
         self.fields['source'].widget.attrs['class'] = "col-md-10"
 
     class Meta:
-        model = HotelArticle
+        model = FlightArticle
         fields = (
-            'title', 'title_image_file', 'hotel', 'info_type', "summary", 'web_link', 'is_pinned', 'display_order', 'source', 'desc', 'content_html')
+            'title', 'title_image_file', 'flight', 'info_type', "summary", 'web_link', 'is_pinned', 'display_order', 'source', 'desc', 'content_html')
 
         widgets = {
             # use FileInput widget to avoid show clearable link and text
@@ -111,9 +111,9 @@ class ArticleDatatablesBuilder(DatatablesBuilder):
     summary = DatatablesTextColumn(label=u'摘要',
                                    is_searchable=True)
 
-    hotel = DatatablesModelChoiceColumn(label=u'景区',
-                                        is_searchable=True,
-                                        queryset=Hotel.active_objects.only('name').all())
+    flight = DatatablesModelChoiceColumn(label=u'航班',
+                                         is_searchable=True,
+                                         queryset=Flight.active_objects.only('name').all())
 
     info_type = DatatablesModelChoiceColumn(label=u'资料类型',
                                             is_searchable=True,
@@ -139,7 +139,7 @@ class ArticleDatatablesBuilder(DatatablesBuilder):
     updated = DatatablesDateTimeColumn(label='修改时间')
 
     def actions_render(request, model, field_name):
-        action_url_builder = lambda model, action: reverse('admin:hotel:hotelarticle_update', kwargs={'pk': model.id, 'action_method': action})
+        action_url_builder = lambda model, action: reverse('admin:flight:flightarticle_update', kwargs={'pk': model.id, 'action_method': action})
         if model.is_published:
             actions = [{'is_link': False, 'css_class': 'btn-yellow', 'name': 'cancel', 'url': action_url_builder(model, 'cancel'),
                         'text': u'撤销', 'icon': 'icon-cut'}]
@@ -154,20 +154,20 @@ class ArticleDatatablesBuilder(DatatablesBuilder):
     _actions = DatatablesActionsColumn(render=actions_render)
 
 
-class HotelForm(forms.ModelForm):
-    images_html = forms.CharField(label=u'酒店图片集',
+class FlightForm(forms.ModelForm):
+    images_html = forms.CharField(label=u'航班图片集',
                                   widget=forms.Textarea(),
                                   required=False)
 
     def __init__(self, *args, **kwargs):
-        super(HotelForm, self).__init__(*args, **kwargs)
+        super(FlightForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['class'] = "required col-md-10 limited"
         self.fields['summary'].widget.attrs['class'] = "col-md-10 limited"
         self.fields['advantages'].widget.attrs['class'] = "col-md-10"
 
     @staticmethod
     def handle_images(model, image_model, images_text, clear):
-        image_names = HotelForm.extract_images(images_text)
+        image_names = FlightForm.extract_images(images_text)
         images = Image.objects.get_all_for_names(image_names)
         display_order = 0
         clear()
@@ -185,18 +185,18 @@ class HotelForm(forms.ModelForm):
     def extract_images(content_plain_text):
         # the text content like below. I will extract the name from it
         #   's1s2<img src="/media/images/726d31924b094735b44c1af27ffe37ce.png" _src="/media/images/726d31924b094735b44c1af27ffe37ce.png">s3'
-        return HotelForm.image_re.findall(content_plain_text)
+        return FlightForm.image_re.findall(content_plain_text)
 
     def save(self, commit=False):
-        hotel = super(HotelForm, self).save(commit)
-        hotel.save()
-        HotelForm.handle_images(hotel, HotelImage, self.cleaned_data['images_html'],
-                                lambda: hotel.images.clear())
+        flight = super(FlightForm, self).save(commit)
+        flight.save()
+        FlightForm.handle_images(flight, FlightImage, self.cleaned_data['images_html'],
+                                lambda: flight.images.clear())
 
-        return hotel
+        return flight
 
     class Meta:
-        model = Hotel
+        model = Flight
         fields = ('name', 'image_file', 'summary', 'advantages', 'display_order', 'images_html', 'phone_contact')
 
         widgets = {
@@ -205,7 +205,7 @@ class HotelForm(forms.ModelForm):
         }
 
 
-class HotelDatatablesBuilder(DatatablesBuilder):
+class FlightDatatablesBuilder(DatatablesBuilder):
 
     id = DatatablesIdColumn()
 
@@ -233,7 +233,7 @@ class HotelDatatablesBuilder(DatatablesBuilder):
                                                 u'<span class="label label-warning"> 禁用 </span>'))
 
     def actions_render(request, model, field_name):
-        action_url_builder = lambda model, action: reverse('admin:hotel:hotel_update', kwargs={'pk': model.id, 'action_method': action})
+        action_url_builder = lambda model, action: reverse('admin:flight:flight_update', kwargs={'pk': model.id, 'action_method': action})
 
         if model.is_active:
             actions = [{'is_link': False, 'name': 'lock', 'text': u'锁定',
@@ -242,7 +242,7 @@ class HotelDatatablesBuilder(DatatablesBuilder):
             actions = [{'is_link': False, 'name': 'unlock', 'text': u'解锁',
                         'icon': 'icon-unlock', "url": action_url_builder(model, "unlock")}]
         actions.append({'is_link': True, 'name': 'edit', 'text': u'编辑',
-                        'icon': 'icon-edit', 'url_name': 'admin:hotel:hotel_edit'})
+                        'icon': 'icon-edit', 'url_name': 'admin:flight:flight_edit'})
         return DatatablesColumnActionsRender(actions).render(request, model, field_name)
 
     _actions = DatatablesActionsColumn(render=actions_render)
@@ -262,7 +262,7 @@ class InfoTypeForm(forms.ModelForm):
         widgets = {
             # use FileInput widget to avoid show clearable link and text
             'image_file': AceClearableFileInput(),
-        }
+            }
 
 
 class InfoTypeDatatablesBuilder(DatatablesBuilder):
@@ -288,7 +288,7 @@ class InfoTypeDatatablesBuilder(DatatablesBuilder):
                                                 u'<span class="label label-warning"> 禁用 </span>'))
 
     def actions_render(request, model, field_name):
-        action_url_builder = lambda model, action: reverse('admin:hotel:infotype_update', kwargs={'pk': model.id, 'action_method': action})
+        action_url_builder = lambda model, action: reverse('admin:flight:infotype_update', kwargs={'pk': model.id, 'action_method': action})
         if model.is_active:
             actions = [{'is_link': False, 'name': 'lock', 'text': u'锁定',
                         'icon': 'icon-lock', "url": action_url_builder(model, "lock")}]
@@ -296,7 +296,7 @@ class InfoTypeDatatablesBuilder(DatatablesBuilder):
             actions = [{'is_link': False, 'name': 'unlock', 'text': u'解锁',
                         'icon': 'icon-unlock', "url": action_url_builder(model, "unlock")}]
         actions.append({'is_link': True, 'name': 'edit', 'text': u'编辑',
-                        'icon': 'icon-edit', 'url_name': 'admin:hotel:infotype_edit'})
+                        'icon': 'icon-edit', 'url_name': 'admin:flight:infotype_edit'})
         return DatatablesColumnActionsRender(actions).render(request, model, field_name)
 
     _actions = DatatablesActionsColumn(render=actions_render)

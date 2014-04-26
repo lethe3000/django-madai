@@ -1,0 +1,69 @@
+{#a simple template works with ModelAwareMixin#}
+
+{% extends 'admin/task.base.inc.html' %}
+
+{% block topnav %}
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-home"></i> <a href="#">主页</a>
+    </li>
+    <li class="active">航班</li>
+</ul>
+{% endblock topnav %}
+
+{% block pagenav %}
+  {{ flight }}
+{% endblock pagenav %}
+
+{% block pagecontent %}
+
+{% for infotype in infotypes.items %}
+  <div class="widget-box {% if not infotype.1.articles %}collapsed{% endif %}">
+    <div class="widget-header">
+      <h3>{{ infotype.1.name }}</h3>
+
+      <div class="widget-toolbar">
+        <a href="#" data-url="{% url 'admin:flight:flightarticle_create' %}?flight={{ flight.id }}&infotype={{ infotype.0 }}">
+          <i class="icon-plus-sign"></i>
+        </a>
+
+        <a data-action="collapse" href="#">
+          <i class="icon-chevron-{% if not infotype.1.articles %}down{% else %}up{% endif %}"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="widget-body">
+      <div class="widget-main">
+        <p class="alert alert-info">
+          {% for article in infotype.1.articles %}
+            <a href="#" data-url="{% url 'admin:flight:flightarticle_edit' article.id %}">{{ article.title }}</a>
+          {% empty %}
+            空
+          {% endfor %}
+        </p>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock pagecontent %}
+
+{% block pagecontent_js %}
+<script type="text/javascript">
+  $(document).ready(function () {
+    function wrap_widgets() {
+      var COL_COUNT = 3;
+      // layout the items by column. Each row has 3 items.
+      var $widgets = $(".widget-box");
+      for (var i = 0; i < $widgets.size(); i += COL_COUNT) {
+        $widgets.slice(i, i + COL_COUNT)
+            .wrap('<div class="col-md-' + 12 / COL_COUNT + '"></div')
+            .parent().wrapAll('<div class="row"></div>');
+      }
+    }
+    wrap_widgets();
+  });
+</script>
+{% endblock pagecontent_js %}
+
