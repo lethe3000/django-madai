@@ -1,0 +1,33 @@
+{% extends 'website/website.base.inc.html' %}
+{% load staticfiles %}
+{% block title %} 中国电信应用工厂 {% endblock title %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'tour/styles/app.css' %}" media="screen"/>
+{% endblock %}
+
+{% block main_content %}
+
+<!-- outer -->
+<div class="col-md-12">
+
+<!-- giving a namespace -->
+<div class="article-list">
+
+<!-- list -->
+<div class="row">
+<div class="col-md-12">
+  {% for article in article_list %}
+    <div>
+      <h1>{{ article.title }}</h1>
+      <img src="{{ article.title_image_url }}" />
+      <p>{{ article.summary }}</p>
+    </div>
+  {% endfor %}
+</div>
+</div>
+
+
+</div>
+</div>
+{% endblock main_content %}

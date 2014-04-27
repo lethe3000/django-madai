@@ -254,6 +254,7 @@ PROJECT_APPS = (
     'apps.tour',
     # 'apps.order',
     'apps.hotel',
+    'apps.flight',
     'apps.package',
     # 'apps.product'
     # 'apps.api',

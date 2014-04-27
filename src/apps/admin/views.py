@@ -16,6 +16,7 @@ from django.contrib.auth.decorators import login_required
 import os
 from apps.tour.models import Scenery
 from apps.hotel.models import Hotel
+from apps.flight.models import Flight
 
 HERE = os.path.dirname(__file__)
 logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(HERE)) + '.' + os.path.basename(HERE))
@@ -35,8 +36,14 @@ def build_menu(request):
 
     SUBMENU_HOTEL = [
         ('酒店', reverse('admin:hotel:hotel_list'), None),
-        ('资讯类型', reverse('admin:hotel:infotype_list'), None),
-        ('酒店资讯', reverse('admin:hotel:article_list'), None),
+        ('酒店资讯类型', reverse('admin:hotel:infotype_list'), None),
+        ('酒店资讯', reverse('admin:hotel:hotelarticle_list'), None),
+    ]
+
+    SUBMENU_Flight = [
+        ('航班', reverse('admin:flight:flight_list'), None),
+        ('航班资讯类型', reverse('admin:flight:infotype_list'), None),
+        ('航班资讯', reverse('admin:flight:flightarticle_list'), None),
     ]
 
     MENU = (
@@ -45,6 +52,8 @@ def build_menu(request):
         {'menu': '客户', 'url': '', 'icon': 'icon-user', 'submenu': SUBMENU_CUSTOMER},
         {'menu': '酒店', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_HOTEL},
         {'menu': '酒店dashboard', 'url': '', 'icon': 'icon-bookmark', 'submenu': build_hotel_submenu()},
+        {'menu': '航班', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_Flight},
+        {'menu': '航班dashboard', 'url': '', 'icon': 'icon-bookmark', 'submenu': build_flight_submenu()},
     )
     menus = []
     for item in MENU:
@@ -66,6 +75,11 @@ def build_sencery_submenu():
 
 def build_hotel_submenu():
     return [(hotel.name, reverse('admin:hotel:hotel_dashboard', kwargs={'pk': hotel.id}), None) for hotel in Hotel.active_objects.all()]
+
+
+def build_flight_submenu():
+    return [(flight.name, reverse('admin:flight:flight_dashboard', kwargs={'pk': flight.id}), None) for flight in Flight.active_objects.all()]
+
 
 def home(request):
     """

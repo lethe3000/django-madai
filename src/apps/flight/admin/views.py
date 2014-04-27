@@ -4,11 +4,10 @@ import logging
 from django.shortcuts import get_object_or_404
 from django.views.generic import RedirectView, ListView
 import os
-from apps.hotel.models import HotelArticle
+from apps.flight.models import FlightArticle, Flight, InfoType
 from apps.common.admin.views import AjaxSimpleUpdateView, ModelAwareMixin, AjaxDetailView, RequestAwareMixin,\
     NavigationHomeMixin, DatatablesBuilderMixin, AjaxListView, AjaxCreateView, AjaxUpdateView, AjaxDatatablesView, ModelActiveView, AdminRequiredMixin
-from apps.hotel.models import Hotel, InfoType
-from .forms import ArticleForm, ArticleDatatablesBuilder, HotelDatatablesBuilder, HotelForm, InfoTypeForm, InfoTypeDatatablesBuilder
+from .forms import ArticleForm, ArticleDatatablesBuilder, FlightDatatablesBuilder, FlightForm, InfoTypeForm, InfoTypeDatatablesBuilder
 from utils.db.queryutil import get_object_or_none
 
 HERE = os.path.dirname(__file__)
@@ -16,27 +15,27 @@ logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(HERE)) + '
 
 
 class ArticleListView(NavigationHomeMixin, ModelAwareMixin, DatatablesBuilderMixin, AjaxListView):
-    model = HotelArticle
+    model = FlightArticle
     datatables_builder_class = ArticleDatatablesBuilder
-    queryset = HotelArticle.objects.get_empty_query_set()
+    queryset = FlightArticle.objects.get_empty_query_set()
 
 
 class ArticleListDatatablesView(AjaxDatatablesView):
-    model = HotelArticle
+    model = FlightArticle
     datatables_builder_class = ArticleListView.datatables_builder_class
-    queryset = HotelArticle.active_objects.select_related("hotel", "guide_type", "creator").order_by('-updated')
+    queryset = FlightArticle.active_objects.select_related("flight", "guide_type", "creator").order_by('-updated')
 
 
 class ArticleCreateView(RequestAwareMixin, ModelAwareMixin, AjaxCreateView):
-    model = HotelArticle
+    model = FlightArticle
     form_class = ArticleForm
-    form_action_url_name = 'admin:hotel:hotelarticle_create'
-    template_name = 'hotel/admin/article.form.inc.html'
+    form_action_url_name = 'admin:flight:flightarticle_create'
+    template_name = 'flight/admin/article.form.inc.html'
 
     def get_initial(self):
         initial = super(ArticleCreateView, self).get_initial()
         try:
-            initial["hotel"] = self.request.GET['hotel']
+            initial["flight"] = self.request.GET['flight']
             initial["info_type"] = self.request.GET['infotype']
         except KeyError:
             pass
@@ -53,10 +52,10 @@ class ArticleCreateView(RequestAwareMixin, ModelAwareMixin, AjaxCreateView):
 
 
 class ArticleEditView(ModelAwareMixin, AjaxUpdateView):
-    model = HotelArticle
+    model = FlightArticle
     form_class = ArticleForm
-    form_action_url_name = 'admin:hotel:hotelarticle_edit'
-    template_name = 'hotel/admin/article.form.inc.html'
+    form_action_url_name = 'admin:flight:flightarticle_edit'
+    template_name = 'flight/admin/article.form.inc.html'
 
     def get_initial(self):
         initial = super(ArticleEditView, self).get_initial()
@@ -71,22 +70,22 @@ class ArticleEditView(ModelAwareMixin, AjaxUpdateView):
 
 
 class ArticleDeleteView(ModelActiveView):
-    model = HotelArticle
+    model = FlightArticle
 
 
 class ArticlePreviewView(ModelAwareMixin, AjaxDetailView):
-    model = HotelArticle
-    template_name = 'hotel/admin/article.preview.inc.html'
+    model = FlightArticle
+    template_name = 'flight/admin/article.preview.inc.html'
 
 
 class ArticleHtmlRedirectView(RedirectView):
     def get_redirect_url(self, pk):
-        article = get_object_or_404(HotelArticle, pk=pk)
+        article = get_object_or_404(FlightArticle, pk=pk)
         return article.content_file.url
 
 
 class ArticleUpdateView(AjaxSimpleUpdateView):
-    model = HotelArticle
+    model = FlightArticle
 
     def update(self, obj):
         action_method = self.kwargs['action_method']
@@ -102,51 +101,51 @@ class ArticleUpdateView(AjaxSimpleUpdateView):
         product.is_published = False
 
 ##################################################
-#   Hotel
+#   flight
 ##################################################
 
 
-class HotelListView(NavigationHomeMixin, ModelAwareMixin, DatatablesBuilderMixin, AjaxListView):
-    model = Hotel
-    queryset = Hotel.objects.get_empty_query_set()
-    datatables_builder_class = HotelDatatablesBuilder
+class FlightListView(NavigationHomeMixin, ModelAwareMixin, DatatablesBuilderMixin, AjaxListView):
+    model = Flight
+    queryset = Flight.objects.get_empty_query_set()
+    datatables_builder_class = FlightDatatablesBuilder
 
 
-class HotelListDatatablesView(AjaxDatatablesView):
-    model = Hotel
-    datatables_builder_class = HotelListView.datatables_builder_class
-    queryset = Hotel.objects.all()
+class FlightListDatatablesView(AjaxDatatablesView):
+    model = Flight
+    datatables_builder_class = FlightListView.datatables_builder_class
+    queryset = Flight.objects.all()
 
 
-class HotelCreateView(RequestAwareMixin, ModelAwareMixin, AjaxCreateView):
-    model = Hotel
-    form_class = HotelForm
-    template_name = 'hotel/admin/hotel.form.inc.html'
+class FlightCreateView(RequestAwareMixin, ModelAwareMixin, AjaxCreateView):
+    model = Flight
+    form_class = FlightForm
+    template_name = 'flight/admin/flight.form.inc.html'
 
     def get_context_data(self, **kwargs):
-        context_data = super(HotelCreateView, self).get_context_data(**kwargs)
+        context_data = super(FlightCreateView, self).get_context_data(**kwargs)
         context_data['editor_max_image_side_length'] = 3000
         return context_data
 
 
-class HotelEditView(ModelAwareMixin, AjaxUpdateView):
-    model = Hotel
-    form_class = HotelForm
-    template_name = 'hotel/admin/hotel.form.inc.html'
+class FlightEditView(ModelAwareMixin, AjaxUpdateView):
+    model = Flight
+    form_class = FlightForm
+    template_name = 'flight/admin/flight.form.inc.html'
 
     def get_initial(self):
-        initial = super(HotelEditView, self).get_initial()
+        initial = super(FlightEditView, self).get_initial()
         if self.object:
             initial["images_html"] = self.object.images_html()
         return initial
 
     def get_context_data(self, **kwargs):
-        context_data = super(HotelEditView, self).get_context_data(**kwargs)
+        context_data = super(FlightEditView, self).get_context_data(**kwargs)
         context_data['editor_max_image_side_length'] = 3000
         return context_data
 
-class HotelUpdateView(AjaxSimpleUpdateView):
-    model = Hotel
+class FlightUpdateView(AjaxSimpleUpdateView):
+    model = Flight
 
     def update(self, obj):
         action_method = self.kwargs['action_method']
@@ -155,26 +154,26 @@ class HotelUpdateView(AjaxSimpleUpdateView):
             return msg
         obj.save()
 
-    def lock(self, hotel):
-        hotel.is_active = False
-        hotel.save()
+    def lock(self, flight):
+        flight.is_active = False
+        flight.save()
 
-    def unlock(self, hotel):
-        hotel.is_active = True
-        hotel.save()
+    def unlock(self, flight):
+        flight.is_active = True
+        flight.save()
 
 
-class HotelDashboardView(ListView):
-    template_name = 'hotel/admin/hotel.dashboard.inc.html'
+class FlightDashboardView(ListView):
+    template_name = 'flight/admin/flight.dashboard.inc.html'
     context_object_name = "infotypes"
 
     def get_context_data(self, **kwargs):
-        context = super(HotelDashboardView, self).get_context_data(**kwargs)
-        context['hotel'] = get_object_or_none(Hotel, id=self.kwargs['pk'])
+        context = super(FlightDashboardView, self).get_context_data(**kwargs)
+        context['flight'] = get_object_or_none(Flight, id=self.kwargs['pk'])
         return context
 
     def get_queryset(self):
-        return Hotel.objects.infotypes_with_article(self.kwargs['pk'])
+        return Flight.objects.infotypes_with_article(self.kwargs['pk'])
 
 ##################################################
 #   InfoType
@@ -196,13 +195,13 @@ class InfoTypeListDatatablesView(AjaxDatatablesView):
 class InfoTypeCreateView(RequestAwareMixin, ModelAwareMixin, AjaxCreateView):
     model = InfoType
     form_class = InfoTypeForm
-    template_name = 'hotel/admin/hotel.form.inc.html'
+    template_name = 'flight/admin/flight.form.inc.html'
 
 
 class InfoTypeEditView(ModelAwareMixin, AjaxUpdateView):
     model = InfoType
     form_class = InfoTypeForm
-    template_name = 'hotel/admin/hotel.form.inc.html'
+    template_name = 'flight/admin/flight.form.inc.html'
 
 
 class InfoTypeUpdateView(AjaxSimpleUpdateView):
@@ -216,7 +215,7 @@ class InfoTypeUpdateView(AjaxSimpleUpdateView):
         obj.save()
 
     def lock(self, infotype):
-        if HotelArticle.active_objects.filter(info_type=infotype).count():
+        if FlightArticle.active_objects.filter(info_type=infotype).count():
             return u'不能锁定该资讯类型，已经有酒店文章被指定为该类型'
         infotype.is_active = False
         infotype.save()

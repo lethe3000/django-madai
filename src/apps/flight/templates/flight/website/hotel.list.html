@@ -1,0 +1,32 @@
+{% extends 'website/website.base.inc.html' %}
+{% load staticfiles %}
+{% block title %} 中国电信应用工厂 {% endblock title %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'tour/styles/app.css' %}" media="screen"/>
+{% endblock %}
+
+{% block main_content %}
+
+<!-- outer -->
+<div class="col-md-12">
+
+<!-- giving a namespace -->
+<div class="scenery-list">
+
+<!-- list -->
+<div class="row">
+<div class="col-md-12">
+  {% for scenery in scenery_list %}
+    <a href="{% url 'website:tour:article_list' scenery.id 1%}" style="display: block; text-decoration: none;">
+      <h1>{{ scenery.name }}</h1>
+      <img src="{{ scenery.image_url }}" />
+    </a>
+  {% endfor %}
+</div>
+</div>
+
+
+</div>
+</div>
+{% endblock main_content %}
