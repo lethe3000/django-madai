@@ -118,7 +118,7 @@ header > .date-pick button:after {
     font-size: 12pt !important;
 }
 
-header > .date-pick i {
+header > .date-pick i.icon-location {
     font-size: 12pt !important;
     position: absolute;
     z-index: 2;
@@ -126,11 +126,6 @@ header > .date-pick i {
     padding: 0;
     left: 6px;
     top: 12px;
-}
-
-.metro .calendar .today a {
-    background-color: #CB5977 !important;
-    color: #FFFFFF !important;
 }
 
 header > .date-pick .span4 {

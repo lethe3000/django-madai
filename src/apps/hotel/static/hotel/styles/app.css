@@ -1,0 +1,204 @@
+/* hotel */
+article {
+  padding: 50px 0;
+  margin: 0 auto;
+  width: 1020px;
+}
+
+.search-info {
+  padding: 0;
+  height: 100px;
+}
+
+.color-blue {
+  color: #7F96AD !important;
+}
+
+.bg-image-clouds {
+  background-color: #D3E9F6;
+  background-image: url("../../website/img/bg-image-clouds.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+.date-pick .input-control {
+    height: 40px !important;
+}
+
+.date-pick input {
+    font-size: 12pt;
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+}
+
+.date-pick button {
+    top: 9px !important;
+}
+
+.date-pick button:after {
+    font-size: 12pt !important;
+}
+
+.grid {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.row {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.search-info div[class*="span"] {
+    margin: 15px 0 0;
+}
+
+.bg-color-dark {
+    background-color: #262F36;
+}
+
+a.button.submit {
+  width: 160px;
+  margin: 0 auto;
+  display: block;
+  color: #FFF;
+  background-color: #CB5977 !important;
+}
+
+.search-info a.submit {
+    margin-top: 29px;
+}
+
+span.currency {
+    display: block;
+    margin-top: 20px;
+}
+
+span.currency > strong {
+    font-size: 3.3rem;
+}
+
+span.currency > small {
+    font-size: 1.6rem;
+}
+
+.hotel-name > h2 {
+    font-size: 3.2rem;
+    font-weight: 600;
+}
+
+.fotorama__thumb-border {
+    border-color: #CB5977 !important;
+}
+
+blockquote {
+    border: 0 none !important;
+    background: url("../img/double-quotes.png") no-repeat scroll left top rgba(0, 0, 0, 0);
+    color: #7F96AD;
+    display: block;
+    padding: 0 0 0 85px !important;
+}
+
+blockquote > div {
+    padding-top: 15px;
+    font-size: 1.8rem;
+    line-height: 2rem;
+}
+
+.scroll-group {
+    margin: 20px 0 0;
+    padding: 20px;
+}
+
+.scroll-box {
+}
+
+.scroll-box h3,
+.scroll-box p {
+    color: #FFFFFF;
+}
+
+.bg-color-pink {
+    background-color: #AF5576;
+}
+
+.fg-color-pink {
+    color: #AF5576;
+}
+
+.scroll-box ul,
+.scroll-box li {
+    margin: 0 !important;
+}
+
+.scroll-box p {
+    font-size: 1.4rem;
+    text-indent: 2.8rem;
+}
+
+.scroll-group .ribbon {
+    margin-bottom: 20px;
+    padding: 0 30px;
+    line-height: 44px;
+    right: -20px;
+    position: relative;
+}
+
+.scroll-group .ribbon span {
+    font-size: 1.8rem;
+}
+
+.scroll-group .ribbon span i {
+    font-size: 2.0rem;
+}
+
+.scroll-group .oblique:before {
+    border-style: solid;
+    content: " ";
+    border-color: rgba(0, 0, 0, 0) #FFFFFF rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    border-width: 0 18px 46px 0;
+    left: -18px;
+    position: absolute;
+    top: 0;
+    width: 0;
+}
+
+.scroll-group .action-btn-group {
+    margin: 30px 0 0;
+    font-size: 0;
+}
+
+.scroll-group .action-btn-group .up {
+    margin-left: 105px;
+}
+
+.scroll-group .action-btn-group > div {
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    font-size: 1.4rem;
+    display: inline-block;
+    line-height: 25px;
+    height: 25px;
+    width: 25px;
+    position: relative;
+}
+
+.scroll-group .action-btn-group > div:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.scroll-group .action-btn-group > div:hover:before {
+    border-color: rgba(0, 0, 0, 0) rgba(255, 255, 255, 0.9) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+}
+
+.scroll-group .action-btn-group > div:hover:after {
+    border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(255, 255, 255, 0.9);
+}
+
+.scroll-group .action-btn-group i {
+    font-size: 1.6rem;
+}
+
+.fotorama__nav-wrap {
+    margin-top: 20px;
+}

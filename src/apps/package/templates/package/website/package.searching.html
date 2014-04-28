@@ -5,21 +5,16 @@
 
 {% block extracss %}
 <link rel="stylesheet" href="{% static 'package/styles/app.css' %}" media="screen"/>
-<link rel="stylesheet" href="{% static 'website/styles/fotorama.css' %}" media="screen"/>
 {% endblock extracss %}
-
-{% block extraincjs %}
-<script src="{% static 'website/scripts/libs/fotorama.js' %}"></script>
-{% endblock extraincjs %}
 
 {% block main_content %}
 {% include 'website/header.inc.html' %}
 <section class="bg-1">
-    <article class="search-info">
-      <div class="middle">
-        <h3 class="text-center color-blue">为您推荐精选以下行程</h3>
-      </div>
-    </article>
+  <article class="search-info">
+    <div class="middle">
+      <h3 class="text-center color-blue">为您推荐精选以下行程</h3>
+    </div>
+  </article>
 </section>
 <section class="bg-image-clouds">
   <article>

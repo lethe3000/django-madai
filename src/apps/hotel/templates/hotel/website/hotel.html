@@ -1,60 +1,153 @@
 {% extends 'website/website.base.inc.html' %}
 {% load static %}
-{% block title %} e游 {% endblock title %}
+{% block title %} 小麻袋 {% endblock title %}
 
 
 {% block extracss %}
-<link rel="stylesheet" href="{% static 'tour/styles/app.css' %}" media="screen"/>
-{% endblock %}
+<link rel="stylesheet" href="{% static 'hotel/styles/app.css' %}" media="screen"/>
+<link rel="stylesheet" href="{% static 'website/styles/fotorama.css' %}" media="screen"/>
+
+{% endblock extracss %}
+
+{% block extraincjs %}
+<script src="{% static 'website/scripts/libs/fotorama.js' %}"></script>
+<script src="{% static 'website/scripts/libs/metro-calendar.js' %}"></script>
+<script src="{% static 'website/scripts/libs/metro-datepicker.js' %}"></script>
+<script src="{% static 'website/scripts/libs/metro-scroll.js' %}"></script>
+<script src="{% static 'website/scripts/libs/jquery.mousewheel.js' %}"></script>
+{% endblock extraincjs %}
 
 {% block main_content %}
-<div class="col-lg-12 col-sm-12 col-md-12">
-  <section class="fixed-width" style="position: relative;">
-    <div class="scenery-group">
-      <div class="header">
-        <div class="nav">
-          <p>您当前的位置：<a href="#">攻略游记</a> > 热门景点</p>
-        </div>
-      </div>
-      <div class="scenery-title-group">
-        <img src="{% static 'website/img/home_img_4.png' %}">
-        <div class="scenery-title">
-          <div class="center">
-            <h1>马尔代夫攻略</h1>
+{% include 'website/header.inc.html' %}
+<section class="bg-color-dark bg-image-white-light">
+  <div class="bottom-shade-large"></div>
+  <article class="search-info">
+    <div class="grid fluid">
+      <div class="row">
+        <div class="span3 date-pick">
+          <p class="color-blue">入住日期</p>
+          <div class="input-control text"
+               data-role="datepicker"
+               data-format='yyyy-mm-dd'
+               data-effect="fade"
+               data-locale="zhCN">
+            <input type="text" class="fg-gray">
+            <button class="btn-date fg-grayLight"></button>
           </div>
         </div>
-      </div>
-      <div class="article-group">
-        <div class="guide-type-group">
-          {% for guide_type in guide_type_list %}
-            <div class="guide-type-box" data-url="{% url 'website:tour:latest_article' scenery.id guide_type.id %}">
-              <div class="center">
-                <img src="{{ guide_type.image_url }}"/>
-              </div>
-              <div class="center">
-                <h1>{{ guide_type.name }}</h1>
-                <p>{{ guide_type.summary }}</p>
-              </div>
-            </div>
-          {% endfor %}
+        <div class="span3 date-pick">
+          <p class="color-blue">离开日期</p>
+          <div class="input-control text"
+               data-role="datepicker"
+               data-format='yyyy-mm-dd'
+               data-effect="fade"
+               data-locale="zhCN">
+            <input type="text" class="fg-gray">
+            <button class="btn-date fg-grayLight"></button>
+          </div>
         </div>
-        <div class="content-group">
+        <div class="span6">
+          <a class="button large submit fg-white place-right" href="#">价格查询</a>
         </div>
       </div>
     </div>
-  </section>
-</div>
+  </article>
+</section>
+<section class="bg-color-dark bg-pattern-diag">
+  <div class="bottom-shade-large"></div>
+  <div class="bg-image-white-light">
+    <article class="search-info">
+        <div class="grid fluid">
+          <div class="row">
+            <div class="span6 hotel-name">
+              <h2 class="fg-white">Point Yamu</h2>
+              <p class="color-blue">泰国, 普吉岛及安达曼海岸</p>
+            </div>
+            <div class="span6 price">
+              <span class="currency place-right">
+                <strong class="fg-white">&yen; 1,114</strong>
+                <small class="fg-white">/晚</small>
+              </span>
+            </div>
+          </div>
+        </div>
+    </article>
+  </div>
+</section>
+<section class="bg-2">
+  <article>
+    <div class="grid fluid">
+      <div class="row">
+        <div class="span8">
+          <div class="fotorama"
+               data-width="660"
+               data-height="370"
+               data-arrows="false"
+               data-transitionduration="1000"
+               data-nav="thumbs"
+               data-thumbwidth="94"
+               data-thumbheight="62"
+               data-thumbmargin="18"
+               data-thumbborderwidth="3"
+               >
+            <img src="{% static 'hotel/img/big_913_18297.jpg' %}" data-fit="cover"/>
+            <img src="{% static 'hotel/img/big_913_18301.jpg' %}" data-fit="cover"/>
+            <img src="{% static 'hotel/img/big_913_18303.jpg' %}" data-fit="cover"/>
+            <img src="{% static 'hotel/img/big_913_18297.jpg' %}" data-fit="cover"/>
+            <img src="{% static 'hotel/img/big_913_18301.jpg' %}" data-fit="cover"/>
+            <img src="{% static 'hotel/img/big_913_18303.jpg' %}" data-fit="cover"/>
+            <img src="{% static 'hotel/img/big_913_18297.jpg' %}" data-fit="cover"/>
+            <img src="{% static 'hotel/img/big_913_18301.jpg' %}" data-fit="cover"/>
+            <img src="{% static 'hotel/img/big_913_18303.jpg' %}" data-fit="cover"/>
+          </div>
+        </div>
+        <div class="span4">
+          <blockquote class="margin-bottom-20">
+            <div class="color-blue">当您想为自己的假期留下一个难以忘记的回忆时，Point Yamu by COMO豪华度假村就会是您最佳的选择。这间普吉岛五星级的度假村酒…</div>
+          </blockquote>
+          <div class="scroll-group bg-color-pink">
+            <div class="ribbon place-right bg-white oblique">
+              <span class="fg-color-pink"><i class="icon-tag on-left-more"></i>小麻袋优势</span>
+            </div>
+            <div class="scroll-box"
+                 data-role="scrollbox"
+                 data-scroll="vertical"
+                 data-height="200"
+                 data-scrollbardisplay="false"
+                 data-enablemousewheel="false"
+                 data-wheel="30"
+                 >
+              <ul class="unstyled">
+                <li><p>优势一：大家SOAP那得看看到怕还OK在北京。</p></li>
+                <li><p>优势二：大家SOAP那得看看到怕还OK在北京。</p></li>
+                <li><p>优势三：大家SOAP那得看看到怕还OK在北京。</p></li>
+                <li><p>优势四：大家SOAP那得看看到怕还OK在北京。</p></li>
+                <li><p>优势五：大家SOAP那得看看到怕还OK在北京。</p></li>
+                <li><p>优势六：大家SOAP那得看看到怕还OK在北京。</p></li>
+                <li><p>优势七：大家SOAP那得看看到怕还OK在北京。</p></li>
+              </ul>
+            </div>
+            <div class="action-btn-group">
+              <div class="text-center up"><i class="icon-arrow-up-4 fg-color-pink"></i></div>
+              <div class="text-center down"><i class="icon-arrow-down-4 fg-color-pink"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
 {% endblock main_content %}
+
 {% block extrajs %}
-<script type="text/javascript">
+<script>
   $(document).ready(function () {
-    $('.guide-type-box').click(function() {
-      $('.guide-type-box.active').removeClass('active');
-      $(this).addClass('active');
-      var url = $(this).data('url');
-      $('.content-group').load(url);
+    $('.up').click(function() {
+      $('.scrollbar-v-up').trigger('click');
     });
-    $('.guide-type-box').first().trigger('click');
+    $('.down').click(function() {
+      $('.scrollbar-v-down').trigger('click');
+    });
   });
 </script>
 {% endblock extrajs %}
