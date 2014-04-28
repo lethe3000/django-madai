@@ -70,3 +70,37 @@ nav.menu {
 .menu a:hover > p {
     color: #FFFFFF;
 }
+
+.metro .calendar .today a {
+    background-color: #CB5977 !important;
+    color: #FFFFFF !important;
+}
+
+section {
+    position: relative;
+}
+
+.bottom-shade-large {
+    background: url("../img/bottom-shade-large.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    top: 0;
+    height: 10px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+.bg-image-white-light {
+    background-image: url("../img/bg-image-white-light.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+.bg-pattern-diag {
+    background-image: url("../img/bg-pattern-diag.png");
+    background-repeat: repeat;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}

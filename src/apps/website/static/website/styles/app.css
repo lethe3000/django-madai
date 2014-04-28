@@ -128,11 +128,6 @@ header > .date-pick i.icon-location {
     top: 12px;
 }
 
-.metro .calendar .today a {
-    background-color: #CB5977 !important;
-    color: #FFFFFF !important;
-}
-
 header > .date-pick .span4 {
     width: 200px !important;
 }
