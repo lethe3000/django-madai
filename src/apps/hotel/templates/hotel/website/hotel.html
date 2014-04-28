@@ -15,6 +15,7 @@
 <script src="{% static 'website/scripts/libs/metro-datepicker.js' %}"></script>
 <script src="{% static 'website/scripts/libs/metro-scroll.js' %}"></script>
 <script src="{% static 'website/scripts/libs/jquery.mousewheel.js' %}"></script>
+<script src="{% static 'website/scripts/libs/metro-tab-control.js' %}"></script>
 {% endblock extraincjs %}
 
 {% block main_content %}
@@ -75,7 +76,7 @@
   </div>
 </section>
 <section class="bg-2">
-  <article>
+  <article class="photo-group">
     <div class="grid fluid">
       <div class="row">
         <div class="span8">
@@ -112,7 +113,7 @@
             <div class="scroll-box"
                  data-role="scrollbox"
                  data-scroll="vertical"
-                 data-height="200"
+                 data-height="215"
                  data-scrollbardisplay="false"
                  data-enablemousewheel="false"
                  data-wheel="30"
@@ -137,16 +138,76 @@
     </div>
   </article>
 </section>
+<section class="bg-image-clouds">
+  <article>
+    <div class="tab-control" data-role="tab-control">
+      <ul class="tabs bg-gr-pink">
+        <li class="active"><a href="#_page_1" class="bg-gr-pink">Tab 1</a></li>
+        <li><a href="#_page_2" class="bg-gr-pink">Tab 2</a></li>
+        <li><a href="#_page_3" class="bg-gr-pink">Tab 3</a></li>
+      </ul>
+
+      <div class="frames">
+        <div class="frame" id="_page_1" style="height: 250px;">page 1...</div>
+        <div class="frame" id="_page_2" style="height: 250px;">page 2...</div>
+        <div class="frame" id="_page_3" style="height: 250px;">page 3...</div>
+      </div>
+    </div>
+  </article>
+  <article class="room-group" style="height: 470px;">
+    <div class="room-img place-left" style="width: 658px; height: 370px;">
+      <img src="{% static 'hotel/img/big_913_18297.jpg' %}" style="width: 658px; height: 370px;" />
+    </div>
+    <div class="room-description bg-white place-left" style="width: 360px; height: 370px; padding: 20px 20px 10px 30px; position: relative">
+      <h1 style="position: relative; color: #FFFFFF; background-color: rgba(111, 130, 151, 0.6); margin: 0; width: 270px; left: -270px; padding: 0 30px 0 20px; font-size: 3.2rem; font-weight: lighter;">Deluxe Room</h1>
+      <div class="line" style="position: relative; border-bottom: 4px solid #6F8297; width: 270px; left: -270px;"></div>
+      <div class="scroll-group-room" style="position: relative; top: -40px; left: 5px;">
+        <div class="scroll-box"
+             data-role="scrollbox"
+             data-scroll="vertical"
+             data-height="320"
+             data-scrollbardisplay="true"
+             data-enablemousewheel="false"
+             data-wheel="30"
+             >
+          <ul class="unstyled">
+            <li><p>优势一：大家SOAP那得看看到怕还OK在北京。</p></li>
+            <li><p>优势二：大家SOAP那得看看到怕还OK在北京。</p></li>
+            <li><p>优势三：大家SOAP那得看看到怕还OK在北京。</p></li>
+            <li><p>优势四：大家SOAP那得看看到怕还OK在北京。</p></li>
+            <li><p>优势五：大家SOAP那得看看到怕还OK在北京。</p></li>
+            <li><p>优势六：大家SOAP那得看看到怕还OK在北京。</p></li>
+            <li><p>优势七：大家SOAP那得看看到怕还OK在北京。</p></li>
+            <li><p>优势一：大家SOAP那得看看到怕还OK在北京。</p></li>
+            <li><p>优势二：大家SOAP那得看看到怕还OK在北京。</p></li>
+            <li><p>优势三：大家SOAP那得看看到怕还OK在北京。</p></li>
+            <li><p>优势四：大家SOAP那得看看到怕还OK在北京。</p></li>
+            <li><p>优势五：大家SOAP那得看看到怕还OK在北京。</p></li>
+            <li><p>优势六：大家SOAP那得看看到怕还OK在北京。</p></li>
+            <li><p>优势七：大家SOAP那得看看到怕还OK在北京。</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
 {% endblock main_content %}
 
 {% block extrajs %}
 <script>
   $(document).ready(function () {
-    $('.up').click(function() {
-      $('.scrollbar-v-up').trigger('click');
+    $('.scroll-group .up').click(function() {
+      $('.scroll-group .scrollbar-v-up').trigger('click');
     });
-    $('.down').click(function() {
-      $('.scrollbar-v-down').trigger('click');
+    $('.scroll-group .down').click(function() {
+      $('.scroll-group .scrollbar-v-down').trigger('click');
+    });
+
+    $('.scroll-group-room .up').click(function() {
+      $('.scroll-group-room .scrollbar-v-up').trigger('click');
+    });
+    $('.scroll-group-room .down').click(function() {
+      $('.scroll-group-room .scrollbar-v-down').trigger('click');
     });
   });
 </script>
