@@ -40,10 +40,14 @@ def build_menu(request):
         ('酒店资讯', reverse('admin:hotel:hotelarticle_list'), None),
     ]
 
-    SUBMENU_Flight = [
+    SUBMENU_FLIGHT = [
         ('航班', reverse('admin:flight:flight_list'), None),
         ('航班资讯类型', reverse('admin:flight:infotype_list'), None),
         ('航班资讯', reverse('admin:flight:flightarticle_list'), None),
+    ]
+
+    SUBMENU_PACKAGE = [
+        ('套餐', reverse('admin:package:package_list'), None),
     ]
 
     MENU = (
@@ -52,8 +56,9 @@ def build_menu(request):
         {'menu': '客户', 'url': '', 'icon': 'icon-user', 'submenu': SUBMENU_CUSTOMER},
         {'menu': '酒店', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_HOTEL},
         {'menu': '酒店dashboard', 'url': '', 'icon': 'icon-bookmark', 'submenu': build_hotel_submenu()},
-        {'menu': '航班', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_Flight},
+        {'menu': '航班', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_FLIGHT},
         {'menu': '航班dashboard', 'url': '', 'icon': 'icon-bookmark', 'submenu': build_flight_submenu()},
+        {'menu': '套餐', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_PACKAGE},
     )
     menus = []
     for item in MENU:
