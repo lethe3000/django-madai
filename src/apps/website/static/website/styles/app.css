@@ -135,3 +135,112 @@ header > .date-pick .span4 {
 header > .date-pick input.location {
     padding-left: 30px !important;
 }
+
+header > .account {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+header > .account p,
+header > .account a {
+    color: #FFFFFF;
+}
+
+.bg-color-gray {
+    background-color: #ECECEC;
+}
+
+.signup-form {
+    height: 420px;
+    width: 395px;
+    padding: 100px 50px;
+}
+
+.ladding-img {
+    position: relative;
+    width: 625px;
+    height: 420px;
+}
+
+.ladding-img:after {
+    content: "";
+    background-image: url("../img/bg-image-clouds.jpg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 0;
+}
+
+.ladding-img h1 {
+    margin: 100px 0 0 100px;
+    font-weight: 100;
+    position: relative;
+    z-index: 1;
+}
+
+.signup-form .ribbon {
+    padding: 10px 30px;
+    /*line-height: 44px;*/
+    top: 420px;
+    right: 87px;
+    position: absolute;
+    line-height: 23px;
+    border: none;
+}
+
+.signup-form .ribbon span {
+    font-size: 1.8rem;
+}
+
+.signup-form .ribbon span i {
+    font-size: 2.0rem;
+}
+
+.signup-form .oblique:before {
+    border-style: solid;
+    content: " ";
+    border-color: rgba(0, 0, 0, 0) #AF5576 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    border-width: 0 18px 46px 0;
+    left: -18px;
+    position: absolute;
+    top: 0;
+    width: 0;
+}
+
+.fg-color-pink {
+    color: #AF5576 !important;
+}
+
+.bg-color-pink {
+    background-color: #AF5576 !important;
+}
+
+.signup-form input {
+    border: 1px solid rgba(0, 0, 0, 0) !important;
+    background: none repeat scroll 0 0 #EAEAEA;
+}
+
+.signup-form .input-control {
+    margin: 0 0 10px 0 !important;
+    height: 42px !important;
+    display: block !important;
+}
+
+.signup-form label.title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.signup-form label.forget-password {
+    font-size: 1.45rem;
+    font-weight: 600;
+    margin-top: 100px;
+}

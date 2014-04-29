@@ -1,0 +1,47 @@
+{% extends 'website/website.base.inc.html' %}
+{% load static %}
+{% block title %} 小麻袋 {% endblock title %}
+
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'website/styles/app.css' %}" media="screen"/>
+<link rel="stylesheet" href="{% static 'website/styles/fotorama.css' %}" media="screen"/>
+{% endblock extracss %}
+
+{% block extraincjs %}
+<script src="{% static 'website/scripts/libs/fotorama.js' %}"></script>
+<script src="{% static 'website/scripts/libs/metro-calendar.js' %}"></script>
+<script src="{% static 'website/scripts/libs/metro-datepicker.js' %}"></script>
+{% endblock extraincjs %}
+
+{% block main_content %}
+  {% include 'website/header.inc.html' %}
+  <section class="bg-color-gray">
+    <div class="bottom-shade-large"></div>
+    <article>
+      <div class="ladding-img place-left">
+        <h1 class="fg-white">加入<br/>小麻袋</h1>
+      </div>
+      <div class="signup-form place-left bg-white">
+        <form action="" method="post" >{% csrf_token %}
+          <fieldset>
+            <label for="" class="title">小麻袋注册 <a href="#" class="place-right fg-color-pink">会员登录</a></label>
+            <div class="input-control text" data-role="input-control">
+              <input type="text" placeholder="用户名">
+            </div>
+            <div class="input-control text" data-role="input-control">
+              <input type="password" placeholder="密码">
+            </div>
+            <div class="input-control text" data-role="input-control">
+              <input type="password" placeholder="确认密码">
+            </div>
+            <button type="submit" class="ribbon place-right oblique bg-color-pink">
+              <span class="fg-white">注册</span>
+            </button>
+          </fieldset>
+        </form>
+      </div>
+      <div class="clearfix"></div>
+    </article>
+  </section>
+{% endblock main_content %}

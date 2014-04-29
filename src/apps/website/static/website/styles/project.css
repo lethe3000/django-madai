@@ -104,3 +104,11 @@ section {
 .margin-bottom-20 {
     margin-bottom: 20px;
 }
+
+.bg-image-clouds {
+  background-color: #D3E9F6;
+  background-image: url("../img/bg-image-clouds.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}

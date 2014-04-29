@@ -12,6 +12,14 @@ def index(request):
     return TemplateResponse(request, 'website/index.html', locals())
 
 
+def signup(request):
+    return TemplateResponse(request, 'website/signup.html', locals())
+
+
+def signin(request):
+    return TemplateResponse(request, 'website/signin.html', locals())
+
+
 def legal(request):
     return TemplateResponse(request, 'website/legal.inc.html')
 
