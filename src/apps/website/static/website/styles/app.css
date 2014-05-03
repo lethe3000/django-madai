@@ -194,7 +194,7 @@ header > .account p {
     padding: 10px 30px;
     /*line-height: 44px;*/
     top: 330px;
-    right: -25px;
+    right: 50px;
     position: absolute;
     line-height: 23px;
     border: none;
@@ -248,4 +248,8 @@ header > .account p {
     font-size: 1.45rem;
     font-weight: 600;
     margin-top: 100px;
+}
+
+.signup-dialog {
+    width: 1020px;
 }

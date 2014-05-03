@@ -29,8 +29,8 @@
   <div class="account">
     <div class="grid fluid">
       <div class="row">
-        <div class="span3 offset9">
-          <p><a href="{% url 'website:signup' %}">注册</a> | <a href="{% url 'website:signin' %}">登陆</a></p>
+        <div class="span3 offset8">
+          <p><a id="signup-btn" href="#">注册</a> | <a id="signin-btn" href="#">登陆</a></p>
         </div>
       </div>
     </div>
@@ -85,7 +85,7 @@
 <section class="bg-1 bg-image-white-light">
   <div class="bottom-shade-large"></div>
   <article>
-    <h2 class="fg-white category-title">限时热销</h2>
+    <h2 class="fg-white category-title">酒店</h2>
     <a class="category-showmore place-right" href="#">+ 更多</a>
     <div class="product-group">
       <a class="product place-left" href="#">
@@ -114,7 +114,7 @@
 </section>
 <section class="bg-2">
   <article>
-    <h2 class="fg-white category-title">限时热销</h2>
+    <h2 class="fg-white category-title">航班</h2>
     <a class="category-showmore place-right" href="#">+ 更多</a>
     <div class="product-group">
       <a class="product place-left" href="#">
@@ -143,7 +143,7 @@
 </section>
 <section class="bg-3">
   <article>
-    <h2 class="fg-white category-title">限时热销</h2>
+    <h2 class="fg-white category-title">套餐</h2>
     <a class="category-showmore place-right" href="#">+ 更多</a>
     <div class="product-group">
       <a class="product place-left" href="#">
@@ -173,5 +173,83 @@
 {% endblock main_content %}
 
 {% block extrajs %}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#signup-btn').on('click', function(){
+        $.Dialog({
+          overlay: true,
+          shadow: true,
+          flat: true,
+          onShow: function(_dialog){
+            var content = '' +
+            '<div class="signup-dialog">' +
+            '<div class="ladding-img place-left">' +
+            '  <h1 class="fg-white">加入<br/>小麻袋</h1>' +
+            '</div>' +
+            '<div class="signup-form place-left bg-white">' +
+            '  <form action="" method="post" >' + "{% csrf_token %}" +
+            '    <fieldset>' +
+            '      <label for="" class="title">小麻袋注册 <a href="#" class="place-right fg-color-pink">会员登录</a></label>' +
+            '      <div class="input-control text" data-role="input-control">' +
+            '        <input type="text" placeholder="用户名">' +
+            '      </div>' +
+            '      <div class="input-control text" data-role="input-control">' +
+            '        <input type="password" placeholder="密码">' +
+            '      </div>' +
+            '      <div class="input-control text" data-role="input-control">' +
+            '        <input type="password" placeholder="确认密码">' +
+            '      </div>' +
+            '      <button type="submit" class="ribbon place-right oblique bg-color-pink">' +
+            '        <span class="fg-white">注册</span>' +
+            '      </button>' +
+            '    </fieldset>' +
+            '  </form>' +
+            '</div>' +
+            '<div class="clearfix"></div>' +
+            '</div>';
+            $.Dialog.content(content);
+            _dialog.children('.content').attr('style', 'padding: 32px 0 0;');
+            $.Metro.initInputs();
+          }
+        });
+      });
 
+      $('#signin-btn').on('click', function() {
+        $.Dialog({
+          overlay: true,
+          shadow: true,
+          flat: true,
+          onShow: function(_dialog){
+            var content = '' +
+            '<div class="signup-dialog">' +
+            '<div class="ladding-img place-left">' +
+            '  <h1 class="fg-white">欢迎回到<br/>小麻袋</h1>' +
+            '</div>' +
+            '<div class="signup-form place-left bg-white">' +
+            '  <form action="" method="post" >' + "{% csrf_token %}" +
+            '    <fieldset>' +
+            '      <label for="" class="title">小麻袋登陆 <a href="#" class="place-right fg-color-pink">还不是会员？</a></label>' +
+            '      <div class="input-control text" data-role="input-control">' +
+            '        <input type="text" placeholder="用户名">' +
+            '      </div>' +
+            '      <div class="input-control text" data-role="input-control">' +
+            '        <input type="password" placeholder="密码">' +
+            '      </div>' +
+            '      <label for="" class="forget-password"><a href="#" class="text-muted">忘记您的密码？</a></label>' +
+            '      <button type="submit" class="ribbon place-right oblique bg-color-pink">' +
+            '        <span class="fg-white">登陆</span>' +
+            '      </button>' +
+            '    </fieldset>' +
+            '  </form>' +
+            '</div>' +
+            '<div class="clearfix"></div>' +
+            '</div>';
+            $.Dialog.content(content);
+            _dialog.children('.content').attr('style', 'padding: 32px 0 0;');
+            $.Metro.initInputs();
+          }
+        });
+      });
+    });
+  </script>
 {% endblock extrajs %}
