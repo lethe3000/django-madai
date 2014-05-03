@@ -1,4 +1,4 @@
-/* hotel */
+/* flight */
 article {
   padding: 50px 0;
   margin: 0 auto;
@@ -70,13 +70,15 @@ span.currency > strong {
     font-size: 3.3rem;
 }
 
-span.currency > small {
-    font-size: 1.6rem;
-}
-
 .hotel-name > h2 {
     font-size: 3.2rem;
     font-weight: 600;
+}
+
+.hotel-name > h2 > small {
+    display: inline-block;
+    font-size: 1.6rem;
+    margin: 0 10px;
 }
 
 .fotorama__thumb-border {
@@ -237,8 +239,4 @@ blockquote > div {
     padding: 0 40px !important;
     height: 46px;
     line-height: 53px;
-}
-
-.scroll-group-room .scroll-box p {
-    color: #999999;
 }
