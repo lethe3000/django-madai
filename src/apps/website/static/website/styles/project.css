@@ -112,3 +112,26 @@ section {
   background-repeat: no-repeat;
   background-size: 100% auto;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.separator {
+    margin: 20px 0;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    height: 0;
+    text-indent: -9000px;
+    width: 100%;
+}
+
+.separator.dotted {
+    background: url("../img/separator-dotted.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    height: 1px;
+}
+
+.separator.solid {
+    background: none repeat scroll 0 0 #C8C8C8;
+    height: 1px;
+}
