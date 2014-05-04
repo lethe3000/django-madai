@@ -4,8 +4,6 @@ from django.conf.urls import patterns, url, include
 
 urlpatterns = patterns('',
     url(r'^$', 'apps.website.views.index', name='index'),
-    url(r'^signup/$', 'apps.website.views.signup', name='signup'),
-    url(r'^signin/$', 'apps.website.views.signin', name='signin'),
 )
 
 urlpatterns += patterns('',

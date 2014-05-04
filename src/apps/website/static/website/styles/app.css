@@ -159,7 +159,7 @@ header > .account p {
 .signup-form {
     height: 420px;
     width: 395px;
-    padding: 100px 50px;
+    padding: 50px;
     position: relative;
 }
 
@@ -233,7 +233,7 @@ header > .account p {
 }
 
 .signup-form .input-control {
-    margin: 0 0 10px 0 !important;
+    margin: 0 0 24px 0 !important;
     height: 42px !important;
     display: block !important;
 }
@@ -252,4 +252,8 @@ header > .account p {
 
 .signup-dialog {
     width: 1020px;
+}
+
+.signup-form .invalid {
+    color: #e51400;
 }
