@@ -23,7 +23,7 @@
       <h3>{{ infotype.1.name }}</h3>
 
       <div class="widget-toolbar">
-        <a href="#" data-url="{% url 'admin:hotel:article_create' %}?hotel={{ hotel.id }}&infotype={{ infotype.0 }}">
+        <a href="#" data-url="{% url 'admin:hotel:hotelarticle_create' %}?hotel={{ hotel.id }}&infotype={{ infotype.0 }}">
           <i class="icon-plus-sign"></i>
         </a>
 
@@ -37,7 +37,7 @@
       <div class="widget-main">
         <p class="alert alert-info">
           {% for article in infotype.1.articles %}
-            <a href="#" data-url="{% url 'admin:hotel:article_edit' article.id %}">{{ article.title }}</a>
+            <a href="#" data-url="{% url 'admin:hotel:hotelarticle_edit' article.id %}">{{ article.title }}</a>
           {% empty %}
             空
           {% endfor %}

@@ -72,6 +72,7 @@ class ArticleEditView(ModelAwareMixin, AjaxUpdateView):
 
 class ArticleDeleteView(ModelActiveView):
     model = HotelArticle
+    unique_field_on_inactive = 'title'
 
 
 class ArticlePreviewView(ModelAwareMixin, AjaxDetailView):
