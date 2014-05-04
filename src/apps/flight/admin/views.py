@@ -71,6 +71,7 @@ class ArticleEditView(ModelAwareMixin, AjaxUpdateView):
 
 class ArticleDeleteView(ModelActiveView):
     model = FlightArticle
+    unique_field_on_inactive = 'title'
 
 
 class ArticlePreviewView(ModelAwareMixin, AjaxDetailView):
