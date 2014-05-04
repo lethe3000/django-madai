@@ -40,12 +40,6 @@ class Customer(User):
                                    auto_now=True,
                                    null=True)
 
-    is_imported_from_thirdparty = models.BooleanField(verbose_name=u'是否从三方导入',
-                                                      default=False, )
-
-    has_sync_to_thirdparty = models.BooleanField(verbose_name=u'是否修改已经同步到第三方',
-                                                 default=False, )
-
     def __init__(self, *args, **kwargs):
         super(Customer, self).__init__(*args, **kwargs)
         self._original_password = self.password
@@ -67,6 +61,7 @@ class Customer(User):
     def save(self, *args, **kwargs):
         self.is_password_changed = self._original_password != self.password
         super(Customer, self).save(*args, **kwargs)
+
 
 class Journal(BaseModel):
     title = models.CharField(max_length=128,

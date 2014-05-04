@@ -148,6 +148,10 @@ header > .account a {
     color: #FFFFFF;
 }
 
+header > .account p {
+    font-size: 1.8rem;
+}
+
 .bg-color-gray {
     background-color: #ECECEC;
 }
@@ -155,7 +159,8 @@ header > .account a {
 .signup-form {
     height: 420px;
     width: 395px;
-    padding: 100px 50px;
+    padding: 50px;
+    position: relative;
 }
 
 .ladding-img {
@@ -188,8 +193,8 @@ header > .account a {
 .signup-form .ribbon {
     padding: 10px 30px;
     /*line-height: 44px;*/
-    top: 420px;
-    right: 87px;
+    top: 330px;
+    right: 50px;
     position: absolute;
     line-height: 23px;
     border: none;
@@ -228,7 +233,7 @@ header > .account a {
 }
 
 .signup-form .input-control {
-    margin: 0 0 10px 0 !important;
+    margin: 0 0 24px 0 !important;
     height: 42px !important;
     display: block !important;
 }
@@ -243,4 +248,12 @@ header > .account a {
     font-size: 1.45rem;
     font-weight: 600;
     margin-top: 100px;
+}
+
+.signup-dialog {
+    width: 1020px;
+}
+
+.signup-form .invalid {
+    color: #e51400;
 }

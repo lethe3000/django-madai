@@ -2,17 +2,10 @@
 # -*- coding: utf-8 -*-
 import logging
 import os
-from captcha.fields import CaptchaField
 
 from django import forms
-from django.conf import settings
 from django.contrib import auth
 from django.contrib.auth import get_user_model
-from django.contrib.auth.tokens import default_token_generator
-from django.template import loader
-from django.utils.http import int_to_base36
-from apps.api.serializers import Hao3sMixin
-from rest_framework.authtoken.models import Token
 
 from apps.customer.models import Customer
 
@@ -118,7 +111,7 @@ class LoginForm(forms.Form):
         return password
 
 
-class CustomerRegisterForm(Hao3sMixin, forms.Form):
+class CustomerRegisterForm(forms.Form):
 
     name = forms.RegexField(label=u'用户名',
                             max_length=30,
@@ -129,18 +122,16 @@ class CustomerRegisterForm(Hao3sMixin, forms.Form):
     password1 = forms.CharField(label=u'创建密码',
                                 widget=forms.PasswordInput,
                                 help_text=u'必填.')
+
     password2 = forms.CharField(label=u'再次确认密码',
                                 widget=forms.PasswordInput,
                                 help_text=u'必填. 请再次输入密码以确认.')
-
-    captcha = CaptchaField(label=u'输入图片中的文字', error_messages=dict(invalid=u'验证码错误'))
 
     def __init__(self, *args, **kwargs):
         super(CustomerRegisterForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['class'] = "required form-control"
         self.fields['password1'].widget.attrs['class'] = "required form-control"
         self.fields['password2'].widget.attrs['class'] = "required form-control"
-        self.fields['captcha'].widget.attrs['class'] = "required form-control"
 
     def clean_name(self):
         UserModel = get_user_model()
@@ -148,8 +139,6 @@ class CustomerRegisterForm(Hao3sMixin, forms.Form):
         users_cache = UserModel._default_manager.filter(name__iexact=name)
         if users_cache:
             raise forms.ValidationError(u'用户名已被注册')
-        if self.has_username_in_hao3s(name):
-            raise forms.ValidationError(u'用户名已经被使用')
         return name
 
     def clean_password2(self):
@@ -160,41 +149,14 @@ class CustomerRegisterForm(Hao3sMixin, forms.Form):
                 raise forms.ValidationError(u'两次输入的密码不匹配')
         return password2
 
-    def send_email(self, request, user,
-                   subject_template_name='customer/website/sign_up_subject.txt',
-                   email_template_name='customer/website/sign_up_email.html',
-                   token_generator=default_token_generator):
-        from django.core.mail import send_mail
-        site_name = settings.SITE_NAME
-        domain = site_name
-        c = {
-            'email': user.email,
-            'domain': domain,
-            'site_name': site_name,
-            'uid': int_to_base36(user.pk),
-            'user': user,
-            'token': token_generator.make_token(user),
-            'protocol': request.is_secure() and 'https' or 'http',
-        }
-        subject = loader.render_to_string(subject_template_name, c)
-        email = loader.render_to_string(email_template_name, c)
-        # Email subject不换行
-        subject = settings.EMAIL_SUBJECT_PREFIX + ' ' + ''.join(subject.splitlines())
-        send_mail(subject, email, None, [user.email])
-
     def save(self, request):
         name = self.cleaned_data['name']
         password = self.cleaned_data['password1']
-        sync_success = self.sync_account_to_hao3s(name, password)
         new_user = Customer(is_active=True,
                             is_staff=False,
-                            name=name,
-                            has_sync_to_thirdparty=sync_success)
+                            name=name)
         new_user.set_password(password)
         new_user.save()
         self.auth_user = auth.authenticate(name=self.cleaned_data['name'],
                                            password=self.cleaned_data['password1'])
-        Token.objects.get_or_create(user=new_user)
-        # We don't need to send verification email now.
-        # self.send_email(request=request, user=new_user)
         return new_user

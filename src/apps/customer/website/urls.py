@@ -5,10 +5,6 @@ from django.conf.urls import patterns, url
 import views
 
 urlpatterns = patterns('',
-    url(r'^profile$', views.ProfileBasicView.as_view(), name='customer_profile'),
-    url(r'^home$', views.HomeView.as_view(), name='customer_home'),
-    url(r'^center$', views.CustomerCenterView.as_view(), name='customer_center'),
-    url(r'^feedback$', views.CustomerFeedbackView.as_view(), name='customer_feedback'),
     url(r'^reset_password$', views.ProfileResetPassword.as_view(),
         {'post_reset_redirect': '/customer/post_reset_password',
         'template_name': 'customer/website/customer.reset.password.html',
@@ -24,9 +20,8 @@ urlpatterns = patterns('',
     url(r'^password_reset_complete/', 'django.contrib.auth.views.password_reset_complete',
         {'template_name': 'customer/website/customer.reset.password.complete.html'},
         name='password_reset_complete'),
-    url(r'^change_password$', views.ProfileChangePassword.as_view(), name='customer_change_password'),
-    url(r'^login$', views.LoginView.as_view(), name='login'),
-    url(r'^sign_up$', views.SignUpView.as_view(), name='sign_up'),
+    url(r'^signin/$', views.SigninView.as_view(), name='signin'),
+    url(r'^signup/$', views.SignupView.as_view(), name='signup'),
     url(r'^to_email_confirm$', views.ToEmailConfirmView.as_view(), name='to_email_confirm'),
     url(r'^email_confirm/(?P<uidb36>[0-9A-Za-z]{1,13})-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', views.EmailConfirmView.as_view(), name='email_confirm'),
     url(r'^logout$', views.LogoutView.as_view(), name='logout')

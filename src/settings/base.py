@@ -202,14 +202,14 @@ MIDDLEWARE_CLASSES = (
 # 由于好川味平台现有大量用户帐号，密码存储及登录验证均采用MD5+salt方式，具体算法较为特殊，
 # 因此要打通E游平台与好川味平台帐号，E游平台帐号的MD5加密方式须使用好川味相同的方式。
 # 具体算法参看 Hao3sMD5PasswordHasher
-PASSWORD_HASHERS = (
-    'apps.account.auth.Hao3sMD5PasswordHasher',
-    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
-    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
-    'django.contrib.auth.hashers.BCryptPasswordHasher',
-    'django.contrib.auth.hashers.SHA1PasswordHasher',
-    'django.contrib.auth.hashers.MD5PasswordHasher',
-    'django.contrib.auth.hashers.CryptPasswordHasher',)
+# PASSWORD_HASHERS = (
+#     'apps.account.auth.Hao3sMD5PasswordHasher',
+#     'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+#     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+#     'django.contrib.auth.hashers.BCryptPasswordHasher',
+#     'django.contrib.auth.hashers.SHA1PasswordHasher',
+#     'django.contrib.auth.hashers.MD5PasswordHasher',
+#     'django.contrib.auth.hashers.CryptPasswordHasher',)
 ########## URL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#root-urlconf
 ROOT_URLCONF = 'apps.urls'
