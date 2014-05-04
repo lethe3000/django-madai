@@ -6,15 +6,43 @@ import os
 from django.db import models
 from django.contrib.auth import get_user_model
 from apps.customer.models import Customer
-from apps.product.models import Hotel, Flight, Combo
+from apps.hotel.models import Hotel
+from apps.flight.models import Flight
+from apps.package.models import Package
 from apps.common.models import BaseModel, ActiveDataManager, TimeBaseModel
 
 logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(__file__)))
 
 
 class Order(TimeBaseModel):
-    combo = models.ForeignKey(Combo,
-                              verbose_name=u'套餐名')
+    package = models.ForeignKey(Package,
+                                null=True,
+                                verbose_name=u'套餐名')
+
+    hotel = models.ForeignKey(Hotel,
+                              null=True,
+                              verbose_name=u'选定的酒店')
+
+    flight = models.ForeignKey(Flight,
+                               null=True,
+                               verbose_name=u'选定的航班')
+
+    customer = models.ForeignKey(Customer,
+                                 verbose_name=u'创建人',
+                                 null=True,
+                                 related_name='+')
+
+    # 未登录用户需要记录用户名
+    customer_name = models.CharField(verbose_name=u'用户名',
+                                     max_length=63,
+                                     default="",
+                                     blank=True)
+
+    # 未登录用户需要记录电话号码
+    phone = models.CharField(verbose_name=u'电话',
+                             max_length=31,
+                             default="",
+                             blank=True)
 
     # 出发地址可能是来自combo，也可能直接读取用户的信息，这里作最终判定的地址
     start_address = models.CharField(verbose_name=u'出发地址',
@@ -22,15 +50,15 @@ class Order(TimeBaseModel):
                                      default="",
                                      blank=True)
 
-    # TODO: should refer to real payment instead of a string
-    payment = models.CharField(verbose_name=u'付款方式',
-                               max_length=100,
-                               default="",
-                               blank=True)
+    # 用户期望出发时间
+    start_date = models.DateTimeField(verbose_name=u'期望出发时间',
+                                      blank=True)
 
-    creator = models.ForeignKey(Customer,
-                                verbose_name=u'创建人',
-                                related_name='+')
+    # # TODO: should refer to real payment instead of a string
+    # payment = models.CharField(verbose_name=u'付款方式',
+    #                            max_length=100,
+    #                            default="",
+    #                            blank=True)
 
     notes = models.CharField(verbose_name=u'留言',
                              max_length=256,
@@ -53,15 +81,10 @@ class Order(TimeBaseModel):
         ORDER_STATUS_DRAFT: {'next': ORDER_STATUS_PAID, 'label': u'去付款', 'active': True},
         ORDER_STATUS_PAID: {'next': ORDER_STATUS_COMPLETED, 'label': u'完成订单', 'active': False},
         ORDER_STATUS_COMPLETED: {},
-        }
+    }
 
     # the action transitions for admin
-    ORDER_STATUS_ADMIN_NEXT_ACTIONS = {
-        ORDER_STATUS_CANCEL: {},
-        ORDER_STATUS_DRAFT: {},
-        ORDER_STATUS_PAID: {'next': ORDER_STATUS_COMPLETED, 'label': u'完成订单'},
-        ORDER_STATUS_COMPLETED: {},
-        }
+    ORDER_STATUS_ADMIN_NEXT_ACTIONS = ORDER_STATUS_CUSTOMER_NEXT_ACTIONS
 
     # TODO: how about "return"?
     status = models.IntegerField(default=ORDER_STATUS_DRAFT,

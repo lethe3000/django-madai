@@ -50,6 +50,10 @@ def build_menu(request):
         ('套餐', reverse('admin:package:package_list'), None),
     ]
 
+    SUBMENU_ORDER = [
+        ('订单', reverse('admin:order:order_list'), None),
+    ]
+
     MENU = (
         {'menu': '系统信息', 'url': reverse('admin:dashboard'), 'icon': 'icon-dashboard', 'submenu': []},
         {'menu': '账号', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_ACCOUNT},
@@ -59,6 +63,7 @@ def build_menu(request):
         {'menu': '航班', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_FLIGHT},
         {'menu': '航班dashboard', 'url': '', 'icon': 'icon-bookmark', 'submenu': build_flight_submenu()},
         {'menu': '套餐', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_PACKAGE},
+        {'menu': '订单', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_ORDER},
     )
     menus = []
     for item in MENU:

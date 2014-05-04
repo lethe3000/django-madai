@@ -29,7 +29,7 @@ class PackageForm(forms.ModelForm):
 
     def save(self, commit=False):
         package = super(PackageForm, self).save(commit)
-        if not package.creator:
+        if not hasattr(package, "creator"):
             package.creator = self.initial['request'].user
         package.save()
         return package
