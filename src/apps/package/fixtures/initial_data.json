@@ -1,0 +1,50 @@
+[
+  {
+    "pk": 1,
+    "model": "package.package",
+    "fields": {
+      "is_active": true,
+      "name": "土豪套餐",
+      "title": "土豪套餐，你值得拥有。",
+      "price": 888888,
+      "is_published": true,
+      "owner": 100,
+      "creator": 100,
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020",
+      "summary": "新加坡航班信息"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "package.package",
+    "fields": {
+      "is_active": true,
+      "name": "浪漫套餐",
+      "title": "浪漫套餐，你值得拥有。",
+      "price": 888888,
+      "is_published": true,
+      "owner": 100,
+      "creator": 100,
+      "created": "2013-12-27T10:09:16.020",
+      "updated": "2013-12-27T10:09:16.020",
+      "summary": "泰国航班信息"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "package.package",
+    "fields": {
+      "is_active": true,
+      "name": "欢乐套餐",
+      "title": "欢乐套餐，你值得拥有。",
+      "price": 888888,
+      "is_published": true,
+      "owner": 100,
+      "creator": 100,
+      "created": "2013-12-27T10:09:17.020",
+      "updated": "2013-12-27T10:09:17.020",
+      "summary": "中国航班信息"
+    }
+  }
+]

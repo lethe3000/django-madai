@@ -81,6 +81,7 @@
       <div class="row">
         <div class="span8">
           <div class="fotorama"
+               data-autoplay="3000"
                data-width="660"
                data-height="370"
                data-arrows="false"
@@ -130,7 +131,7 @@
 </section>
 <section class="bg-image-clouds">
   <article>
-    <div class="tab-control" data-role="tab-control">
+    <div class="tab-control">
         <ul class="tabs bg-gr-pink">
         {% for info in info_type_list %}
             {% if forloop.first %}
@@ -142,47 +143,47 @@
         </ul>
       <div class="frames">
         {% for article in articles %}
-          <div class="frame" id="_page_{{ forloop.counter }}" style="height: 250px;">{{ article.content_html }}</div>
+          <div class="frame" id="_page_{{ forloop.counter }}" data-url="{{ article.content_url }}"></div>
         {% endfor %}
       </div>
     </div>
   </article>
-  <article class="room-group" style="height: 470px;">
-    <div class="room-img place-left" style="width: 658px; height: 370px;">
-      <img src="{% static 'hotel/img/big_913_18297.jpg' %}" style="width: 658px; height: 370px;" />
-    </div>
-    <div class="room-description bg-white place-left" style="width: 360px; height: 370px; padding: 20px 20px 10px 30px; position: relative">
-      <h1 style="position: relative; color: #FFFFFF; background-color: rgba(111, 130, 151, 0.6); margin: 0; width: 270px; left: -270px; padding: 0 30px 0 20px; font-size: 3.2rem; font-weight: lighter;">Deluxe Room</h1>
-      <div class="line" style="position: relative; border-bottom: 4px solid #6F8297; width: 270px; left: -270px;"></div>
-      <div class="scroll-group-room" style="position: relative; top: -40px; left: 5px;">
-        <div class="scroll-box"
-             data-role="scrollbox"
-             data-scroll="vertical"
-             data-height="320"
-             data-scrollbardisplay="true"
-             data-enablemousewheel="false"
-             data-wheel="30"
-             >
-          <ul class="unstyled">
-            <li><p>优势一：大家SOAP那得看看到怕还OK在北京。</p></li>
-            <li><p>优势二：大家SOAP那得看看到怕还OK在北京。</p></li>
-            <li><p>优势三：大家SOAP那得看看到怕还OK在北京。</p></li>
-            <li><p>优势四：大家SOAP那得看看到怕还OK在北京。</p></li>
-            <li><p>优势五：大家SOAP那得看看到怕还OK在北京。</p></li>
-            <li><p>优势六：大家SOAP那得看看到怕还OK在北京。</p></li>
-            <li><p>优势七：大家SOAP那得看看到怕还OK在北京。</p></li>
-            <li><p>优势一：大家SOAP那得看看到怕还OK在北京。</p></li>
-            <li><p>优势二：大家SOAP那得看看到怕还OK在北京。</p></li>
-            <li><p>优势三：大家SOAP那得看看到怕还OK在北京。</p></li>
-            <li><p>优势四：大家SOAP那得看看到怕还OK在北京。</p></li>
-            <li><p>优势五：大家SOAP那得看看到怕还OK在北京。</p></li>
-            <li><p>优势六：大家SOAP那得看看到怕还OK在北京。</p></li>
-            <li><p>优势七：大家SOAP那得看看到怕还OK在北京。</p></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </article>
+{#  <article class="room-group" style="height: 470px;">#}
+{#    <div class="room-img place-left" style="width: 658px; height: 370px;">#}
+{#      <img src="{% static 'hotel/img/big_913_18297.jpg' %}" style="width: 658px; height: 370px;" />#}
+{#    </div>#}
+{#    <div class="room-description bg-white place-left" style="width: 360px; height: 370px; padding: 20px 20px 10px 30px; position: relative">#}
+{#      <h1 style="position: relative; color: #FFFFFF; background-color: rgba(111, 130, 151, 0.6); margin: 0; width: 270px; left: -270px; padding: 0 30px 0 20px; font-size: 3.2rem; font-weight: lighter;">Deluxe Room</h1>#}
+{#      <div class="line" style="position: relative; border-bottom: 4px solid #6F8297; width: 270px; left: -270px;"></div>#}
+{#      <div class="scroll-group-room" style="position: relative; top: -40px; left: 5px;">#}
+{#        <div class="scroll-box"#}
+{#             data-role="scrollbox"#}
+{#             data-scroll="vertical"#}
+{#             data-height="320"#}
+{#             data-scrollbardisplay="true"#}
+{#             data-enablemousewheel="false"#}
+{#             data-wheel="30"#}
+{#             >#}
+{#          <ul class="unstyled">#}
+{#            <li><p>优势一：大家SOAP那得看看到怕还OK在北京。</p></li>#}
+{#            <li><p>优势二：大家SOAP那得看看到怕还OK在北京。</p></li>#}
+{#            <li><p>优势三：大家SOAP那得看看到怕还OK在北京。</p></li>#}
+{#            <li><p>优势四：大家SOAP那得看看到怕还OK在北京。</p></li>#}
+{#            <li><p>优势五：大家SOAP那得看看到怕还OK在北京。</p></li>#}
+{#            <li><p>优势六：大家SOAP那得看看到怕还OK在北京。</p></li>#}
+{#            <li><p>优势七：大家SOAP那得看看到怕还OK在北京。</p></li>#}
+{#            <li><p>优势一：大家SOAP那得看看到怕还OK在北京。</p></li>#}
+{#            <li><p>优势二：大家SOAP那得看看到怕还OK在北京。</p></li>#}
+{#            <li><p>优势三：大家SOAP那得看看到怕还OK在北京。</p></li>#}
+{#            <li><p>优势四：大家SOAP那得看看到怕还OK在北京。</p></li>#}
+{#            <li><p>优势五：大家SOAP那得看看到怕还OK在北京。</p></li>#}
+{#            <li><p>优势六：大家SOAP那得看看到怕还OK在北京。</p></li>#}
+{#            <li><p>优势七：大家SOAP那得看看到怕还OK在北京。</p></li>#}
+{#          </ul>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  </article>#}
 </section>
 {% endblock main_content %}
 
@@ -196,12 +197,17 @@
       $('.scroll-group .scrollbar-v-down').trigger('click');
     });
 
-    $('.scroll-group-room .up').click(function() {
-      $('.scroll-group-room .scrollbar-v-up').trigger('click');
-    });
-    $('.scroll-group-room .down').click(function() {
-      $('.scroll-group-room .scrollbar-v-down').trigger('click');
+    loadArticle($('.frame').first());
+    $('.tab-control').tabcontrol().bind("change", function(event, frame){
+      loadArticle($(frame));
     });
   });
+
+  function loadArticle($frame) {
+    if (!$frame.html()) {
+      url = $frame.data('url');
+      $frame.load(url);
+    }
+  }
 </script>
 {% endblock extrajs %}

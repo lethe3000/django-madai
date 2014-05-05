@@ -8,9 +8,43 @@
       "name": "香格里拉",
       "created": "2013-12-27T10:09:15.020",
       "updated": "2013-12-27T10:09:15.020",
-      "image_file": "images/hotel_xgll.jpg",
+      "image_file": "images/cms_11_989_bundle.jpg",
       "summary": "成都香格里拉, 自助餐据说还行，欢迎来成都啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊。",
       "price": 1188,
+      "address": "四川成都",
+      "advantages": "优势1\r\n优势2\r\n优势3\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4"
+    }
+  },
+
+  {
+    "pk": 2,
+    "model": "hotel.hotel",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "喜来登酒店",
+      "created": "2013-12-27T10:09:16.020",
+      "updated": "2013-12-27T10:09:16.020",
+      "image_file": "images/cms_11_989_bundle.jpg",
+      "summary": "成都喜来登, 自助餐据说还行，欢迎来成都啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊。",
+      "price": 1300,
+      "address": "四川成都",
+      "advantages": "优势1\r\n优势2\r\n优势3\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4"
+    }
+  },
+
+  {
+    "pk": 3,
+    "model": "hotel.hotel",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "锦江宾馆",
+      "created": "2013-12-27T10:09:17.020",
+      "updated": "2013-12-27T10:09:17.020",
+      "image_file": "images/cms_11_989_bundle.jpg",
+      "summary": "成都锦江宾馆, 自助餐据说还行，欢迎来成都啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊。",
+      "price": 1200,
       "address": "四川成都",
       "advantages": "优势1\r\n优势2\r\n优势3\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4"
     }

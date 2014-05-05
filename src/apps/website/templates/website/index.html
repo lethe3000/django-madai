@@ -17,6 +17,7 @@
 {% block main_content %}
 <header>
   <div class="fotorama"
+       data-autoplay="5000"
        data-width="100%"
        data-transition="dissolve"
        data-arrows="false"
@@ -92,27 +93,15 @@
     <h2 class="fg-white category-title">酒店</h2>
     <a class="category-showmore place-right" href="#">+ 更多</a>
     <div class="product-group">
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>普吉岛贝尔泳池别墅度假酒店</h4>
-          <p>泰国，普吉岛</p>
-        </div>
-      </a>
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>普吉岛贝尔泳池别墅度假酒店</h4>
-          <p>泰国，普吉岛</p>
-        </div>
-      </a>
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>普吉岛贝尔泳池别墅度假酒店</h4>
-          <p>泰国，普吉岛</p>
-        </div>
-      </a>
+      {% for hotel in hotels %}
+        <a class="product place-left" href="{% url 'website:hotel:hotel_detail' hotel.id %}">
+          <img src="{{ hotel.image_url }}" />
+          <div class="product-title">
+            <h4>{{ hotel.name }}</h4>
+            <p>马尔代夫</p>
+          </div>
+        </a>
+      {% endfor %}
     </div>
   </article>
 </section>
@@ -121,59 +110,47 @@
     <h2 class="fg-white category-title">航班</h2>
     <a class="category-showmore place-right" href="#">+ 更多</a>
     <div class="product-group">
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>普吉岛贝尔泳池别墅度假酒店</h4>
-          <p>泰国，普吉岛</p>
-        </div>
-      </a>
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>普吉岛贝尔泳池别墅度假酒店</h4>
-          <p>泰国，普吉岛</p>
-        </div>
-      </a>
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>普吉岛贝尔泳池别墅度假酒店</h4>
-          <p>泰国，普吉岛</p>
-        </div>
-      </a>
+      {% for flight in flights %}
+        <a class="product place-left" href="#">
+          <img src="{{ flight.image_url }}" />
+          <div class="product-title">
+            <h4>{{ flight.name }}</h4>
+            <p>马尔代夫</p>
+          </div>
+        </a>
+      {% endfor %}
     </div>
   </article>
 </section>
-<section class="bg-3">
-  <article>
-    <h2 class="fg-white category-title">套餐</h2>
-    <a class="category-showmore place-right" href="#">+ 更多</a>
-    <div class="product-group">
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>普吉岛贝尔泳池别墅度假酒店</h4>
-          <p>泰国，普吉岛</p>
-        </div>
-      </a>
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>普吉岛贝尔泳池别墅度假酒店</h4>
-          <p>泰国，普吉岛</p>
-        </div>
-      </a>
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>普吉岛贝尔泳池别墅度假酒店</h4>
-          <p>泰国，普吉岛</p>
-        </div>
-      </a>
-    </div>
-  </article>
-</section>
+{#<section class="bg-3">#}
+{#  <article>#}
+{#    <h2 class="fg-white category-title">套餐</h2>#}
+{#    <a class="category-showmore place-right" href="#">+ 更多</a>#}
+{#    <div class="product-group">#}
+{#      <a class="product place-left" href="#">#}
+{#        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />#}
+{#        <div class="product-title">#}
+{#          <h4>普吉岛贝尔泳池别墅度假酒店</h4>#}
+{#          <p>泰国，普吉岛</p>#}
+{#        </div>#}
+{#      </a>#}
+{#      <a class="product place-left" href="#">#}
+{#        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />#}
+{#        <div class="product-title">#}
+{#          <h4>普吉岛贝尔泳池别墅度假酒店</h4>#}
+{#          <p>泰国，普吉岛</p>#}
+{#        </div>#}
+{#      </a>#}
+{#      <a class="product place-left" href="#">#}
+{#        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />#}
+{#        <div class="product-title">#}
+{#          <h4>普吉岛贝尔泳池别墅度假酒店</h4>#}
+{#          <p>泰国，普吉岛</p>#}
+{#        </div>#}
+{#      </a>#}
+{#    </div>#}
+{#  </article>#}
+{#</section>#}
 {% endblock main_content %}
 
 {% block extrajs %}
