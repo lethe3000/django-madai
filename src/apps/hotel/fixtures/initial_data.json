@@ -1,6 +1,6 @@
 [
   {
-    "pk": 19,
+    "pk": 1,
     "model": "hotel.hotel",
     "fields": {
       "display_order": 0,
@@ -9,7 +9,10 @@
       "created": "2013-12-27T10:09:15.020",
       "updated": "2013-12-27T10:09:15.020",
       "image_file": "images/hotel_xgll.jpg",
-      "summary": "成都香格里拉。"
+      "summary": "成都香格里拉, 自助餐据说还行，欢迎来成都啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊。",
+      "price": 1188,
+      "address": "四川成都",
+      "advantages": "优势1\r\n优势2\r\n优势3\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4\r\n优势4"
     }
   },
 
@@ -50,181 +53,25 @@
     }
   },
   {
-    "pk": 10,
+    "pk": 4,
     "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
-      "name": "概况",
+      "name": "概况1",
       "image_file": "images/icon_guide_first.png",
       "created": "2013-12-27T10:09:15.020",
       "updated": "2013-12-27T10:09:15.020"
     }
   },
   {
-    "pk": 11,
+    "pk": 5,
     "model": "hotel.infotype",
     "fields": {
       "display_order": 0,
       "is_active": true,
-      "name": "地图",
+      "name": "地图2",
       "image_file": "images/icon_guide_location.png",
-      "created": "2013-12-27T10:09:15.020",
-      "updated": "2013-12-27T10:09:15.020"
-    }
-  },
-  {
-    "pk": 12,
-    "model": "hotel.infotype",
-    "fields": {
-      "display_order": 0,
-      "is_active": true,
-      "name": "亮点",
-      "image_file": "images/icon_guide_first.png",
-      "created": "2013-12-27T10:09:15.020",
-      "updated": "2013-12-27T10:09:15.020"
-    }
-  },
-  {
-    "pk": 13,
-    "model": "hotel.infotype",
-    "fields": {
-      "display_order": 0,
-      "is_active": true,
-      "name": "景点",
-      "image_file": "images/icon_guide_scenic.png",
-      "created": "2013-12-27T10:09:15.020",
-      "updated": "2013-12-27T10:09:15.020"
-    }
-  },
-  {
-    "pk": 14,
-    "model": "hotel.infotype",
-    "fields": {
-      "display_order": 0,
-      "is_active": true,
-      "name": "住宿",
-      "image_file": "images/icon_guide_hotel.png",
-      "created": "2013-12-27T10:09:15.020",
-      "updated": "2013-12-27T10:09:15.020"
-    }
-  },
-  {
-    "pk": 15,
-    "model": "hotel.infotype",
-    "fields": {
-      "display_order": 0,
-      "is_active": true,
-      "name": "美食",
-      "image_file": "images/icon_guide_food.png",
-      "created": "2013-12-27T10:09:15.020",
-      "updated": "2013-12-27T10:09:15.020"
-    }
-  },
-  {
-    "pk": 16,
-    "model": "hotel.infotype",
-    "fields": {
-      "display_order": 0,
-      "is_active": true,
-      "name": "购物",
-      "image_file": "images/icon_guide_shop.png",
-      "created": "2013-12-27T10:09:15.020",
-      "updated": "2013-12-27T10:09:15.020"
-    }
-  },
-  {
-    "pk": 17,
-    "model": "hotel.infotype",
-    "fields": {
-      "display_order": 0,
-      "is_active": true,
-      "name": "娱乐",
-      "image_file": "images/icon_guide_flag.png",
-      "created": "2013-12-27T10:09:15.020",
-      "updated": "2013-12-27T10:09:15.020"
-    }
-  },
-  {
-    "pk": 18,
-    "model": "hotel.infotype",
-    "fields": {
-      "display_order": 0,
-      "is_active": true,
-      "name": "行程推荐",
-      "image_file": "images/icon_guide_first.png",
-      "created": "2013-12-27T10:09:15.020",
-      "updated": "2013-12-27T10:09:15.020"
-    }
-  },
-  {
-    "pk": 19,
-    "model": "hotel.infotype",
-    "fields": {
-      "display_order": 0,
-      "is_active": true,
-      "name": "节庆",
-      "image_file": "images/icon_guide_first.png",
-      "created": "2013-12-27T10:09:15.020",
-      "updated": "2013-12-27T10:09:15.020"
-    }
-  },
-  {
-    "pk": 20,
-    "model": "hotel.infotype",
-    "fields": {
-      "display_order": 0,
-      "is_active": true,
-      "name": "实用信息",
-      "image_file": "images/icon_guide_first.png",
-      "created": "2013-12-27T10:09:15.020",
-      "updated": "2013-12-27T10:09:15.020"
-    }
-  },
-  {
-    "pk": 21,
-    "model": "hotel.infotype",
-    "fields": {
-      "display_order": 0,
-      "is_active": true,
-      "name": "外部交通",
-      "image_file": "images/icon_guide_bus.png",
-      "created": "2013-12-27T10:09:15.020",
-      "updated": "2013-12-27T10:09:15.020"
-    }
-  },
-  {
-    "pk": 22,
-    "model": "hotel.infotype",
-    "fields": {
-      "display_order": 0,
-      "is_active": true,
-      "name": "内部交通",
-      "image_file": "images/icon_guide_bus.png",
-      "created": "2013-12-27T10:09:15.020",
-      "updated": "2013-12-27T10:09:15.020"
-    }
-  },
-  {
-    "pk": 23,
-    "model": "hotel.infotype",
-    "fields": {
-      "display_order": 0,
-      "is_active": true,
-      "name": "旅行路上",
-      "image_file": "images/icon_guide_route.png",
-      "created": "2013-12-27T10:09:15.020",
-      "updated": "2013-12-27T10:09:15.020"
-    }
-  },
-  {
-    "pk": 24,
-    "model": "hotel.infotype",
-    "fields": {
-      "display_order": 0,
-      "is_active": true,
-      "name": "游记",
-      "image_file": "images/icon_guide_first.png",
       "created": "2013-12-27T10:09:15.020",
       "updated": "2013-12-27T10:09:15.020"
     }

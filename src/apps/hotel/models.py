@@ -248,6 +248,14 @@ class Hotel(TimeBaseModel):
                             verbose_name=u'名称',
                             unique=True)
 
+    address = models.CharField(max_length=64,
+                               verbose_name=u'地址',
+                               default="",
+                               blank=True)
+
+    price = models.IntegerField(verbose_name=u'价格',
+                                default=0)
+
     image_file = models.ImageField(upload_to=unique_image_name,
                                    blank=True,
                                    default="",
@@ -296,7 +304,6 @@ class Hotel(TimeBaseModel):
         for image in self.images.all().order_by('display_order'):
             html += '<img src="%s"></img>' % image.image_url()
         return SafeString(html)
-
 
     def get_advantages(self):
         seperator = '\r\n'

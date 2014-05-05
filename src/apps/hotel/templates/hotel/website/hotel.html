@@ -61,12 +61,12 @@
         <div class="grid fluid">
           <div class="row">
             <div class="span6 hotel-name">
-              <h2 class="fg-white">Point Yamu</h2>
-              <p class="color-blue">泰国, 普吉岛及安达曼海岸</p>
+              <h2 class="fg-white">{{ hotel.name }}</h2>
+              <p class="color-blue">{{ hotel.address }}</p>
             </div>
             <div class="span6 price">
               <span class="currency place-right">
-                <strong class="fg-white">&yen; 1,114</strong>
+                <strong class="fg-white">&yen; {{ hotel.price }}</strong>
                 <small class="fg-white">/晚</small>
               </span>
             </div>
@@ -91,20 +91,14 @@
                data-thumbmargin="18"
                data-thumbborderwidth="3"
                >
-            <img src="{% static 'hotel/img/big_913_18297.jpg' %}" data-fit="cover"/>
-            <img src="{% static 'hotel/img/big_913_18301.jpg' %}" data-fit="cover"/>
-            <img src="{% static 'hotel/img/big_913_18303.jpg' %}" data-fit="cover"/>
-            <img src="{% static 'hotel/img/big_913_18297.jpg' %}" data-fit="cover"/>
-            <img src="{% static 'hotel/img/big_913_18301.jpg' %}" data-fit="cover"/>
-            <img src="{% static 'hotel/img/big_913_18303.jpg' %}" data-fit="cover"/>
-            <img src="{% static 'hotel/img/big_913_18297.jpg' %}" data-fit="cover"/>
-            <img src="{% static 'hotel/img/big_913_18301.jpg' %}" data-fit="cover"/>
-            <img src="{% static 'hotel/img/big_913_18303.jpg' %}" data-fit="cover"/>
+            {% for image in hotel.images.all %}
+              <img src="{{ image.image_url }}" data-fit="cover"/>
+            {% endfor %}
           </div>
         </div>
         <div class="span4">
           <blockquote class="margin-bottom-20">
-            <div class="color-blue">当您想为自己的假期留下一个难以忘记的回忆时，Point Yamu by COMO豪华度假村就会是您最佳的选择。这间普吉岛五星级的度假村酒…</div>
+            <div class="color-blue">{{ hotel.summary }}</div>
           </blockquote>
           <div class="scroll-group bg-color-pink">
             <div class="ribbon place-right bg-white oblique">
@@ -119,13 +113,9 @@
                  data-wheel="30"
                  >
               <ul class="unstyled">
-                <li><p>优势一：大家SOAP那得看看到怕还OK在北京。</p></li>
-                <li><p>优势二：大家SOAP那得看看到怕还OK在北京。</p></li>
-                <li><p>优势三：大家SOAP那得看看到怕还OK在北京。</p></li>
-                <li><p>优势四：大家SOAP那得看看到怕还OK在北京。</p></li>
-                <li><p>优势五：大家SOAP那得看看到怕还OK在北京。</p></li>
-                <li><p>优势六：大家SOAP那得看看到怕还OK在北京。</p></li>
-                <li><p>优势七：大家SOAP那得看看到怕还OK在北京。</p></li>
+                {% for item in hotel.get_advantages %}
+                    <li><p>{{ item }}</p></li>
+                {% endfor %}
               </ul>
             </div>
             <div class="action-btn-group">
@@ -141,16 +131,19 @@
 <section class="bg-image-clouds">
   <article>
     <div class="tab-control" data-role="tab-control">
-      <ul class="tabs bg-gr-pink">
-        <li class="active"><a href="#_page_1" class="bg-gr-pink">Tab 1</a></li>
-        <li><a href="#_page_2" class="bg-gr-pink">Tab 2</a></li>
-        <li><a href="#_page_3" class="bg-gr-pink">Tab 3</a></li>
-      </ul>
-
+        <ul class="tabs bg-gr-pink">
+        {% for info in info_type_list %}
+            {% if forloop.first %}
+              <li class="active"><a href="#_page_{{ forloop.counter }}" class="bg-gr-pink">{{ info.name }}</a></li>
+            {% else%}
+              <li><a href="#_page_{{ forloop.counter }}" class="bg-gr-pink">{{ info.name }}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
       <div class="frames">
-        <div class="frame" id="_page_1" style="height: 250px;">page 1...</div>
-        <div class="frame" id="_page_2" style="height: 250px;">page 2...</div>
-        <div class="frame" id="_page_3" style="height: 250px;">page 3...</div>
+        {% for article in articles %}
+          <div class="frame" id="_page_{{ forloop.counter }}" style="height: 250px;">{{ article.content_html }}</div>
+        {% endfor %}
       </div>
     </div>
   </article>
