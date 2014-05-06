@@ -197,7 +197,7 @@ class FlightForm(forms.ModelForm):
 
     class Meta:
         model = Flight
-        fields = ('name', 'image_file', 'summary', 'advantages', 'display_order', 'images_html', 'phone_contact')
+        fields = ('name', 'address', 'price', 'image_file', 'summary', 'advantages', 'display_order', 'images_html', 'phone_contact')
 
         widgets = {
             # use FileInput widget to avoid show clearable link and text

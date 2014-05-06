@@ -12,10 +12,17 @@ class HotelDetailView(TemplateResponseMixin, View):
 
     def get(self, request, *args, **kwargs):
         hotel = Hotel.active_objects.get(pk=self.kwargs['pk'])
-        info_type_list = InfoType.active_objects.filter(articles__hotel=hotel)\
+        # FIXME 只取发布的article不为0的info_type
+        info_type_list = list(
+            InfoType.active_objects.filter(articles__hotel=hotel)\
             .only('name', 'image_file', 'summary')\
             .distinct()
+        )
         articles = []
         for info in info_type_list:
-            articles.append(info.articles.latest_article(hotel.id, info.id))
+            latest_article = info.articles.latest_hotel_article(hotel.id, info.id)
+            if latest_article:
+                articles.append(latest_article)
+            else:
+                info_type_list.remove(info)
         return self.render_to_response(locals())

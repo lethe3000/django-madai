@@ -40,10 +40,19 @@ class ArticleManager(models.Manager):
     def event_articles(self):
         return self.published_objects().filter(info_type=InfoType.INFO_TYPE_EVENT)
 
-    def latest_article(self, hotel_id, info_type_id):
-        return self.published_objects()\
-                   .filter(hotel=hotel_id, info_type=info_type_id)\
-                   .latest('created')
+    def latest_hotel_article(self, hotel_id, info_type_id):
+        articles = self.published_objects().filter(hotel=hotel_id, info_type=info_type_id)
+        if articles:
+            return articles.latest('created')
+        else:
+            return ArticleManager.get_empty_query_set(self)
+
+    def latest_flight_article(self, flight_id, info_type_id):
+        articles = self.published_objects().filter(flight=flight_id, info_type=info_type_id)
+        if articles:
+            return articles.latest('created')
+        else:
+            return ArticleManager.get_empty_query_set(self)
 
 
 class BaseArticle(BaseModel):

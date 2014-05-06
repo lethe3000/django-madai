@@ -102,6 +102,14 @@ class Flight(TimeBaseModel):
                             verbose_name=u'名称',
                             unique=True)
 
+    address = models.CharField(max_length=64,
+                               verbose_name=u'地址',
+                               default="",
+                               blank=True)
+
+    price = models.IntegerField(verbose_name=u'价格',
+                                default=0)
+
     image_file = models.ImageField(upload_to=unique_image_name,
                                    blank=True,
                                    default="",
