@@ -13,7 +13,7 @@
   <div class="bottom-shade-large"></div>
   <article class="search-info">
     <div class="middle">
-      <h3 class="text-center color-blue">为您推荐精选以下行程</h3>
+      <h3 class="text-center color-blue">为您推荐精选以下行程 {{ start_address }}</h3>
     </div>
   </article>
 </section>
@@ -21,128 +21,56 @@
   <article>
     <h1 class="fg-grayDark" style="margin-bottom: 45px;">酒店推荐</h1>
     <ul class="sorted-list hotel">
-      <li>
-        <div class="grid">
-          <div class="row cursor-pointer">
-            <div>
-              <div class="span4">
-                <img src="{% static 'website/img/cms_11_392.jpg' %}"/>
-              </div>
-              <div class="span8">
-                <h2 class="fg-grayDark">天堂岛度假村</h2>
-                <p class="fg-grayLight">天堂岛度假村位于自然淳朴的Ke Ga湾，面对着已有百年历史的古老法式灯塔，以乡村风格的布置为设计特色</p>
-                <span class="currency">
-                  <strong>&yen; 1,114</strong>
-                  <small>/晚</small>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="grid">
-          <div class="row cursor-pointer">
-            <div>
-              <div class="span4">
-                <img src="{% static 'website/img/cms_11_807_7276657.jpg'%}"/>
-              </div>
-              <div class="span8">
-                <h2 class="fg-grayDark">天堂岛度假村</h2>
-                <p class="fg-grayLight">天堂岛度假村位于自然淳朴的Ke Ga湾，面对着已有百年历史的古老法式灯塔，以乡村风格的布置为设计特色</p>
-                <span class="currency">
-                  <strong>&yen; 1,114</strong>
-                  <small>/晚</small>
-                </span>
+      {% for hotel in package.hotels.all %}
+        <li>
+          <div class="grid">
+            <div class="row cursor-pointer">
+              <div>
+                <div class="span4">
+                  <img src="{{ hotel.image_url }}"/>
+                </div>
+                <div class="span8">
+                  <h2 class="fg-grayDark">{{ hotel.name }}</h2>
+                  <p class="fg-grayLight">{{ hotel.summary }}</p>
+                  <span class="currency">
+                    <strong>&yen; {{ hotel.get_pretty_price }}</strong>
+                    <small>/晚</small>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </li>
-      <li>
-        <div class="grid">
-          <div class="row cursor-pointer">
-            <div>
-              <div class="span4">
-                <img src="{% static 'website/img/cms_11_392.jpg' %}"/>
-              </div>
-              <div class="span8">
-                <h2 class="fg-grayDark">天堂岛度假村</h2>
-                <p class="fg-grayLight">天堂岛度假村位于自然淳朴的Ke Ga湾，面对着已有百年历史的古老法式灯塔，以乡村风格的布置为设计特色</p>
-                <span class="currency">
-                  <strong>&yen; 1,114</strong>
-                  <small>/晚</small>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
+        </li>
+      {% endfor %}
     </ul>
   </article>
   <article>
     <h1 class="fg-grayDark" style="margin-bottom: 45px;">机票推荐</h1>
     <ul class="sorted-list flight">
-      <li>
-        <div class="grid">
-          <div class="row cursor-pointer">
-            <div>
-              <div class="span4">
-                <img src="{% static 'website/img/cms_11_392.jpg' %}"/>
-              </div>
-              <div class="span8">
-                <h2 class="fg-grayDark">天堂岛度假村</h2>
-                <p class="fg-grayLight">天堂岛度假村位于自然淳朴的Ke Ga湾，面对着已有百年历史的古老法式灯塔，以乡村风格的布置为设计特色</p>
-                <span class="currency">
-                  <strong>&yen; 1,114</strong>
-                  <small>/晚</small>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="grid">
-          <div class="row cursor-pointer">
-            <div>
-              <div class="span4">
-                <img src="{% static 'website/img/cms_11_807_7276657.jpg' %}"/>
-              </div>
-              <div class="span8">
-                <h2 class="fg-grayDark">天堂岛度假村</h2>
-                <p class="fg-grayLight">天堂岛度假村位于自然淳朴的Ke Ga湾，面对着已有百年历史的古老法式灯塔，以乡村风格的布置为设计特色</p>
-                <span class="currency">
-                  <strong>&yen; 1,114</strong>
-                  <small>/晚</small>
-                </span>
+      {% for flight in package.flights.all %}
+        <li>
+          <div class="grid">
+            <div class="row cursor-pointer">
+              <div>
+                <div class="span4">
+                  <img src="{{ flight.image_url }}"/>
+                </div>
+                <div class="span8">
+                  <h2 class="fg-grayDark">{{ flight.name }}</h2>
+                  <p class="fg-grayLight">{{ flight.summary }}</p>
+                  <span class="currency">
+                    <strong>&yen; {{ flight.price }}</strong>
+                    <small>/人</small>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </li>
-      <li>
-        <div class="grid">
-          <div class="row cursor-pointer">
-            <div>
-              <div class="span4">
-                <img src="{% static 'website/img/cms_11_392.jpg' %}"/>
-              </div>
-              <div class="span8">
-                <h2 class="fg-grayDark">天堂岛度假村</h2>
-                <p class="fg-grayLight">天堂岛度假村位于自然淳朴的Ke Ga湾，面对着已有百年历史的古老法式灯塔，以乡村风格的布置为设计特色</p>
-                <span class="currency">
-                  <strong>&yen; 1,114</strong>
-                  <small>/晚</small>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
+        </li>
+      {% endfor %}
     </ul>
   </article>
-  <a id="order-btn" class="button large submit" href="#">生成订单</a>
+  <a id="order-btn" class="button large submit" href="#">提交意向</a>
   <div class="space-50"></div>
 </section>
 {% endblock main_content %}

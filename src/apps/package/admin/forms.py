@@ -52,6 +52,8 @@ class PackageDatatablesBuilder(DatatablesBuilder):
 
     start_city = DatatablesTextColumn(label=u'出发城市')
 
+    price = DatatablesTextColumn(label=u'价格')
+
     summary = DatatablesTextColumn(label=u'简介',)
 
     is_active = DatatablesBooleanColumn((('', u'全部'), (1, u'激活'), (0, u'锁定')),

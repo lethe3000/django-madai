@@ -216,6 +216,8 @@ class FlightDatatablesBuilder(DatatablesBuilder):
 
     summary = DatatablesTextColumn(label=u'简介',)
 
+    price = DatatablesTextColumn(label=u'价格',)
+
     phone = DatatablesBooleanColumn(label=u'电话',
                                     render=(lambda request, model, field_name:
                                             u'<ul><li>%s</li></ul>' % model.phone_contact))
