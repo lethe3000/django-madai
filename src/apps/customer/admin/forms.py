@@ -21,9 +21,6 @@ class CustomerDatatablesBuilder(DatatablesBuilder):
     name = DatatablesTextColumn(label=u'名称',
                                 is_searchable=True)
 
-    auth_token = DatatablesTextColumn(label=u'授权token',
-                                      render=(lambda request, model, field_name: model.auth_token.key))
-
     email = DatatablesTextColumn(label=u'email',
                                  is_searchable=True)
 
