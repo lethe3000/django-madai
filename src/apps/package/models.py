@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django.db import models
+from utils import pretty_price
 from apps.common.models import BaseModel, ActiveDataManager
 from apps.hotel.models import Hotel
 from apps.flight.models import Flight
@@ -34,11 +35,21 @@ class Package(BaseModel):
     # 关联的推荐酒店和航线
     hotels = models.ManyToManyField(Hotel,
                                     verbose_name=u'酒店',
-                                    related_name='combo')
+                                    related_name='package')
 
     flights = models.ManyToManyField(Flight,
                                      verbose_name=u'航线',
-                                     related_name='combo')
+                                     related_name='package')
+
+    # 查询条件
+    start_date = models.DateTimeField(verbose_name=u'起始有效时间')
+
+    end_date = models.DateTimeField(verbose_name=u'结束有效时间',
+                                    auto_now_add=False,
+                                    blank=True)
+
+    start_city = models.CharField(max_length=32,
+                                  verbose_name=u'出发城市')
 
     active_objects = ActiveDataManager()
 
@@ -50,6 +61,9 @@ class Package(BaseModel):
 
     def status(self):
         return self.STATUS_OK if self.is_published and self.is_active else self.STATUS_DELETE
+
+    def get_pretty_price(self):
+        return pretty_price(self.price)
 
     def __unicode__(self):
         return self.title

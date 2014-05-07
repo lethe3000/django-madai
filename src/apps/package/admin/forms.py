@@ -15,6 +15,10 @@ logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(HERE)) + '
 
 class PackageForm(forms.ModelForm):
 
+    start_date = forms.DateTimeField(label=u"起始有效时间")
+
+    end_date = forms.DateTimeField(label=u"结束有效时间")
+
     def __init__(self, *args, **kwargs):
         super(PackageForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['class'] = "required col-md-10 limited"
@@ -22,7 +26,7 @@ class PackageForm(forms.ModelForm):
 
     class Meta:
         model = Package
-        fields = ('name', 'title', 'summary', 'desc', 'price', 'hotels', 'flights')
+        fields = ('name', 'start_date', 'end_date', 'start_city', 'title', 'summary', 'desc', 'price', 'hotels', 'flights')
 
         widgets = {
         }
@@ -41,6 +45,12 @@ class PackageDatatablesBuilder(DatatablesBuilder):
 
     name = DatatablesTextColumn(label=u'名称',
                                 is_searchable=True)
+
+    start_date = DatatablesDateTimeColumn(label=u'起始有效时间')
+
+    end_date = DatatablesDateTimeColumn(label=u'结束有效时间')
+
+    start_city = DatatablesTextColumn(label=u'出发城市')
 
     summary = DatatablesTextColumn(label=u'简介',)
 

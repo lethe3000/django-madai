@@ -15,7 +15,7 @@ from django.utils.safestring import SafeString
 from apps.common.caches import SimpleCacheManager
 from apps.common.models import BaseModel, ActiveDataManager, TimeBaseModel
 from apps.foundation.models import unique_image_name
-from utils import random
+from utils import random, pretty_price
 from apps.foundation.models import Image
 from apps.hotel.models import BaseArticle, ContentToImage
 
@@ -162,6 +162,9 @@ class Flight(TimeBaseModel):
     def get_advantages(self):
         seperator = '\r\n'
         return filter(lambda x: x, self.advantages.split(seperator))
+
+    def get_pretty_price(self):
+        return pretty_price(self.price)
 
     class Meta:
         verbose_name = u"航班"

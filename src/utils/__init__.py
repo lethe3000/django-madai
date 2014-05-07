@@ -108,3 +108,10 @@ def prepend_item_to_tuple(item, dest_tuple):
 def zero_int(number):
     return int(number) if number else 0
 
+
+def pretty_price(price):
+    # 1000 -> 1,000
+    a = list(str(price))
+    for i in range(len(a)-3, 0, -3):
+        a.insert(i, ',')
+    return ''.join(a)
