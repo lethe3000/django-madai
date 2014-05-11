@@ -96,8 +96,14 @@ header > .date-pick {
   z-index: 1;
 }
 
-header > .date-pick > div {
-    width: 640px;
+header a.search-btn {
+  position: absolute;
+  top: 20px;
+  left: 85%;
+  font-size: 2.0rem;
+  display: block;
+  color: #FFF !important;
+  background-color: #CB5977 !important;
 }
 
 header > .date-pick .input-control {
@@ -118,6 +124,7 @@ header > .date-pick button:after {
     font-size: 12pt !important;
 }
 
+header > .date-pick i.icon-dollar,
 header > .date-pick i.icon-location {
     font-size: 12pt !important;
     position: absolute;

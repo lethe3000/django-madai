@@ -13,7 +13,7 @@
   <div class="bottom-shade-large"></div>
   <article class="search-info">
     <div class="middle">
-      <h3 class="text-center color-blue">为您推荐精选以下行程 {{ start_address }}</h3>
+      <h3 class="text-center color-blue">为您推荐精选以下行程 {{ start_address }}出发</h3>
     </div>
   </article>
 </section>
@@ -89,6 +89,12 @@
       });
 
       $('#order-btn').on('click', function() {
+        var loginUsername;
+        var loginPhone
+        {% if user.is_authenticated %}
+          loginUsername = '{{ user.name }}';
+          loginPhone = '{{ user.phone }}';
+        {% endif %}
         $.Dialog({
           overlay: true,
           shadow: true,
@@ -110,7 +116,7 @@
               '                <div class="span5">' +
               '                  <label for="">姓名：</label>' +
               '                  <div class="input-control text" data-role="input-control">' +
-              '                    <input type="text">' +
+              '                    <input type="text" value="' + loginUsername + '">' +
               '                  </div>' +
               '                </div>' +
               '              </div>' +
@@ -118,7 +124,7 @@
               '                <div class="span5">' +
               '                  <label for="">手机号：</label>' +
               '                  <div class="input-control text" data-role="input-control">' +
-              '                    <input type="text">' +
+              '                    <input type="text" value="' + loginPhone + '">' +
               '                  </div>' +
               '                </div>' +
               '              </div>' +
