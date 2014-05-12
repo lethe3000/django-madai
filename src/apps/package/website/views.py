@@ -7,18 +7,18 @@ from django.template import RequestContext
 
 
 def searching(request):
-    # start_address = request.GET['start_address']
-    # leave_date = request.GET['leave_date']
-    # price_min = request.GET['price_min']
-    # price_max = request.GET['price_max']
+    start_address = request.GET['start_address']
+    leave_date = request.GET['leave_date']
+    price_min = request.GET['price_min']
+    price_max = request.GET['price_max']
 
     # # TEST CODE # #
-    package = Package.active_objects.all()[0]
-    start_address = u'成都'
-    import datetime
-    leave_date = datetime.date(2014, 5, 1)
-    price_min = 1000
-    price_max = 3000
+    # package = Package.active_objects.all()[0]
+    # start_address = u'成都'
+    # import datetime
+    # leave_date = datetime.date(2014, 5, 1)
+    # price_min = 1000
+    # price_max = 3000
     # # END TEST # #
     packages = Package.active_objects.select_related('hotels', 'flights').filter(
         start_city=start_address,

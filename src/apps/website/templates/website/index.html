@@ -45,33 +45,36 @@
   </div>
   <div class="date-pick">
     <div class="margin-0-center">
-      <div class="grid">
+      <div class="grid fluid">
         <div class="row">
-          <div class="span4">
+          <div class="span2 offset2">
             <div class="input-control text">
-              <input type="text" class="fg-gray location" />
+              <input type="text" id="start_address" name="start_address" class="fg-gray location" placeholder="出发城市" />
               <i class="icon-location fg-grayLight"></i>
             </div>
           </div>
-          <div class="span4">
+          <div class="span2">
             <div class="input-control text"
                  data-role="datepicker"
                  data-format='yyyy-mm-dd'
                  data-effect="fade"
                  data-locale="zhCN">
-              <input type="text" class="fg-gray">
+              <input type="text" id="leave_date" name="leave_date" class="fg-gray" placeholder="离开日期">
               <button class="btn-date fg-grayLight"></button>
             </div>
           </div>
-          <div class="span4">
-            <div class="input-control text"
-               data-role="datepicker"
-               data-format='yyyy-mm-dd'
-               data-effect="fade"
-               data-locale="zhCN">
-              <input type="text" class="fg-gray">
-              <button class="btn-date fg-grayLight"></button>
+          <div class="span2">
+            <div class="input-control text">
+              <input type="text" id="price_min" name="price_min" class="fg-gray location" placeholder="最低金额" />
+              <i class="icon-dollar fg-grayLight"></i>
             </div>
+          </div>
+          <div class="span2">
+            <div class="input-control text">
+              <input type="text" id="price_max" name="price_max" class="fg-gray location" placeholder="最高金额" />
+              <i class="icon-dollar fg-grayLight"></i>
+            </div>
+            <a id="search-btn" class="button large search-btn" href="#">搜索</a>
           </div>
         </div>
       </div>
@@ -231,6 +234,15 @@
             $.Metro.initInputs();
           }
         });
+      });
+
+      $('#search-btn').on('click', function() {
+        window.location.href = '{% url 'website:package:package_searching' %}?' +
+          'start_address=' + $('#start_address').val() +
+          '&leave_date=' + $('#leave_date').val() +
+          '&price_min=' + $('#price_min').val() +
+          '&price_max=' + $('#price_max').val();
+        return false;
       });
 
     });
