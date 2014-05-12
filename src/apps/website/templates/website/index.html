@@ -83,11 +83,9 @@
 </header>
 <nav class="bg-white shadow-bottom menu">
   <div class="nav-box fixed-width margin-0-center">
-    <a class="text-center" href="#"><p class="margin-0">首页</p></a>
-    <a class="text-center" href="#"><p class="margin-0">酒店详情</p></a>
-    <a class="text-center" href="#"><p class="margin-0">酒店详情</p></a>
-    <a class="text-center" href="#"><p class="margin-0">酒店详情</p></a>
-    <a class="text-center" href="#"><p class="margin-0">酒店详情</p></a>
+    <a class="text-center" href="{% url 'website:index' %}"><p class="margin-0">首页</p></a>
+    <a class="text-center" href="#"><p class="margin-0">酒店</p></a>
+    <a class="text-center" href="#"><p class="margin-0">航班</p></a>
   </div>
 </nav>
 <section class="bg-1 bg-image-white-light">
@@ -102,6 +100,7 @@
           <div class="product-title">
             <h4>{{ hotel.name }}</h4>
             <p>马尔代夫</p>
+            <div class="customer-icon hotel-flat"></div>
           </div>
         </a>
       {% endfor %}
@@ -114,11 +113,12 @@
     <a class="category-showmore place-right" href="#">+ 更多</a>
     <div class="product-group">
       {% for flight in flights %}
-        <a class="product place-left" href="#">
+        <a class="product place-left" href="{% url 'website:flight:flight_detail' flight.id %}">
           <img src="{{ flight.image_url }}" />
           <div class="product-title">
             <h4>{{ flight.name }}</h4>
             <p>马尔代夫</p>
+            <div class="customer-icon flight-flat"></div>
           </div>
         </a>
       {% endfor %}

@@ -47,7 +47,7 @@ article {
 }
 
 .sorted-list > li:after {
-  background-color: #b14864;
+  background-color: #df633a;
   border-radius: 200px;
   color: #FFFFFF;
   content: counter(index-num, decimal);
@@ -83,7 +83,7 @@ article {
 }
 
 .sorted-list > li span.currency strong {
-  color: #CB5977;
+  color: #df633a;
   font-family: futura, sans-serif;
   font-size: 30px;
 }
@@ -93,7 +93,7 @@ a.button.submit {
   margin: 0 auto;
   display: block;
   color: #FFF;
-  background-color: #CB5977 !important;
+  background-color: #df633a !important;
 }
 
 .bg-color-dark {
@@ -106,7 +106,7 @@ a.button.submit {
 
 .sorted-list > li .selected {
     position: relative;
-    border: 6px solid #CB5977;
+    border: 6px solid #df633a;
     height: 252px;
 }
 
@@ -126,7 +126,7 @@ a.button.submit {
 .sorted-list > li .selected:after {
     position: absolute;
     display: block;
-    border-top: 28px solid #CB5977;
+    border-top: 28px solid #df633a;
     border-left: 28px solid transparent;
     right: 0;
     content: "";
@@ -157,7 +157,7 @@ a.button.confirm {
   width: 100%;
   display: block;
   color: #FFF;
-  background-color: #CB5977 !important;
+  background-color: #df633a !important;
 }
 
 .order-group {

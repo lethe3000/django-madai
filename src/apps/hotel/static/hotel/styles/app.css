@@ -54,7 +54,7 @@ a.button.submit {
   margin: 0 auto;
   display: block;
   color: #FFF;
-  background-color: #CB5977 !important;
+  background-color: #df633a !important;
 }
 
 .search-info a.submit {
@@ -79,8 +79,14 @@ span.currency > small {
     font-weight: 600;
 }
 
+.hotel-name .customer-icon {
+    position: relative;
+    top: 5px;
+    left: 5px;
+}
+
 .fotorama__thumb-border {
-    border-color: #AF5576 !important;
+    border-color: #df633a !important;
 }
 
 blockquote {
@@ -110,12 +116,12 @@ blockquote > div {
     color: #FFFFFF;
 }
 
-.bg-color-pink {
-    background-color: #AF5576;
+.bg-color-green {
+    background-color: #df633a;
 }
 
-.fg-color-pink {
-    color: #AF5576;
+.fg-color-green {
+    color: #df633a;
 }
 
 .scroll-box ul,
@@ -204,7 +210,7 @@ blockquote > div {
 }
 
 .bg-gr-pink {
-    background: linear-gradient(to bottom, #CA5876 0px, #B64965 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: linear-gradient(to bottom, #df633a 0px, #b24f2e 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 
 .tab-control ul.tabs {
