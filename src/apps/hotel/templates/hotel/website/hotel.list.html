@@ -29,8 +29,12 @@
 
     var cursor = Math.round(new Date().getTime() / 1000);
     var onLoad = false;
+    var touchEnd = false;
 
     function loadList() {
+      if (touchEnd) {
+        return false;
+      }
       if (onLoad) {
         return false;
       }
@@ -39,6 +43,9 @@
       $.getJSON(
         '{% url 'website:hotel:hotel_list' %}?cursor=' + cursor,
         function(data) {
+          if (data.length == 0) {
+            touchEnd = true;
+          }
           $.each(data, function (index, hotel) {
             cursor = hotel.updated;
             var content = '' +
