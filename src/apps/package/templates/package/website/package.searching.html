@@ -89,8 +89,8 @@
       });
 
       $('#order-btn').on('click', function() {
-        var loginUsername;
-        var loginPhone
+        var loginUsername = '';
+        var loginPhone = '';
         {% if user.is_authenticated %}
           loginUsername = '{{ user.name }}';
           loginPhone = '{{ user.phone }}';

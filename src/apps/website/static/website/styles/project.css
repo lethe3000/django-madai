@@ -25,6 +25,10 @@ header {
   position: relative;
 }
 
+nav > .nav-box {
+    width: 612px;
+}
+
 nav > .nav-box > a {
   width: 204px;
   display: table-cell;
@@ -64,7 +68,7 @@ nav.menu {
 }
 
 .menu a:hover {
-    background-color: #CB5977;
+    background-color: #df633a;
 }
 
 .menu a:hover > p {
@@ -72,7 +76,7 @@ nav.menu {
 }
 
 .metro .calendar .today a {
-    background-color: #CB5977 !important;
+    background-color: #df633a !important;
     color: #FFFFFF !important;
 }
 
@@ -134,4 +138,26 @@ section {
 .separator.solid {
     background: none repeat scroll 0 0 #C8C8C8;
     height: 1px;
+}
+
+div.customer-icon {
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+}
+
+.customer-icon.flight-flat {
+   background: url("../img/icons/flight_flat_orange_nor.png") no-repeat 0 0 rgba(0, 0, 0, 0);
+}
+
+.customer-icon.flight-line {
+   background: url("../img/icons/flight_flat_orange_nor.png") no-repeat 0 0 rgba(0, 0, 0, 0);
+}
+
+.customer-icon.hotel-flat {
+   background: url("../img/icons/hotel_flat_orange_nor.png") no-repeat 0 0 rgba(0, 0, 0, 0);
+}
+
+.customer-icon.hotel-line {
+   background: url("../img/icons/hotel_line_orange_nor.png") no-repeat 0 0 rgba(0, 0, 0, 0);
 }
