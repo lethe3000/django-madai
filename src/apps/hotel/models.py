@@ -321,6 +321,9 @@ class Hotel(TimeBaseModel):
     def get_pretty_price(self):
         return pretty_price(self.price)
 
+    def updated_timestamp(self):
+        return int(self.updated.strftime("%s")) if self.updated else 0
+
     class Meta:
         verbose_name = u"酒店"
         ordering = ('display_order',)

@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from django.http import HttpResponse
-from django.views.generic.base import TemplateResponseMixin, View, RedirectView
-from django.views.generic.list import BaseListView
-from apps.tour.models import Article, Scenery, GuideType
-from apps.hotel.models import Hotel, HotelArticle, InfoType
+from datetime import datetime
+from django.views.generic.base import TemplateResponseMixin, View
+from apps.common.admin.views import HttpResponseJson
+from apps.hotel.models import Hotel, InfoType
 
 
 class HotelDetailView(TemplateResponseMixin, View):
@@ -26,3 +25,23 @@ class HotelDetailView(TemplateResponseMixin, View):
             else:
                 info_type_list.remove(info)
         return self.render_to_response(locals())
+
+
+class HotelListView(TemplateResponseMixin, View):
+    template_name = 'hotel/website/hotel.list.html'
+
+    def get(self, request, *args, **kwargs):
+        cursor = request.GET.get('cursor')
+        if cursor:
+            cursor = datetime.fromtimestamp(int(cursor))
+            hotels = Hotel.active_objects.filter(updated__lt=cursor).order_by('-updated')
+            hotel_json_list = []
+            for hotel in hotels:
+                hotel_json_list.append({"img": hotel.image_url(),
+                                        "name": hotel.name,
+                                        "summary": hotel.summary,
+                                        "price": hotel.price,
+                                        "updated": hotel.updated_timestamp()})
+            return HttpResponseJson(result=hotel_json_list)
+        else:
+            return self.render_to_response(locals())

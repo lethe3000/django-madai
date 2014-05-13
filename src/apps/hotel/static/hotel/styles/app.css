@@ -248,3 +248,34 @@ blockquote > div {
 .scroll-group-room .scroll-box p {
     color: #999999;
 }
+
+
+
+.grid.list {
+    margin-bottom: 0 !important;
+}
+
+.grid.list .row {
+    margin-top: 50px !important;
+    background-color: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0);
+}
+
+.grid.list .span4 {
+    width: 320px !important;
+}
+
+.grid.list span.currency {
+    display: block;
+    margin-top: 100px;
+}
+
+.grid.list span.currency strong {
+    color: #DF633A;
+    font-family: futura,sans-serif;
+    font-size: 30px;
+}
+
+.list-group {
+    padding: 40px 0;
+}

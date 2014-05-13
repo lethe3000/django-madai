@@ -92,7 +92,7 @@
   <div class="bottom-shade-large"></div>
   <article>
     <h2 class="fg-white category-title">酒店</h2>
-    <a class="category-showmore place-right" href="#">+ 更多</a>
+    <a class="category-showmore place-right" href="{% url 'website:hotel:hotel_list' %}">+ 更多</a>
     <div class="product-group">
       {% for hotel in hotels %}
         <a class="product place-left" href="{% url 'website:hotel:hotel_detail' hotel.id %}">
