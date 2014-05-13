@@ -27,7 +27,7 @@
         <div class="grid fluid">
           <div class="row">
             <div class="span6 hotel-name">
-              <h2 class="fg-white">{{ flight.address }}</h2>
+              <h2 class="fg-white">{{ flight.address }}<div class="customer-icon flight-line"></div></h2>
               <p class="color-blue">{{ flight.name }}</p>
             </div>
             <div class="span6 price">
@@ -62,12 +62,12 @@
           </div>
         </div>
         <div class="span4">
-          <blockquote class="margin-bottom-20">
+          <blockquote>
             <div class="color-blue">{{ flight.summary }}</div>
           </blockquote>
-          <div class="scroll-group bg-color-pink">
+          <div class="scroll-group bg-color-orange">
             <div class="ribbon place-right bg-white oblique">
-              <span class="fg-color-pink"><i class="icon-tag on-left-more"></i>小麻袋优势</span>
+              <span class="fg-color-orange"><i class="icon-tag on-left-more"></i>小麻袋优势</span>
             </div>
             <div class="scroll-box"
                  data-role="scrollbox"
@@ -83,8 +83,8 @@
               </ul>
             </div>
             <div class="action-btn-group">
-              <div class="text-center up"><i class="icon-arrow-up-4 fg-color-pink"></i></div>
-              <div class="text-center down"><i class="icon-arrow-down-4 fg-color-pink"></i></div>
+              <div class="text-center up"><i class="icon-arrow-up-4 fg-color-orange"></i></div>
+              <div class="text-center down"><i class="icon-arrow-down-4 fg-color-orange"></i></div>
             </div>
           </div>
         </div>
@@ -95,12 +95,12 @@
 <section class="bg-image-clouds">
   <article>
     <div class="tab-control">
-        <ul class="tabs bg-gr-pink">
+        <ul class="tabs bg-gr-orange">
         {% for info in info_type_list %}
             {% if forloop.first %}
-              <li class="active"><a href="#_page_{{ forloop.counter }}" class="bg-gr-pink">{{ info.name }}</a></li>
+              <li class="active"><a href="#_page_{{ forloop.counter }}" class="bg-gr-orange">{{ info.name }}</a></li>
             {% else%}
-              <li><a href="#_page_{{ forloop.counter }}" class="bg-gr-pink">{{ info.name }}</a></li>
+              <li><a href="#_page_{{ forloop.counter }}" class="bg-gr-orange">{{ info.name }}</a></li>
             {% endif %}
         {% endfor %}
         </ul>

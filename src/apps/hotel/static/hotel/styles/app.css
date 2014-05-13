@@ -116,11 +116,11 @@ blockquote > div {
     color: #FFFFFF;
 }
 
-.bg-color-green {
+.bg-color-orange {
     background-color: #df633a;
 }
 
-.fg-color-green {
+.fg-color-orange {
     color: #df633a;
 }
 
@@ -209,7 +209,7 @@ blockquote > div {
     background-color: #FFFFFF;
 }
 
-.bg-gr-pink {
+.bg-gr-orange {
     background: linear-gradient(to bottom, #df633a 0px, #b24f2e 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 
