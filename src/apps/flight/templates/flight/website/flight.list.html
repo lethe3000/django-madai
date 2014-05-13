@@ -1,0 +1,43 @@
+{% extends 'website/website.base.inc.html' %}
+{% load static %}
+{% block title %} 小麻袋 {% endblock title %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'hotel/styles/app.css' %}" media="screen"/>
+    <link rel="stylesheet" href="{% static 'website/styles/fotorama.css' %}" media="screen"/>
+
+{% endblock extracss %}
+
+{% block extraincjs %}
+    <script src="{% static 'website/scripts/libs/fotorama.js' %}"></script>
+    <script src="{% static 'website/scripts/libs/metro-calendar.js' %}"></script>
+    <script src="{% static 'website/scripts/libs/metro-datepicker.js' %}"></script>
+    <script src="{% static 'website/scripts/libs/metro-scroll.js' %}"></script>
+    <script src="{% static 'website/scripts/libs/jquery.mousewheel.js' %}"></script>
+    <script src="{% static 'website/scripts/libs/metro-tab-control.js' %}"></script>
+{% endblock extraincjs %}
+
+{% block main_content %}
+  {% include 'website/header.inc.html' %}
+  <!-- outer -->
+    <div class="col-md-12">
+
+        <!-- giving a namespace -->
+        <div class="scenery-list">
+
+            <!-- list -->
+            <div class="row">
+                <div class="col-md-12">
+                  {% for flight in flight_list %}
+                      <a class="product place-left" href="{% url 'website:flight:flight_detail' flight.id %}">
+                          <h1>{{ flight.name }}</h1>
+                          <img src="{{ flight.image_url }}" />
+                      </a>
+                  {% endfor %}
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock main_content %}

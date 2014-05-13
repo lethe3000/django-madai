@@ -23,3 +23,11 @@ class FlightDetailView(TemplateResponseMixin, View):
             else:
                 info_type_list.remove(info)
         return self.render_to_response(locals())
+
+
+class FlightListView(TemplateResponseMixin, View):
+    template_name = 'flight/website/flight.list.html'
+
+    def get(self, request, *args, **kwargs):
+        flight_list = Flight.active_objects.all()
+        return self.render_to_response(locals())
