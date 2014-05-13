@@ -18,26 +18,26 @@
 {% endblock extraincjs %}
 
 {% block main_content %}
-{% include 'website/header.inc.html' %}
-<!-- outer -->
-<div class="col-md-12">
+  {% include 'website/header.inc.html' %}
+  <!-- outer -->
+    <div class="col-md-12">
 
-<!-- giving a namespace -->
-<div class="scenery-list">
+        <!-- giving a namespace -->
+        <div class="scenery-list">
 
-<!-- list -->
-<div class="row">
-<div class="col-md-12">
-  {% for hotel in hotel_list %}
-    <a class="product place-left" href="{% url 'website:hotel:hotel_detail' hotel.id %}">
-      <h1>{{ hotel.name }}</h1>
-      <img src="{{ hotel.image_url }}" />
-    </a>
-  {% endfor %}
-</div>
-</div>
+            <!-- list -->
+            <div class="row">
+                <div class="col-md-12">
+                  {% for flight in flight_list %}
+                      <a class="product place-left" href="{% url 'website:flight:flight_detail' flight.id %}">
+                          <h1>{{ flight.name }}</h1>
+                          <img src="{{ flight.image_url }}" />
+                      </a>
+                  {% endfor %}
+                </div>
+            </div>
 
 
-</div>
-</div>
+        </div>
+    </div>
 {% endblock main_content %}

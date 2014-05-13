@@ -26,3 +26,11 @@ class HotelDetailView(TemplateResponseMixin, View):
             else:
                 info_type_list.remove(info)
         return self.render_to_response(locals())
+
+
+class HotelListView(TemplateResponseMixin, View):
+    template_name = 'hotel/website/hotel.list.html'
+
+    def get(self, request, *args, **kwargs):
+        hotel_list = Hotel.active_objects.all()
+        return self.render_to_response(locals())
