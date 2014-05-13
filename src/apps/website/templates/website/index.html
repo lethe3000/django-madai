@@ -84,8 +84,8 @@
 <nav class="bg-white shadow-bottom menu">
   <div class="nav-box fixed-width margin-0-center">
     <a class="text-center" href="{% url 'website:index' %}"><p class="margin-0">首页</p></a>
-    <a class="text-center" href="#"><p class="margin-0">酒店</p></a>
-    <a class="text-center" href="#"><p class="margin-0">航班</p></a>
+    <a class="text-center" href="{% url 'website:hotel:hotel_list' %}"><p class="margin-0">酒店</p></a>
+    <a class="text-center" href="{% url 'website:flight:flight_list' %}"><p class="margin-0">航班</p></a>
   </div>
 </nav>
 <section class="bg-1 bg-image-white-light">
