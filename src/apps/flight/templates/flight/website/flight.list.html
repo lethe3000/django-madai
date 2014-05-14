@@ -2,42 +2,90 @@
 {% load static %}
 {% block title %} 小麻袋 {% endblock title %}
 
-{% block extracss %}
-    <link rel="stylesheet" href="{% static 'hotel/styles/app.css' %}" media="screen"/>
-    <link rel="stylesheet" href="{% static 'website/styles/fotorama.css' %}" media="screen"/>
 
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'flight/styles/app.css' %}" media="screen"/>
 {% endblock extracss %}
 
-{% block extraincjs %}
-    <script src="{% static 'website/scripts/libs/fotorama.js' %}"></script>
-    <script src="{% static 'website/scripts/libs/metro-calendar.js' %}"></script>
-    <script src="{% static 'website/scripts/libs/metro-datepicker.js' %}"></script>
-    <script src="{% static 'website/scripts/libs/metro-scroll.js' %}"></script>
-    <script src="{% static 'website/scripts/libs/jquery.mousewheel.js' %}"></script>
-    <script src="{% static 'website/scripts/libs/metro-tab-control.js' %}"></script>
-{% endblock extraincjs %}
-
 {% block main_content %}
-  {% include 'website/header.inc.html' %}
-  <!-- outer -->
-    <div class="col-md-12">
-
-        <!-- giving a namespace -->
-        <div class="scenery-list">
-
-            <!-- list -->
-            <div class="row">
-                <div class="col-md-12">
-                  {% for flight in flight_list %}
-                      <a class="product place-left" href="{% url 'website:flight:flight_detail' flight.id %}">
-                          <h1>{{ flight.name }}</h1>
-                          <img src="{{ flight.image_url }}" />
-                      </a>
-                  {% endfor %}
-                </div>
-            </div>
-
-
-        </div>
+{% include 'website/header.inc.html' %}
+<section class="bg-1 bg-image-white-light">
+  <div class="bottom-shade-large"></div>
+  <article class="list-group">
+    <div class="grid list">
+      <div class="margin-0-center text-center ajax-loader">
+        <img src="{% static 'website/img/ajax-loader.gif' %}" />
+      </div>
     </div>
+  </article>
+</section>
 {% endblock main_content %}
+
+{% block extrajs %}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      loadList();
+    });
+
+    var cursor = Math.round(new Date().getTime() / 1000);
+    var onLoad = false;
+    var touchEnd = false;
+
+    function loadList() {
+      if (touchEnd) {
+        return false;
+      }
+      if (onLoad) {
+        return false;
+      }
+      onLoad = true;
+      $('.ajax-loader').show();
+      $.getJSON(
+        '{% url 'website:flight:flight_list' %}?cursor=' + cursor,
+        function(data) {
+          if (data.length == 0) {
+            touchEnd = true;
+          }
+          $.each(data, function (index, flight) {
+            cursor = flight.updated;
+            var content = '' +
+              '<div class="row cursor-pointer">' +
+              '  <a href="/flight/' + flight.id + '">' +
+              '    <div class="span4">' +
+              '      <img src="' + flight.img + '"/>' +
+              '    </div>' +
+              '    <div class="span8">' +
+              '      <h2 class="fg-grayDark">' + flight.name + '</h2>' +
+              '      <p class="fg-grayLight">' + flight.summary + '</p>' +
+              '      <span class="currency">' +
+              '        <strong>&yen; ' + flight.price + '</strong>' +
+              '        <small class="fg-grayDark">/晚</small>' +
+              '      </span>' +
+              '    </div>' +
+              '  </a>' +
+              '</div>';
+            $('.ajax-loader').before(content);
+          });
+          $('.ajax-loader').hide();
+          setTimeout(function () {
+            onLoad = false;
+          }, 500);
+        }
+      );
+    }
+
+    function scrollAndLoad() {
+      if ($(window).scrollTop() > ($('.grid.list').height() + $('.grid.list').offset().top - $(window).height())) {
+        loadList();
+      }
+    }
+
+    $(window).scroll(function(){
+      scrollAndLoad();
+    });
+
+    $(function(){
+      setTimeout(function(){scrollAndLoad();}, 100);
+    })
+  </script>
+{% endblock extrajs %}

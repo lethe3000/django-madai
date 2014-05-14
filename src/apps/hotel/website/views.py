@@ -37,7 +37,8 @@ class HotelListView(TemplateResponseMixin, View):
             hotels = Hotel.active_objects.filter(updated__lt=cursor).order_by('-updated')
             hotel_json_list = []
             for hotel in hotels:
-                hotel_json_list.append({"img": hotel.image_url(),
+                hotel_json_list.append({"id": hotel.id,
+                                        "img": hotel.image_url(),
                                         "name": hotel.name,
                                         "summary": hotel.summary,
                                         "price": hotel.price,

@@ -125,9 +125,15 @@ header > .date-pick .input-control {
     height: 40px !important;
 }
 
-header > .date-pick input {
+header > .date-pick input,
+header > .date-pick select {
     font-size: 12pt;
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+}
+
+header > .date-pick select {
+    height: 100%;
+    padding: 8px !important;
 }
 
 header > .date-pick button {
@@ -153,7 +159,8 @@ header > .date-pick .span4 {
     width: 200px !important;
 }
 
-header > .date-pick input.location {
+header > .date-pick input.location,
+header > .date-pick select.location {
     padding-left: 30px !important;
 }
 

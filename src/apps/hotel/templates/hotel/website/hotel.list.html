@@ -50,7 +50,7 @@
             cursor = hotel.updated;
             var content = '' +
               '<div class="row cursor-pointer">' +
-              '  <div>' +
+              '  <a href="/hotel/' + hotel.id + '">' +
               '    <div class="span4">' +
               '      <img src="' + hotel.img + '"/>' +
               '    </div>' +
@@ -59,10 +59,10 @@
               '      <p class="fg-grayLight">' + hotel.summary + '</p>' +
               '      <span class="currency">' +
               '        <strong>&yen; ' + hotel.price + '</strong>' +
-              '        <small>/晚</small>' +
+              '        <small class="fg-grayDark">/晚</small>' +
               '      </span>' +
               '    </div>' +
-              '  </div>' +
+              '  </a>' +
               '</div>';
             $('.ajax-loader').before(content);
           });

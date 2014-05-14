@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from datetime import datetime
 from django.views.generic.base import TemplateResponseMixin, View
+from apps.common.admin.views import HttpResponseJson
 from apps.flight.models import Flight, InfoType
 
 
@@ -29,5 +31,18 @@ class FlightListView(TemplateResponseMixin, View):
     template_name = 'flight/website/flight.list.html'
 
     def get(self, request, *args, **kwargs):
-        flight_list = Flight.active_objects.all()
-        return self.render_to_response(locals())
+        cursor = request.GET.get('cursor')
+        if cursor:
+            cursor = datetime.fromtimestamp(int(cursor))
+            flights = Flight.active_objects.filter(updated__lt=cursor).order_by('-updated')
+            flight_json_list = []
+            for flight in flights:
+                flight_json_list.append({"id": flight.id,
+                                         "img": flight.image_url(),
+                                         "name": flight.name,
+                                         "summary": flight.summary,
+                                         "price": flight.price,
+                                         "updated": flight.updated_timestamp()})
+            return HttpResponseJson(result=flight_json_list)
+        else:
+            return self.render_to_response(locals())

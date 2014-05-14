@@ -48,10 +48,17 @@
       <div class="grid fluid">
         <div class="row">
           <div class="span2 offset2">
-            <div class="input-control text">
-              <input type="text" id="start_address" name="start_address" class="fg-gray location" placeholder="出发城市" />
+            <div class="input-control select">
+              <select id="start_address" class="fg-gray location">
+                <option value="成都">成都</option>
+                <option value="重庆">重庆</option>
+              </select>
               <i class="icon-location fg-grayLight"></i>
             </div>
+{#            <div class="input-control text">#}
+{#              <input type="text" id="start_address" name="start_address" class="fg-gray location" placeholder="出发城市" />#}
+{#              <i class="icon-location fg-grayLight"></i>#}
+{#            </div>#}
           </div>
           <div class="span2">
             <div class="input-control text"
@@ -99,7 +106,7 @@
           <img src="{{ hotel.image_url }}" />
           <div class="product-title">
             <h4>{{ hotel.name }}</h4>
-            <p>马尔代夫</p>
+            <p>&nbsp;</p>
             <div class="customer-icon hotel-flat"></div>
           </div>
         </a>
@@ -110,14 +117,14 @@
 <section class="bg-2">
   <article>
     <h2 class="fg-white category-title">航班</h2>
-    <a class="category-showmore place-right" href="#">+ 更多</a>
+    <a class="category-showmore place-right" href="{% url 'website:flight:flight_list' %}">+ 更多</a>
     <div class="product-group">
       {% for flight in flights %}
         <a class="product place-left" href="{% url 'website:flight:flight_detail' flight.id %}">
           <img src="{{ flight.image_url }}" />
           <div class="product-title">
             <h4>{{ flight.name }}</h4>
-            <p>马尔代夫</p>
+            <p>&nbsp;</p>
             <div class="customer-icon flight-flat"></div>
           </div>
         </a>
