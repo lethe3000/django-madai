@@ -188,7 +188,7 @@ header > .account p {
 .signup-form {
     height: 420px;
     width: 395px;
-    padding: 50px;
+    padding: 20px 50px 50px;
     position: relative;
 }
 

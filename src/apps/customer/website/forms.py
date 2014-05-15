@@ -119,6 +119,12 @@ class CustomerRegisterForm(forms.Form):
                             regex="^[\w.@+-]+$",
                             error_message=u"只能包含数字、字母、'.'、'+'、'-'、'@'")
 
+    phone = forms.RegexField(label=u'手机号',
+                            max_length=11,
+                            help_text=u'必填.',
+                            regex="^1[\d]{10}$",
+                            error_message=u"请输入正确的手机号")
+
     password1 = forms.CharField(label=u'创建密码',
                                 widget=forms.PasswordInput,
                                 help_text=u'必填.')
@@ -129,9 +135,6 @@ class CustomerRegisterForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(CustomerRegisterForm, self).__init__(*args, **kwargs)
-        self.fields['name'].widget.attrs['class'] = "required form-control"
-        self.fields['password1'].widget.attrs['class'] = "required form-control"
-        self.fields['password2'].widget.attrs['class'] = "required form-control"
 
     def clean_name(self):
         UserModel = get_user_model()
