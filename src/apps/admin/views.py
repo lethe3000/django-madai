@@ -104,7 +104,7 @@ def home(request):
     site_name = settings.SITE_NAME
     if request.user.is_authenticated():
         if not request.user.is_staff:
-            return redirect(reverse('website:customer:customer_home'))
+            return redirect(reverse('admin:account:login'))
         menus = build_menu(request)
         return render_to_response('admin/home.html',
                                   locals(),

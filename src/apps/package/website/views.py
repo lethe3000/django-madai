@@ -9,8 +9,7 @@ from django.template import RequestContext
 def searching(request):
     start_address = request.GET['start_address']
     leave_date = request.GET['leave_date']
-    price_min = request.GET['price_min']
-    price_max = request.GET['price_max']
+    price = request.GET['price']
 
     # # TEST CODE # #
     # package = Package.active_objects.all()[0]
@@ -22,8 +21,7 @@ def searching(request):
     # # END TEST # #
     packages = Package.active_objects.select_related('hotels', 'flights').filter(
         start_city=start_address,
-        price__lt=price_max,
-        price__gt=price_min,
+        price=price,
         start_date__lt=leave_date,
         end_date__gt=leave_date)
 
@@ -35,6 +33,6 @@ def searching(request):
                                   context_instance=RequestContext(request))
     else:
         #TODO 无套餐需要个空套餐页面
-        return render_to_response('package/website/package.searching.html',
+        return render_to_response('package/website/package.noresult.html',
                                   locals(),
                                   context_instance=RequestContext(request))
