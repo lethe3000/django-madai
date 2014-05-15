@@ -64,7 +64,7 @@
                  data-format='yyyy-mm-dd'
                  data-effect="fade"
                  data-locale="zhCN">
-              <input type="text" id="leave_date" name="leave_date" class="fg-gray" placeholder="离开日期">
+              <input type="text" id="start_date" name="start_date" class="fg-gray" placeholder="入住日期">
               <button class="btn-date fg-grayLight"></button>
             </div>
           </div>
@@ -265,15 +265,16 @@
 
       $('#search-btn').on('click', function() {
         var start_address = $('#start_address').val();
-        var leave_date = $('#leave_date').val();
-        var price = $('#price').val();
-        if (!start_address || !price || !leave_date) {
+        var start_date = $('#start_date').val();
+        var priceRange = encodeURIComponent($('#price').val());
+        alert(priceRange);
+        if (!start_address || !price || !start_date) {
           return false;
         }
         window.location.href = '{% url 'website:package:package_searching' %}?' +
           'start_address=' + start_address +
-          '&leave_date=' + leave_date +
-          '&price=' + price;
+          '&start_date=' + start_date +
+          '&price_range=' + priceRange;
         return false;
       });
 
