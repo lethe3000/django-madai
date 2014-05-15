@@ -56,6 +56,10 @@ class Package(BaseModel):
     def __unicode__(self):
         return self.title
 
+    class Meta:
+        verbose_name = u"套餐"
+        get_latest_by = "updated"
+
     STATUS_OK = 0
     STATUS_DELETE = -1
 

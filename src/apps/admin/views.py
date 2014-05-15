@@ -50,6 +50,11 @@ def build_menu(request):
         ('套餐', reverse('admin:package:package_list'), None),
     ]
 
+    SUBMENU_PRESENT = [
+        ('礼包', reverse('admin:present:present_list'), None),
+        ('礼包分类', reverse('admin:present:presentcategory_list'), None),
+    ]
+
     SUBMENU_ORDER = [
         ('订单', reverse('admin:order:order_list'), None),
     ]
@@ -63,6 +68,7 @@ def build_menu(request):
         {'menu': '航班', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_FLIGHT},
         {'menu': '航班dashboard', 'url': '', 'icon': 'icon-bookmark', 'submenu': build_flight_submenu()},
         {'menu': '套餐', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_PACKAGE},
+        {'menu': '礼包管理', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_PRESENT},
         {'menu': '订单', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_ORDER},
     )
     menus = []
