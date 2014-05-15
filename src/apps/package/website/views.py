@@ -8,7 +8,7 @@ from django.template import RequestContext
 
 def searching(request):
     start_address = request.GET['start_address']
-    leave_date = request.GET['leave_date']
+    start_date = request.GET['start_date']
     price_min = request.GET['price_min']
     price_max = request.GET['price_max']
 
@@ -16,7 +16,7 @@ def searching(request):
     # package = Package.active_objects.all()[0]
     # start_address = u'成都'
     # import datetime
-    # leave_date = datetime.date(2014, 5, 1)
+    # start_date = datetime.date(2014, 5, 1)
     # price_min = 1000
     # price_max = 3000
     # # END TEST # #
@@ -24,8 +24,8 @@ def searching(request):
         start_city=start_address,
         price__lt=price_max,
         price__gt=price_min,
-        start_date__lt=leave_date,
-        end_date__gt=leave_date)
+        start_date__lt=start_date,
+        end_date__gt=start_date)
 
     if packages.count():
         # FIXME 多个package如何挑选, 暂时选第一个

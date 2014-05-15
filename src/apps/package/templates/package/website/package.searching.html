@@ -25,7 +25,7 @@
         <li>
           <div class="grid">
             <div class="row cursor-pointer">
-              <div>
+              <div data-id="{{ hotel.id }}">
                 <div class="span4">
                   <img src="{{ hotel.image_url }}"/>
                 </div>
@@ -51,7 +51,7 @@
         <li>
           <div class="grid">
             <div class="row cursor-pointer">
-              <div>
+              <div data-id="{{ flight.id }}">
                 <div class="span4">
                   <img src="{{ flight.image_url }}"/>
                 </div>
@@ -76,6 +76,7 @@
 {% endblock main_content %}
 
 {% block extrajs %}
+  <script type="text/javascript" src="{% static 'website/scripts/plugin/jquery-form/jquery-form.min.js' %}"></script>
   <script>
     $(document).ready(function() {
       $('.sorted-list.hotel > li > .grid > .row').on('click', function() {
@@ -91,6 +92,16 @@
       $('#order-btn').on('click', function() {
         var loginUsername = '';
         var loginPhone = '';
+        var startDate = '{{ start_date }}';
+        var startAddress = '{{ start_address }}';
+        var packageId = '{{ package.id }}'
+        var hotelId = $('.sorted-list.hotel > li > .grid > .row > div.selected').data('id');
+        var flightId = $('.sorted-list.flight > li > .grid > .row > div.selected').data('id');
+
+        if (!hotelId || !flightId) {
+          return false;
+        }
+
         {% if user.is_authenticated %}
           loginUsername = '{{ user.name }}';
           loginPhone = '{{ user.phone }}';
@@ -103,7 +114,12 @@
           onShow: function(_dialog) {
             var content = '' +
               '<div class="order-group bg-white">' +
-              '  <form action="" method="post">' + "{% csrf_token %}" +
+              '  <form id="order_form" action="{% url 'website:order:order_create' %}" method="post">' + "{% csrf_token %}" +
+              '    <input id="package_id" name="package_id" type="hidden" value="' + packageId + '">' +
+              '    <input id="hotel_id" name="hotel_id" type="hidden" value="' + packageId + '">' +
+              '    <input id="flight_id" name="flight_id" type="hidden" value="' + packageId + '">' +
+              '    <input id="id_start_address" name="start_address" type="hidden" value="' + startAddress + '">' +
+              '    <input id="id_start_date" name="start_date" type="hidden" value="' + startDate + '">' +
               '    <fieldset>' +
               '      <div class="grid fluid">' +
               '        <div class="row">' +
@@ -116,7 +132,7 @@
               '                <div class="span5">' +
               '                  <label for="">姓名：</label>' +
               '                  <div class="input-control text" data-role="input-control">' +
-              '                    <input type="text" value="' + loginUsername + '">' +
+              '                    <input id="id_customer_name" name="customer_name" type="text" value="' + loginUsername + '">' +
               '                  </div>' +
               '                </div>' +
               '              </div>' +
@@ -124,21 +140,21 @@
               '                <div class="span5">' +
               '                  <label for="">手机号：</label>' +
               '                  <div class="input-control text" data-role="input-control">' +
-              '                    <input type="text" value="' + loginPhone + '">' +
+              '                    <input id="id_phone" name="phone" type="text" value="' + loginPhone + '">' +
               '                  </div>' +
               '                </div>' +
               '              </div>' +
               '              <div class="row">' +
               '                <div class="span3">' +
-              '                  <label for="">入住日期：</label>' +
+              '                  <label for="">出发城市：</label>' +
               '                  <div class="input-control text" data-role="input-control">' +
-              '                    <input type="text">' +
+              '                    <input name="start_address_snapshot" type="text" value="' + startAddress + '" disabled>' +
               '                  </div>' +
               '                </div>' +
               '                <div class="span3">' +
-              '                  <label for="">离开日期：</label>' +
+              '                  <label for="">入住日期：</label>' +
               '                  <div class="input-control text" data-role="input-control">' +
-              '                    <input type="text">' +
+              '                    <input name="start_date_snapshot" type="text" value="' + startDate + '" disabled>' +
               '                  </div>' +
               '                </div>' +
               '              </div>' +
@@ -148,7 +164,7 @@
               '        <hr class="separator solid">' +
               '        <div class="row">' +
               '          <div class="span2 offset10">' +
-              '            <a class="button large confirm" href="#">确认</a>' +
+              '            <button type="submit" class="button large confirm" onclick="orderSubmit()">确认</button>' +
               '          </div>' +
               '        </div>' +
               '      </div>' +
@@ -162,5 +178,32 @@
         });
       });
     });
+
+    function orderSubmit() {
+      var $order_form = $('#order_form');
+      var today = new Date();
+      $order_form.submit(function() {
+        var validator = $order_form.validate();
+        $(this).ajaxSubmit({
+          success: function(data) {
+            if (data && data['ret'] > 0) {
+              validator.showErrors(data['errmsg-detail']);
+            } else {
+              $('#order_form').hide();
+              var success_content = '' +
+                '<dl class="horizontal">' +
+                '  <dt>订单号：</dt>' +
+                '  <dd>XMD' + today.getFullYear() + '' + (today.getMonth() + 1) + '' + today.getDate() + '' + data['order'].id + '</dd>' +
+                '  <dt>联系QQ：</dt>' +
+                '  <dd>1234567</dd>' +
+                '</dl>';
+              $('.order-group').append(success_content);
+            }
+          }
+        });
+        $(this).off('submit');
+        return false;
+      });
+    }
   </script>
 {% endblock extrajs %}
