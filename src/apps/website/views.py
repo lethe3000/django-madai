@@ -12,18 +12,10 @@ logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(__file__))
 
 
 def index(request):
-    hotels = Hotel.active_objects.order_by('-updated').all()[0: 3]
-    flights = Flight.active_objects.order_by('-updated').all()[0: 3]
+    hotels = Hotel.active_objects.order_by('-updated').all()[0: 9]
+    flights = Flight.active_objects.order_by('-updated').all()[0: 9]
     # packages = Package.active_objects.order_by('-updated').all()[0: 3]
     return TemplateResponse(request, 'website/index.html', locals())
-
-
-def signup(request):
-    return TemplateResponse(request, 'website/signup.html', locals())
-
-
-def signin(request):
-    return TemplateResponse(request, 'website/signin.html', locals())
 
 
 def legal(request):

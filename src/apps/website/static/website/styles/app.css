@@ -17,6 +17,7 @@ article .product {
   height: 350px;
   width: 320px;
   margin: 0 10px;
+  display: block;
 }
 
 .fotorama__nav-wrap {
@@ -113,7 +114,7 @@ header > .date-pick {
 header a.search-btn {
   position: absolute;
   top: 20px;
-  left: 85%;
+  left: 80%;
   font-size: 2.0rem;
   display: block;
   color: #FFF !important;
@@ -159,8 +160,8 @@ header > .date-pick .span4 {
     width: 200px !important;
 }
 
-header > .date-pick input.location,
-header > .date-pick select.location {
+header > .date-pick input.padding,
+header > .date-pick select.padding {
     padding-left: 30px !important;
 }
 
@@ -187,7 +188,7 @@ header > .account p {
 .signup-form {
     height: 420px;
     width: 395px;
-    padding: 50px;
+    padding: 20px 50px 50px;
     position: relative;
 }
 
@@ -284,4 +285,61 @@ header > .account p {
 
 .signup-form .invalid {
     color: #e51400;
+}
+
+/*
+This is the visible area of you carousel.
+Set a width here to define how much items are visible.
+The width can be either fixed in px or flexible in %.
+Position must be relative!
+*/
+.jcarousel {
+    width: 1020px;
+    position: relative;
+    overflow: hidden;
+}
+
+/*
+This is the container of the carousel items.
+You must ensure that the position is relative or absolute and
+that the width is big enough to contain all items.
+*/
+.jcarousel ul {
+    width: 20000em;
+    position: relative;
+
+    /* Optional, required in this case since it's a <ul> element */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+These are the item elements. jCarousel works best, if the items
+have a fixed width and height (but it's not required).
+*/
+.jcarousel li {
+    /* Required only for block elements like <li>'s */
+    width: 340px;
+    float: left;
+}
+
+.jcarousel-control-prev {
+    position: relative;
+    top: -190px;
+    left: -41px;
+    z-index: 1;
+    cursor: pointer;
+    font-size: 4.8rem !important;
+    color: #df633a !important;
+}
+
+.jcarousel-control-next {
+    position: relative;
+    top: -190px;
+    left: 968px;
+    z-index: 1;
+    cursor: pointer;
+    font-size: 4.8rem !important;
+    color: #df633a !important;
 }

@@ -12,6 +12,7 @@
 <script src="{% static 'website/scripts/libs/fotorama.js' %}"></script>
 <script src="{% static 'website/scripts/libs/metro-calendar.js' %}"></script>
 <script src="{% static 'website/scripts/libs/metro-datepicker.js' %}"></script>
+<script src="{% static 'website/scripts/libs/jquery.jcarousel.min.js' %}"></script>
 {% endblock extraincjs %}
 
 {% block main_content %}
@@ -47,18 +48,15 @@
     <div class="margin-0-center">
       <div class="grid fluid">
         <div class="row">
-          <div class="span2 offset2">
+          <div class="span2 offset3">
             <div class="input-control select">
-              <select id="start_address" class="fg-gray location">
+              <select id="start_address" class="fg-gray padding">
+                <option value="">目的地</option>
                 <option value="成都">成都</option>
                 <option value="重庆">重庆</option>
               </select>
               <i class="icon-location fg-grayLight"></i>
             </div>
-{#            <div class="input-control text">#}
-{#              <input type="text" id="start_address" name="start_address" class="fg-gray location" placeholder="出发城市" />#}
-{#              <i class="icon-location fg-grayLight"></i>#}
-{#            </div>#}
           </div>
           <div class="span2">
             <div class="input-control text"
@@ -71,14 +69,13 @@
             </div>
           </div>
           <div class="span2">
-            <div class="input-control text">
-              <input type="text" id="price_min" name="price_min" class="fg-gray location" placeholder="最低金额" />
-              <i class="icon-dollar fg-grayLight"></i>
-            </div>
-          </div>
-          <div class="span2">
-            <div class="input-control text">
-              <input type="text" id="price_max" name="price_max" class="fg-gray location" placeholder="最高金额" />
+            <div class="input-control select" style="width: 210px;">
+              <select id="price" class="fg-gray padding">
+                <option value="">价格范围</option>
+                <option value="10000-20000">&yen;10000 - &yen;20000</option>
+                <option value="20000-30000">&yen;20000 - &yen;30000</option>
+                <option value="30000-40000">&yen;30000 - &yen;40000</option>
+              </select>
               <i class="icon-dollar fg-grayLight"></i>
             </div>
             <a id="search-btn" class="button large search-btn" href="#">搜索</a>
@@ -101,16 +98,25 @@
     <h2 class="fg-white category-title">酒店</h2>
     <a class="category-showmore place-right" href="{% url 'website:hotel:hotel_list' %}">+ 更多</a>
     <div class="product-group">
-      {% for hotel in hotels %}
-        <a class="product place-left" href="{% url 'website:hotel:hotel_detail' hotel.id %}">
-          <img src="{{ hotel.image_url }}" />
-          <div class="product-title">
-            <h4>{{ hotel.name }}</h4>
-            <p>&nbsp;</p>
-            <div class="customer-icon hotel-flat"></div>
-          </div>
-        </a>
-      {% endfor %}
+      <div class="jcarousel">
+        <ul>
+          {% for hotel in hotels %}
+            <li>
+              <a class="product" href="{% url 'website:hotel:hotel_detail' hotel.id %}">
+                <img src="{{ hotel.image_url }}" />
+                <div class="product-title">
+                  <h4>{{ hotel.name }}</h4>
+                  <p>&nbsp;</p>
+                  <div class="customer-icon hotel-flat"></div>
+                </div>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <!-- Prev/next controls -->
+      <i class="jcarousel-control-prev icon-arrow-left-5"></i>
+      <i class="jcarousel-control-next icon-arrow-right-5"></i>
     </div>
   </article>
 </section>
@@ -119,16 +125,25 @@
     <h2 class="fg-white category-title">航班</h2>
     <a class="category-showmore place-right" href="{% url 'website:flight:flight_list' %}">+ 更多</a>
     <div class="product-group">
-      {% for flight in flights %}
-        <a class="product place-left" href="{% url 'website:flight:flight_detail' flight.id %}">
-          <img src="{{ flight.image_url }}" />
-          <div class="product-title">
-            <h4>{{ flight.name }}</h4>
-            <p>&nbsp;</p>
-            <div class="customer-icon flight-flat"></div>
-          </div>
-        </a>
-      {% endfor %}
+      <div class="jcarousel">
+        <ul>
+          {% for flight in flights %}
+            <li>
+              <a class="product" href="{% url 'website:flight:flight_detail' flight.id %}">
+                <img src="{{ flight.image_url }}" />
+                <div class="product-title">
+                  <h4>{{ flight.name }}</h4>
+                  <p>&nbsp;</p>
+                  <div class="customer-icon flight-flat"></div>
+                </div>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <!-- Prev/next controls -->
+      <i class="jcarousel-control-prev icon-arrow-left-5"></i>
+      <i class="jcarousel-control-next icon-arrow-right-5"></i>
     </div>
   </article>
 </section>
@@ -186,6 +201,9 @@
             '        <input id="id_name" name="name" type="text" placeholder="用户名">' +
             '      </div>' +
             '      <div class="input-control text" data-role="input-control">' +
+            '        <input id="id_phone" name="phone" type="text" placeholder="手机号">' +
+            '      </div>' +
+            '      <div class="input-control text" data-role="input-control">' +
             '        <input id="id_password1" name="password1" type="password" placeholder="密码">' +
             '      </div>' +
             '      <div class="input-control text" data-role="input-control">' +
@@ -227,7 +245,6 @@
             '      <div class="input-control text" data-role="input-control">' +
             '        <input id="id_password" name="password" type="password" placeholder="密码">' +
             '      </div>' +
-            '      <label for="" class="forget-password"><a href="#" class="text-muted">忘记您的密码？</a></label>' +
             '      <button type="submit" onclick="signinSubmit()" class="ribbon place-right oblique bg-color-pink">' +
             '        <span class="fg-white">登陆</span>' +
             '      </button>' +
@@ -244,11 +261,17 @@
       });
 
       $('#search-btn').on('click', function() {
+        var start_address = $('#start_address').val();
+        var leave_date = $('#leave_date').val();
+        var price = $('#price').val();
+        if (!start_address || !price || !leave_date) {
+          return false;
+        }
         window.location.href = '{% url 'website:package:package_searching' %}?' +
-          'start_address=' + $('#start_address').val() +
-          '&leave_date=' + $('#leave_date').val() +
-          '&price_min=' + $('#price_min').val() +
-          '&price_max=' + $('#price_max').val();
+          'start_address=' + start_address +
+          '&leave_date=' + leave_date +
+          '&price_min=' + price.split('-')[0] +
+          '&price_max=' + price.split('-')[1];
         return false;
       });
 
@@ -289,5 +312,48 @@
         return false;
       });
     }
+
+    (function($) {
+      $(function() {
+        /*
+        Carousel initialization
+        */
+        $('.jcarousel')
+            .jcarousel({
+                // Options go here
+            });
+
+        /*
+         Prev control initialization
+         */
+        $('.jcarousel-control-prev')
+            .on('jcarouselcontrol:active', function() {
+                $(this).removeClass('inactive');
+            })
+            .on('jcarouselcontrol:inactive', function() {
+                $(this).addClass('inactive');
+            })
+            .jcarouselControl({
+                // Options go here
+                target: '-=1'
+            });
+
+        /*
+         Next control initialization
+         */
+        $('.jcarousel-control-next')
+            .on('jcarouselcontrol:active', function() {
+                $(this).removeClass('inactive');
+            })
+            .on('jcarouselcontrol:inactive', function() {
+                $(this).addClass('inactive');
+            })
+            .jcarouselControl({
+                // Options go here
+                target: '+=1'
+            });
+      });
+    })(jQuery);
+
   </script>
 {% endblock extrajs %}
