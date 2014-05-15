@@ -1,0 +1,20 @@
+{% extends 'website/website.base.inc.html' %}
+{% load static %}
+{% block title %} 小麻袋 {% endblock title %}
+
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'package/styles/app.css' %}" media="screen"/>
+{% endblock extracss %}
+
+{% block main_content %}
+{% include 'website/header.inc.html' %}
+<section class="bg-color-dark bg-image-white-light">
+    <div class="bottom-shade-large"></div>
+    <article class="search-info">
+        <div class="middle">
+            <h3 class="text-center color-blue">没有合适的行程</h3>
+        </div>
+    </article>
+</section>
+{% endblock main_content %}

@@ -156,13 +156,11 @@ class HotelUpdateView(AjaxSimpleUpdateView):
             return msg
         obj.save()
 
-    def lock(self, hotel):
-        hotel.is_active = False
-        hotel.save()
+    def cancel(self, hotel):
+        hotel.is_published = False
 
-    def unlock(self, hotel):
-        hotel.is_active = True
-        hotel.save()
+    def publish(self, hotel):
+        hotel.is_published = True
 
 
 class HotelDashboardView(ListView):

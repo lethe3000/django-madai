@@ -77,6 +77,9 @@ class FlightManager(models.Manager):
             res[article.info_type.id]['articles'].append({"id": article.id, "title": article.title})
         return res
 
+    def get_query_set(self):
+        return super(FlightManager, self).get_query_set().filter(is_active=True).order_by('display_order')
+
 
 class FlightImage(ContentToImage):
     pass
@@ -142,6 +145,9 @@ class Flight(TimeBaseModel):
 
     is_active = models.BooleanField(default=True,
                                     verbose_name=u'激活状态')
+
+    is_published = models.BooleanField(default=False,
+                                       verbose_name=u'发布状态')
 
     objects = FlightManager()
     active_objects = ActiveDataManager()

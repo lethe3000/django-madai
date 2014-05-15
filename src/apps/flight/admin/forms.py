@@ -226,23 +226,23 @@ class FlightDatatablesBuilder(DatatablesBuilder):
                                             is_searchable=True,
                                             col_width="4%")
 
-    is_active = DatatablesBooleanColumn((('', u'全部'), (1, u'激活'), (0, u'锁定')),
-                                        label='状态',
-                                        is_searchable=True,
-                                        col_width='5%',
-                                        render=(lambda request, model, field_name:
-                                                u'<span class="label label-info"> 启用 </span>' if model.is_active else
-                                                u'<span class="label label-warning"> 禁用 </span>'))
+    is_published = DatatablesBooleanColumn((('', u'全部'), (1, u'激活'), (0, u'锁定')),
+                                           label='状态',
+                                           is_searchable=True,
+                                           col_width='5%',
+                                           render=(lambda request, model, field_name:
+                                                   u'<span class="label label-info"> 发布 </span>' if model.is_published else
+                                                   u'<span class="label label-warning"> 草稿 </span>'))
 
     def actions_render(request, model, field_name):
         action_url_builder = lambda model, action: reverse('admin:flight:flight_update', kwargs={'pk': model.id, 'action_method': action})
 
-        if model.is_active:
-            actions = [{'is_link': False, 'name': 'lock', 'text': u'锁定',
-                        'icon': 'icon-lock', "url": action_url_builder(model, "lock")}]
+        if model.is_published:
+            actions = [{'is_link': False, 'name': 'cancel', 'text': u'撤销',
+                        'icon': 'icon-unlock', "url": action_url_builder(model, "cancel")}]
         else:
-            actions = [{'is_link': False, 'name': 'unlock', 'text': u'解锁',
-                        'icon': 'icon-unlock', "url": action_url_builder(model, "unlock")}]
+            actions = [{'is_link': False, 'name': 'publish', 'text': u'发布',
+                        'icon': 'icon-lock', "url": action_url_builder(model, "publish")}]
         actions.append({'is_link': True, 'name': 'edit', 'text': u'编辑',
                         'icon': 'icon-edit', 'url_name': 'admin:flight:flight_edit'})
         return DatatablesColumnActionsRender(actions).render(request, model, field_name)

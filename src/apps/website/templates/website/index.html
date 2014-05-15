@@ -51,7 +51,7 @@
           <div class="span2 offset3">
             <div class="input-control select">
               <select id="start_address" class="fg-gray padding">
-                <option value="">目的地</option>
+                <option value="">出发地</option>
                 <option value="成都">成都</option>
                 <option value="重庆">重庆</option>
               </select>
@@ -72,9 +72,10 @@
             <div class="input-control select" style="width: 210px;">
               <select id="price" class="fg-gray padding">
                 <option value="">价格范围</option>
-                <option value="10000-20000">&yen;10000 - &yen;20000</option>
-                <option value="20000-30000">&yen;20000 - &yen;30000</option>
-                <option value="30000-40000">&yen;30000 - &yen;40000</option>
+                <option value="20000-25000">&yen;20000 - &yen;25000</option>
+                <option value="25000-30000">&yen;25000 - &yen;30000</option>
+                <option value="35000-40000">&yen;35000 - &yen;40000</option>
+                <option value="40000+">&yen;40000+</option>
               </select>
               <i class="icon-dollar fg-grayLight"></i>
             </div>
@@ -263,15 +264,15 @@
       $('#search-btn').on('click', function() {
         var start_address = $('#start_address').val();
         var start_date = $('#start_date').val();
-        var price = $('#price').val();
+        var priceRange = encodeURIComponent($('#price').val());
+        alert(priceRange);
         if (!start_address || !price || !start_date) {
           return false;
         }
         window.location.href = '{% url 'website:package:package_searching' %}?' +
           'start_address=' + start_address +
           '&start_date=' + start_date +
-          '&price_min=' + price.split('-')[0] +
-          '&price_max=' + price.split('-')[1];
+          '&price_range=' + priceRange;
         return false;
       });
 
