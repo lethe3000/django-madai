@@ -155,13 +155,11 @@ class FlightUpdateView(AjaxSimpleUpdateView):
             return msg
         obj.save()
 
-    def lock(self, flight):
-        flight.is_active = False
-        flight.save()
+    def publish(self, flight):
+        flight.is_published = True
 
-    def unlock(self, flight):
-        flight.is_active = True
-        flight.save()
+    def cancel(self, flight):
+        flight.is_published = False
 
 
 class FlightDashboardView(ListView):

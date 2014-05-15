@@ -301,6 +301,9 @@ class Hotel(TimeBaseModel):
     is_active = models.BooleanField(default=True,
                                     verbose_name=u'激活状态')
 
+    is_published = models.BooleanField(default=False,
+                                    verbose_name=u'发布状态')
+
     is_pinned = models.BooleanField(default=False,
                                     blank=True,
                                     verbose_name=u'Banner显示')

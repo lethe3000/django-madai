@@ -26,8 +26,18 @@ class Package(BaseModel):
                             default="",
                             blank=True)
 
-    price = models.IntegerField(verbose_name=u'套餐价格',
-                                default=0)
+    PRICE_CHOICES = (
+        ('20000-25000', '20000-25000'),
+        ('25000-30000', '25000-30000'),
+        ('30000-35000', '30000-35000'),
+        ('35000-40000', '35000-40000'),
+        ('40000+', '40000+'),
+    )
+
+    price = models.CharField(max_length=32, choices=PRICE_CHOICES,
+                             default='20000-25000',
+                             blank=True,
+                             verbose_name=u'套餐价格')
 
     is_published = models.BooleanField(default=False,
                                        verbose_name=u'是否已发布')
@@ -48,8 +58,13 @@ class Package(BaseModel):
                                     auto_now_add=False,
                                     blank=True)
 
+    CITY_CHOICES = (
+        (u'成都', u'成都'),
+        (u'重庆', u'重庆'),
+    )
     start_city = models.CharField(max_length=32,
-                                  verbose_name=u'出发城市')
+                                  verbose_name=u'出发城市',
+                                  choices=CITY_CHOICES, default=u'成都')
 
     active_objects = ActiveDataManager()
 
