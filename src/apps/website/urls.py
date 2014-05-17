@@ -25,3 +25,7 @@ urlpatterns += patterns('',
 urlpatterns += patterns('',
     url(r'^order/', include('apps.order.website.urls', namespace='order')),
 )
+
+urlpatterns += patterns('',
+    url(r'^present/', include('apps.present.website.urls', namespace='present')),
+)

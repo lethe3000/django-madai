@@ -125,23 +125,47 @@
 </section>
 <section class="bg-2">
   <article>
-    <h2 class="fg-white category-title">航班</h2>
-    <a class="category-showmore place-right" href="{% url 'website:flight:flight_list' %}">+ 更多</a>
+    <h2 class="fg-white category-title">小麻袋礼</h2>
+    <a class="category-showmore place-right" href="{% url 'website:present:present_list' %}">+ 更多</a>
     <div class="product-group">
       <div class="jcarousel">
         <ul>
-          {% for flight in flights %}
-            <li>
-              <a class="product" href="{% url 'website:flight:flight_detail' flight.id %}">
-                <img src="{{ flight.image_url }}" />
-                <div class="product-title">
-                  <h4>{{ flight.name }}</h4>
-                  <p>&nbsp;</p>
-                  <div class="customer-icon flight-flat"></div>
-                </div>
-              </a>
-            </li>
-          {% endfor %}
+          <li>
+            <a class="product" href="#">
+              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
+              <div class="product-title">
+                <h4>礼品一</h4>
+                <p>&nbsp;</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="product" href="#">
+              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
+              <div class="product-title">
+                <h4>礼品二</h4>
+                <p>&nbsp;</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="product" href="#">
+              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
+              <div class="product-title">
+                <h4>礼品三</h4>
+                <p>&nbsp;</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="product" href="#">
+              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
+              <div class="product-title">
+                <h4>礼品四</h4>
+                <p>&nbsp;</p>
+              </div>
+            </a>
+          </li>
         </ul>
       </div>
       <!-- Prev/next controls -->
@@ -150,35 +174,57 @@
     </div>
   </article>
 </section>
-{#<section class="bg-3">#}
-{#  <article>#}
-{#    <h2 class="fg-white category-title">套餐</h2>#}
-{#    <a class="category-showmore place-right" href="#">+ 更多</a>#}
-{#    <div class="product-group">#}
-{#      <a class="product place-left" href="#">#}
-{#        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />#}
-{#        <div class="product-title">#}
-{#          <h4>普吉岛贝尔泳池别墅度假酒店</h4>#}
-{#          <p>泰国，普吉岛</p>#}
-{#        </div>#}
-{#      </a>#}
-{#      <a class="product place-left" href="#">#}
-{#        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />#}
-{#        <div class="product-title">#}
-{#          <h4>普吉岛贝尔泳池别墅度假酒店</h4>#}
-{#          <p>泰国，普吉岛</p>#}
-{#        </div>#}
-{#      </a>#}
-{#      <a class="product place-left" href="#">#}
-{#        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />#}
-{#        <div class="product-title">#}
-{#          <h4>普吉岛贝尔泳池别墅度假酒店</h4>#}
-{#          <p>泰国，普吉岛</p>#}
-{#        </div>#}
-{#      </a>#}
-{#    </div>#}
-{#  </article>#}
-{#</section>#}
+<section class="bg-3">
+  <article>
+    <h2 class="fg-white category-title">互动</h2>
+    <a class="category-showmore place-right" href="#">+ 更多</a>
+    <div class="product-group">
+      <div class="jcarousel">
+        <ul>
+          <li>
+            <a class="product" href="#">
+              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
+              <div class="product-title">
+                <h4>微博</h4>
+                <p>&nbsp;</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="product" href="#">
+              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
+              <div class="product-title">
+                <h4>游记一</h4>
+                <p>&nbsp;</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="product" href="#">
+              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
+              <div class="product-title">
+                <h4>游记二</h4>
+                <p>&nbsp;</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="product" href="#">
+              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
+              <div class="product-title">
+                <h4>游记三</h4>
+                <p>&nbsp;</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- Prev/next controls -->
+      <i class="jcarousel-control-prev icon-arrow-left-5"></i>
+      <i class="jcarousel-control-next icon-arrow-right-5"></i>
+    </div>
+  </article>
+</section>
 {% endblock main_content %}
 
 {% block extrajs %}

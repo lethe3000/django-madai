@@ -132,12 +132,12 @@
 <section class="bg-image-clouds">
   <article>
     <div class="tab-control">
-        <ul class="tabs bg-gr-pink">
+        <ul class="tabs bg-gr-orange">
         {% for info in info_type_list %}
             {% if forloop.first %}
-              <li class="active"><a href="#_page_{{ forloop.counter }}" class="bg-gr-pink">{{ info.name }}</a></li>
+              <li class="active"><a href="#_page_{{ forloop.counter }}" class="bg-gr-orange">{{ info.name }}</a></li>
             {% else%}
-              <li><a href="#_page_{{ forloop.counter }}" class="bg-gr-pink">{{ info.name }}</a></li>
+              <li><a href="#_page_{{ forloop.counter }}" class="bg-gr-orange">{{ info.name }}</a></li>
             {% endif %}
         {% endfor %}
         </ul>
