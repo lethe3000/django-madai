@@ -20,10 +20,7 @@ class PresentForm(forms.ModelForm):
 
     class Meta:
         model = Present
-        fields = ('name', 'desc', 'price', 'image_file')
-
-        widgets = {
-        }
+        fields = ('name', 'desc', 'price', 'image_file', 'is_pinned')
 
     def save(self, commit=False):
         present = super(PresentForm, self).save(commit)
@@ -46,6 +43,14 @@ class PresentDatatablesBuilder(DatatablesBuilder):
 
     desc = DatatablesTextColumn(label=u'描述',
                                 is_searchable=True)
+
+    is_pinned = DatatablesBooleanColumn((('', u'全部'), (1, u'首页显示'), (0, u'非首页显示')),
+                                        label='状态',
+                                        is_searchable=True,
+                                        col_width='5%',
+                                        render=(lambda request, model, field_name:
+                                                u'<span class="label label-info"> 首页显示 </span>' if model.is_pinned else
+                                                u'<span class="label label-warning"> 不在首页显示 </span>'))
 
     is_published = DatatablesBooleanColumn((('', u'全部'), (1, u'激活'), (0, u'锁定')),
                                            label='状态',

@@ -14,69 +14,18 @@
   <article>
     <h2 class="fg-white category-title">小麻袋礼</h2>
     <div class="product-group">
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>精美礼品</h4>
-          
-        </div>
-      </a>
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>精美礼品</h4>
-          
-        </div>
-      </a>
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>精美礼品</h4>
-          
-        </div>
-      </a>
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>精美礼品</h4>
-          
-        </div>
-      </a>
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>精美礼品</h4>
-          
-        </div>
-      </a>
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>精美礼品</h4>
-          
-        </div>
-      </a>
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>精美礼品</h4>
-          
-        </div>
-      </a>
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>精美礼品</h4>
-          
-        </div>
-      </a>
-      <a class="product place-left" href="#">
-        <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-        <div class="product-title">
-          <h4>精美礼品</h4>
-          
-        </div>
-      </a>
+      {% for category in present_category %}
+        {% for present in category.presents.all %}
+            <a class="product place-left" href="#">
+                <img src="{{ present.image_url }}" />
+                <div class="product-title">
+                    <h4>{{ present.name }}</h4>
+                    <h4>{{ present.desc }}</h4>
+                    <h4>{{ present.price }}</h4>
+                </div>
+            </a>
+        {% endfor %}
+      {% endfor %}
     </div>
   </article>
 </section>

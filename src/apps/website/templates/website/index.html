@@ -130,42 +130,17 @@
     <div class="product-group">
       <div class="jcarousel">
         <ul>
-          <li>
-            <a class="product" href="#">
-              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-              <div class="product-title">
-                <h4>礼品一</h4>
-                <p>&nbsp;</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a class="product" href="#">
-              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-              <div class="product-title">
-                <h4>礼品二</h4>
-                <p>&nbsp;</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a class="product" href="#">
-              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-              <div class="product-title">
-                <h4>礼品三</h4>
-                <p>&nbsp;</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a class="product" href="#">
-              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-              <div class="product-title">
-                <h4>礼品四</h4>
-                <p>&nbsp;</p>
-              </div>
-            </a>
-          </li>
+          {% for present in presents %}
+            <li>
+              <a class="product" href="#">
+                <img src="{{ present.image_url }}" />
+                <div class="product-title">
+                  <h4>{{ present.name }}</h4>
+                  <p>&nbsp;</p>
+                </div>
+              </a>
+            </li>
+          {% endfor %}
         </ul>
       </div>
       <!-- Prev/next controls -->

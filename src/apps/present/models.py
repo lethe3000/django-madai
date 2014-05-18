@@ -28,6 +28,13 @@ class Present(BaseModel):
     is_published = models.BooleanField(default=False,
                                        verbose_name=u'是否已发布')
 
+    is_pinned = models.BooleanField(default=False,
+                                    verbose_name=u'是否首页显示')
+
+    display_order = models.IntegerField(verbose_name=u'显示顺序',
+                                        default=0,
+                                        blank=True)
+
     active_objects = ActiveDataManager()
 
     def __unicode__(self):
@@ -36,6 +43,7 @@ class Present(BaseModel):
     class Meta:
         verbose_name = u"礼品"
         get_latest_by = "updated"
+        ordering = ('display_order',)
 
     STATUS_OK = 0
     STATUS_DELETE = -1
