@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.conf import settings
+from django.utils.safestring import SafeString
 from utils import pretty_price
 from apps.common.models import BaseModel, ActiveDataManager
+from apps.foundation.models import unique_image_name
 
 
 class Present(BaseModel):
@@ -10,10 +13,10 @@ class Present(BaseModel):
                             verbose_name=u'礼品名',
                             unique=True)
 
-    summary = models.CharField(max_length=128,
-                               verbose_name=u'简介',
-                               default="",
-                               blank=True)
+    image_file = models.ImageField(upload_to=unique_image_name,
+                                   blank=True,
+                                   default="",
+                                   verbose_name=u'图片')
 
     desc = models.TextField(verbose_name=u'描述',
                             default="",
@@ -42,6 +45,15 @@ class Present(BaseModel):
 
     def get_pretty_price(self):
         return pretty_price(self.price)
+
+    def image_url(self):
+        return settings.STATIC_DEFAULT_TITLE_IMAGE_URL if not self.image_file else self.image_file.url
+
+    def images_html(self):
+        html = ""
+        for image in self.images.all().order_by('display_order'):
+            html += '<img src="%s"></img>' % image.image_url()
+        return SafeString(html)
 
 
 class PresentCategory(BaseModel):

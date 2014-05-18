@@ -17,11 +17,10 @@ class PresentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(PresentForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['class'] = "required col-md-10 limited"
-        self.fields['summary'].widget.attrs['class'] = "col-md-10 limited"
 
     class Meta:
         model = Present
-        fields = ('name', 'summary', 'desc', 'price')
+        fields = ('name', 'desc', 'price', 'image_file')
 
         widgets = {
         }
@@ -41,12 +40,12 @@ class PresentDatatablesBuilder(DatatablesBuilder):
     name = DatatablesTextColumn(label=u'名称',
                                 is_searchable=True)
 
+    image_file = DatatablesImageColumn(label=u'图片')
+
     price = DatatablesTextColumn(label=u'价值')
 
     desc = DatatablesTextColumn(label=u'描述',
                                 is_searchable=True)
-
-    summary = DatatablesTextColumn(label=u'简介',)
 
     is_published = DatatablesBooleanColumn((('', u'全部'), (1, u'激活'), (0, u'锁定')),
                                            label='状态',
