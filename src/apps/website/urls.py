@@ -29,3 +29,7 @@ urlpatterns += patterns('',
 urlpatterns += patterns('',
     url(r'^present/', include('apps.present.website.urls', namespace='present')),
 )
+
+urlpatterns += patterns('',
+    url(r'^share/', include('apps.share.website.urls', namespace='share')),
+)

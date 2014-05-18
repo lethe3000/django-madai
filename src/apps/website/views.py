@@ -3,11 +3,8 @@
 import logging
 import os
 from django.template.response import TemplateResponse
-from apps.flight.models import Flight
 from apps.hotel.models import Hotel
 from apps.present.models import Present
-from apps.package.models import Package
-from apps.tour.models import Article, Scenery, GuideType
 
 logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(__file__)))
 
@@ -15,8 +12,6 @@ logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(__file__))
 def index(request):
     hotels = Hotel.active_objects.order_by('display_order').filter(is_pinned=True)[0: 9]
     banners = Hotel.active_objects.order_by('display_order').filter(is_banner=True)[0: 3]
-    # flights = Flight.active_objects.order_by('display_order').filter(is_pinned=True)[0: 9]
-    # packages = Package.active_objects.order_by('-updated').all()[0: 3]
     presents = Present.active_objects.order_by('display_order').filter(is_pinned=True)[0:9]
     return TemplateResponse(request, 'website/index.html', locals())
 
