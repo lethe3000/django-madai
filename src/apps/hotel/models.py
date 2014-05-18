@@ -303,6 +303,10 @@ class Hotel(TimeBaseModel):
 
     is_pinned = models.BooleanField(default=False,
                                     blank=True,
+                                    verbose_name=u'首页')
+
+    is_banner = models.BooleanField(default=False,
+                                    blank=True,
                                     verbose_name=u'Banner显示')
 
     objects = HotelManager()

@@ -23,9 +23,10 @@
        data-transition="dissolve"
        data-arrows="false"
        data-transitionduration="1000">
-    <img src="{% static 'website/img/ss_home_7_7_31.jpg' %}" data-fit="cover"/>
-    <img src="{% static 'website/img/ss_home_7_7_32.jpg' %}" data-fit="cover"/>
-    <img src="{% static 'website/img/ss_home_7_7_24.jpg' %}" data-fit="cover"/>
+    {% for banner in banners %}
+      <img src="{{ banner.image_url }}" data-fit="cover"/>
+    {% endfor %}
+    {# TODO 礼包大图 #}
     <img src="{% static 'website/img/ss_home_7_7_25.jpg' %}" data-fit="cover"/>
   </div>
   <div class="account">
