@@ -134,9 +134,6 @@ class BaseArticle(BaseModel):
         """
         return reverse("article_html", kwargs={'pk': self.id})
 
-    def __unicode__(self):
-        return self.title
-
     objects = ArticleManager()
 
     active_objects = ActiveDataManager()

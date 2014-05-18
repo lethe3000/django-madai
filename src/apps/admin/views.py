@@ -59,6 +59,10 @@ def build_menu(request):
         ('订单', reverse('admin:order:order_list'), None),
     ]
 
+    SUBMENU_SHARE = [
+        ('游记', reverse('admin:share:travelnote_list'), None),
+    ]
+
     MENU = (
         {'menu': '系统信息', 'url': reverse('admin:dashboard'), 'icon': 'icon-dashboard', 'submenu': []},
         {'menu': '账号', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_ACCOUNT},
@@ -70,6 +74,7 @@ def build_menu(request):
         {'menu': '套餐', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_PACKAGE},
         {'menu': '礼包管理', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_PRESENT},
         {'menu': '订单', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_ORDER},
+        {'menu': '游记', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_SHARE},
     )
     menus = []
     for item in MENU:

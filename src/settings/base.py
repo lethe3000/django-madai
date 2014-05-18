@@ -252,12 +252,12 @@ PROJECT_APPS = (
     'apps.foundation',
     'apps.customer',
     'apps.tour',
-    # 'apps.order',
     'apps.hotel',
     'apps.flight',
     'apps.package',
     'apps.present',
     'apps.order',
+    'apps.share',
     # 'apps.product'
     # 'apps.api',
     # customize from https://github.com/hovel/imagestore
