@@ -155,9 +155,11 @@ class ArticleDatatablesBuilder(DatatablesBuilder):
 
 
 class FlightForm(forms.ModelForm):
-    images_html = forms.CharField(label=u'航班图片集',
-                                  widget=forms.Textarea(),
-                                  required=False)
+    # images_html = forms.CharField(label=u'航班图片集',
+    #                               widget=forms.Textarea(),
+    #                               required=False)
+    content_html = forms.CharField(label=u'内容',
+                                   widget=forms.Textarea())
 
     def __init__(self, *args, **kwargs):
         super(FlightForm, self).__init__(*args, **kwargs)
@@ -187,17 +189,46 @@ class FlightForm(forms.ModelForm):
         #   's1s2<img src="/media/images/726d31924b094735b44c1af27ffe37ce.png" _src="/media/images/726d31924b094735b44c1af27ffe37ce.png">s3'
         return FlightForm.image_re.findall(content_plain_text)
 
+    # responsive header for mobile display.
+    # 1. don't allow scale the content view
+    # 2. scale the image according to device width.
+    RESPONSIVE_HEADER = """\
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0{0}"/>
+    <style>
+    img {{
+        display: block;
+        height: auto;
+        max-width: 100%;
+    }}
+    </style>
+</head>
+"""
+    HEADER_NO_SCALE_FACTOR = ', maximum-scale=1.0'
     def save(self, commit=False):
         flight = super(FlightForm, self).save(commit)
-        flight.save()
-        FlightForm.handle_images(flight, FlightImage, self.cleaned_data['images_html'],
-                                lambda: flight.images.clear())
+        #mock a html file to feed to article.content_file
+        if flight.content_file:
+            # update it if has content file
+            with open(flight.content_file.path, 'w') as f:
+                f.write(self.cleaned_data['content_html'].encode('utf-8'))
+        else:
+            buf = StringIO.StringIO(self.cleaned_data['content_html'].encode('utf-8'))
+            self.RESPONSIVE_HEADER = self.RESPONSIVE_HEADER.format(
+                ''
+            )
+            flight.content_file = SimpleUploadedFile("content.html", self.RESPONSIVE_HEADER + buf.read())
 
+        if not hasattr(flight, "creator"):
+            flight.creator = self.initial['request'].user
+        flight.save()
+        # return id to avoid caller to model.save() again
         return flight
 
     class Meta:
         model = Flight
-        fields = ('name', 'address', 'price', 'image_file', 'summary', 'advantages', 'display_order', 'images_html', 'phone_contact')
+        fields = ('name', 'address', 'price', 'image_file', 'summary', 'advantages', 'display_order', 'content_html', 'phone_contact')
 
         widgets = {
             # use FileInput widget to avoid show clearable link and text

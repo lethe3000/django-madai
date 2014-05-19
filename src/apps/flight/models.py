@@ -17,7 +17,7 @@ from apps.common.models import BaseModel, ActiveDataManager, TimeBaseModel
 from apps.foundation.models import unique_image_name
 from utils import random, pretty_price
 from apps.foundation.models import Image
-from apps.hotel.models import BaseArticle, ContentToImage
+from apps.hotel.models import BaseArticle, ContentToImage, unique_html_name
 
 logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(__file__)))
 
@@ -123,12 +123,16 @@ class Flight(TimeBaseModel):
                                default="",
                                blank=True)
 
+    # TODO remove
     images = generic.GenericRelation(FlightImage,
                                      blank=True,
                                      null=True,
                                      verbose_name=u'航班图片集',
                                      related_name='products',
                                      help_text=u'用户可以看到的航班展示图集，比如应用抓图、产品照片等')
+
+    content_file = models.FileField(upload_to=unique_html_name,
+                                    verbose_name=u'html文件')
 
     advantages = models.TextField(max_length=512,
                                   verbose_name=u'优势',
@@ -171,6 +175,17 @@ class Flight(TimeBaseModel):
 
     def get_pretty_price(self):
         return pretty_price(self.price)
+
+    def content_url(self):
+        return self.content_file.url
+
+    def content_html(self):
+        try:
+            with open(self.content_file.path) as f:
+                html = f.read()
+        except IOError:
+            html = u'无内容'
+        return html
 
     class Meta:
         verbose_name = u"航班"
