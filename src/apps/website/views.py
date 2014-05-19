@@ -10,9 +10,10 @@ logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(__file__))
 
 
 def index(request):
-    hotels = Hotel.active_objects.order_by('display_order').filter(is_pinned=True)[0: 9]
-    banners = Hotel.active_objects.order_by('display_order').filter(is_banner=True)[0: 3]
-    presents = Present.active_objects.order_by('display_order').filter(is_pinned=True)[0:9]
+    hotels = Hotel.active_objects.order_by('display_order').filter(is_pinned=True, is_published=True)[0: 9]
+    hotel_banners = Hotel.active_objects.order_by('display_order').filter(is_banner=True, is_published=True)[0: 3]
+    presents = Present.active_objects.order_by('display_order').filter(is_pinned=True, is_published=True)[0:9]
+    # present_banners = Present.active_objects.order_by('display_order').filter(is_banner=True, is_published=True)[0:3]
     return TemplateResponse(request, 'website/index.html', locals())
 
 

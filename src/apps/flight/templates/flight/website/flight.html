@@ -45,7 +45,7 @@
     <div class="grid fluid">
       <div class="row">
         <div class="span8">
-          <div class="flight-schedule"> </div>
+          <div class="flight-schedule bg-white"></div>
         </div>
         <div class="span4">
           <blockquote>
@@ -95,7 +95,7 @@
       loadArticle($(frame));
     });
 
-{#    $('.flight-schedule').load('');#}
+    $('.flight-schedule').load('{{ flight.content_url }}');
   });
 
   function loadArticle($frame) {

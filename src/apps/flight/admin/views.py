@@ -7,7 +7,7 @@ import os
 from apps.flight.models import FlightArticle, Flight, InfoType
 from apps.common.admin.views import AjaxSimpleUpdateView, ModelAwareMixin, AjaxDetailView, RequestAwareMixin,\
     NavigationHomeMixin, DatatablesBuilderMixin, AjaxListView, AjaxCreateView, AjaxUpdateView, AjaxDatatablesView, ModelActiveView, AdminRequiredMixin
-from .forms import ArticleForm, ArticleDatatablesBuilder, FlightDatatablesBuilder, FlightForm, InfoTypeForm, InfoTypeDatatablesBuilder
+from .forms import ArticleForm, FlightForm, ArticleDatatablesBuilder, FlightDatatablesBuilder, FlightForm, InfoTypeForm, InfoTypeDatatablesBuilder
 from utils.db.queryutil import get_object_or_none
 
 HERE = os.path.dirname(__file__)
@@ -129,7 +129,7 @@ class FlightCreateView(RequestAwareMixin, ModelAwareMixin, AjaxCreateView):
         return context_data
 
 
-class FlightEditView(ModelAwareMixin, AjaxUpdateView):
+class FlightEditView(ModelAwareMixin, RequestAwareMixin, AjaxUpdateView):
     model = Flight
     form_class = FlightForm
     template_name = 'flight/admin/flight.form.inc.html'
@@ -137,13 +137,15 @@ class FlightEditView(ModelAwareMixin, AjaxUpdateView):
     def get_initial(self):
         initial = super(FlightEditView, self).get_initial()
         if self.object:
-            initial["images_html"] = self.object.images_html()
+            # initial["images_html"] = self.object.images_html()
+            initial["content_html"] = self.object.content_html()
         return initial
 
     def get_context_data(self, **kwargs):
         context_data = super(FlightEditView, self).get_context_data(**kwargs)
         context_data['editor_max_image_side_length'] = 3000
         return context_data
+
 
 class FlightUpdateView(AjaxSimpleUpdateView):
     model = Flight

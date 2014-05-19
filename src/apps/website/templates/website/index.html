@@ -23,11 +23,15 @@
        data-transition="dissolve"
        data-arrows="false"
        data-transitionduration="1000">
-    {% for banner in banners %}
-      <img src="{{ banner.image_url }}" data-fit="cover"/>
-    {% endfor %}
+      {% for h_banner in hotel_banners %}
+      <div data-img="{{ h_banner.image_url }}" data-fit="cover">
+        <a href="{% url 'website:hotel:hotel_detail' h_banner.id %}" class="banner-link" ><span class="icon-arrow-down-right on-left-more"></span>{{ h_banner.name }}</a>
+      </div>
+      {% endfor %}
+      <div data-img="{% static 'website/img/ss_home_7_7_24.jpg' %}" data-fit="cover">
+        <a href="{% url 'website:present:present_list' %}" class="banner-link" ><span class="icon-arrow-down-right on-left-more"></span>更多礼包</a>
+      </div>
     {# TODO 礼包大图 #}
-    <img src="{% static 'website/img/ss_home_7_7_25.jpg' %}" data-fit="cover"/>
   </div>
   <div class="account">
     <div class="grid fluid">
@@ -52,8 +56,8 @@
       </div>
     </div>
   </div>
-  <div class="logo">
-    <h1 class="fg-white text-center">小麻袋</h1>
+  <div class="logo text-center">
+    <img src="{% static 'website/img/logo-temp.png' %}" alt=""/>
   </div>
   <div class="date-pick">
     <div class="margin-0-center">
@@ -162,7 +166,7 @@
 </section>
 <section class="bg-3">
   <article>
-    <h2 class="fg-white category-title">互动</h2>
+    <h2 class="fg-white category-title">种草专区</h2>
 {#    <a class="category-showmore place-right" href="#">+ 更多</a>#}
     <div class="product-group">
       <div class="jcarousel">
