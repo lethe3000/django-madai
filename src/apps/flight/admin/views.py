@@ -7,7 +7,7 @@ import os
 from apps.flight.models import FlightArticle, Flight, InfoType
 from apps.common.admin.views import AjaxSimpleUpdateView, ModelAwareMixin, AjaxDetailView, RequestAwareMixin,\
     NavigationHomeMixin, DatatablesBuilderMixin, AjaxListView, AjaxCreateView, AjaxUpdateView, AjaxDatatablesView, ModelActiveView, AdminRequiredMixin
-from .forms import FlightForm, ArticleDatatablesBuilder, FlightDatatablesBuilder, FlightForm, InfoTypeForm, InfoTypeDatatablesBuilder
+from .forms import ArticleForm, FlightForm, ArticleDatatablesBuilder, FlightDatatablesBuilder, FlightForm, InfoTypeForm, InfoTypeDatatablesBuilder
 from utils.db.queryutil import get_object_or_none
 
 HERE = os.path.dirname(__file__)
