@@ -343,3 +343,46 @@ have a fixed width and height (but it's not required).
     font-size: 4.8rem !important;
     color: #df633a !important;
 }
+
+.contact-hover {
+    cursor: pointer;
+}
+
+header > .account .balloon.bottom {
+    position: absolute;
+    top: 33px;
+    left: -106px;
+    border: none;
+    padding: 10px;
+    height: 80px;
+    width: 202px;
+    border-radius: 5px;
+}
+
+header > .account .balloon.bottom:after {
+    border-bottom: 6px solid #FFFFFF;
+    border-left: 6px solid rgba(0, 0, 0, 0);
+    border-right: 6px solid rgba(0, 0, 0, 0);
+    margin: -6px 0;
+    left: 109px;
+}
+
+header > .account .balloon.bottom:before {
+    border: none;
+}
+
+header > .account .balloon.bottom p {
+    font-size: 1.6rem;
+    margin-top: 18px;
+}
+
+header > .account .account-info {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+header > .account .contact-info {
+    position: relative;
+    display: inline-block;
+    font-size: 1.8rem;
+}
