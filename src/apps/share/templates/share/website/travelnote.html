@@ -4,10 +4,29 @@
 
 
 {% block extracss %}
-    <link rel="stylesheet" href="{% static 'present/styles/app.css' %}" media="screen"/>
+    <link rel="stylesheet" href="{% static 'share/styles/app.css' %}" media="screen"/>
 {% endblock extracss %}
 
 {% block main_content %}
-  {{ note.title }}
-  {{ note.content_file }}
+  {% include 'website/header.inc.html' %}
+  <section class="bg-color-dark bg-pattern-diag travel-header">
+    <div class="bottom-shade-large"></div>
+    <div class="bg-image-white-light">
+      <article>
+        <h2 class="fg-white title">{{ note.title }}</h2>
+      </article>
+    </div>
+  </section>
+  <section class="bg-image-clouds travel-body">
+    <article class="content bg-white">
+    </article>
+  </section>
 {% endblock main_content %}
+
+{% block extrajs %}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.travel-body .content').load('{{ note.content_url }}');
+    });
+  </script>
+{% endblock extrajs %}
