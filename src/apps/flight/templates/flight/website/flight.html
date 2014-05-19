@@ -45,21 +45,7 @@
     <div class="grid fluid">
       <div class="row">
         <div class="span8">
-          <div class="fotorama"
-               data-width="660"
-               data-height="370"
-               data-arrows="false"
-               data-transitionduration="1000"
-               data-nav="thumbs"
-               data-thumbwidth="94"
-               data-thumbheight="62"
-               data-thumbmargin="18"
-               data-thumbborderwidth="3"
-               >
-            {% for image in flight.images.all %}
-              <img src="{{ image.image_url }}" data-fit="cover"/>
-            {% endfor %}
-          </div>
+          <div class="flight-schedule"> </div>
         </div>
         <div class="span4">
           <blockquote>
@@ -92,26 +78,6 @@
     </div>
   </article>
 </section>
-<section class="bg-image-clouds">
-  <article>
-    <div class="tab-control">
-        <ul class="tabs bg-gr-orange">
-        {% for info in info_type_list %}
-            {% if forloop.first %}
-              <li class="active"><a href="#_page_{{ forloop.counter }}" class="bg-gr-orange">{{ info.name }}</a></li>
-            {% else%}
-              <li><a href="#_page_{{ forloop.counter }}" class="bg-gr-orange">{{ info.name }}</a></li>
-            {% endif %}
-        {% endfor %}
-        </ul>
-      <div class="frames">
-        {% for article in articles %}
-          <div class="frame" id="_page_{{ forloop.counter }}" data-url="{{ article.content_url }}"></div>
-        {% endfor %}
-      </div>
-    </div>
-  </article>
-</section>
 {% endblock main_content %}
 
 {% block extrajs %}
@@ -128,6 +94,8 @@
     $('.tab-control').tabcontrol().bind("change", function(event, frame){
       loadArticle($(frame));
     });
+
+{#    $('.flight-schedule').load('');#}
   });
 
   function loadArticle($frame) {

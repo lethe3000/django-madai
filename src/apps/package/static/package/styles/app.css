@@ -73,12 +73,9 @@ article {
   margin-top: 0 !important;
 }
 
-.sorted-list > li .span4 {
-  width: 320px !important;
-}
-
 .sorted-list > li span.currency {
-  margin-top: 100px;
+  position: absolute;
+  top: 195px;
   display: block;
 }
 
@@ -186,3 +183,33 @@ button.button.confirm {
     font-size: 2.8rem;
 }
 
+.main-title {
+    display: block;
+    font-size: 3.0rem !important;
+    margin: 20px 0 !important;
+}
+
+.main-title:hover {
+    text-decoration: underline;
+}
+
+.sorted-list .notice {
+    height: 240px;
+    border-left: 2px solid #df633a;
+    padding-left: 30px !important;
+}
+
+.sorted-list .notice:before {
+    left: -7px;
+    border-left: 2px solid #df633a;
+    border-bottom: 2px solid #df633a;
+}
+
+.sorted-list .notice h2 {
+    margin: 0 0 10px 0;
+    color: #df633a;
+}
+
+.sorted-list .notice .icon-checkmark {
+    color: #df633a;
+}

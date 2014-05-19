@@ -26,16 +26,32 @@
           <div class="grid">
             <div class="row cursor-pointer">
               <div data-id="{{ hotel.id }}">
-                <div class="span4">
+                <div class="span4" style="width: 320px !important;">
                   <img src="{{ hotel.image_url }}"/>
                 </div>
-                <div class="span8">
-                  <h2 class="fg-grayDark">{{ hotel.name }}</h2>
-                  <p class="fg-grayLight">{{ hotel.summary }}</p>
-                  <span class="currency">
-                    <strong>&yen; {{ hotel.get_pretty_price }}</strong>
-                    <small>/晚</small>
-                  </span>
+                <div class="span8" style="width: 648px !important;">
+                  <div class="grid fluid">
+                    <div class="row">
+                      <div class="span8">
+                        <a class="main-title fg-grayDark" href="{% url 'website:hotel:hotel_detail' hotel.id %}" target="_blank">{{ hotel.name }}</a>
+                        <p class="fg-grayLight">{{ hotel.summary }}</p>
+                        <span class="currency">
+                          <strong>&yen; {{ hotel.get_pretty_price }}</strong>
+                          <small>/晚</small>
+                        </span>
+                      </div>
+                      <div class="span4">
+                        <div class="notice bg-white">
+                          <h2>推荐理由</h2>
+                          <div style="overflow: hidden; height: 165px;">
+                            {% for item in hotel.get_advantages %}
+                              <p class="fg-grayDark"><span class="icon-checkmark on-left-more"></span>{{ item }}</p>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -56,7 +72,7 @@
                   <img src="{{ flight.image_url }}"/>
                 </div>
                 <div class="span8">
-                  <h2 class="fg-grayDark">{{ flight.name }}</h2>
+                  <a class="main-title fg-grayDark" href="{% url 'website:flight:flight_detail' flight.id %}" target="_blank">{{ flight.name }}</a>
                   <p class="fg-grayLight">{{ flight.summary }}</p>
                   <span class="currency">
                     <strong>&yen; {{ flight.price }}</strong>

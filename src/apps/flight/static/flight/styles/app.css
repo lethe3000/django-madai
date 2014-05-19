@@ -276,3 +276,8 @@ blockquote > div {
 .list-group {
     padding: 40px 0;
 }
+
+.flight-schedule {
+    width: 660px;
+    height: 370px;
+}
