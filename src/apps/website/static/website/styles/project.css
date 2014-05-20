@@ -12,6 +12,10 @@
     margin: 0 auto !important;
 }
 
+nav > .foot-box {
+    border-top: 3px solid #df633a;
+}
+
 nav > .foot-box > a {
   width: 255px;
   display: table-cell;
