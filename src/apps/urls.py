@@ -10,7 +10,6 @@ urlpatterns = patterns('',
     url(r'^', include('apps.website.urls', namespace='website')),
     url(r'^admin/', include('apps.admin.urls', namespace='admin')),
     url(r'^django_admin/', include(django.contrib.admin.site.urls)),
-    url(r'^api/', include('apps.api.urls', namespace='api')),
 )
 
 urlpatterns += patterns('',
