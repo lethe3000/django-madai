@@ -49,22 +49,6 @@ DATABASES = {
 ########## END DATABASE CONFIGURATION
 
 
-########## CACHE CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
-
-CACHES = {
-    'default': {
-        'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': '%s:%s' % (REDIS_SERVER_IP, REDIS_SERVER_PORT),
-        'OPTIONS': {
-            'PARSER_CLASS': 'redis.connection.HiredisParser',
-        },
-    },
-}
-
-########## END CACHE CONFIGURATION
-
-
 ########## SECRET CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = r"8(*14_f25=d%a)r78*qblk7lf-x!(da#!=^yz=-e#0y=^k69ra"

@@ -40,20 +40,6 @@ DATABASES = {
 
 ########## END DATABASE CONFIGURATION
 
-
-########## CACHE CONFIGURATION
-CACHES = {
-    'default': {
-        'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': '%s:%s' % (REDIS_SERVER_IP, REDIS_SERVER_PORT),
-        'OPTIONS': {
-            'PARSER_CLASS': 'redis.connection.HiredisParser',
-        },
-    },
-}
-
-########## END CACHE CONFIGURATION
-
 TEMPLATE_LOADERS = (
     ('django.template.loaders.cached.Loader', (
         'django.template.loaders.filesystem.Loader',

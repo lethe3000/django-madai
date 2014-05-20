@@ -447,9 +447,9 @@ THIRDPARTY_GUIDE360_FILE = os.path.join(MEDIA_ROOT, MEDIA_THIRDPARTY_PREFIX, 'gu
 THIRDPARTY_WEBCAMERA_URL = os.path.join(MEDIA_URL, MEDIA_THIRDPARTY_PREFIX, 'webcamera.json')
 THIRDPARTY_GUIDE360_URL = os.path.join(MEDIA_URL, MEDIA_THIRDPARTY_PREFIX, 'guide360.json')
 
-############## redis settings ###############
-REDIS_SERVER_IP = "localhost"
-REDIS_SERVER_PORT = 6379
+# ############## redis settings ###############
+# REDIS_SERVER_IP = "localhost"
+# REDIS_SERVER_PORT = 6379
 
 # 聊天室消息的过期时间间隔
 CHATROOM_MESSAGE_TIMEOUT_SEC = 24 * 60 * 60  # 1 day
