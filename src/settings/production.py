@@ -64,6 +64,6 @@ TEMPLATE_LOADERS = (
 ########## SITE CONFIGURATION
 # Hosts/domain names that are valid for this site
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['stage.tourguide.app2b.cn', '42.62.56.115', '118.123.166.118', 'ey.schsh.com']
+ALLOWED_HOSTS = ['127.0.0.1', '14.18.203.114', 'xiaomadai.cn', 'www.xiaomadai.cn']
 ########## END SITE CONFIGURATION
 
