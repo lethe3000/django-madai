@@ -19,7 +19,6 @@ urlpatterns = patterns('',
     url(r'^order/', include('apps.order.admin.urls', namespace='order')),
     url(r'^thirdparty/', include('apps.thirdparty.urls', namespace='thirdparty')),
     url(r'^initdata/$', 'apps.admin.views.initdata'),
-    url(r'^chatroom/', include('apps.chatroom.admin.urls', namespace='chatroom')),
     url(r'^share/', include('apps.share.admin.urls', namespace='share')),
 )
 
