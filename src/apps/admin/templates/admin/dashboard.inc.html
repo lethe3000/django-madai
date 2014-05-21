@@ -9,12 +9,12 @@
 {% endblock topnav %}
 
 {% block pagenav %}
-  系统概况
+  小麻袋后台管理系统
 {% endblock pagenav %}
 
 {% block pagecontent %}
-  <h3>Env Settings: {{ env_settings }}</h3>
-  <h3>Using Settings: {{ active_settings }}</h3>
-  <h3>GIT: {{ git_tag }}</h3>
+  <h3>服务器配置版本: {{ env_settings }}</h3>
+  <h3>服务器当前配置版本: {{ active_settings }}</h3>
+  <h3>内部代码版本: {{ git_tag }}</h3>
 
 {% endblock %}
