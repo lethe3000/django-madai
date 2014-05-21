@@ -57,7 +57,7 @@
     </div>
   </div>
   <div class="logo text-center">
-    <img src="{% static 'website/img/logo-temp.png' %}" alt=""/>
+    <img src="{% static 'website/img/logo.png' %}" alt=""/>
   </div>
   <div class="date-pick">
     <div class="margin-0-center">
@@ -66,12 +66,25 @@
           <div class="span2 offset3">
             <div class="input-control select">
               <select id="start_address" class="fg-gray padding">
-                <option value="">出发地</option>
+                <option value="">出发城市</option>
                 <option value="成都">成都</option>
                 <option value="重庆">重庆</option>
               </select>
               <i class="icon-location fg-grayLight"></i>
             </div>
+          </div>
+          <div class="span2">
+            <div class="input-control select" style="width: 210px;">
+              <select id="price" class="fg-gray padding">
+                <option value="">预算范围(两人)</option>
+                <option value="20000-25000">&yen;20000 - &yen;25000</option>
+                <option value="25000-30000">&yen;25000 - &yen;30000</option>
+                <option value="35000-40000">&yen;35000 - &yen;40000</option>
+                <option value="40000+">&yen;40000+</option>
+              </select>
+                <i class="icon-dollar fg-grayLight"></i>
+              </div>
+            <a id="search-btn" class="button large search-btn" href="#">搜索</a>
           </div>
           <div class="span2">
             <div class="input-control text"
@@ -82,19 +95,6 @@
               <input type="text" id="start_date" name="start_date" class="fg-gray" placeholder="入住日期">
               <button class="btn-date fg-grayLight"></button>
             </div>
-          </div>
-          <div class="span2">
-            <div class="input-control select" style="width: 210px;">
-              <select id="price" class="fg-gray padding">
-                <option value="">价格范围</option>
-                <option value="20000-25000">&yen;20000 - &yen;25000</option>
-                <option value="25000-30000">&yen;25000 - &yen;30000</option>
-                <option value="35000-40000">&yen;35000 - &yen;40000</option>
-                <option value="40000+">&yen;40000+</option>
-              </select>
-              <i class="icon-dollar fg-grayLight"></i>
-            </div>
-            <a id="search-btn" class="button large search-btn" href="#">搜索</a>
           </div>
         </div>
       </div>
