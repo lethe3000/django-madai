@@ -43,7 +43,7 @@ class TravelNoteForm(forms.ModelForm):
     class Meta:
         model = TravelNote
         fields = (
-            'title', 'is_pinned', 'display_order', 'content_html', 'fake_user')
+            'title', 'fake_user', 'fake_head_image', 'is_pinned', 'display_order', 'content_html')
 
         widgets = {
             # use FileInput widget to avoid show clearable link and text
@@ -112,6 +112,8 @@ class TravelNoteDatatablesBuilder(DatatablesBuilder):
 
     fake_user = DatatablesTextColumn(label=u'fake作者',
                                      is_searchable=True)
+
+    fake_head_image = DatatablesImageColumn(label=u'fake作者头像')
 
     updated = DatatablesDateTimeColumn(label=u'修改时间')
 

@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from apps.common.models import BaseModel, ActiveDataManager, TimeBaseModel
 from apps.hotel.models import ArticleManager, unique_html_name
 from apps.common.caches import SimpleCacheManager
+from apps.foundation.models import unique_image_name
 
 
 class TravelNoteManager(models.Manager):
@@ -37,6 +39,11 @@ class TravelNote(BaseModel):
     fake_user = models.CharField(max_length=32,
                                  verbose_name=u'fake作者')
 
+    fake_head_image = models.ImageField(upload_to=unique_image_name,
+                                        blank=True,
+                                        default="",
+                                        verbose_name=u'fake作者头像')
+
     def status(self):
         return self.STATUS_OK if self.is_published and self.is_active else self.STATUS_DELETE
 
@@ -50,6 +57,9 @@ class TravelNote(BaseModel):
         except IOError:
             html = u'无内容'
         return html
+
+    def image_url(self):
+        return settings.STATIC_DEFAULT_TITLE_IMAGE_URL if not self.fake_head_image else self.fake_head_image.url
 
     objects = TravelNoteManager()
 
