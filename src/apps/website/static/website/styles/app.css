@@ -419,3 +419,7 @@ header > .account .contact-info {
 .banner-link:hover {
     color: #df633a !important;
 }
+
+.fg-orange {
+    color: #df633a !important;
+}
