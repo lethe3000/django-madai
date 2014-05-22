@@ -178,42 +178,19 @@
     <div class="product-group">
       <div class="jcarousel">
         <ul>
-{#          <li>#}
-{#            <a class="product" href="#">#}
-{#              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />#}
-{#              <div class="product-title">#}
-{#                <h4>微博</h4>#}
-{#                <p>&nbsp;</p>#}
-{#              </div>#}
-{#            </a>#}
-{#          </li>#}
-          <li>
-            <a class="product" href="#">
-              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-              <div class="product-title">
-                <h4>游记一</h4>
-                <p>&nbsp;</p>
+          {% for travel_note in travel_notes %}
+            <li>
+              <a class="travel-note" href="{% url 'website:share:travelnote_detail' travel_note.id %}">
+              <div class="cover">
+                <h1>{{ travel_note.title }}</h1>
+                <img class="cycle" src="{{ travel_note.image_url }}" />
+                <div class="summary"><p class="fg-grayLight">{{ travel_note.fake_user }}</p></div>
               </div>
-            </a>
-          </li>
-          <li>
-            <a class="product" href="#">
-              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-              <div class="product-title">
-                <h4>游记二</h4>
-                <p>&nbsp;</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a class="product" href="#">
-              <img src="{% static 'website/img/cms_11_989_bundle.jpg' %}" />
-              <div class="product-title">
-                <h4>游记三</h4>
-                <p>&nbsp;</p>
-              </div>
-            </a>
-          </li>
+{#              <div class="bg-white" style="position: absolute; z-index: 1; width: 320px; height: 300px; top: 0;"></div>#}
+              <div class="bg-white" style="position: absolute; z-index: 1; width: 120px; height: 5px; top: 345px;"></div>
+              </a>
+            </li>
+          {% endfor %}
         </ul>
       </div>
       <!-- Prev/next controls -->
