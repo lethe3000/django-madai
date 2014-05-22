@@ -47,6 +47,27 @@ header > .logo {
   z-index: 1;
 }
 
+header> .logo > .inline {
+    position: relative;
+    display: inline-block;
+    width: 500px;
+}
+
+header > .logo > .inline > div.header {
+    position: absolute;
+    display: inline-block;
+    font-size: 4.0rem !important;
+    top: 40%;
+}
+
+header > .logo > .inline .prefix {
+    left: 0;
+}
+
+header > .logo > .inline .suffix {
+    right: 0;
+}
+
 .bg-1 {
   background-color: #262f36;
 }
