@@ -6,6 +6,7 @@
 {% block extracss %}
 <link rel="stylesheet" href="{% static 'website/styles/app.css' %}" media="screen"/>
 <link rel="stylesheet" href="{% static 'website/styles/fotorama.css' %}" media="screen"/>
+<link rel="stylesheet" href="{% static 'libs/chosen_v1.1.0/chosen.min.css' %}" />
 {% endblock extracss %}
 
 {% block extraincjs %}
@@ -13,6 +14,7 @@
 <script src="{% static 'website/scripts/libs/metro-calendar.js' %}"></script>
 <script src="{% static 'website/scripts/libs/metro-datepicker.js' %}"></script>
 <script src="{% static 'website/scripts/libs/jquery.jcarousel.min.js' %}"></script>
+<script src="{% static 'libs/chosen_v1.1.0/chosen.jquery.min.js' %}"></script>
 {% endblock extraincjs %}
 
 {% block main_content %}
@@ -69,8 +71,8 @@
         <div class="row">
           <div class="span2 offset3">
             <div class="input-control select">
-              <select id="start_address" class="fg-gray padding">
-                <option value="">出发城市</option>
+              <select id="start_address" data-placeholder="出发城市" class="alt-select">
+                <option value=""></option>
                 <option value="成都">成都</option>
                 <option value="重庆">重庆</option>
               </select>
@@ -78,9 +80,9 @@
             </div>
           </div>
           <div class="span2">
-            <div class="input-control select" style="width: 210px;">
-              <select id="price" class="fg-gray padding">
-                <option value="">预算范围(两人)</option>
+            <div class="input-control select">
+              <select id="price"  data-placeholder="预算范围(两人)" class="alt-select">
+                <option value=""></option>
                 <option value="20000-25000">&yen;20000 - &yen;25000</option>
                 <option value="25000-30000">&yen;25000 - &yen;30000</option>
                 <option value="35000-40000">&yen;35000 - &yen;40000</option>
@@ -343,6 +345,13 @@
             $('header > .account .balloon.bottom').hide();
           }, 500);
         });
+
+      var chosenOptions = {
+        disable_search: true,
+        inherit_select_classes: true
+      }
+      $('#start_address').chosen(chosenOptions);
+      $('#price').chosen(chosenOptions);
     });
 
     function signinSubmit() {

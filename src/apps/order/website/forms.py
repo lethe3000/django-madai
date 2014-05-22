@@ -26,6 +26,16 @@ class OrderForm(forms.Form):
 
     start_date = forms.DateTimeField(label=u'期望出发时间')
 
+    def __init__(self, data, request):
+        super(OrderForm, self).__init__(data)
+        self.request = request
+
+    def clean_customer_name(self):
+        customer_name = self.cleaned_data['customer_name']
+        if self.request.user.is_staff:
+            raise forms.ValidationError(u'工作人员账号不能进行此操作')
+        return customer_name
+
     def save(self, request):
         package_id = request.POST['package_id']
         package = Package.objects.get(id=package_id)
