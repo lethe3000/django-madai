@@ -7,6 +7,27 @@ header > .logo {
   z-index: 1;
 }
 
+header> .logo > .inline {
+    position: relative;
+    display: inline-block;
+    width: 500px;
+}
+
+header > .logo > .inline > div.header {
+    position: absolute;
+    display: inline-block;
+    font-size: 5.0rem !important;
+    top: 40%;
+}
+
+header > .logo > .inline .prefix {
+    left: 0;
+}
+
+header > .logo > .inline .suffix {
+    right: 0;
+}
+
 article {
   padding: 90px 0 100px;
   margin: 0 auto;
@@ -169,7 +190,7 @@ header > .account {
   position: absolute;
   width: 100%;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 header > .account p,
@@ -178,7 +199,7 @@ header > .account a {
 }
 
 header > .account p {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 .bg-color-gray {
@@ -384,7 +405,7 @@ header > .account .account-info {
 header > .account .contact-info {
     position: relative;
     display: inline-block;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 .banner-link {

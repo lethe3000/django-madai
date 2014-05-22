@@ -36,7 +36,7 @@
   <div class="account">
     <div class="grid fluid">
       <div class="row">
-        <div class="span3 offset8">
+        <div class="span3 offset9">
           {% if user.is_authenticated %}
             <p class="account-info">欢迎 {{ user.name }} | <a href="{% url 'website:customer:logout' %}">登出</a></p>
             <div class="contact-info fg-white">
@@ -57,7 +57,11 @@
     </div>
   </div>
   <div class="logo text-center">
-    <img src="{% static 'website/img/logo.png' %}" alt=""/>
+    <div class="inline text-center">
+      <div class="header prefix fg-white">小麻袋</div>
+      <img src="{% static 'website/img/logo.png' %}" alt=""/>
+      <div class="header suffix fg-white">装满爱</div>
+    </div>
   </div>
   <div class="date-pick">
     <div class="margin-0-center">
@@ -82,9 +86,8 @@
                 <option value="35000-40000">&yen;35000 - &yen;40000</option>
                 <option value="40000+">&yen;40000+</option>
               </select>
-                <i class="icon-dollar fg-grayLight"></i>
-              </div>
-            <a id="search-btn" class="button large search-btn" href="#">搜索</a>
+              <i class="icon-dollar fg-grayLight"></i>
+            </div>
           </div>
           <div class="span2">
             <div class="input-control text"
@@ -95,6 +98,7 @@
               <input type="text" id="start_date" name="start_date" class="fg-gray" placeholder="入住日期">
               <button class="btn-date fg-grayLight"></button>
             </div>
+            <a id="search-btn" class="button large search-btn" href="#">搜索</a>
           </div>
         </div>
       </div>
