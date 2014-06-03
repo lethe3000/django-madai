@@ -218,18 +218,22 @@
             '<div class="signup-form place-left bg-white">' +
             '  <form id="signup_form" action="' + "{% url 'website:customer:signup' %}" + '" method="post" >' + "{% csrf_token %}" +
             '    <fieldset>' +
-            '      <label for="" class="title">小麻袋注册 <a href="#" class="place-right fg-color-pink">会员登录</a></label>' +
+            '      <label for="" class="title">小麻袋注册 <a href="#" onclick="closeAndOpenDialog(\'signin-btn\');" class="place-right fg-color-pink">会员登录</a></label>' +
             '      <div class="input-control text" data-role="input-control">' +
-            '        <input id="id_name" name="name" type="text" placeholder="用户名">' +
+            '        <p class="text-right" style="display: inline-block; width: 75px;">用户名：</p>' +
+            '        <input id="id_name" name="name" type="text" style="display: inline; width: 216px;">' +
             '      </div>' +
             '      <div class="input-control text" data-role="input-control">' +
-            '        <input id="id_phone" name="phone" type="text" placeholder="手机号">' +
+            '        <p class="text-right" style="display: inline-block; width: 75px;">手机号：</p>' +
+            '        <input id="id_phone" name="phone" type="text" style="display: inline; width: 216px">' +
             '      </div>' +
             '      <div class="input-control text" data-role="input-control">' +
-            '        <input id="id_password1" name="password1" type="password" placeholder="密码">' +
+            '        <p class="text-right" style="display: inline-block; width: 75px;">密码：</p>' +
+            '        <input id="id_password1" name="password1" type="password" style="display: inline; width: 216px">' +
             '      </div>' +
             '      <div class="input-control text" data-role="input-control">' +
-            '        <input id="id_password2" name="password2" type="password" placeholder="确认密码">' +
+            '        <p class="text-right" style="display: inline-block; width: 75px;">确认密码：</p>' +
+            '        <input id="id_password2" name="password2" type="password" style="display: inline; width: 216px">' +
             '      </div>' +
             '      <button type="submit" onclick="signupSubmit();" class="ribbon place-right oblique bg-color-pink">' +
             '        <span class="fg-white">注册</span>' +
@@ -260,12 +264,14 @@
             '<div class="signup-form place-left bg-white">' +
             '  <form id="signin_form" action="' + "{% url 'website:customer:signin' %}" + '" method="post" >' + "{% csrf_token %}" +
             '    <fieldset>' +
-            '      <label for="" class="title">小麻袋登陆 <a href="#" class="place-right fg-color-pink">还不是会员？</a></label>' +
+            '      <label for="" class="title">小麻袋登陆 <a href="#" onclick="closeAndOpenDialog(\'signup-btn\');" class="place-right fg-color-pink">还不是会员？</a></label>' +
             '      <div class="input-control text" data-role="input-control">' +
-            '        <input id="id_name" name="name" type="text" placeholder="用户名">' +
+            '        <p class="text-right" style="display: inline-block; width: 75px;">用户名：</p>' +
+            '        <input id="id_name" name="name" type="text" style="display: inline; width: 216px">' +
             '      </div>' +
             '      <div class="input-control text" data-role="input-control">' +
-            '        <input id="id_password" name="password" type="password" placeholder="密码">' +
+            '        <p class="text-right" style="display: inline-block; width: 75px;">密码：</p>' +
+            '        <input id="id_password" name="password" type="password" style="display: inline; width: 216px">' +
             '      </div>' +
             '      <button type="submit" onclick="signinSubmit()" class="ribbon place-right oblique bg-color-pink">' +
             '        <span class="fg-white">登陆</span>' +
@@ -408,6 +414,11 @@
             });
       });
     })(jQuery);
+
+    function closeAndOpenDialog(toOpen) {
+      $.Dialog.close();
+      $('#' + toOpen).trigger('click');
+    }
 
   </script>
 {% endblock extrajs %}
