@@ -27,7 +27,7 @@ TEMPLATE_DEBUG = DEBUG
 ########## DJANGO SITE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#sites
 SITE_ID = 1
-SITE_NAME = 'stage.xiaomadai.com'
+SITE_NAME = 'stage.xiaomadai.cn'
 
 # 邮件接收地址
 FAC_OFFICIAL_EMAIL = "20796964@qq.com"
