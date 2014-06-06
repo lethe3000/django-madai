@@ -24,7 +24,10 @@ class CustomerDatatablesBuilder(DatatablesBuilder):
     email = DatatablesTextColumn(label=u'email',
                                  is_searchable=True)
 
-    is_active = DatatablesBooleanColumn((('', u'全部'), (1, u'激活'), (0, u'锁定')),
+    phone = DatatablesTextColumn(label=u'电话',
+                                 is_searchable=True)
+
+    is_active = DatatablesBooleanColumn((('', u'全部'), (1, u'启用'), (0, u'禁用')),
                                         label='状态',
                                         is_searchable=True,
                                         col_width='7%',
@@ -36,13 +39,13 @@ class CustomerDatatablesBuilder(DatatablesBuilder):
 
     def actions_render(request, model, field_name):
         if model.is_active:
-            actions = [{'is_link': False, 'name': 'lock', 'text': u'锁定',
+            actions = [{'is_link': False, 'name': 'lock', 'text': u'禁用',
                         'icon': 'icon-lock', 'url_name': 'admin:account:user_lock'},
                        {'is_link': False, 'name': 'password_reset', 'text': u'重置密码',
                         'icon': 'icon-edit', 'url': reverse('admin:account:password_reset'), 'action_type': 'POST',
                         'extra': {'email': model.email}}]
         else:
-            actions = [{'is_link': False, 'name': 'unlock', 'text': u'解锁',
+            actions = [{'is_link': False, 'name': 'unlock', 'text': u'启用',
                         'icon': 'icon-unlock', 'url_name': 'admin:account:user_unlock'}]
         return DatatablesColumnActionsRender(actions=actions, action_permission=PERM_EDIT_CUSTOMER).render(request, model, field_name)
 
