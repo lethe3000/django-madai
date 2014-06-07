@@ -22,7 +22,7 @@ def get_env_setting(setting):
 ########## DJANGO SITE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#sites
 SITE_ID = 2
-SITE_NAME = 'xiaomadai.com'
+SITE_NAME = 'xiaomadai.cn'
 
 ########## DATABASE CONFIGURATION
 # CREATE DATABASE SITE_NAME;

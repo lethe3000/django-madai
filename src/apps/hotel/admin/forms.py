@@ -197,7 +197,7 @@ class HotelForm(forms.ModelForm):
 
     class Meta:
         model = Hotel
-        fields = ('name', 'address', 'price', 'image_file', 'summary', 'advantages', 'display_order', 'is_pinned', 'is_banner', 'images_html', 'phone_contact')
+        fields = ('name', 'address', 'price', 'image_file', 'summary', 'advantages', 'display_order', 'is_promotion', 'is_banner', 'images_html', 'phone_contact')
 
         widgets = {
             # use FileInput widget to avoid show clearable link and text

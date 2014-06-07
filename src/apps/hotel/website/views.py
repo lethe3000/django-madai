@@ -46,3 +46,10 @@ class HotelListView(TemplateResponseMixin, View):
             return HttpResponseJson(result=hotel_json_list)
         else:
             return self.render_to_response(locals())
+
+
+class HotelPromotionListView(HotelListView):
+    # TODO
+    # hotels = Hotel.active_objects.filter(updated__lt=cursor, is_promotion=True).order_by('-updated')
+    # summary字段显示hotel.articles.filter(infotype=promotion)
+    pass

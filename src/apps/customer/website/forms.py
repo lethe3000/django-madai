@@ -155,9 +155,11 @@ class CustomerRegisterForm(forms.Form):
     def save(self, request):
         name = self.cleaned_data['name']
         password = self.cleaned_data['password1']
+        phone = self.cleaned_data['phone']
         new_user = Customer(is_active=True,
                             is_staff=False,
-                            name=name)
+                            name=name,
+                            phone=phone)
         new_user.set_password(password)
         new_user.save()
         self.auth_user = auth.authenticate(name=self.cleaned_data['name'],

@@ -283,7 +283,7 @@ class Hotel(TimeBaseModel):
                                      help_text=u'用户可以看到的酒店展示图集，比如应用抓图、产品照片等')
 
     advantages = models.TextField(max_length=512,
-                                  verbose_name=u'优势',
+                                  verbose_name=u'推荐理由',
                                   default="",
                                   blank=True)
 
@@ -299,11 +299,15 @@ class Hotel(TimeBaseModel):
                                     verbose_name=u'激活状态')
 
     is_published = models.BooleanField(default=False,
-                                    verbose_name=u'发布状态')
+                                       verbose_name=u'发布状态')
 
     is_pinned = models.BooleanField(default=False,
                                     blank=True,
                                     verbose_name=u'首页')
+
+    is_promotion = models.BooleanField(default=False,
+                                       blank=True,
+                                       verbose_name=u'促销')
 
     is_banner = models.BooleanField(default=False,
                                     blank=True,
