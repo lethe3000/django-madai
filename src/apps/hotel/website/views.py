@@ -31,21 +31,20 @@ class HotelListView(TemplateResponseMixin, View):
     template_name = 'hotel/website/hotel.list.html'
 
     def get(self, request, *args, **kwargs):
-        cursor = request.GET.get('cursor')
-        if cursor:
-            cursor = datetime.fromtimestamp(int(cursor))
-            hotels = Hotel.active_objects.filter(updated__lt=cursor).order_by('-updated')
-            hotel_json_list = []
-            for hotel in hotels:
-                hotel_json_list.append({"id": hotel.id,
-                                        "img": hotel.image_url(),
-                                        "name": hotel.name,
-                                        "summary": hotel.summary,
-                                        "price": hotel.price,
-                                        "updated": hotel.updated_timestamp()})
-            return HttpResponseJson(result=hotel_json_list)
-        else:
-            return self.render_to_response(locals())
+        page = int(request.GET.get('page', 1))
+        prev_page = page - 1 if page > 1 else 1
+        page_size = 6
+        filter = request.GET.get('filter')
+        query_set = Hotel.active_objects if not filter or filter == 'all' else Hotel.active_objects.filter(short_index=filter)
+        hotels = query_set.order_by('-updated')[(page - 1) * page_size: page * page_size]
+        total_count = query_set.count()
+        page_range = [x + 1 for x in range(0, ((total_count - 1) / page_size) + 1)]
+        page_range = page_range if page_range else [1]
+        next_page = page + 1 if page + 1 <= len(page_range) else page
+        first_letters = Hotel.objects.raw('''
+            select id, short_index as short_index from hotel_hotel where is_published = 1 group by short_index order by short_index;
+        ''');
+        return self.render_to_response(locals())
 
 
 class HotelPromotionListView(HotelListView):

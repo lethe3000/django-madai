@@ -121,30 +121,13 @@ header > .date-pick .input-control {
 
 header > .date-pick input,
 header > .date-pick .alt-select {
-    font-size: 12pt;
+    font-size: 14px;
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
     border-radius: 0;
 }
 
-header > .date-pick .alt-select {
-    height: 100%;
-}
-
 header > .date-pick .chosen-container-single .chosen-single {
-    border-radius: 0;
-    border: none;
-    height: 100%;
-    background: none;
-    padding: 8px 0px 0 28px !important;
-}
-
-header > .date-pick .chosen-container-active.chosen-with-drop .chosen-single {
-    box-shadow: none;
-}
-
-header > .date-pick .chosen-container-single .chosen-single div b {
-    height: 18px;
-    margin: 8px 0 0 0;
+    background: none !important;
 }
 
 header > .date-pick button {

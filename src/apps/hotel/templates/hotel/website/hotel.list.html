@@ -5,16 +5,50 @@
 
 {% block extracss %}
 <link rel="stylesheet" href="{% static 'hotel/styles/app.css' %}" media="screen"/>
+<link rel="stylesheet" href="{% static 'libs/chosen_v1.1.0/chosen.min.css' %}" />
 {% endblock extracss %}
+
+{% block extraincjs %}
+<script src="{% static 'libs/chosen_v1.1.0/chosen.jquery.min.js' %}"></script>
+{% endblock extraincjs %}
 
 {% block main_content %}
 {% include 'website/header.inc.html' %}
 <section class="bg-1 bg-image-white-light">
   <div class="bottom-shade-large"></div>
   <article class="list-group">
+    <div class="filtering">
+      <div class="input-control select" style="height: 40px; width: 130px; float: right;">
+        <select id="atoz" data-placeholder="按字母过滤" class="alt-select">
+          <option value="all" {% if filter == 'all' %}selected="true"{% endif %}>所有酒店</option>
+          {% for f in first_letters %}
+            <option value="{{ f.short_index }}" {% if filter == f.short_index %}selected="true"{% endif %}>{{ f.short_index }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
     <div class="grid list">
-      <div class="margin-0-center text-center ajax-loader">
-        <img src="{% static 'website/img/ajax-loader.gif' %}" />
+      {% for hotel in hotels %}
+        <div class="row cursor-pointer">
+          <a href="{% url 'website:hotel:hotel_detail' hotel.id %}">
+            <div class="span4">
+              <img src="{{ hotel.image_url }}" style="width: 320px; height: 205px;"/>
+            </div>
+            <div class="span8">
+              <h2 class="fg-grayDark">{{ hotel.name }}</h2>
+              <p class="fg-grayLight">{{ hotel.summary }}</p>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="paging">
+      <div style="float: right;">
+        <a href="#" class="page_link" data-page="{{ prev_page }}"><i class="icon-arrow-left-5"></i></a>
+        {% for page_index in page_range %}
+          <a href="#" class="page_link {% if page_index == page%}active{% endif %}" data-page="{{ page_index }}">{{ page_index }}</a>
+        {% endfor %}
+        <a href="#" class="page_link" data-page="{{ next_page }}"><i class="icon-arrow-right-5"></i></a>
       </div>
     </div>
   </article>
@@ -24,68 +58,28 @@
 {% block extrajs %}
   <script type="text/javascript">
     $(document).ready(function() {
-      loadList();
-    });
-
-    var cursor = Math.round(new Date().getTime() / 1000);
-    var onLoad = false;
-    var touchEnd = false;
-
-    function loadList() {
-      if (touchEnd) {
-        return false;
+      var chosenOptions = {
+        disable_search: true,
+        inherit_select_classes: true
       }
-      if (onLoad) {
-        return false;
-      }
-      onLoad = true;
-      $('.ajax-loader').show();
-      $.getJSON(
-        '{% url 'website:hotel:hotel_list' %}?cursor=' + cursor,
-        function(data) {
-          if (data.length == 0) {
-            touchEnd = true;
-          }
-          $.each(data, function (index, hotel) {
-            cursor = hotel.updated;
-            var content = '' +
-              '<div class="row cursor-pointer">' +
-              '  <a href="/hotel/' + hotel.id + '">' +
-              '    <div class="span4">' +
-              '      <img src="' + hotel.img + '" style="width: 320px; height: 205px;"/>' +
-              '    </div>' +
-              '    <div class="span8">' +
-              '      <h2 class="fg-grayDark">' + hotel.name + '</h2>' +
-              '      <p class="fg-grayLight">' + hotel.summary + '</p>' +
-              '      <span class="currency">' +
-              '        <strong>&yen; ' + hotel.price + '</strong>' +
-              '        <small class="fg-grayDark">/晚</small>' +
-              '      </span>' +
-              '    </div>' +
-              '  </a>' +
-              '</div>';
-            $('.ajax-loader').before(content);
-          });
-          $('.ajax-loader').hide();
-          setTimeout(function () {
-            onLoad = false;
-          }, 500);
+      $('#atoz').chosen(chosenOptions);
+
+      $('#atoz').change(function () {
+        pageAndFilter(1, $(this).val());
+      })
+
+      $('.page_link').click(function () {
+        var thisPage = parseInt('{{ page }}');
+        var toPage = $(this).data('page');
+        if (toPage != thisPage) {
+          pageAndFilter(toPage, $('#atoz').val());
         }
-      );
-    }
-
-    function scrollAndLoad() {
-      if ($(window).scrollTop() > ($('.grid.list').height() + $('.grid.list').offset().top - $(window).height())) {
-        loadList();
-      }
-    }
-
-    $(window).scroll(function(){
-      scrollAndLoad();
+        return false;
+      });
     });
 
-    $(function(){
-      setTimeout(function(){scrollAndLoad();}, 100);
-    })
+    function pageAndFilter(page, filter) {
+      window.location.href = '{% url 'website:hotel:hotel_list' %}' + '?page=' + page + '&filter=' + filter;
+    }
   </script>
 {% endblock extrajs %}

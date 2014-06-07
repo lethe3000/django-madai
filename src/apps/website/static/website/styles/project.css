@@ -349,3 +349,25 @@ header > .account .contact-info {
 .signup-form .invalid {
     color: #e51400;
 }
+
+.chosen-container-single .chosen-single {
+    border-radius: 0 !important;
+    border: none !important;
+    height: 100% !important;
+    /*background: none !important;*/
+    padding: 8px 0px 0 28px !important;
+
+}
+
+.chosen-container-active.chosen-with-drop .chosen-single {
+    box-shadow: none !important;
+}
+
+.chosen-container-single .chosen-single div b {
+    height: 18px !important;
+    margin: 8px 0 0 0 !important;
+}
+
+.alt-select {
+    height: 100% !important;
+}

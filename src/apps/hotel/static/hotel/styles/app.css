@@ -278,3 +278,33 @@ blockquote > div {
 .list-group {
     padding: 40px 0;
 }
+
+.chosen-container-single .chosen-single {
+    background: #FFF repeat scroll 0 0 !important;
+}
+
+.alt-select {
+    font-size: 11pt !important;
+}
+
+.paging {
+    margin-top: 20px;
+}
+
+.page_link {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    color: #FFFFFF;
+    border: none !important;
+    text-decoration: none !important;
+    font-size: 14px;
+    text-align: center;
+    padding-top: 5px;
+    margin-left: 10px;
+}
+
+.page_link.active {
+    color: #FFFFFF;
+    background-color: #df633a;
+}
