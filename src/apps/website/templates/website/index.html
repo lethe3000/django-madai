@@ -19,22 +19,6 @@
 
 {% block main_content %}
 <header>
-  <div class="fotorama"
-       data-autoplay="5000"
-       data-width="100%"
-       data-transition="dissolve"
-       data-arrows="false"
-       data-transitionduration="1000">
-      {% for h_banner in hotel_banners %}
-      <div data-img="{{ h_banner.image_url }}" data-fit="cover">
-        <a href="{% url 'website:hotel:hotel_detail' h_banner.id %}" class="banner-link" >{{ h_banner.name }}<span class="icon-arrow-right-4 on-right"></span></a>
-      </div>
-      {% endfor %}
-      <div data-img="{% static 'website/img/ss_home_7_7_24.jpg' %}" data-fit="cover">
-        <a href="{% url 'website:present:present_list' %}" class="banner-link">更多礼包<span class="icon-arrow-right-4 on-right"></span></a>
-      </div>
-    {# TODO 礼包大图 #}
-  </div>
   <div class="account">
     <div class="grid fluid margin-0-center" style="width: 1000px;">
       <div class="row">
@@ -95,6 +79,21 @@
       </div>
       <a id="search-btn" class="button large search-btn" href="#">搜索</a>
     </div>
+  </div>
+  <div class="fotorama" style="position:relative; z-index: 0;"
+       data-autoplay="5000"
+       data-width="100%"
+       data-transition="dissolve"
+       data-arrows="false"
+       data-transitionduration="1000">
+      {% for h_banner in hotel_banners %}
+      <div data-img="{{ h_banner.image_url }}" data-fit="cover">
+        <a href="{% url 'website:hotel:hotel_detail' h_banner.id %}" class="banner-link" >{{ h_banner.name }}<span class="icon-arrow-right-4 on-right"></span></a>
+      </div>
+      {% endfor %}
+      <div data-img="{% static 'website/img/ss_home_7_7_24.jpg' %}" data-fit="cover">
+        <a href="{% url 'website:present:present_list' %}" class="banner-link">更多礼包<span class="icon-arrow-right-4 on-right"></span></a>
+      </div>
   </div>
 </header>
 <nav class="bg-white shadow-bottom menu">
