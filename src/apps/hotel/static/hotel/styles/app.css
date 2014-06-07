@@ -91,16 +91,17 @@ span.currency > small {
 
 blockquote {
     border: 0 none !important;
-    background: url("../../website/img/double-quotes.png") no-repeat scroll left top rgba(0, 0, 0, 0);
+    /*background: url("../../website/img/double-quotes.png") no-repeat scroll left top rgba(0, 0, 0, 0);*/
     color: #7F96AD;
     display: block;
-    padding: 0 0 0 85px !important;
+    /*padding: 0 0 0 85px !important;*/
 }
 
 blockquote > div {
+    text-indent: 3.6rem;
     padding-top: 15px;
     font-size: 1.8rem;
-    line-height: 2rem;
+    line-height: 2.5rem;
 }
 
 .scroll-group {

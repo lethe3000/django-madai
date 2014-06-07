@@ -2,9 +2,9 @@
 <header>
   <img src="{% static 'website/img/bg-image-clouds-guest.jpg' %}" style="width: 100%; height: 150px;"/>
   <div class="account">
-    <div class="grid fluid">
-      <div class="row">
-        <div class="span3 offset9" style="margin-top: 10px;">
+    <div class="grid fluid margin-0-center" style="width: 1000px;">
+      <div class="row" style="margin-top: 20px !important;">
+        <div style="float: right;">
           {% if user.is_authenticated %}
             <p class="account-info">欢迎 {{ user.name }} | <a href="{% url 'website:customer:logout' %}">登出</a></p>
             <div class="contact-info fg-white">
@@ -37,6 +37,8 @@
     <a class="text-center" href="{% url 'website:index' %}"><p class="margin-0">首页</p></a>
     <a class="text-center" href="{% url 'website:hotel:hotel_list' %}"><p class="margin-0">酒店</p></a>
     <a class="text-center" href="{% url 'website:flight:flight_list' %}"><p class="margin-0">航班</p></a>
+    <a class="text-center" href="#"><p class="margin-0">小麻袋礼</p></a>
+    <a class="text-center" href="#"><p class="margin-0">小知识库</p></a>
   </div>
 </nav>
 
