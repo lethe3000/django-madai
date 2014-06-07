@@ -262,8 +262,15 @@ class Hotel(TimeBaseModel):
                                default="",
                                blank=True)
 
-    price = models.IntegerField(verbose_name=u'价格',
-                                default=0)
+    price = models.IntegerField(max_length=64,
+                                verbose_name=u'价格',
+                                default="",
+                                blank=True)
+
+    short_index = models.CharField(max_length=8,
+                                   verbose_name=u'酒店首字母',
+                                   default='A',
+                                   blank=True)
 
     image_file = models.ImageField(upload_to=unique_image_name,
                                    blank=True,

@@ -197,7 +197,8 @@ class HotelForm(forms.ModelForm):
 
     class Meta:
         model = Hotel
-        fields = ('name', 'address', 'price', 'image_file', 'summary', 'advantages', 'display_order', 'is_promotion', 'is_banner', 'images_html', 'phone_contact')
+        fields = ('name', 'address', 'price', 'image_file', 'summary', 'advantages', 'display_order', 'is_promotion',
+                  'is_banner', 'images_html', 'phone_contact', 'short_index')
 
         widgets = {
             # use FileInput widget to avoid show clearable link and text
@@ -227,10 +228,10 @@ class HotelDatatablesBuilder(DatatablesBuilder):
     is_pinned = DatatablesIntegerColumn(label=u'首页显示',
                                         is_searchable=True)
 
-    is_banner = DatatablesIntegerColumn(label=u'banner显示',
-                                        is_searchable=True)
+    is_promotion = DatatablesIntegerColumn(label=u'是否促销酒店',
+                                           is_searchable=True)
 
-    is_published = DatatablesBooleanColumn((('', u'全部'), (1, u'激活'), (0, u'锁定')),
+    is_published = DatatablesBooleanColumn((('', u'全部'), (1, u'发布'), (0, u'草稿')),
                                            label='状态',
                                            is_searchable=True,
                                            col_width='5%',
