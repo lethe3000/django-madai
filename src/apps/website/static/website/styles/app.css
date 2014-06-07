@@ -156,7 +156,8 @@ header > .date-pick button:after {
 }
 
 header > .date-pick i.icon-dollar,
-header > .date-pick i.icon-location {
+header > .date-pick i.icon-location,
+header > .date-pick i.icon-calendar {
     font-size: 12pt !important;
     position: absolute;
     z-index: 2;

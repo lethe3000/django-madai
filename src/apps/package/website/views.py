@@ -23,8 +23,8 @@ def searching(request):
     packages = Package.active_objects.select_related('hotels', 'flights').filter(
         start_city=start_address,
         price=price_range,
-        start_date__lt=start_date,
-        end_date__gt=start_date)
+        start_date__lte=start_date,
+        end_date__gte=start_date)
 
     if packages.count():
         # FIXME 多个package如何挑选, 暂时选第一个

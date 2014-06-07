@@ -69,13 +69,15 @@
         </select>
         <i class="icon-dollar fg-grayLight"></i>
       </div>
-      <div class="input-control text" style="display: inline-block; width: 160px; margin-left: -1px;"
-           data-role="datepicker"
-           data-format='yyyy-mm-dd'
-           data-effect="fade"
-           data-locale="zhCN">
-        <input type="text" id="start_date" name="start_date" class="fg-gray" placeholder="入住日期">
-        <button class="btn-date fg-grayLight"></button>
+      <div class="input-control select" style="display: inline-block; width: 160px; margin-left: -1px;">
+        <select id="start_date" data-placeholder="出发日期" class="alt-select">
+          <option value=""></option>
+{#          <optgroup label="2014年">#}
+{#            <option value="2014-1">1月</option>#}
+{#            <option value="2014-2">2月</option>#}
+{#          </optgroup>#}
+        </select>
+        <i class="icon-calendar fg-grayLight"></i>
       </div>
       <a id="search-btn" class="button large search-btn" href="#">搜索</a>
     </div>
@@ -323,6 +325,8 @@
       }
       $('#start_address').chosen(chosenOptions);
       $('#price').chosen(chosenOptions);
+      initialStartDate();
+      $('#start_date').chosen(chosenOptions);
     });
 
     function signinSubmit() {
@@ -406,6 +410,48 @@
     function closeAndOpenDialog(toOpen) {
       $.Dialog.close();
       $('#' + toOpen).trigger('click');
+    }
+
+    function initialStartDate() {
+      var totalMonths = 12;
+      var dateObj = new Date();
+      var thisMonth = dateObj.getMonth() + 1;
+      var thisYear = dateObj.getFullYear();
+      var nextYear = thisYear + 1;
+      var monthsInThisYear = function(startMonth) {
+        var result = [];
+        for (var i = startMonth; i <= totalMonths; i++) {
+          result.push(i);
+        }
+        return result;
+      };
+      var monthsInNextYear = function(startMonth) {
+        if (startMonth != 1) {
+          var result = [];
+          for (var i = 1; i <= startMonth - 1; i++) {
+            result.push(i);
+          }
+          return result;
+        } else {
+          return [];
+        }
+      };
+      var optionsHtml = '<optgroup label="' + thisYear + '">';
+      var months = monthsInThisYear(thisMonth);
+      for (var mon in months) {
+        optionsHtml += '<option value="' + thisYear + '-' + months[mon] + '-1">' + months[mon] + '月</option>';
+      }
+      optionsHtml += '</optgroup>';
+      $('#start_date').append(optionsHtml);
+      months = monthsInNextYear(thisMonth);
+      if (months) {
+        optionsHtml = '<optgroup label="' + nextYear + '">';
+        for (var mon in months) {
+          optionsHtml += '<option value="' + nextYear + '-' + months[mon] + '-1">' + months[mon] + '月</option>';
+        }
+        optionsHtml += '</optgroup>';
+      }
+      $('#start_date').append(optionsHtml);
     }
 
   </script>
