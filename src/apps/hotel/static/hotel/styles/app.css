@@ -105,8 +105,8 @@ blockquote > div {
 }
 
 .scroll-group {
-    margin: 20px 0 0;
     padding: 80px 30px 0 40px;
+    height: 370px;
 }
 
 .scroll-box {
@@ -138,7 +138,7 @@ blockquote > div {
 .scroll-group .ribbon {
     padding: 0 30px;
     line-height: 44px;
-    top: 164px;
+    top: 70px;
     right: -10px;
     position: absolute;
 }
