@@ -14,9 +14,10 @@ article .product {
 }
 
 .fotorama__nav-wrap {
-  position: absolute;
-  z-index: 1;
-  bottom: 2%;
+  position: relative;
+  width: 500px;
+  bottom: 40px;
+  margin: 0 auto !important;
 }
 
 .fotorama__dot {
@@ -105,11 +106,9 @@ header > .date-pick {
 }
 
 header a.search-btn {
-  position: absolute;
-  top: 20px;
-  left: 80%;
+  display: inline-block;
+  margin-left: 10px;
   font-size: 2.0rem;
-  display: block;
   color: #FFF !important;
   background-color: #df633a !important;
 }
@@ -232,10 +231,10 @@ have a fixed width and height (but it's not required).
 }
 
 .banner-link {
-    font-size: 2.4rem;
+    font-size: 18px;
     position: absolute;
-    bottom: 50px;
-    right: 120px;
+    bottom: 20px;
+    right: 40px;
     color: #FFF !important;
 }
 

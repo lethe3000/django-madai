@@ -200,7 +200,7 @@ header > .account a {
 }
 
 header > .account p {
-    font-size: 1.6rem;
+    font-size: 14px;
 }
 
 header > .account .balloon.bottom {
@@ -210,7 +210,7 @@ header > .account .balloon.bottom {
     border: none;
     padding: 10px;
     height: 80px;
-    width: 202px;
+    width: 210px;
     border-radius: 5px;
 }
 
@@ -227,7 +227,7 @@ header > .account .balloon.bottom:before {
 }
 
 header > .account .balloon.bottom p {
-    font-size: 1.6rem;
+    font-size: 15px;
     margin-top: 18px;
 }
 
@@ -239,7 +239,7 @@ header > .account .account-info {
 header > .account .contact-info {
     position: relative;
     display: inline-block;
-    font-size: 1.6rem;
+    font-size: 14px;
 }
 
 .contact-hover {
