@@ -17,7 +17,7 @@ article .product {
   position: relative;
   width: 500px;
   bottom: 40px;
-  margin: 0 auto !important;
+  margin: 0 auto -30px !important;
 }
 
 .fotorama__dot {
