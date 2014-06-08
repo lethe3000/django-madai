@@ -1,10 +1,5 @@
 /* globally applied */
 
-header, section, nav {
-    display: block;
-}
-
-
 .fixed-width {
     width: 1020px;
 }
@@ -28,7 +23,7 @@ nav > .foot-box > a {
   vertical-align: middle;
 }
 
-header {
+.main-header {
   min-width: 1000px;
   width: 100%;
   position: relative;
@@ -45,32 +40,32 @@ nav > .nav-box > a {
   vertical-align: middle;
 }
 
-header > .logo {
+.main-header > .logo {
   position: absolute;
   width: 100%;
   top: 10%;
   z-index: 1;
 }
 
-header> .logo > .inline {
+.main-header> .logo > .inline {
     position: relative;
     display: inline-block;
     width: 500px;
 }
 
-header > .logo > .inline > div.header {
+.main-header > .logo > .inline > div.header {
     position: absolute;
     display: inline-block;
-    font-size: 4.0rem !important;
+    font-size: 38px !important;
     top: 40%;
 }
 
-header > .logo > .inline .prefix {
+.main-header > .logo > .inline .prefix {
     left: 0;
     color: #df633a;
 }
 
-header > .logo > .inline .suffix {
+.main-header > .logo > .inline .suffix {
     right: 0;
     color: #df633a;
 }
@@ -112,11 +107,17 @@ nav.menu {
     color: #FFFFFF !important;
 }
 
-section {
+.main-section {
     position: relative;
 }
 
 .bottom-shade-large {
+    background-image: url("../img/bottom-shade-large.png");
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 50%;
+    background-color: transparent;
     background: url("../img/bottom-shade-large.png") no-repeat scroll center center rgba(0, 0, 0, 0);
     top: 0;
     height: 10px;
@@ -142,11 +143,8 @@ section {
 }
 
 .bg-image-clouds {
-  background-color: #D3E9F6;
-  background-image: url("../img/bg-image-clouds.jpg");
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
+    background: #D3E9F6 url("../img/bg-image-clouds.jpg") no-repeat center top;
+    background-size: 100% auto;
 }
 
 .cursor-pointer {
@@ -179,49 +177,68 @@ div.customer-icon {
 }
 
 .customer-icon.flight-flat {
-   background: url("../img/icons/flight_flat_orange_nor.png") no-repeat 0 0 rgba(0, 0, 0, 0);
+    background-image: url("../img/icons/flight_flat_orange_nor.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 50%;
+    background-color: transparent;
+    background: url("../img/icons/flight_flat_orange_nor.png") no-repeat 0 0 rgba(0, 0, 0, 0);
 }
 
 .customer-icon.flight-line {
-   background: url("../img/icons/flight_flat_orange_nor.png") no-repeat 0 0 rgba(0, 0, 0, 0);
+    background-image: url("../img/icons/flight_line_orange_nor.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 50%;
+    background-color: transparent;
+    background: url("../img/icons/flight_line_orange_nor.png") no-repeat 0 0 rgba(0, 0, 0, 0);
 }
 
 .customer-icon.hotel-flat {
-   background: url("../img/icons/hotel_flat_orange_nor.png") no-repeat 0 0 rgba(0, 0, 0, 0);
+    background-image: url("../img/icons/hotel_flat_orange_nor.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 50%;
+    background-color: transparent;
+    background: url("../img/icons/hotel_flat_orange_nor.png") no-repeat 0 0 rgba(0, 0, 0, 0);
 }
 
 .customer-icon.hotel-line {
-   background: url("../img/icons/hotel_line_orange_nor.png") no-repeat 0 0 rgba(0, 0, 0, 0);
+    background-image: url("../img/icons/hotel_line_orange_nor.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 50%;
+    background-color: transparent;
+    background: url("../img/icons/hotel_line_orange_nor.png") no-repeat 0 0 rgba(0, 0, 0, 0);
 }
 
-header > .account {
+.main-header > .account {
   position: absolute;
   width: 100%;
   top: 0;
   z-index: 2;
 }
 
-header > .account p,
-header > .account a {
+.main-header > .account p,
+.main-header > .account a {
     color: #FFFFFF;
 }
 
-header > .account p {
+.main-header > .account p {
     font-size: 14px;
 }
 
-header > .account .balloon.bottom {
+.main-header > .account .balloon.bottom {
     position: absolute;
     top: 33px;
     left: -106px;
     border: none;
     padding: 10px;
     height: 80px;
-    width: 210px;
     border-radius: 5px;
 }
 
-header > .account .balloon.bottom:after {
+.main-header > .account .balloon.bottom:after {
     border-bottom: 6px solid #FFFFFF;
     border-left: 6px solid rgba(0, 0, 0, 0);
     border-right: 6px solid rgba(0, 0, 0, 0);
@@ -229,21 +246,20 @@ header > .account .balloon.bottom:after {
     left: 109px;
 }
 
-header > .account .balloon.bottom:before {
+.main-header > .account .balloon.bottom:before {
     border: none;
 }
 
-header > .account .balloon.bottom p {
-    font-size: 15px;
+.main-header > .account .balloon.bottom p {
     margin-top: 18px;
 }
 
-header > .account .account-info {
+.main-header > .account .account-info {
     display: inline-block;
     margin-right: 10px;
 }
 
-header > .account .contact-info {
+.main-header > .account .contact-info {
     position: relative;
     display: inline-block;
     font-size: 14px;
@@ -285,6 +301,7 @@ header > .account .contact-info {
     font-weight: 100;
     position: relative;
     z-index: 1;
+    font-size: 45px !important;
 }
 
 .signup-form .ribbon {
@@ -308,7 +325,7 @@ header > .account .contact-info {
 .signup-form .oblique:before {
     border-style: solid;
     content: " ";
-    border-color: rgba(0, 0, 0, 0) #AF5576 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    border-color: transparent #df633a transparent transparent;
     border-width: 0 18px 46px 0;
     left: -18px;
     position: absolute;
@@ -316,12 +333,12 @@ header > .account .contact-info {
     width: 0;
 }
 
-.fg-color-pink {
-    color: #AF5576 !important;
+.fg-color-orange {
+    color: #df633a !important;
 }
 
-.bg-color-pink {
-    background-color: #AF5576 !important;
+.bg-color-orange {
+    background-color: #df633a !important;
 }
 
 .signup-form input {
@@ -336,7 +353,7 @@ header > .account .contact-info {
 }
 
 .signup-form label.title {
-    font-size: 1.8rem;
+    font-size: 17px;
     font-weight: 600;
     margin-bottom: 20px;
 }

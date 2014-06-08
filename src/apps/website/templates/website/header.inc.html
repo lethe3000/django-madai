@@ -1,5 +1,5 @@
 {% load static %}
-<header>
+<div class="main-header">
   <img src="{% static 'website/img/bg-image-clouds-guest.jpg' %}" style="width: 100%; height: 150px;"/>
   <div class="account">
     <div class="grid fluid margin-0-center" style="width: 1000px;">
@@ -27,11 +27,11 @@
   <div class="logo text-center" style="top: 2%;">
     <div class="inline text-center">
       <div class="header prefix fg-white">小麻袋</div>
-      <img src="{% static 'website/img/logo.png' %}" alt=""/>
+      <img src="{% static 'website/img/logo.png' %}" style="display: inline-block"/>
       <div class="header suffix fg-white">装满爱</div>
     </div>
   </div>
-</header>
+</div>
 <nav class="bg-white shadow-bottom menu">
   <div class="nav-box fixed-width margin-0-center">
     <a class="text-center" href="{% url 'website:index' %}"><p class="margin-0">首页</p></a>
@@ -58,20 +58,24 @@
           '<div class="signup-form place-left bg-white">' +
           '  <form id="signup_form" action="' + "{% url 'website:customer:signup' %}" + '" method="post" >' + "{% csrf_token %}" +
           '    <fieldset>' +
-          '      <label for="" class="title">小麻袋注册 <a href="#" class="place-right fg-color-pink">会员登录</a></label>' +
+          '      <label for="" class="title">小麻袋注册 <a href="#" onclick="closeAndOpenDialog(\'signin-btn\');" class="place-right fg-color-orange">会员登录</a></label>' +
           '      <div class="input-control text" data-role="input-control">' +
-          '        <input id="id_name" name="name" type="text" placeholder="用户名">' +
+          '        <p class="text-right" style="display: inline-block; width: 75px; font-size: 14px;">用户名：</p>' +
+          '        <input id="id_name" name="name" type="text" style="display: inline; width: 216px;">' +
           '      </div>' +
           '      <div class="input-control text" data-role="input-control">' +
-          '        <input id="id_phone" name="phone" type="text" placeholder="手机号">' +
+          '        <p class="text-right" style="display: inline-block; width: 75px; font-size: 14px;">手机号：</p>' +
+          '        <input id="id_phone" name="phone" type="text" style="display: inline; width: 216px">' +
           '      </div>' +
           '      <div class="input-control text" data-role="input-control">' +
-          '        <input id="id_password1" name="password1" type="password" placeholder="密码">' +
+          '        <p class="text-right" style="display: inline-block; width: 75px; font-size: 14px;">密码：</p>' +
+          '        <input id="id_password1" name="password1" type="password" style="display: inline; width: 216px">' +
           '      </div>' +
           '      <div class="input-control text" data-role="input-control">' +
-          '        <input id="id_password2" name="password2" type="password" placeholder="确认密码">' +
+          '        <p class="text-right" style="display: inline-block; width: 75px; font-size: 14px;">确认密码：</p>' +
+          '        <input id="id_password2" name="password2" type="password" style="display: inline; width: 216px">' +
           '      </div>' +
-          '      <button type="submit" onclick="signupSubmit();" class="ribbon place-right oblique bg-color-pink">' +
+          '      <button type="submit" onclick="signupSubmit();" class="ribbon place-right oblique bg-color-orange">' +
           '        <span class="fg-white">注册</span>' +
           '      </button>' +
           '    </fieldset>' +
@@ -100,14 +104,16 @@
           '<div class="signup-form place-left bg-white">' +
           '  <form id="signin_form" action="' + "{% url 'website:customer:signin' %}" + '" method="post" >' + "{% csrf_token %}" +
           '    <fieldset>' +
-          '      <label for="" class="title">小麻袋登陆 <a href="#" class="place-right fg-color-pink">还不是会员？</a></label>' +
+          '      <label for="" class="title">小麻袋登陆 <a href="#" onclick="closeAndOpenDialog(\'signup-btn\');" class="place-right fg-color-orange">还不是会员？</a></label>' +
           '      <div class="input-control text" data-role="input-control">' +
-          '        <input id="id_name" name="name" type="text" placeholder="用户名">' +
+          '        <p class="text-right" style="display: inline-block; width: 75px; font-size: 14px;">用户名：</p>' +
+          '        <input id="id_name" name="name" type="text" style="display: inline; width: 216px">' +
           '      </div>' +
           '      <div class="input-control text" data-role="input-control">' +
-          '        <input id="id_password" name="password" type="password" placeholder="密码">' +
+          '        <p class="text-right" style="display: inline-block; width: 75px; font-size: 14px;">密码：</p>' +
+          '        <input id="id_password" name="password" type="password" style="display: inline; width: 216px">' +
           '      </div>' +
-          '      <button type="submit" onclick="signinSubmit()" class="ribbon place-right oblique bg-color-pink">' +
+          '      <button type="submit" onclick="signinSubmit()" class="ribbon place-right oblique bg-color-orange">' +
           '        <span class="fg-white">登陆</span>' +
           '      </button>' +
           '    </fieldset>' +
@@ -122,30 +128,30 @@
       });
     });
 
-    $('header > .account .balloon.bottom').hide();
+    $('.main-header > .account .balloon.bottom').hide();
     var intervalId;
     $('.contact-hover')
       .on('mouseover', function() {
         if (intervalId) {
           clearInterval(intervalId);
         }
-        $('header > .account .balloon.bottom').show();
+        $('.main-header > .account .balloon.bottom').show();
       })
       .on('mouseleave', function() {
         intervalId = setInterval(function() {
-          $('header > .account .balloon.bottom').hide();
+          $('.main-header > .account .balloon.bottom').hide();
         }, 500);
       });
-    $('header > .account .balloon.bottom')
+    $('.main-header > .account .balloon.bottom')
       .on('mouseover', function() {
         if (intervalId) {
           clearInterval(intervalId);
         }
-        $('header > .account .balloon.bottom').show();
+        $('.main-header > .account .balloon.bottom').show();
       })
       .on('mouseleave', function() {
         intervalId = setInterval(function() {
-          $('header > .account .balloon.bottom').hide();
+          $('.main-header > .account .balloon.bottom').hide();
         }, 500);
       });
   });

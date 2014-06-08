@@ -26,14 +26,6 @@ article {
   color: #7F96AD;
 }
 
-.bg-image-clouds {
-  background-color: #D3E9F6;
-  background-image: url("../../website/img/bg-image-clouds.jpg");
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-}
-
 .sorted-list {
   counter-reset: index-num;
 }
