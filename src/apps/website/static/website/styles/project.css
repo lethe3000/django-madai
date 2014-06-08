@@ -1,5 +1,10 @@
 /* globally applied */
 
+header, section, nav {
+    display: block;
+}
+
+
 .fixed-width {
     width: 1020px;
 }

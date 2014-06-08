@@ -7,4 +7,5 @@ import views
 urlpatterns = patterns('',
     url(r'^(?P<pk>\d+)/$', views.HotelDetailView.as_view(), name='hotel_detail'),
     url(r'^list/$', views.HotelListView.as_view(), name='hotel_list'),
+    url(r'^list/promotion/$', views.HotelPromotionListView.as_view(), name='hotel_list_promotion'),
 )

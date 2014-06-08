@@ -72,10 +72,6 @@
       <div class="input-control select" style="display: inline-block; width: 160px; margin-left: -1px;">
         <select id="start_date" data-placeholder="出发日期" class="alt-select">
           <option value=""></option>
-{#          <optgroup label="2014年">#}
-{#            <option value="2014-1">1月</option>#}
-{#            <option value="2014-2">2月</option>#}
-{#          </optgroup>#}
         </select>
         <i class="icon-calendar fg-grayLight"></i>
       </div>
@@ -111,7 +107,7 @@
   <div class="bottom-shade-large"></div>
   <article>
     <h2 class="fg-white category-title">最新促销</h2>
-    <a class="category-showmore place-right" href="{% url 'website:hotel:hotel_list' %}">+ 更多</a>
+    <a class="category-showmore place-right" href="{% url 'website:hotel:hotel_list_promotion' %}">+ 更多</a>
     <div class="product-group">
       <div class="jcarousel">
         <ul>

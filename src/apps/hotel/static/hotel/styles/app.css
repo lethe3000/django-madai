@@ -63,7 +63,7 @@ a.button.submit {
 
 span.currency {
     display: block;
-    margin-top: 20px;
+    margin-top: 8px;
 }
 
 span.currency > strong {
@@ -264,15 +264,9 @@ blockquote > div {
     width: 320px !important;
 }
 
-.grid.list span.currency {
-    display: block;
-    margin-top: 100px;
-}
-
 .grid.list span.currency strong {
     color: #DF633A;
     font-family: futura,sans-serif;
-    font-size: 30px;
 }
 
 .list-group {
@@ -307,4 +301,24 @@ blockquote > div {
 .page_link.active {
     color: #FFFFFF;
     background-color: #df633a;
+}
+
+.list-group .promotion-article * {
+    color: #999999;
+}
+
+.list-group .promotion-article {
+    width: 620px;
+    height: 110px;
+    overflow: hidden;
+}
+
+.list-group .hotel-summary {
+    display: block;
+    width: 500px;
+    height: 110px;
+    overflow: hidden;
+    margin-top: 15px;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
 }
