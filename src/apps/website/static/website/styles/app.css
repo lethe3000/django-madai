@@ -11,6 +11,7 @@
   width: 320px;
   margin: 0 10px;
   display: block;
+  position: relative;
 }
 
 .fotorama__nav-wrap {

@@ -9,16 +9,16 @@
 
 {% block main_content %}
 {% include 'website/header.inc.html' %}
-<section class="bg-1 bg-image-white-light">
+<div class="main-section bg-1 bg-image-white-light">
   <div class="bottom-shade-large"></div>
-  <article class="list-group">
+  <div class="main-article list-group">
     <div class="grid list">
       <div class="margin-0-center text-center ajax-loader">
         <img src="{% static 'website/img/ajax-loader.gif' %}" />
       </div>
     </div>
-  </article>
-</section>
+  </div>
+</div>
 {% endblock main_content %}
 
 {% block extrajs %}
@@ -55,7 +55,7 @@
               '      <img src="' + flight.img + '" style="width: 320px; height: 205px;"/>' +
               '    </div>' +
               '    <div class="span8">' +
-              '      <h2 class="fg-grayDark">' + flight.name + '</h2>' +
+              '      <h2 class="fg-grayDark" style="font-size: 24px;">' + flight.name + '</h2>' +
               '      <p class="fg-grayLight">' + flight.summary + '</p>' +
               '      <span class="currency">' +
               '        <strong>&yen; ' + flight.price + '</strong>' +
