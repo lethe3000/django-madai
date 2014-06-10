@@ -185,6 +185,8 @@ class Flight(TimeBaseModel):
                 html = f.read()
         except IOError:
             html = u'无内容'
+        except ValueError:
+            html = u'value error'
         return html
 
     class Meta:
