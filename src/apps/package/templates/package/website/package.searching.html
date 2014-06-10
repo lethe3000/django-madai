@@ -9,17 +9,17 @@
 
 {% block main_content %}
 {% include 'website/header.inc.html' %}
-<section class="bg-color-dark bg-image-white-light">
+<div class="main-section bg-color-dark bg-image-white-light">
   <div class="bottom-shade-large"></div>
-  <article class="search-info">
+  <div class="main-article search-info">
     <div class="middle">
       <h3 class="text-center color-blue">为您推荐精选以下行程 {{ start_address }}出发</h3>
     </div>
-  </article>
-</section>
-<section class="bg-image-clouds">
-  <article>
-    <h1 class="fg-grayDark" style="margin-bottom: 45px;">酒店推荐</h1>
+  </div>
+</div>
+<div class="main-section bg-image-clouds">
+  <div class="main-article">
+    <h1 class="fg-grayDark" style="margin-bottom: 45px; font-size: 45px;">酒店推荐</h1>
     <ul class="sorted-list hotel">
       {% for hotel in package.hotels.all %}
         <li>
@@ -59,9 +59,9 @@
         </li>
       {% endfor %}
     </ul>
-  </article>
-  <article>
-    <h1 class="fg-grayDark" style="margin-bottom: 45px;">机票推荐</h1>
+  </div>
+  <div class="main-article">
+    <h1 class="fg-grayDark" style="margin-bottom: 45px; font-size: 45px;">机票推荐</h1>
     <ul class="sorted-list flight">
       {% for flight in package.flights.all %}
         <li>
@@ -85,10 +85,10 @@
         </li>
       {% endfor %}
     </ul>
-  </article>
+  </div>
   <a id="order-btn" class="button large submit" href="#">提交意向</a>
   <div class="space-50"></div>
-</section>
+</div>
 {% endblock main_content %}
 
 {% block extrajs %}
@@ -146,7 +146,7 @@
               '            <div class="grid fluid">' +
               '              <div class="row">' +
               '                <div class="span5">' +
-              '                  <label for="">姓名：</label>' +
+              '                  <label class="normal" for="">姓名：</label>' +
               '                  <div class="input-control text" data-role="input-control">' +
               '                    <input id="id_customer_name" name="customer_name" type="text" value="' + loginUsername + '">' +
               '                  </div>' +
@@ -154,7 +154,7 @@
               '              </div>' +
               '              <div class="row">' +
               '                <div class="span5">' +
-              '                  <label for="">手机号：</label>' +
+              '                  <label class="normal" for="">手机号：</label>' +
               '                  <div class="input-control text" data-role="input-control">' +
               '                    <input id="id_phone" name="phone" type="text" value="' + loginPhone + '">' +
               '                  </div>' +
@@ -162,13 +162,13 @@
               '              </div>' +
               '              <div class="row">' +
               '                <div class="span3">' +
-              '                  <label for="">出发城市：</label>' +
+              '                  <label class="normal" for="">出发城市：</label>' +
               '                  <div class="input-control text" data-role="input-control">' +
               '                    <input name="start_address_snapshot" type="text" value="' + startAddress + '" disabled>' +
               '                  </div>' +
               '                </div>' +
               '                <div class="span3">' +
-              '                  <label for="">入住日期：</label>' +
+              '                  <label class="normal" for="">入住日期：</label>' +
               '                  <div class="input-control text" data-role="input-control">' +
               '                    <input name="start_date_snapshot" type="text" value="' + startDate + '" disabled>' +
               '                  </div>' +

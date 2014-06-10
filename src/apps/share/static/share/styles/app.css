@@ -1,5 +1,5 @@
 /* share */
-article {
+.main-article {
   margin: 0 auto;
   width: 1020px;
 }
@@ -10,7 +10,7 @@ article {
 
 .travel-header .title {
     padding: 30px;
-    font-size: 3.2rem;
+    font-size: 30px;
     font-weight: 600;
     margin: 0;
 }
