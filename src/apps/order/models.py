@@ -15,6 +15,11 @@ logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(__file__))
 
 
 class Order(TimeBaseModel):
+    display_id = models.CharField(verbose_name=u"订单号",
+                                  max_length=16,
+                                  blank=True,
+                                  default="")
+
     package = models.ForeignKey(Package,
                                 null=True,
                                 verbose_name=u'套餐名')

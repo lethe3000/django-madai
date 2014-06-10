@@ -7,7 +7,7 @@ from django import forms
 from apps.package.models import Package
 from apps.common.admin.datatables import DatatablesIdColumn, DatatablesBuilder, DatatablesImageColumn, DatatablesTextColumn, \
     DatatablesBooleanColumn, DatatablesUserChoiceColumn, DatatablesDateTimeColumn, DatatablesColumnActionsRender, \
-    DatatablesActionsColumn, DatatablesModelChoiceColumn, DatatablesIntegerColumn
+    DatatablesActionsColumn, DatatablesModelChoiceColumn, DatatablesIntegerColumn, DatatablesChoiceColumn
 
 HERE = os.path.dirname(__file__)
 logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(HERE)) + '.' + os.path.basename(HERE))
@@ -18,6 +18,8 @@ class PackageForm(forms.ModelForm):
     start_date = forms.DateTimeField(label=u"起始有效时间")
 
     end_date = forms.DateTimeField(label=u"结束有效时间")
+
+    start_city = forms.ChoiceField(label=u"出发城市", choices=Package.CITY_CHOICES)
 
     def __init__(self, *args, **kwargs):
         super(PackageForm, self).__init__(*args, **kwargs)
@@ -50,13 +52,16 @@ class PackageDatatablesBuilder(DatatablesBuilder):
 
     end_date = DatatablesDateTimeColumn(label=u'结束有效时间')
 
-    start_city = DatatablesTextColumn(label=u'出发城市')
+    # start_city = DatatablesModelChoiceColumn(label=u'出发城市')
+    start_city = DatatablesChoiceColumn(label=u'出发城市',
+                                        choices=Package.CITY_CHOICES,
+                                        is_searchable=True)
 
     price = DatatablesUserChoiceColumn(label=u'价格')
 
     summary = DatatablesTextColumn(label=u'简介',)
 
-    is_active = DatatablesBooleanColumn((('', u'全部'), (1, u'激活'), (0, u'锁定')),
+    is_active = DatatablesBooleanColumn((('', u'全部'), (1, u'启用'), (0, u'禁用')),
                                         label='状态',
                                         is_searchable=True,
                                         col_width='5%',

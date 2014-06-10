@@ -206,11 +206,16 @@
               validator.showErrors(data['errmsg-detail']);
             } else {
               $('#order_form').hide();
+              var yyyy = today.getFullYear();
+              var mm = (today.getMonth() + 1);
+              var dd = today.getDate();
+              if (mm < 10) {mm = '0' + mm}
+              if (dd < 10) {dd = '0' + dd}
               var success_content = '' +
                 '<h2 class="text-center">您的订单我们已经收到，工作人员将尽快与您联系。</h2>' +
                 '<dl class="horizontal">' +
                 '  <dt>订单号：</dt>' +
-                '  <dd>XMD' + today.getFullYear() + '' + (today.getMonth() + 1) + '' + today.getDate() + '' + data['order'].id + '</dd>' +
+                '  <dd>XMD' + yyyy + '' + mm + '' + dd + '' + data['order'].id + '</dd>' +
                 '  <dt>联系QQ：</dt>' +
                 '  <dd>1234567</dd>' +
                 '  <dt>联系电话：</dt>' +

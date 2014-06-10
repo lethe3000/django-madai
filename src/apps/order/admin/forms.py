@@ -18,6 +18,9 @@ class OrderDatatablesBuilder(DatatablesBuilder):
 
     id = DatatablesIdColumn()
 
+    display_id = DatatablesTextColumn(label=u"订单号",
+                                      is_searchable=True)
+
     package = DatatablesTextColumn(label=u'套餐',
                                    is_searchable=True)
 

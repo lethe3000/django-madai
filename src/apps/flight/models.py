@@ -177,7 +177,10 @@ class Flight(TimeBaseModel):
         return pretty_price(self.price)
 
     def content_url(self):
-        return self.content_file.url
+        try:
+            return self.content_file.url
+        except ValueError:
+            return u"无内容"
 
     def content_html(self):
         try:

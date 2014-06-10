@@ -61,6 +61,7 @@ class Package(BaseModel):
     CITY_CHOICES = (
         (u'成都', u'成都'),
         (u'重庆', u'重庆'),
+        (u'上海', u'上海'),
     )
     start_city = models.CharField(max_length=32,
                                   verbose_name=u'出发城市',
