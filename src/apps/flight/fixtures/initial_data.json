@@ -9,7 +9,9 @@
       "created": "2013-12-27T10:09:15.020",
       "updated": "2013-12-27T10:09:15.020",
       "image_file": "images/cms_11_989_bundle.jpg",
-      "summary": "新加坡航班信息"
+      "summary": "新加坡航班信息",
+      "is_published": true,
+      "address": "成都"
     }
   },
   {
@@ -22,7 +24,9 @@
       "created": "2013-12-27T10:09:16.020",
       "updated": "2013-12-27T10:09:16.020",
       "image_file": "images/cms_11_989_bundle.jpg",
-      "summary": "泰国航班信息"
+      "summary": "泰国航班信息",
+      "is_published": true,
+      "address": "成都"
     }
   },
   {
@@ -35,7 +39,9 @@
       "created": "2013-12-27T10:09:17.020",
       "updated": "2013-12-27T10:09:17.020",
       "image_file": "images/cms_11_989_bundle.jpg",
-      "summary": "中国航班信息"
+      "summary": "中国航班信息",
+      "is_published": true,
+      "address": "重庆"
     }
   },
   {
@@ -47,7 +53,7 @@
       "name": "航班运行时间",
       "image_file": "images/icon_guide_bus.png",
       "created": "2013-12-27T10:09:15.020",
-      "updated": "2013-12-27T10:09:15.020"
+      "updated": "2013-12-27T10:09:15.020",
     }
   }
 ]

@@ -20,10 +20,10 @@
 
 {% block main_content %}
 {% include 'website/header.inc.html' %}
-<section class="bg-color-dark bg-pattern-diag">
+<div class="main-section bg-color-dark bg-pattern-diag">
   <div class="bottom-shade-large"></div>
   <div class="bg-image-white-light">
-    <article class="search-info">
+    <div class="main-article search-info">
         <div class="grid fluid">
           <div class="row">
             <div class="span6 hotel-name">
@@ -37,47 +37,20 @@
             </div>
           </div>
         </div>
-    </article>
+    </div>
   </div>
-</section>
-<section class="bg-2">
-  <article class="photo-group">
+</div>
+<div class="main-section bg-2">
+  <div class="main-article photo-group">
     <div class="grid fluid">
       <div class="row">
-        <div class="span8">
+        <div class="span8 offset2">
           <div class="flight-schedule bg-white"></div>
-        </div>
-        <div class="span4">
-          <blockquote>
-            <div class="color-blue">{{ flight.summary }}</div>
-          </blockquote>
-          <div class="scroll-group bg-color-orange">
-            <div class="ribbon place-right bg-white oblique">
-              <span class="fg-color-orange"><i class="icon-tag on-left-more"></i>小麻袋优势</span>
-            </div>
-            <div class="scroll-box"
-                 data-role="scrollbox"
-                 data-scroll="vertical"
-                 data-height="215"
-                 data-scrollbardisplay="false"
-                 data-enablemousewheel="false"
-                 data-wheel="30"
-                 >
-              <ul class="unstyled">{% for item in flight.get_advantages %}
-                    <li><p>{{ item }}</p></li>
-                {% endfor %}
-              </ul>
-            </div>
-            <div class="action-btn-group">
-              <div class="text-center up"><i class="icon-arrow-up-4 fg-color-orange"></i></div>
-              <div class="text-center down"><i class="icon-arrow-down-4 fg-color-orange"></i></div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
-  </article>
-</section>
+  </div>
+</div>
 {% endblock main_content %}
 
 {% block extrajs %}
