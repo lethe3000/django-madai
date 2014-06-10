@@ -1,5 +1,5 @@
 /* hotel */
-article {
+.main-article {
   padding: 50px 0;
   margin: 0 auto;
   width: 1020px;
@@ -63,20 +63,24 @@ a.button.submit {
 
 span.currency {
     display: block;
-    margin-top: 20px;
+    margin-top: 8px;
 }
 
 span.currency > strong {
-    font-size: 3.3rem;
+    font-size: 31px;
 }
 
 span.currency > small {
-    font-size: 1.6rem;
+    font-size: 15px;
 }
 
 .hotel-name > h2 {
-    font-size: 3.2rem;
+    font-size: 30px;
     font-weight: 600;
+}
+
+.hotel-name > p {
+    font-size: 14px;
 }
 
 .hotel-name .customer-icon {
@@ -144,7 +148,7 @@ blockquote > div {
 }
 
 .scroll-group .ribbon span {
-    font-size: 1.8rem;
+    font-size: 17px;
 }
 
 .scroll-group .ribbon span i {
@@ -154,7 +158,7 @@ blockquote > div {
 .scroll-group .oblique:before {
     border-style: solid;
     content: " ";
-    border-color: rgba(0, 0, 0, 0) #FFFFFF rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    border-color: transparent #FFFFFF transparent transparent;
     border-width: 0 18px 46px 0;
     left: -18px;
     position: absolute;
@@ -172,6 +176,7 @@ blockquote > div {
 }
 
 .scroll-group .action-btn-group > div {
+    background-color: #FFFFFF;
     background-color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
     font-size: 1.4rem;
@@ -183,19 +188,12 @@ blockquote > div {
 }
 
 .scroll-group .action-btn-group > div:hover {
+    background-color: #FFF0F0;
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-.scroll-group .action-btn-group > div:hover:before {
-    border-color: rgba(0, 0, 0, 0) rgba(255, 255, 255, 0.9) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
-}
-
-.scroll-group .action-btn-group > div:hover:after {
-    border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(255, 255, 255, 0.9);
-}
-
 .scroll-group .action-btn-group i {
-    font-size: 1.6rem;
+    font-size: 15px;
 }
 
 .photo-group {
@@ -211,6 +209,11 @@ blockquote > div {
 }
 
 .bg-gr-orange {
+    background-color: #df633a;
+    background-attachment: scroll;
+    background-repeat: repeat;
+    background-position-x: center;
+    background-position-y: 50%;
     background: linear-gradient(to bottom, #df633a 0px, #b24f2e 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 
@@ -264,15 +267,9 @@ blockquote > div {
     width: 320px !important;
 }
 
-.grid.list span.currency {
-    display: block;
-    margin-top: 100px;
-}
-
 .grid.list span.currency strong {
     color: #DF633A;
     font-family: futura,sans-serif;
-    font-size: 30px;
 }
 
 .list-group {
@@ -307,4 +304,24 @@ blockquote > div {
 .page_link.active {
     color: #FFFFFF;
     background-color: #df633a;
+}
+
+.list-group .promotion-article * {
+    color: #999999;
+}
+
+.list-group .promotion-article {
+    width: 620px;
+    height: 110px;
+    overflow: hidden;
+}
+
+.list-group .hotel-summary {
+    display: block;
+    width: 500px;
+    height: 110px;
+    overflow: hidden;
+    margin-top: 15px;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
 }

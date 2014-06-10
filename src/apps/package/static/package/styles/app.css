@@ -1,6 +1,6 @@
 /* package */
 
-article {
+.main-article {
   padding: 50px 0 0;
   margin: 0 auto;
   width: 1020px;
@@ -24,14 +24,6 @@ article {
 
 .search-info .color-blue {
   color: #7F96AD;
-}
-
-.bg-image-clouds {
-  background-color: #D3E9F6;
-  background-image: url("../../website/img/bg-image-clouds.jpg");
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
 }
 
 .sorted-list {
@@ -83,6 +75,10 @@ article {
   color: #df633a;
   font-family: futura, sans-serif;
   font-size: 30px;
+}
+
+.sorted-list > li span.currency small {
+    font-size: 13px;
 }
 
 a.button.submit {
@@ -137,7 +133,11 @@ a.button.submit {
 }
 
 label.title {
-    font-size: 2.6rem;
+    font-size: 24px;
+}
+
+label.normal {
+    font-size: 13px;
 }
 
 input {
@@ -185,7 +185,7 @@ button.button.confirm {
 
 .main-title {
     display: block;
-    font-size: 3.0rem !important;
+    font-size: 28px !important;
     margin: 20px 0 !important;
 }
 
@@ -208,6 +208,7 @@ button.button.confirm {
 .sorted-list .notice h2 {
     margin: 0 0 10px 0;
     color: #df633a;
+    font-size: 23px;
 }
 
 .sorted-list .notice .icon-checkmark {

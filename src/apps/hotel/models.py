@@ -167,6 +167,8 @@ class InfoType(TimeBaseModel):
 
     INFO_TYPE_MAP = 11
 
+    INTO_TYPE_PROMOTION = 6
+
     name = models.CharField(max_length=64,
                             verbose_name=u'名称',
                             unique=True)

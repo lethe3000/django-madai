@@ -9,18 +9,18 @@
 
 {% block main_content %}
   {% include 'website/header.inc.html' %}
-  <section class="bg-color-dark bg-pattern-diag travel-header">
+  <div class="main-section bg-color-dark bg-pattern-diag travel-header">
     <div class="bottom-shade-large"></div>
     <div class="bg-image-white-light">
-      <article>
+      <div class="main-article">
         <h2 class="fg-white title">{{ note.title }}</h2>
-      </article>
+      </div>
     </div>
-  </section>
-  <section class="bg-image-clouds travel-body">
-    <article class="content bg-white">
-    </article>
-  </section>
+  </div>
+  <div class="main-section bg-image-clouds travel-body">
+    <div class="main-article content bg-white">
+    </div>
+  </div>
 {% endblock main_content %}
 
 {% block extrajs %}

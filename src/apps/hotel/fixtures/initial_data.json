@@ -118,5 +118,17 @@
       "created": "2013-12-27T10:09:15.020",
       "updated": "2013-12-27T10:09:15.020"
     }
+  },
+  {
+    "pk": 6,
+    "model": "hotel.infotype",
+    "fields": {
+      "display_order": 0,
+      "is_active": true,
+      "name": "推荐理由",
+      "image_file": "images/icon_guide_first.png",
+      "created": "2013-12-27T10:09:15.020",
+      "updated": "2013-12-27T10:09:15.020"
+    }
   }
 ]

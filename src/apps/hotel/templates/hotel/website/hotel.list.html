@@ -14,9 +14,9 @@
 
 {% block main_content %}
 {% include 'website/header.inc.html' %}
-<section class="bg-1 bg-image-white-light">
+<div class="main-section bg-1 bg-image-white-light">
   <div class="bottom-shade-large"></div>
-  <article class="list-group">
+  <div class="main-article list-group">
     <div class="filtering">
       <div class="input-control select" style="height: 40px; width: 130px; float: right;">
         <select id="atoz" data-placeholder="按字母过滤" class="alt-select">
@@ -35,8 +35,21 @@
               <img src="{{ hotel.image_url }}" style="width: 320px; height: 205px;"/>
             </div>
             <div class="span8">
-              <h2 class="fg-grayDark">{{ hotel.name }}</h2>
-              <p class="fg-grayLight">{{ hotel.summary }}</p>
+              <h2 class="fg-grayDark" style="font-size: 24px;">{{ hotel.name }}</h2>
+              {% if promotion %}
+                <div class="promotion-article">
+                {% autoescape off %}
+                  {% for article in hotel.articles.all %}
+                    {% if article.info_type.id == 6 %}
+                      {{ article.content_html }}
+                    {% endif %}
+                  {% endfor %}
+                {% endautoescape %}
+                </div>
+                <span class="currency"><strong>{{ hotel.get_pretty_price }}</strong><small class="fg-grayDark">/晚</small></span>
+              {% else %}
+                <p class="hotel-summary fg-grayLight">{{ hotel.summary }}</p>
+              {% endif %}
             </div>
           </a>
         </div>
@@ -51,8 +64,8 @@
         <a href="#" class="page_link" data-page="{{ next_page }}"><i class="icon-arrow-right-5"></i></a>
       </div>
     </div>
-  </article>
-</section>
+  </div>
+</div>
 {% endblock main_content %}
 
 {% block extrajs %}
@@ -79,7 +92,8 @@
     });
 
     function pageAndFilter(page, filter) {
-      window.location.href = '{% url 'website:hotel:hotel_list' %}' + '?page=' + page + '&filter=' + filter;
+      var endpoint = {% if promotion %}'{% url 'website:hotel:hotel_list_promotion' %}'{% else %}'{% url 'website:hotel:hotel_list'%}'{% endif %}
+      window.location.href = endpoint + '?page=' + page + '&filter=' + filter;
     }
   </script>
 {% endblock extrajs %}

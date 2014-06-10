@@ -20,44 +20,10 @@
 
 {% block main_content %}
 {% include 'website/header.inc.html' %}
-{#<section class="bg-color-dark bg-image-white-light">#}
-{#  <div class="bottom-shade-large"></div>#}
-{#  <article class="search-info">#}
-{#    <div class="grid fluid">#}
-{#      <div class="row">#}
-{#        <div class="span3 date-pick">#}
-{#          <p class="color-blue">入住日期</p>#}
-{#          <div class="input-control text"#}
-{#               data-role="datepicker"#}
-{#               data-format='yyyy-mm-dd'#}
-{#               data-effect="fade"#}
-{#               data-locale="zhCN">#}
-{#            <input type="text" class="fg-gray">#}
-{#            <button class="btn-date fg-grayLight"></button>#}
-{#          </div>#}
-{#        </div>#}
-{#        <div class="span3 date-pick">#}
-{#          <p class="color-blue">离开日期</p>#}
-{#          <div class="input-control text"#}
-{#               data-role="datepicker"#}
-{#               data-format='yyyy-mm-dd'#}
-{#               data-effect="fade"#}
-{#               data-locale="zhCN">#}
-{#            <input type="text" class="fg-gray">#}
-{#            <button class="btn-date fg-grayLight"></button>#}
-{#          </div>#}
-{#        </div>#}
-{#        <div class="span6">#}
-{#          <a class="button large submit fg-white place-right" href="#">价格查询</a>#}
-{#        </div>#}
-{#      </div>#}
-{#    </div>#}
-{#  </article>#}
-{#</section>#}
-<section class="bg-color-dark bg-pattern-diag">
+<div class="main-section bg-color-dark bg-pattern-diag">
   <div class="bottom-shade-large"></div>
   <div class="bg-image-white-light">
-    <article class="search-info">
+    <div class="main-article search-info">
         <div class="grid fluid">
           <div class="row">
             <div class="span6 hotel-name">
@@ -72,11 +38,11 @@
 {#            </div>#}
           </div>
         </div>
-    </article>
+    </div>
   </div>
-</section>
-<section class="bg-2">
-  <article class="photo-group">
+</div>
+<div class="main-section bg-2">
+  <div class="main-article photo-group">
     <div class="grid fluid">
       <div class="row">
         <div class="span8">
@@ -124,10 +90,10 @@
         </div>
       </div>
     </div>
-  </article>
-</section>
-<section class="bg-image-clouds">
-  <article>
+  </div>
+</div>
+<div class="main-section bg-image-clouds">
+  <div class="main-article">
     <div class="tab-control">
         <ul class="tabs bg-gr-orange">
         {% for info in info_type_list %}
@@ -144,8 +110,8 @@
         {% endfor %}
       </div>
     </div>
-  </article>
-</section>
+  </div>
+</div>
 {% endblock main_content %}
 
 {% block extrajs %}

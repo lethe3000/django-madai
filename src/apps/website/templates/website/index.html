@@ -18,7 +18,7 @@
 {% endblock extraincjs %}
 
 {% block main_content %}
-<header>
+<div class="main-header">
   <div class="account">
     <div class="grid fluid margin-0-center" style="width: 1000px;">
       <div class="row">
@@ -44,9 +44,9 @@
   </div>
   <div class="logo text-center">
     <div class="inline text-center">
-      <div class="header prefix">小麻袋</div>
+      <div class="header prefix"><span>小麻袋</span></div>
       <img src="{% static 'website/img/logo.png' %}" alt=""/>
-      <div class="header suffix">装满爱</div>
+      <div class="header suffix"><span>装满爱</span></div>
     </div>
   </div>
   <div class="date-pick">
@@ -72,10 +72,6 @@
       <div class="input-control select" style="display: inline-block; width: 160px; margin-left: -1px;">
         <select id="start_date" data-placeholder="出发日期" class="alt-select">
           <option value=""></option>
-{#          <optgroup label="2014年">#}
-{#            <option value="2014-1">1月</option>#}
-{#            <option value="2014-2">2月</option>#}
-{#          </optgroup>#}
         </select>
         <i class="icon-calendar fg-grayLight"></i>
       </div>
@@ -97,7 +93,7 @@
         <a href="{% url 'website:present:present_list' %}" class="banner-link">更多礼包<span class="icon-arrow-right-4 on-right"></span></a>
       </div>
   </div>
-</header>
+</div>
 <nav class="bg-white shadow-bottom menu">
   <div class="nav-box fixed-width margin-0-center">
     <a class="text-center" href="{% url 'website:index' %}"><p class="margin-0">首页</p></a>
@@ -107,11 +103,11 @@
     <a class="text-center" href="#"><p class="margin-0">小知识库</p></a>
   </div>
 </nav>
-<section class="bg-darkBlue bg-image-white-light">
+<div class="main-section bg-darkBlue bg-image-white-light">
   <div class="bottom-shade-large"></div>
-  <article>
+  <div class="main-article">
     <h2 class="fg-white category-title">最新促销</h2>
-    <a class="category-showmore place-right" href="{% url 'website:hotel:hotel_list' %}">+ 更多</a>
+    <a class="category-showmore place-right" href="{% url 'website:hotel:hotel_list_promotion' %}">+ 更多</a>
     <div class="product-group">
       <div class="jcarousel">
         <ul>
@@ -124,7 +120,9 @@
                   <p>&nbsp;</p>
                   <div class="customer-icon hotel-flat"></div>
                 </div>
+                <img src="{% static 'website/img/label_sale_red.png' %}" style="position: absolute; top: -7px; left: -20px; width: 128px; height: 128px; z-index: 2;"/>
               </a>
+
             </li>
           {% endfor %}
         </ul>
@@ -133,10 +131,10 @@
       <i class="jcarousel-control-prev icon-arrow-left-5"></i>
       <i class="jcarousel-control-next icon-arrow-right-5"></i>
     </div>
-  </article>
-</section>
-<section class="bg-lightBlue">
-  <article>
+  </div>
+</div>
+<div class="main-section bg-lightBlue">
+  <div class="main-article">
     <h2 class="fg-white category-title">小麻袋礼</h2>
     <a class="category-showmore place-right" href="{% url 'website:present:present_list' %}">+ 更多</a>
     <div class="product-group">
@@ -159,10 +157,10 @@
       <i class="jcarousel-control-prev icon-arrow-left-5"></i>
       <i class="jcarousel-control-next icon-arrow-right-5"></i>
     </div>
-  </article>
-</section>
-<section class="bg-lightTeal">
-  <article>
+  </div>
+</div>
+<div class="main-section" style="background-color: #bfe1f4;">
+  <div class="main-article">
     <h2 class="fg-orange category-title">种草专区</h2>
 {#    <a class="category-showmore place-right" href="#">+ 更多</a>#}
     <div class="product-group">
@@ -177,7 +175,7 @@
                 <div class="summary"><p class="fg-grayLight">{{ travel_note.fake_user }}</p></div>
               </div>
 {#              <div class="bg-white" style="position: absolute; z-index: 1; width: 320px; height: 300px; top: 0;"></div>#}
-              <div class="bg-white" style="position: absolute; z-index: 1; width: 120px; height: 5px; top: 345px;"></div>
+              <div style="position: absolute; z-index: 1; width: 120px; height: 5px; top: 345px; background-color: #bfe1f4;"></div>
               </a>
             </li>
           {% endfor %}
@@ -187,8 +185,8 @@
       <i class="jcarousel-control-prev icon-arrow-left-5"></i>
       <i class="jcarousel-control-next icon-arrow-right-5"></i>
     </div>
-  </article>
-</section>
+  </div>
+</div>
 {% endblock main_content %}
 
 {% block extrajs %}
@@ -208,24 +206,24 @@
             '<div class="signup-form place-left bg-white">' +
             '  <form id="signup_form" action="' + "{% url 'website:customer:signup' %}" + '" method="post" >' + "{% csrf_token %}" +
             '    <fieldset>' +
-            '      <label for="" class="title">小麻袋注册 <a href="#" onclick="closeAndOpenDialog(\'signin-btn\');" class="place-right fg-color-pink">会员登录</a></label>' +
+            '      <label for="" class="title">小麻袋注册 <a href="#" onclick="closeAndOpenDialog(\'signin-btn\');" class="place-right fg-color-orange">会员登录</a></label>' +
             '      <div class="input-control text" data-role="input-control">' +
-            '        <p class="text-right" style="display: inline-block; width: 75px;">用户名：</p>' +
+            '        <p class="text-right" style="display: inline-block; width: 75px; font-size: 14px;">用户名：</p>' +
             '        <input id="id_name" name="name" type="text" style="display: inline; width: 216px;">' +
             '      </div>' +
             '      <div class="input-control text" data-role="input-control">' +
-            '        <p class="text-right" style="display: inline-block; width: 75px;">手机号：</p>' +
+            '        <p class="text-right" style="display: inline-block; width: 75px; font-size: 14px;">手机号：</p>' +
             '        <input id="id_phone" name="phone" type="text" style="display: inline; width: 216px">' +
             '      </div>' +
             '      <div class="input-control text" data-role="input-control">' +
-            '        <p class="text-right" style="display: inline-block; width: 75px;">密码：</p>' +
+            '        <p class="text-right" style="display: inline-block; width: 75px; font-size: 14px;">密码：</p>' +
             '        <input id="id_password1" name="password1" type="password" style="display: inline; width: 216px">' +
             '      </div>' +
             '      <div class="input-control text" data-role="input-control">' +
-            '        <p class="text-right" style="display: inline-block; width: 75px;">确认密码：</p>' +
+            '        <p class="text-right" style="display: inline-block; width: 75px; font-size: 14px;">确认密码：</p>' +
             '        <input id="id_password2" name="password2" type="password" style="display: inline; width: 216px">' +
             '      </div>' +
-            '      <button type="submit" onclick="signupSubmit();" class="ribbon place-right oblique bg-color-pink">' +
+            '      <button type="submit" onclick="signupSubmit();" class="ribbon place-right oblique bg-color-orange">' +
             '        <span class="fg-white">注册</span>' +
             '      </button>' +
             '    </fieldset>' +
@@ -254,16 +252,16 @@
             '<div class="signup-form place-left bg-white">' +
             '  <form id="signin_form" action="' + "{% url 'website:customer:signin' %}" + '" method="post" >' + "{% csrf_token %}" +
             '    <fieldset>' +
-            '      <label for="" class="title">小麻袋登陆 <a href="#" onclick="closeAndOpenDialog(\'signup-btn\');" class="place-right fg-color-pink">还不是会员？</a></label>' +
+            '      <label for="" class="title">小麻袋登陆 <a href="#" onclick="closeAndOpenDialog(\'signup-btn\');" class="place-right fg-color-orange">还不是会员？</a></label>' +
             '      <div class="input-control text" data-role="input-control">' +
-            '        <p class="text-right" style="display: inline-block; width: 75px;">用户名：</p>' +
+            '        <p class="text-right" style="display: inline-block; width: 75px; font-size: 14px;">用户名：</p>' +
             '        <input id="id_name" name="name" type="text" style="display: inline; width: 216px">' +
             '      </div>' +
             '      <div class="input-control text" data-role="input-control">' +
-            '        <p class="text-right" style="display: inline-block; width: 75px;">密码：</p>' +
+            '        <p class="text-right" style="display: inline-block; width: 75px; font-size: 14px;">密码：</p>' +
             '        <input id="id_password" name="password" type="password" style="display: inline; width: 216px">' +
             '      </div>' +
-            '      <button type="submit" onclick="signinSubmit()" class="ribbon place-right oblique bg-color-pink">' +
+            '      <button type="submit" onclick="signinSubmit()" class="ribbon place-right oblique bg-color-orange">' +
             '        <span class="fg-white">登陆</span>' +
             '      </button>' +
             '    </fieldset>' +
@@ -292,30 +290,30 @@
         return false;
       });
 
-      $('header > .account .balloon.bottom').hide();
+      $('.main-header > .account .balloon.bottom').hide();
       var intervalId;
       $('.contact-hover')
         .on('mouseover', function() {
           if (intervalId) {
             clearInterval(intervalId);
           }
-          $('header > .account .balloon.bottom').show();
+          $('.main-header > .account .balloon.bottom').show();
         })
         .on('mouseleave', function() {
           intervalId = setInterval(function() {
-            $('header > .account .balloon.bottom').hide();
+            $('.main-header > .account .balloon.bottom').hide();
           }, 500);
         });
-      $('header > .account .balloon.bottom')
+      $('.main-header > .account .balloon.bottom')
         .on('mouseover', function() {
           if (intervalId) {
             clearInterval(intervalId);
           }
-          $('header > .account .balloon.bottom').show();
+          $('.main-header > .account .balloon.bottom').show();
         })
         .on('mouseleave', function() {
           intervalId = setInterval(function() {
-            $('header > .account .balloon.bottom').hide();
+            $('.main-header > .account .balloon.bottom').hide();
           }, 500);
         });
 

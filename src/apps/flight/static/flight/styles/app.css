@@ -1,5 +1,5 @@
 /* flight */
-article {
+.main-article {
   padding: 50px 0;
   margin: 0 auto;
   width: 1020px;
@@ -67,7 +67,11 @@ span.currency {
 }
 
 span.currency > strong {
-    font-size: 3.3rem;
+    font-size: 31px;
+}
+
+span.currency > small {
+    font-size: 15px;
 }
 
 .hotel-name > h2 {
