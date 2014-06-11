@@ -257,7 +257,7 @@ class FlightDatatablesBuilder(DatatablesBuilder):
                                             is_searchable=True,
                                             col_width="4%")
 
-    is_published = DatatablesBooleanColumn((('', u'全部'), (1, u'激活'), (0, u'锁定')),
+    is_published = DatatablesBooleanColumn((('', u'全部'), (1, u'发布'), (0, u'草稿')),
                                            label='状态',
                                            is_searchable=True,
                                            col_width='5%',

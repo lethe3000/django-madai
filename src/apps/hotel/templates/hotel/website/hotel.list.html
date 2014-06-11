@@ -46,7 +46,7 @@
                   {% endfor %}
                 {% endautoescape %}
                 </div>
-                <span class="currency"><strong>{{ hotel.get_pretty_price }}</strong><small class="fg-grayDark">/晚</small></span>
+                <span class="currency"><strong>{{ hotel.price }}</strong><small class="fg-grayDark"></small></span>
               {% else %}
                 <p class="hotel-summary fg-grayLight">{{ hotel.summary }}</p>
               {% endif %}
