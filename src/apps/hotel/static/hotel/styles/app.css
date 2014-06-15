@@ -62,12 +62,14 @@ a.button.submit {
 }
 
 span.currency {
-    display: block;
-    margin-top: 8px;
+    position: absolute;
+    left: 510px;
+    display: inline-block;
+    margin: 20px 0 0;
 }
 
 span.currency > strong {
-    font-size: 31px;
+    font-size: 25px;
 }
 
 span.currency > small {
@@ -247,6 +249,7 @@ blockquote > div {
     padding: 0 40px !important;
     height: 46px;
     line-height: 53px;
+    color: #3f3f3f;
 }
 
 .scroll-group-room .scroll-box p {
@@ -311,17 +314,19 @@ blockquote > div {
 }
 
 .list-group .promotion-article {
-    width: 620px;
-    height: 110px;
+    width: 640px;
+    height: 130px;
     overflow: hidden;
 }
 
 .list-group .hotel-summary {
     display: block;
-    width: 500px;
-    height: 110px;
     overflow: hidden;
     margin-top: 15px;
-    font-size: 1.8rem;
-    line-height: 2.4rem;
+    font-size: 15px;
+    line-height: 28px;
+}
+
+.tab-control .frames p {
+    color: #3f3f3f;
 }

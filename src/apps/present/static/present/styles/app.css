@@ -1,6 +1,6 @@
 /* present */
 
-article {
+.main-article {
   padding: 90px 0;
   margin: 0 auto;
   width: 1020px;
@@ -13,7 +13,6 @@ article {
 
 .product {
     margin: 0 10px 50px;
-
 }
 
 .product > img {
@@ -22,25 +21,29 @@ article {
     display: block;
 }
 
-.product > .product-title {
+.product > .product-title-complex {
     background-color: #FFFFFF;
     width: 320px;
     height: 110px;
-    padding: 20px;
     transition: all 0.1s ease-in-out 0s;
 }
 
-.product:hover > .product-title {
+.product:hover > .product-title-complex {
     background-color: #df633a;
 }
 
-.product > .product-title > h4 {
-    margin-top: 0;
+.product > .product-title-complex h4 {
+    margin-top: 0 !important;
     font-size: 16px;
+    color: #3f3f3f;
 }
 
-.product:hover > .product-title > h4,
-.product:hover > .product-title > p {
+.product > .product-title-complex p.price-fg-lime {
+    color: #a4c400;
+}
+
+.product:hover > .product-title-complex h4,
+.product:hover > .product-title-complex p {
     color: #FFFFFF;
 }
 

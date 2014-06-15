@@ -267,8 +267,9 @@ blockquote > div {
 }
 
 .grid.list span.currency {
+    position: absolute;
     display: block;
-    margin-top: 100px;
+    bottom: 10px;
 }
 
 .grid.list span.currency strong {

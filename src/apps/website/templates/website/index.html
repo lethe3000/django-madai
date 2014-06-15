@@ -100,7 +100,7 @@
     <a class="text-center" href="{% url 'website:index' %}"><p class="margin-0">首页</p></a>
     <a class="text-center" href="{% url 'website:hotel:hotel_list' %}"><p class="margin-0">酒店</p></a>
     <a class="text-center" href="{% url 'website:flight:flight_list' %}"><p class="margin-0">航班</p></a>
-    <a class="text-center" href="#"><p class="margin-0">小麻袋礼</p></a>
+    <a class="text-center" href="{% url 'website:present:present_list' %}"><p class="margin-0">小麻袋礼</p></a>
     <a class="text-center" href="#"><p class="margin-0">小知识库</p></a>
   </div>
 </nav>
@@ -143,13 +143,22 @@
         <ul>
           {% for present in presents %}
             <li>
-              <a class="product" href="#">
+              <div class="product">
                 <img src="{{ present.image_url }}" />
-                <div class="product-title">
-                  <h4>{{ present.name }}</h4>
-                  <p>&nbsp;</p>
+                <div class="product-title-complex">
+                  <div class="grid fluid" style="margin: 0 !important;">
+                    <div class="row" style="margin: 0 !important;">
+                      <div class="span8" style="margin: 20px 0 0 20px; height: 110px; width: 185px !important;">
+                        <h4 style="margin-top: 0;">{{ present.name }}</h4>
+                        <p>{{ present.desc }}</p>
+                      </div>
+                      <div class="span4" style="height: 110px; width: 106px !important; margin-top: 20px;">
+                        <p class="price-fg-lime" style="font-size: 30px;"><em><small style="font-size: 12px;">价值</small><b style="font-family: 'Segoe UI_';">{{ present.price }}</b><small style="font-size: 12px;">元</small></em></p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </a>
+              </div>
             </li>
           {% endfor %}
         </ul>

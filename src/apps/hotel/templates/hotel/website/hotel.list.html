@@ -34,8 +34,9 @@
             <div class="span4">
               <img src="{{ hotel.image_url }}" style="width: 320px; height: 205px;"/>
             </div>
-            <div class="span8">
-              <h2 class="fg-grayDark" style="font-size: 24px;">{{ hotel.name }}</h2>
+            <div class="span8" style="position: relative; height: 205px; width: 650px !important;">
+              <h2 style="display: inline-block; font-size: 28px; margin: 25px 0 10px; color: #0896FF;">{{ hotel.name }}</h2>
+              <span class="currency"><strong>{{ hotel.price }}</strong><small class="fg-grayDark"></small></span>
               {% if promotion %}
                 <div class="promotion-article">
                 {% autoescape off %}
@@ -46,9 +47,9 @@
                   {% endfor %}
                 {% endautoescape %}
                 </div>
-                <span class="currency"><strong>{{ hotel.price }}</strong><small class="fg-grayDark"></small></span>
               {% else %}
-                <p class="hotel-summary fg-grayLight">{{ hotel.summary }}</p>
+                <p class="hotel-summary fg-grayLight" style="margin: 0;"><span class="icon-location on-left"></span>{{ hotel.address }}</p>
+                <p class="hotel-summary fg-gray">{{ hotel.summary }}</p>
               {% endif %}
             </div>
           </a>

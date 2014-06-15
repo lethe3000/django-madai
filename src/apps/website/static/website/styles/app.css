@@ -53,6 +53,31 @@
     transition: all 0.1s ease-in-out 0s;
 }
 
+.product > .product-title-complex {
+    background-color: #FFFFFF;
+    width: 320px;
+    height: 110px;
+    transition: all 0.1s ease-in-out 0s;
+}
+
+.product > .product-title-complex p,
+.product > .product-title-complex h4 {
+    color: #3f3f3f;
+}
+
+.product > .product-title-complex p.price-fg-lime {
+    color: #a4c400;
+}
+
+.product:hover > .product-title-complex p,
+.product:hover > .product-title-complex h4 {
+    color: #ffffff;
+}
+
+.product:hover > .product-title-complex {
+    background-color: #df633a;
+}
+
 .product:hover > .product-title {
     background-color: #df633a;
 }
@@ -60,6 +85,7 @@
 .product > .product-title > h4 {
     margin-top: 0;
     font-size: 16px;
+    color: #3f3f3f;
 }
 
 .product:hover > .product-title > h4,

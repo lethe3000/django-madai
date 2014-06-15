@@ -40,6 +40,10 @@ nav > .nav-box > a {
   vertical-align: middle;
 }
 
+nav > .nav-box p {
+    color: #3f3f3f;
+}
+
 .main-header > .logo {
   position: absolute;
   width: 100%;
