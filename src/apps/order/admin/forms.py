@@ -49,8 +49,9 @@ class OrderDatatablesBuilder(DatatablesBuilder):
                                     is_searchable=True)
 
     def actions_render(request, model, field_name):
-        actions = [{'is_link': True,  'name': 'edit', 'text': u'编辑', 'icon': 'icon-edit'},
-                   {'is_link': False, 'name': 'delete', 'text': u'删除', 'icon': 'icon-remove'},]
+        actions = [
+            # {'is_link': True,  'name': 'edit', 'text': u'编辑', 'icon': 'icon-edit'},
+            {'is_link': False, 'name': 'delete', 'text': u'删除', 'icon': 'icon-remove'},]
         next_action = model.next_action_for_admin()
         if next_action:
             actions.append({'is_link': False, 'name': 'order_update', 'text': next_action['label'], 'icon': 'icon-money',
