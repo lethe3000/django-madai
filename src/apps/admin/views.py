@@ -63,6 +63,10 @@ def build_menu(request):
         ('游记', reverse('admin:share:travelnote_list'), None),
     ]
 
+    SUBMENU_KNOWLEDGE = [
+        ('小知识库', reverse('admin:knowledge:knowledge_list'), None),
+    ]
+
     MENU = (
         {'menu': '系统信息', 'url': reverse('admin:dashboard'), 'icon': 'icon-dashboard', 'submenu': []},
         {'menu': '账号', 'url': '', 'icon': 'icon-group', 'submenu': SUBMENU_ACCOUNT},
@@ -75,6 +79,7 @@ def build_menu(request):
         {'menu': '礼包管理', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_PRESENT},
         {'menu': '订单', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_ORDER},
         {'menu': '游记', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_SHARE},
+        {'menu': '小知识库', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_KNOWLEDGE},
     )
     menus = []
     for item in MENU:

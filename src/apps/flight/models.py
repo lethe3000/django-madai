@@ -45,7 +45,7 @@ class InfoType(TimeBaseModel):
     is_active = models.BooleanField(default=True,
                                     verbose_name=u'激活状态')
 
-    summary = models.CharField(max_length=128,
+    summary = models.CharField(max_length=512,
                                verbose_name=u'简介',
                                default="",
                                blank=True)
@@ -118,7 +118,7 @@ class Flight(TimeBaseModel):
                                    default="",
                                    verbose_name=u'图片')
 
-    summary = models.CharField(max_length=128,
+    summary = models.CharField(max_length=512,
                                verbose_name=u'简介',
                                default="",
                                blank=True)

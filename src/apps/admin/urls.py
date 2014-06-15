@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^thirdparty/', include('apps.thirdparty.urls', namespace='thirdparty')),
     url(r'^initdata/$', 'apps.admin.views.initdata'),
     url(r'^share/', include('apps.share.admin.urls', namespace='share')),
+    url(r'^knowledge/', include('apps.knowledge.admin.urls', namespace='knowledge')),
 )
 
 

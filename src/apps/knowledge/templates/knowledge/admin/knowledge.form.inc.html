@@ -1,0 +1,15 @@
+{#a simple template works with ModelAwareMixin#}
+{% extends 'common/admin/generic.form.inc.html' %}
+{% load staticfiles %}
+
+{% block pagecontent_js %}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var $form = $('#{{ form_id }}');
+
+            var ue1 = new UE.ui.Editor({initialFrameWidth: 1000, maxImageSideLength: 3000 });
+            ue1.render('id_content_html');
+        });
+    </script>
+{% endblock pagecontent_js %}

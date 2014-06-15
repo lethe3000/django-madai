@@ -6,7 +6,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
 import os
 from django import forms
-from apps.share.models import TravelNote
+from apps.knowledge.models import Knowledge
 from apps.common.ace import AceClearableFileInput, AceBooleanField
 from apps.common.admin.datatables import DatatablesIdColumn, DatatablesBuilder, DatatablesImageColumn, DatatablesTextColumn, \
     DatatablesBooleanColumn, DatatablesUserChoiceColumn, DatatablesDateTimeColumn, DatatablesColumnActionsRender, \
@@ -17,7 +17,7 @@ HERE = os.path.dirname(__file__)
 logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(HERE)) + '.' + os.path.basename(HERE))
 
 
-class TravelNoteForm(forms.ModelForm):
+class KnowledgeForm(forms.ModelForm):
     content_html = forms.CharField(label=u'内容',
                                    widget=forms.Textarea())
 
@@ -25,13 +25,13 @@ class TravelNoteForm(forms.ModelForm):
                                 label=u'Banner显示')
 
     def __init__(self, *args, **kwargs):
-        super(TravelNoteForm, self).__init__(*args, **kwargs)
+        super(KnowledgeForm, self).__init__(*args, **kwargs)
         self.fields['title'].widget.attrs['class'] = "required col-md-10 limited"
 
     class Meta:
-        model = TravelNote
+        model = Knowledge
         fields = (
-            'title', 'fake_user', 'fake_head_image', 'is_pinned', 'display_order', 'content_html')
+            'title', 'image', 'is_pinned', 'display_order', 'content_html')
 
         widgets = {
             # use FileInput widget to avoid show clearable link and text
@@ -55,7 +55,7 @@ class TravelNoteForm(forms.ModelForm):
 """
     HEADER_NO_SCALE_FACTOR = ', maximum-scale=1.0'
     def save(self, commit=False):
-        note = super(TravelNoteForm, self).save(commit)
+        note = super(KnowledgeForm, self).save(commit)
         #mock a html file to feed to article.content_file
         if note.content_file:
             # update it if has content file
@@ -76,7 +76,7 @@ class TravelNoteForm(forms.ModelForm):
         return note
 
 
-class TravelNoteDatatablesBuilder(DatatablesBuilder):
+class KnowledgeDatatablesBuilder(DatatablesBuilder):
 
     id = DatatablesIdColumn()
 
@@ -96,17 +96,12 @@ class TravelNoteDatatablesBuilder(DatatablesBuilder):
     is_pinned = DatatablesBooleanColumn(label=u'banner显示',
                                         col_width='5%')
 
-    creator = DatatablesUserChoiceColumn(label=u'后台真实作者',)
-
-    fake_user = DatatablesTextColumn(label=u'fake作者',
-                                     is_searchable=True)
-
-    fake_head_image = DatatablesImageColumn(label=u'fake作者头像')
+    image = DatatablesImageColumn(label=u'标题图片')
 
     updated = DatatablesDateTimeColumn(label=u'修改时间')
 
     def actions_render(request, model, field_name):
-        action_url_builder = lambda model, action: reverse('admin:share:travelnote_update', kwargs={'pk': model.id, 'action_method': action})
+        action_url_builder = lambda model, action: reverse('admin:knowledge:knowledge_update', kwargs={'pk': model.id, 'action_method': action})
         if model.is_published:
             actions = [{'is_link': False, 'css_class': 'btn-yellow', 'name': 'cancel', 'url': action_url_builder(model, 'cancel'),
                         'text': u'撤销', 'icon': 'icon-cut'}]

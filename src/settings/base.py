@@ -258,6 +258,7 @@ PROJECT_APPS = (
     'apps.present',
     'apps.order',
     'apps.share',
+    'apps.knowledge',
     # 'apps.product'
     # 'apps.api',
     # customize from https://github.com/hovel/imagestore
