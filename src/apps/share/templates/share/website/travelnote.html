@@ -1,6 +1,6 @@
 {% extends 'website/website.base.inc.html' %}
 {% load static %}
-{% block title %} 小麻袋礼品详情 {% endblock title %}
+{% block title %} {{ note.title }} {% endblock title %}
 
 
 {% block extracss %}
@@ -19,6 +19,13 @@
   </div>
   <div class="main-section bg-image-clouds travel-body">
     <div class="main-article content bg-white">
+      <div class="grid fluid">
+        <div class="row">
+          <div class="span11"><img class="cycle" src="{{ note.image_url }}" style="width: 50px; height: 50px; display: inline-block; margin-right: 20px;" /><p class="fg-grayLight inline-block">{{ note.fake_user }}</p></div>
+          <div class="span1"><p class="fg-grayLight inline-block">{{ note.updated|date:'Y/m/d' }}</p></div>
+        </div>
+      </div>
+      <div class="content-body"></div>
     </div>
   </div>
 {% endblock main_content %}
@@ -26,7 +33,7 @@
 {% block extrajs %}
   <script type="text/javascript">
     $(document).ready(function() {
-      $('.travel-body .content').load('{{ note.content_url }}');
+      $('.travel-body .content-body').load('{{ note.content_url }}');
     });
   </script>
 {% endblock extrajs %}
