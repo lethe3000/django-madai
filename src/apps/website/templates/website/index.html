@@ -178,14 +178,12 @@
         <ul>
           {% for travel_note in travel_notes %}
             <li>
-              <a class="travel-note" href="{% url 'website:share:travelnote_detail' travel_note.id %}">
-              <div class="cover">
-                <h1>{{ travel_note.title }}</h1>
-                <img class="cycle" src="{{ travel_note.image_url }}" />
-                <div class="summary"><p class="fg-grayLight">{{ travel_note.fake_user }}</p></div>
-              </div>
-{#              <div class="bg-white" style="position: absolute; z-index: 1; width: 320px; height: 300px; top: 0;"></div>#}
-              <div style="position: absolute; z-index: 1; width: 120px; height: 5px; top: 345px; background-color: #bfe1f4;"></div>
+              <a class="travel-note bg-white" href="{% url 'website:share:travelnote_detail' travel_note.id %}">
+                <p style="display: inline-block; color: #0896FF; width: 220px; font-size: 20px;">{{ travel_note.title }}</p>
+                <img class="cycle" src="{{ travel_note.image_url }}" style="display: inline-block; width: 50px; height: 50px;"/>
+                <p style="font-size: 14px; color: #3f3f3f; height: 180px; overflow: hidden; margin-top: 30px; line-height: 25px; padding: 0 10px;">{{ travel_note.summary }}</p>
+                <p style="display: inline-block; width: 225px; font-size: 14px; color: #666666; margin-top: 30px;">{{ travel_note.updated|date:'Y/m/d' }}</p>
+                <div class="button small fg-white bg-color-orange">查看</div>
               </a>
             </li>
           {% endfor %}

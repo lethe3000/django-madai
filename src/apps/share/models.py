@@ -22,6 +22,11 @@ class TravelNote(BaseModel):
                              verbose_name=u'标题',
                              unique=True)
 
+    summary = models.TextField(max_length=1024,
+                               verbose_name=u'摘要',
+                               blank=True,
+                               default='')
+
     content_file = models.FileField(upload_to=unique_html_name,
                                     verbose_name=u'html文件')
 

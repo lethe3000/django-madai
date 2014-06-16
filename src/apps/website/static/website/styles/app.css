@@ -276,33 +276,5 @@ have a fixed width and height (but it's not required).
   width: 320px;
   margin: 0 10px;
   display: block;
-  border-bottom: 5px solid #00aba9;
-}
-
-.travel-note > .cover {
-    position: relative;
-    height: 350px;
-    width: 320px;
-    z-index: 2;
-    padding: 10px
-}
-
-.travel-note > .cover > h1 {
-    padding-left: 15px;
-    font-size: 3.0rem;
-}
-
-.travel-note > .cover > img {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    bottom: 110px;
-    left: 120px;
-}
-
-.travel-note > .cover > .summary {
-    position: absolute;
-    margin: -50px 0 0;
-    bottom: 0;
-    right: 0;
+  padding: 10px;
 }

@@ -31,7 +31,7 @@ class TravelNoteForm(forms.ModelForm):
     class Meta:
         model = TravelNote
         fields = (
-            'title', 'fake_user', 'fake_head_image', 'is_pinned', 'display_order', 'content_html')
+            'title', 'fake_user', 'fake_head_image', 'is_pinned', 'display_order', 'summary', 'content_html')
 
         widgets = {
             # use FileInput widget to avoid show clearable link and text
