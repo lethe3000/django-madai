@@ -1,6 +1,6 @@
 /* hotel */
 .main-article {
-  padding: 50px 0;
+  padding: 90px 0;
   margin: 0 auto;
   width: 1020px;
 }
@@ -261,7 +261,7 @@ blockquote > div {
 }
 
 .grid.list .row {
-    margin-top: 50px !important;
+    margin: 0 0 50px !important;
     background-color: #FFFFFF;
     border-color: rgba(0, 0, 0, 0);
 }
@@ -273,10 +273,6 @@ blockquote > div {
 .grid.list span.currency strong {
     color: #DF633A;
     font-family: futura,sans-serif;
-}
-
-.list-group {
-    padding: 40px 0;
 }
 
 .chosen-container-single .chosen-single {
@@ -329,4 +325,26 @@ blockquote > div {
 
 .tab-control .frames p {
     color: #3f3f3f;
+}
+
+.category-title {
+    margin: 0 0 25px 10px !important;
+    display: inline-block;
+    font-size: 28px !important;
+}
+
+.filtering {
+    float: right;
+    display: inline-block;
+}
+
+.filtering .block {
+    color: #333333;
+    font-size: 18px;
+    margin-right: 10px;
+    display: inline-block !important;
+}
+
+.filtering .active {
+    color: #df633a;
 }

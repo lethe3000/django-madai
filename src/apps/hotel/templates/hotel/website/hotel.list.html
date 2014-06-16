@@ -14,18 +14,16 @@
 
 {% block main_content %}
 {% include 'website/header.inc.html' %}
-<div class="main-section bg-image-white-light" style="background-color: #d3e9f6;">
+<div class="main-section bg-image-clouds" style="background-color: #d3e9f6;">
   <div class="bottom-shade-large"></div>
-  <div class="main-article list-group">
+  <div class="main-article">
+    {% if promotion %}
+      <h2 class="fg-color-orange category-title">最新促销</h2>
+    {% else %}
+      <h2 class="fg-color-orange category-title">所有酒店</h2>
+    {% endif %}
     <div class="filtering">
-      <div class="input-control select" style="height: 40px; width: 130px; float: right;">
-        <select id="atoz" data-placeholder="按字母过滤" class="alt-select">
-          <option value="all" {% if filter == 'all' %}selected="true"{% endif %}>所有酒店</option>
-          {% for f in first_letters %}
-            <option value="{{ f.short_index }}" {% if filter == f.short_index %}selected="true"{% endif %}>{{ f.short_index }}</option>
-          {% endfor %}
-        </select>
-      </div>
+      <a class="block {% if filter == 'all' %}active{% endif %}" data-val="all" href="#">酒店检索</a>
     </div>
     <div class="grid list">
       {% for hotel in hotels %}
@@ -76,20 +74,32 @@
         disable_search: true,
         inherit_select_classes: true
       }
-      $('#atoz').chosen(chosenOptions);
 
-      $('#atoz').change(function () {
-        pageAndFilter(1, $(this).val());
-      })
+      var last_filter = '{{ filter }}';
+
+      for (var i = 65; i < 91; i++) {
+        var c = String.fromCharCode(i);
+        if (last_filter === c) {
+          $('.filtering').append('<a class="block active" data-val="' + c + '" href="#">' + c + '</a>')
+        } else {
+          $('.filtering').append('<a class="block" data-val="' + c + '" href="#">' + c + '</a>')
+        }
+      }
 
       $('.page_link').click(function () {
         var thisPage = parseInt('{{ page }}');
         var toPage = $(this).data('page');
         if (toPage != thisPage) {
-          pageAndFilter(toPage, $('#atoz').val());
+          pageAndFilter(toPage, $('.filtering > .block').data('val'));
         }
         return false;
       });
+
+      $('.filtering > .block').click(function () {
+        pageAndFilter(1, $(this).data('val'));
+        return false;
+      })
+      String.fromCharCode();
     });
 
     function pageAndFilter(page, filter) {
