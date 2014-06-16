@@ -41,6 +41,11 @@ class Knowledge(BaseModel):
                               default="",
                               verbose_name=u'展示图像')
 
+    summary = models.TextField(max_length=1024,
+                               verbose_name=u'摘要',
+                               blank=True,
+                               default='')
+
     def status(self):
         return self.STATUS_OK if self.is_published and self.is_active else self.STATUS_DELETE
 

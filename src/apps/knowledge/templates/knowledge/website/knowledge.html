@@ -1,0 +1,34 @@
+{% extends 'website/website.base.inc.html' %}
+{% load static %}
+{% block title %} 小麻袋知识库详情 {% endblock title %}
+
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'knowledge/styles/app.css' %}" media="screen"/>
+{% endblock extracss %}
+
+{% block main_content %}
+  {% include 'website/header.inc.html' %}
+  <div class="main-section bg-color-dark bg-pattern-diag travel-header">
+    <div class="bottom-shade-large"></div>
+    <div class="bg-image-white-light">
+      <div class="main-article">
+        <h2 class="fg-white title">{{ knowledge.title }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="main-section bg-image-clouds travel-body">
+    <div class="main-article content bg-white">
+      <div class="bg-white text-center"><img src="{{ knowledge.image_url }}" alt="" style="max-width: 600px; max-height: 400px; display: inline-block; margin-bottom: 20px;"/></div>
+      <div class="content-body"></div>
+    </div>
+  </div>
+{% endblock main_content %}
+
+{% block extrajs %}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.travel-body .content-body').load('{{ knowledge.content_url }}');
+    });
+  </script>
+{% endblock extrajs %}

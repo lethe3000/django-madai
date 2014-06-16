@@ -1,0 +1,44 @@
+/* knowledge */
+.main-article {
+  margin: 0 auto;
+  width: 1020px;
+}
+
+.bg-color-dark {
+    background-color: #262F36;
+}
+
+.travel-header .title {
+    padding: 30px;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.travel-body {
+    padding: 50px 0;
+}
+
+.category-title {
+    margin: 0 0 25px 10px !important;
+    display: inline-block;
+    font-size: 28px !important;
+}
+
+.travel-body .content {
+    padding: 50px;
+}
+
+.product-group {
+    height: 1200px;
+    width: 1020px;
+}
+
+.product {
+    margin: 0 10px 50px;
+    position: relative;
+    height: 350px;
+    width: 320px;
+    display: block;
+    padding: 10px;
+}

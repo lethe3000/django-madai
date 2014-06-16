@@ -33,3 +33,7 @@ urlpatterns += patterns('',
 urlpatterns += patterns('',
     url(r'^share/', include('apps.share.website.urls', namespace='share')),
 )
+
+urlpatterns += patterns('',
+    url(r'^knowledge/', include('apps.knowledge.website.urls', namespace='knowledge')),
+)

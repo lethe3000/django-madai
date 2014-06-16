@@ -31,7 +31,7 @@ class KnowledgeForm(forms.ModelForm):
     class Meta:
         model = Knowledge
         fields = (
-            'title', 'image', 'is_pinned', 'display_order', 'content_html')
+            'title', 'image', 'is_pinned', 'display_order', 'summary', 'content_html')
 
         widgets = {
             # use FileInput widget to avoid show clearable link and text
