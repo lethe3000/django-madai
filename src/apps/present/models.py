@@ -3,6 +3,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils.safestring import SafeString
+from apps.hotel.models import unique_html_name
 from utils import pretty_price
 from apps.common.models import BaseModel, ActiveDataManager
 from apps.foundation.models import unique_image_name
@@ -35,6 +36,9 @@ class Present(BaseModel):
                                         default=0,
                                         blank=True)
 
+    content_file = models.FileField(upload_to=unique_html_name,
+                                    verbose_name=u'html文件')
+
     active_objects = ActiveDataManager()
 
     def __unicode__(self):
@@ -47,6 +51,19 @@ class Present(BaseModel):
 
     STATUS_OK = 0
     STATUS_DELETE = -1
+
+    def content_url(self):
+        return self.content_file.url
+
+    def content_html(self):
+        try:
+            with open(self.content_file.path) as f:
+                html = f.read()
+        except IOError:
+            html = u'无内容'
+        except ValueError:
+            html = u'无内容'
+        return html
 
     def status(self):
         return self.STATUS_OK if self.is_published and self.is_active else self.STATUS_DELETE

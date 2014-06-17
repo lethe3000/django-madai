@@ -1,9 +1,12 @@
 /* present */
 
 .main-article {
-  padding: 90px 0;
   margin: 0 auto;
   width: 1020px;
+}
+
+.bg-color-dark {
+    background-color: #262F36;
 }
 
 .product-group {
@@ -75,4 +78,8 @@
 
 .travel-body {
     padding: 50px 0;
+}
+
+.travel-body .content {
+    padding: 50px;
 }
