@@ -35,6 +35,12 @@ class PresentEditView(ModelAwareMixin, AjaxUpdateView):
     form_action_url_name = 'admin:present:present_edit'
     template_name = 'present/admin/present.form.inc.html'
 
+    def get_initial(self):
+        initial = super(PresentEditView, self).get_initial()
+        if self.object:
+            initial["content_html"] = self.object.content_html()
+        return initial
+
 
 class PresentDeleteView(ModelActiveView):
     model = Present

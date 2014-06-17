@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import StringIO
 import logging
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
 import os
 from django import forms
@@ -14,16 +16,43 @@ logger = logging.getLogger('apps.' + os.path.basename(os.path.dirname(HERE)) + '
 
 
 class PresentForm(forms.ModelForm):
+    content_html = forms.CharField(label=u'内容',
+                                   widget=forms.Textarea())
+
     def __init__(self, *args, **kwargs):
         super(PresentForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['class'] = "required col-md-10 limited"
 
     class Meta:
         model = Present
-        fields = ('name', 'desc', 'price', 'image_file', 'is_pinned')
-
+        fields = ('name', 'desc', 'price', 'image_file', 'is_pinned', 'content_html')
+    RESPONSIVE_HEADER = """\
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0{0}"/>
+    <style>
+    img {{
+        display: block;
+        height: auto;
+        max-width: 100%;
+    }}
+    </style>
+</head>
+"""
     def save(self, commit=False):
         present = super(PresentForm, self).save(commit)
+        if present.content_file:
+            # update it if has content file
+            with open(present.content_file.path, 'w') as f:
+                f.write(self.cleaned_data['content_html'].encode('utf-8'))
+        else:
+            buf = StringIO.StringIO(self.cleaned_data['content_html'].encode('utf-8'))
+            self.RESPONSIVE_HEADER = self.RESPONSIVE_HEADER.format(
+                # self.HEADER_NO_SCALE_FACTOR if self.instance.info_type_id != InfoType.INFO_TYPE_MAP else ''
+                ''
+            )
+            present.content_file = SimpleUploadedFile("content.html", self.RESPONSIVE_HEADER + buf.read())
+
         if not hasattr(present, "creator"):
             present.creator = self.initial['request'].user
         present.save()
