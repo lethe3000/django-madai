@@ -65,3 +65,14 @@
 .category-showmore:hover {
     color: #df633a !important;
 }
+
+.travel-header .title {
+    padding: 30px;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.travel-body {
+    padding: 50px 0;
+}

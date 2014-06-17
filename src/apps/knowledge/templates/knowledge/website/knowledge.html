@@ -18,9 +18,13 @@
     </div>
   </div>
   <div class="main-section bg-image-clouds travel-body">
-    <div class="main-article content bg-white">
-      <div class="bg-white text-center"><img src="{{ knowledge.image_url }}" alt="" style="max-width: 600px; max-height: 400px; display: inline-block; margin-bottom: 20px;"/></div>
-      <div class="content-body"></div>
+    <div class="main-article">
+      <div class="grid fluid">
+        <div class="row">
+          <div class="span5"><img src="{{ knowledge.image_url }}" alt="" style="max-width: 400px; max-height: 300px;"/></div>
+          <div class="span7 bg-white" style="padding: 15px; min-height: 270px;"><div class="content-body"></div></div>
+        </div>
+      </div>
     </div>
   </div>
 {% endblock main_content %}

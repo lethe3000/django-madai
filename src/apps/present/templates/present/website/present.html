@@ -1,0 +1,25 @@
+{% extends 'website/website.base.inc.html' %}
+{% load static %}
+{% block title %} {{ present.name }} {% endblock title %}
+
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'knowledge/styles/app.css' %}" media="screen"/>
+{% endblock extracss %}
+
+{% block main_content %}
+  {% include 'website/header.inc.html' %}
+  <div class="main-section bg-color-dark bg-pattern-diag travel-header">
+    <div class="bottom-shade-large"></div>
+    <div class="bg-image-white-light">
+      <div class="main-article">
+        <h2 class="fg-white title">{{ present.name }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="main-section bg-image-clouds travel-body">
+    <div class="main-article content bg-white">
+      <div class="content-body">{{ present.desc }}</div>
+    </div>
+  </div>
+{% endblock main_content %}

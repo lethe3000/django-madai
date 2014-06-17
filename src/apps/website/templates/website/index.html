@@ -144,7 +144,7 @@
         <ul>
           {% for present in presents %}
             <li>
-              <div class="product">
+              <a class="product" href='{% url 'website:present:present_detail' present.id %}'>
                 <img src="{{ present.image_url }}" />
                 <div class="product-title-complex">
                   <div class="grid fluid" style="margin: 0 !important;">
@@ -159,7 +159,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </li>
           {% endfor %}
         </ul>

@@ -16,7 +16,7 @@
     <div class="product-group">
       {% for category in present_category %}
         {% for present in category.presents.all %}
-            <div class="product place-left" href="#">
+            <a class="product place-left" href="{% url 'website:present:present_detail' present.id %}">
                 <img src="{{ present.image_url }}" />
                 <div class="product-title-complex">
                   <div class="grid fluid" style="margin: 0 !important;">
@@ -31,7 +31,7 @@
                     </div>
                   </div>
                 </div>
-            </div>
+            </a>
         {% endfor %}
       {% endfor %}
     </div>
