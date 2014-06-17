@@ -200,6 +200,9 @@
 
 {% block extrajs %}
   <script type="text/javascript">
+
+    var CHINESE_MONTHS = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+
     $(document).ready(function() {
       $('#signup-btn').on('click', function(){
         $.Dialog({
@@ -446,7 +449,7 @@
       var optionsHtml = '<optgroup label="' + thisYear + '">';
       var months = monthsInThisYear(thisMonth);
       for (var mon in months) {
-        optionsHtml += '<option value="' + thisYear + '-' + months[mon] + '-1">' + months[mon] + '月</option>';
+        optionsHtml += '<option value="' + thisYear + '-' + months[mon] + '-1">' + thisYear + '年 - ' + CHINESE_MONTHS[months[mon] - 1] + '</option>';
       }
       optionsHtml += '</optgroup>';
       $('#start_date').append(optionsHtml);
@@ -454,7 +457,7 @@
       if (months) {
         optionsHtml = '<optgroup label="' + nextYear + '">';
         for (var mon in months) {
-          optionsHtml += '<option value="' + nextYear + '-' + months[mon] + '-1">' + months[mon] + '月</option>';
+          optionsHtml += '<option value="' + nextYear + '-' + months[mon] + '-1">' + nextYear + '年 - ' + CHINESE_MONTHS[months[mon] - 1] + '</option>';
         }
         optionsHtml += '</optgroup>';
       }
