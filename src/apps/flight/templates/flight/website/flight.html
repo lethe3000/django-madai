@@ -22,21 +22,20 @@
 {% include 'website/header.inc.html' %}
 <div class="main-section bg-color-dark bg-pattern-diag">
   <div class="bottom-shade-large"></div>
-  <div class="bg-image-white-light">
-    <div class="main-article search-info">
-        <div class="grid fluid">
-          <div class="row">
-            <div class="span6 hotel-name">
-              <h2 class="fg-white">{{ flight.address }} <small>飞往</small> 马尔代夫<div class="customer-icon flight-line"></div></h2>
-              <p class="color-blue">{{ flight.name }}</p>
-            </div>
-            <div class="span6 price">
-              <span class="currency place-right">
-                <strong class="fg-white">&yen; {{ flight.get_pretty_price }}</strong>
-              </span>
-            </div>
-          </div>
+  <div class="main-article search-info">
+    <div class="bg-image-white-light"></div>
+    <div class="grid fluid">
+      <div class="row">
+        <div class="span6 hotel-name">
+          <h2 class="fg-white">{{ flight.address }} <small>飞往</small> 马尔代夫<div class="customer-icon flight-line"></div></h2>
+          <p class="color-blue">{{ flight.name }}</p>
         </div>
+        <div class="span6 price">
+          <span class="currency place-right">
+            <strong class="fg-white">&yen; {{ flight.get_pretty_price }}</strong>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </div>

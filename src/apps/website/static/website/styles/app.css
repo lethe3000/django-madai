@@ -139,16 +139,17 @@
 .main-header > .date-pick {
   position: absolute;
   width: 100%;
-  top: 50%;
+  top: 60%;
   z-index: 1;
 }
 
 .main-header a.search-btn {
-  display: inline-block;
-  margin-left: 10px;
-  font-size: 2.0rem;
-  color: #FFF !important;
-  background-color: #df633a !important;
+    display: inline-block;
+    margin-left: 10px;
+    margin-bottom: -18px;
+    width: 41px;
+    height: 41px;
+    background: url("../img/searching_btn.png") no-repeat center;
 }
 
 .main-header > .date-pick .input-control {

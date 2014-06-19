@@ -47,7 +47,7 @@ nav > .nav-box p {
 .main-header > .logo {
   position: absolute;
   width: 100%;
-  top: 10%;
+  top: 5%;
   z-index: 1;
 }
 
@@ -75,15 +75,16 @@ nav > .nav-box p {
 }
 
 .bg-1 {
-  background-color: #262f36;
+  background: url("../img/bg-1.png") repeat scroll 0 0;
 }
 
 .bg-2 {
-  background-color: #465562;
+  background: url("../img/bg-2.png") repeat scroll 0 0;
 }
 
 .bg-3 {
-  background-color: #87c0de;
+  background: url("../img/bg-3.jpg") no-repeat center top;
+  background-size: 100% 588px;
 }
 
 nav.menu {
@@ -132,9 +133,19 @@ nav.menu {
 }
 
 .bg-image-white-light {
+    background: url("../img/bg-image-white-light.png") no-repeat scroll center center rgba(0, 0, 0, 0);
     background-image: url("../img/bg-image-white-light.png");
-    background-position: center top;
+    background-attachment: scroll;
     background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 50%;
+    background-color: transparent;
+    top: 0;
+    height: 162px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
 }
 
 .bg-pattern-diag {

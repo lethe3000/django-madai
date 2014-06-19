@@ -9,9 +9,10 @@
 
 {% block main_content %}
 {% include 'website/header.inc.html' %}
-<div class="main-section bg-color-dark bg-image-white-light">
+<div class="main-section bg-color-dark">
   <div class="bottom-shade-large"></div>
   <div class="main-article search-info">
+    <div class="bg-image-white-light"></div>
     <div class="middle">
       <h3 class="text-center color-blue">为您推荐精选以下行程 {{ start_address }}出发</h3>
     </div>
@@ -170,7 +171,7 @@
               '                <div class="span3">' +
               '                  <label class="normal" for="">入住日期：</label>' +
               '                  <div class="input-control text" data-role="input-control">' +
-              '                    <input name="start_date_snapshot" type="text" value="' + startDate + '" disabled>' +
+              '                    <input name="start_date_snapshot" type="text" value="' + startDate.split('-')[0] + '年' + startDate.split('-')[1] + '月' + '" disabled>' +
               '                  </div>' +
               '                </div>' +
               '              </div>' +

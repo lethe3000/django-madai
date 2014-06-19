@@ -22,24 +22,23 @@
 {% include 'website/header.inc.html' %}
 <div class="main-section bg-color-dark bg-pattern-diag">
   <div class="bottom-shade-large"></div>
-  <div class="bg-image-white-light">
     <div class="main-article search-info">
-        <div class="grid fluid">
-          <div class="row">
-            <div class="span6 hotel-name">
-              <h2 class="fg-white">{{ hotel.name }}<div class="customer-icon hotel-line"></div></h2>
-              <p class="color-blue">{{ hotel.address }}</p>
-            </div>
+      <div class="bg-image-white-light"></div>
+      <div class="grid fluid">
+        <div class="row">
+          <div class="span6 hotel-name">
+            <h2 class="fg-white">{{ hotel.name }}<div class="customer-icon hotel-line"></div></h2>
+            <p class="color-blue">{{ hotel.address }}</p>
+          </div>
 {#            <div class="span6 price">#}
 {#              <span class="currency place-right">#}
 {#                <strong class="fg-white">&yen; {{ hotel.get_pretty_price }}</strong>#}
 {#                <small class="fg-white">/晚</small>#}
 {#              </span>#}
 {#            </div>#}
-          </div>
         </div>
+      </div>
     </div>
-  </div>
 </div>
 <div class="main-section bg-2">
   <div class="main-article photo-group">

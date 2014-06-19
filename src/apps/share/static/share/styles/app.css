@@ -4,6 +4,10 @@
   width: 1020px;
 }
 
+.bg-image-white-light {
+    height: 83px;
+}
+
 .bg-color-dark {
     background-color: #262F36;
 }
