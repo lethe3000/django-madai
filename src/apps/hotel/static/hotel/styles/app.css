@@ -67,7 +67,8 @@ a.button.submit {
 
 span.currency {
     position: absolute;
-    left: 510px;
+    top: 140px;
+    left: 550px;
     display: inline-block;
     margin: 20px 0 0;
 }
