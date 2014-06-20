@@ -264,10 +264,10 @@ class Hotel(TimeBaseModel):
                                default="",
                                blank=True)
 
-    price = models.IntegerField(max_length=64,
-                                verbose_name=u'价格',
-                                default="",
-                                blank=True)
+    price = models.CharField(max_length=64,
+                             verbose_name=u'价格',
+                             default="",
+                             blank=True)
 
     short_index = models.CharField(max_length=8,
                                    verbose_name=u'酒店首字母',
