@@ -72,6 +72,9 @@
     <script src="{% templatetag openblock %} static 'js/project.js' {% templatetag closeblock %}"></script>
 
     {% templatetag openblock %} block extra_js {% templatetag closeblock %}{% templatetag openblock %} endblock extra_js {% templatetag closeblock %}
+    <!-- Baidu Analytics Code -->
+    {% include "website/ba.html" %}
+
     <!-- GOOGLE ANALYTICS CODE -->
     {% include "website/ga.html" %}
   </body>
