@@ -112,7 +112,7 @@ if not os.path.exists(MEDIA_ROOT):
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
 STATIC_ROOT = normpath(join(SITE_ROOT, 'assets'))
 
-COMPRESS_ROOT = SITE_ROOT + '/CACHE/'
+COMPRESS_ROOT = STATIC_ROOT
 COMPRESS_ENABLED = True
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
