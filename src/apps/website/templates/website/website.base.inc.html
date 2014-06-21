@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load compress %}
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -14,19 +15,21 @@
     <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" -->
     <meta name="viewport" content="width=1024">
 
+    {% compress css %}
     <!-- Basic Styles -->
     <!-- metro -->
     <link rel="stylesheet" href="{% static 'website/styles/metro-bootstrap.css' %}" media="screen"/>
     <!-- customize -->
     <link rel="stylesheet" href="{% static 'website/styles/project.css' %}" media="screen"/>
+      <!-- PAGE RELATED CSS -->
+      {% block extracss %}{% endblock extracss %}
+    {% endcompress %}
 
     <!-- FAVICONS -->
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 
-    <!-- PAGE RELATED CSS -->
-    {% block extracss %}{% endblock extracss %}
-
+  {% compress js %}
     <!-- jquery -->
     <script src="{% static 'libs/ueditor1_3_6/third-party/jquery-1.10.2.min.js' %}"></script>
 
@@ -45,6 +48,7 @@
     <script type="text/javascript" src="{% static 'website/scripts/plugin/jquery-form/jquery-form.min.js' %}"></script>
     <!-- PAGE RELATED js -->
     {% block extraincjs %}{% endblock extraincjs %}
+  {% endcompress %}
   </head>
   <body class="metro">
     {% block main_content %}{% endblock main_content %}

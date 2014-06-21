@@ -38,3 +38,6 @@ redis
 hiredis
 # redis cache backend. see https://github.com/sebleier/django-redis-cache
 django-redis-cache
+
+# compress the js and css
+django_compressor
