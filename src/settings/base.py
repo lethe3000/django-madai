@@ -112,6 +112,9 @@ if not os.path.exists(MEDIA_ROOT):
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
 STATIC_ROOT = normpath(join(SITE_ROOT, 'assets'))
 
+COMPRESS_ROOT = STATIC_ROOT
+COMPRESS_ENABLED = True
+
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = '/static/'
 
@@ -124,6 +127,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 # a default image for content title
@@ -237,6 +241,7 @@ INSTALLED_APPS = (
 INSTALLED_APPS += (
     # Database migration helpers:
     'south',
+    'compressor',
     # 'rest_framework.authtoken',
     # 'rest_framework_swagger',
     # 'sorl.thumbnail',
