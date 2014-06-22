@@ -85,6 +85,7 @@
 .product > .product-title > h4 {
     margin-top: 0;
     font-size: 16px;
+    line-height: 20px;
     color: #3f3f3f;
 }
 
@@ -94,9 +95,9 @@
 }
 
 .product > .product-title > .customer-icon {
-    position: relative;
-    top: -10px;
-    left: 250px;
+    position: absolute;
+    bottom: 10px;
+    left: 275px;
 }
 
 .product:hover > .product-title > .customer-icon.hotel-flat {
