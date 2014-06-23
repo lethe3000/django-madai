@@ -35,6 +35,7 @@
 }
 
 .product-group {
+    position: relative;
     width: 1020px;
     height: 350px;
 }
@@ -237,8 +238,8 @@ have a fixed width and height (but it's not required).
 }
 
 .jcarousel-control-prev {
-    position: relative;
-    top: -190px;
+    position: absolute;
+    top: 42%;
     left: -41px;
     z-index: 1;
     cursor: pointer;
@@ -247,9 +248,9 @@ have a fixed width and height (but it's not required).
 }
 
 .jcarousel-control-next {
-    position: relative;
-    top: -190px;
-    left: 968px;
+    position: absolute;
+    top: 42%;
+    left: 1017px;
     z-index: 1;
     cursor: pointer;
     font-size: 45px !important;

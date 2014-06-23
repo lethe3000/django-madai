@@ -109,29 +109,30 @@
 <div class="main-section bg-1">
   <div class="bg-image-white-light"></div>
   <div class="bottom-shade-large"></div>
-  <div class="main-article">
-    <h2 class="fg-white category-title">最新促销</h2>
-    <a class="category-showmore place-right" href="{% url 'website:hotel:hotel_list_promotion' %}">+ 更多</a>
-    <div class="product-group">
-      <div class="jcarousel">
-        <ul>
-          {% for hotel in hotels %}
-            <li>
-              <a class="product" href="{% url 'website:hotel:hotel_detail' hotel.id %}">
-                <img src="{{ hotel.image_url }}" />
-                <div class="product-title">
-                  <h4>{{ hotel.name }}</h4>
-                  <div class="customer-icon hotel-flat"></div>
-                </div>
-              </a>
-
-            </li>
-          {% endfor %}
-        </ul>
+  <div style="position: relative; z-index: 2;">
+    <div class="main-article">
+      <h2 class="fg-white category-title">最新促销</h2>
+      <a class="category-showmore place-right" href="{% url 'website:hotel:hotel_list_promotion' %}">+ 更多</a>
+      <div class="product-group">
+        <div class="jcarousel">
+          <ul>
+            {% for hotel in hotels %}
+              <li>
+                <a class="product" href="{% url 'website:hotel:hotel_detail' hotel.id %}">
+                  <img src="{{ hotel.image_url }}" />
+                  <div class="product-title">
+                    <h4>{{ hotel.name }}</h4>
+                    <div class="customer-icon hotel-flat"></div>
+                  </div>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <!-- Prev/next controls -->
+        <i class="jcarousel-control-prev icon-arrow-left-5"></i>
+        <i class="jcarousel-control-next icon-arrow-right-5"></i>
       </div>
-      <!-- Prev/next controls -->
-      <i class="jcarousel-control-prev icon-arrow-left-5"></i>
-      <i class="jcarousel-control-next icon-arrow-right-5"></i>
     </div>
   </div>
 </div>
