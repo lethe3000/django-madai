@@ -37,8 +37,7 @@
                         <a class="main-title fg-grayDark" href="{% url 'website:hotel:hotel_detail' hotel.id %}" target="_blank">{{ hotel.name }}</a>
                         <p class="fg-grayLight" style="font-size: 17px; line-height: 28px;">{{ hotel.summary }}</p>
                         <span class="currency">
-                          <strong>&yen; {{ hotel.get_pretty_price }}</strong>
-                          <small>/晚</small>
+                          <strong>{{ hotel.get_pretty_price }}</strong>
                         </span>
                       </div>
                       <div class="span4">
@@ -76,8 +75,7 @@
                   <a class="main-title fg-grayDark" href="{% url 'website:flight:flight_detail' flight.id %}" target="_blank">{{ flight.name }}</a>
                   <p class="fg-gray" style="font-size: 17px; line-height: 28px;">{{ flight.summary }}</p>
                   <span class="currency">
-                    <strong>&yen; {{ flight.price }}</strong>
-                    <small>/人</small>
+                    <strong>{{ flight.price }}</strong>
                   </span>
                 </div>
               </div>
