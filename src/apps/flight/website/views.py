@@ -34,7 +34,7 @@ class FlightListView(TemplateResponseMixin, View):
         cursor = request.GET.get('cursor')
         if cursor:
             cursor = datetime.fromtimestamp(int(cursor))
-            flights = Flight.active_objects.filter(updated__lt=cursor).order_by('-updated')
+            flights = Flight.active_objects.filter(updated__lt=cursor, is_published=True).order_by("-display_order").order_by('-updated')
             flight_json_list = []
             for flight in flights:
                 flight_json_list.append({"id": flight.id,
