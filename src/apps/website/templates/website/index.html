@@ -49,36 +49,46 @@
     </div>
   </div>
   <div class="date-pick">
-    <div class="margin-0-center" style="width: 700px;">
-      <div class="input-control select" style="display: inline-block; width: 238px; margin-right: 3px;">
-        <select id="start_address" data-placeholder="出发城市" class="alt-select">
-          <option value=""></option>
-          <option value="成都">成都</option>
-          <option value="重庆">重庆</option>
-          <option value="北京">北京</option>
-          <option value="上海">上海</option>
-          <option value="香港">香港</option>
-        </select>
-        <i class="icon-location fg-grayLight"></i>
+    <div class="margin-0-center" style="width: 700px; position: relative;">
+      <div class="grid fluid" style="margin: 0 !important;">
+        <div class="row" style="margin: 0 !important;">
+          <div class="span4">
+            <div class="input-control select">
+              <select id="start_address" data-placeholder="出发城市" class="alt-select">
+                <option value=""></option>
+                <option value="成都">成都</option>
+                <option value="重庆">重庆</option>
+                <option value="北京">北京</option>
+                <option value="上海">上海</option>
+                <option value="香港">香港</option>
+              </select>
+              <i class="icon-location fg-grayLight"></i>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="input-control select">
+              <select id="price"  data-placeholder="预算范围(两人)" class="alt-select">
+                <option value=""></option>
+                <option value="20000-25000">&yen;20000 - &yen;25000</option>
+                <option value="25000-30000">&yen;25000 - &yen;30000</option>
+                <option value="30000-35000">&yen;30000 - &yen;35000</option>
+                <option value="35000-40000">&yen;35000 - &yen;40000</option>
+                <option value="40000+">&yen;40000+</option>
+              </select>
+              <i class="icon-dollar fg-grayLight"></i>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="input-control select">
+              <select id="start_date" data-placeholder="出发日期" class="alt-select">
+                <option value=""></option>
+              </select>
+              <i class="icon-calendar fg-grayLight"></i>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="input-control select" style="display: inline-block; width: 160px;">
-        <select id="price"  data-placeholder="预算范围(两人)" class="alt-select">
-          <option value=""></option>
-          <option value="20000-25000">&yen;20000 - &yen;25000</option>
-          <option value="25000-30000">&yen;25000 - &yen;30000</option>
-          <option value="30000-35000">&yen;30000 - &yen;35000</option>
-          <option value="35000-40000">&yen;35000 - &yen;40000</option>
-          <option value="40000+">&yen;40000+</option>
-        </select>
-        <i class="icon-dollar fg-grayLight"></i>
-      </div>
-      <div class="input-control select" style="display: inline-block; width: 160px; margin-left: -1px;">
-        <select id="start_date" data-placeholder="出发日期" class="alt-select">
-          <option value=""></option>
-        </select>
-        <i class="icon-calendar fg-grayLight"></i>
-      </div>
-      <a id="search-btn" class="search-btn" href="#"></a>
+      <a id="search-btn" class="search-btn" href="#" style="position: absolute; right: -55px; top: 0;"></a>
     </div>
   </div>
   <div class="fotorama" style="position:relative; z-index: 0;"
