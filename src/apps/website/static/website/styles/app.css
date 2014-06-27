@@ -281,3 +281,7 @@ have a fixed width and height (but it's not required).
   display: block;
   padding: 20px 10px;
 }
+
+nav.index {
+    margin-top: -1px;
+}

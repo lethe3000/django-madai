@@ -408,3 +408,11 @@ div.customer-icon {
 .alt-select {
     height: 100% !important;
 }
+
+.weibo-link:hover {
+    text-decoration: underline;
+}
+
+object[id*="HolmesIcon"] {
+    display: none;
+}
