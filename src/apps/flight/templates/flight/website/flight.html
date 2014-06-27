@@ -1,80 +1,47 @@
 {% extends 'website/website.base.inc.html' %}
 {% load static %}
-{% block title %} 小麻袋 {% endblock title %}
+{% block title %} {{ flight.name }} {% endblock title %}
 
 
 {% block extracss %}
-<link rel="stylesheet" href="{% static 'flight/styles/app.css' %}" media="screen"/>
-<link rel="stylesheet" href="{% static 'website/styles/fotorama.css' %}" media="screen"/>
-
+    <link rel="stylesheet" href="{% static 'flight/styles/app.css' %}" media="screen"/>
+    <link rel="stylesheet" href="{% static 'website/styles/fotorama.css' %}" media="screen"/>
 {% endblock extracss %}
-
-{% block extraincjs %}
-<script src="{% static 'website/scripts/libs/fotorama.js' %}"></script>
-<script src="{% static 'website/scripts/libs/metro-calendar.js' %}"></script>
-<script src="{% static 'website/scripts/libs/metro-datepicker.js' %}"></script>
-<script src="{% static 'website/scripts/libs/metro-scroll.js' %}"></script>
-<script src="{% static 'website/scripts/libs/jquery.mousewheel.js' %}"></script>
-<script src="{% static 'website/scripts/libs/metro-tab-control.js' %}"></script>
-{% endblock extraincjs %}
 
 {% block main_content %}
 {% include 'website/header.inc.html' %}
 <div class="main-section bg-color-dark bg-pattern-diag">
-  <div class="bottom-shade-large"></div>
-  <div class="main-article search-info">
-    <div class="bg-image-white-light"></div>
-    <div class="grid fluid">
-      <div class="row">
-        <div class="span6 hotel-name">
-          <h2 class="fg-white">{{ flight.address }} <small>飞往</small> 马尔代夫<div class="customer-icon flight-line"></div></h2>
-          <p class="color-blue">{{ flight.name }}</p>
+    <div class="bottom-shade-large"></div>
+    <div class="main-article search-info">
+        <div class="bg-image-white-light"></div>
+        <div class="grid fluid">
+            <div class="row">
+                <div class="span6 hotel-name">
+                    <h2 class="fg-white">{{ flight.address }} <small>飞往</small> 马尔代夫<div class="customer-icon flight-line"></div></h2>
+                    <p class="color-blue">{{ flight.name }}</p>
+                </div>
+                <div class="span6 price">
+      <span class="currency place-right">
+        <strong class="fg-white">{{ flight.price }}</strong>
+      </span>
+                </div>
+            </div>
         </div>
-        <div class="span6 price">
-          <span class="currency place-right">
-            <strong class="fg-white">&yen; {{ flight.get_pretty_price }}</strong>
-          </span>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
-<div class="main-section bg-2">
-  <div class="main-article photo-group">
-    <div class="grid fluid">
-      <div class="row">
-        <div class="span8 offset2">
-          <div class="flight-schedule bg-white"></div>
+<div class="main-section bg-image-clouds travel-body">
+    <div class="main-article content bg-white">
+        <div class="span8 offset1">
+          <div class="content-body"></div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 {% endblock main_content %}
 
 {% block extrajs %}
-<script>
-  $(document).ready(function () {
-    $('.scroll-group .up').click(function() {
-      $('.scroll-group .scrollbar-v-up').trigger('click');
-    });
-    $('.scroll-group .down').click(function() {
-      $('.scroll-group .scrollbar-v-down').trigger('click');
-    });
-
-    loadArticle($('.frame').first());
-    $('.tab-control').tabcontrol().bind("change", function(event, frame){
-      loadArticle($(frame));
-    });
-
-    $('.flight-schedule').load('{{ flight.content_url }}');
-  });
-
-  function loadArticle($frame) {
-    if (!$frame.html()) {
-      url = $frame.data('url');
-      $frame.load(url);
-    }
-  }
-</script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.travel-body .content-body').load('{{ flight.content_url }}');
+        });
+    </script>
 {% endblock extrajs %}

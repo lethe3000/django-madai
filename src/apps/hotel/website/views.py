@@ -35,8 +35,8 @@ class HotelListView(TemplateResponseMixin, View):
         prev_page = page - 1 if page > 1 else 1
         page_size = 6
         filter = request.GET.get('filter')
-        query_set = Hotel.active_objects if not filter or filter == 'all' else Hotel.active_objects.filter(short_index=filter)
-        hotels = query_set.order_by('-updated')[(page - 1) * page_size: page * page_size]
+        query_set = Hotel.active_objects.filter(is_published=True) if not filter or filter == 'all' else Hotel.active_objects.filter(short_index=filter, is_published=True)
+        hotels = query_set.order_by("-display_order").order_by('-updated')[(page - 1) * page_size: page * page_size]
         total_count = query_set.count()
         page_range = [x + 1 for x in range(0, ((total_count - 1) / page_size) + 1)]
         page_range = page_range if page_range else [1]
@@ -55,9 +55,9 @@ class HotelPromotionListView(HotelListView):
         prev_page = page - 1 if page > 1 else 1
         page_size = 6
         filter = request.GET.get('filter')
-        query_set = Hotel.active_objects if not filter or filter == 'all' else Hotel.active_objects.filter(short_index=filter)
+        query_set = Hotel.active_objects.filter(is_published=True) if not filter or filter == 'all' else Hotel.active_objects.filter(short_index=filter, is_published=True)
         query_set.filter(is_promotion=(promotion is not None))
-        hotels = query_set.order_by('-updated')[(page - 1) * page_size: page * page_size]
+        hotels = query_set.order_by("-display_order").order_by('-updated')[(page - 1) * page_size: page * page_size]
         total_count = query_set.count()
         page_range = [x + 1 for x in range(0, ((total_count - 1) / page_size) + 1)]
         page_range = page_range if page_range else [1]

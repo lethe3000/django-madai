@@ -39,7 +39,7 @@
                 <div class="promotion-article">
                 {% autoescape off %}
                   {% for article in hotel.articles.all %}
-                    {% if article.info_type.id == 6 %}
+                    {% if article.info_type.id == 6 and article.is_active %}
                       {{ article.content_html }}
                     {% endif %}
                   {% endfor %}
