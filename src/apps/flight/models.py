@@ -110,8 +110,10 @@ class Flight(TimeBaseModel):
                                default="",
                                blank=True)
 
-    price = models.IntegerField(verbose_name=u'价格',
-                                default=0)
+    price = models.CharField(max_length=32,
+                             verbose_name=u"价格",
+                             default="",
+                             blank=True)
 
     image_file = models.ImageField(upload_to=unique_image_name,
                                    blank=True,
