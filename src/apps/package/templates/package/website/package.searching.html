@@ -27,10 +27,10 @@
           <div class="grid">
             <div class="row cursor-pointer">
               <div data-id="{{ hotel.id }}">
-                <div class="span4" style="width: 320px !important;">
+                <div class="span4" style="width: 374px !important;">
                   <img src="{{ hotel.image_url }}"/>
                 </div>
-                <div class="span8" style="width: 648px !important;">
+                <div class="span8" style="width: 580px !important;">
                   <div class="grid fluid">
                     <div class="row">
                       <div class="span8">
@@ -68,10 +68,10 @@
           <div class="grid">
             <div class="row cursor-pointer">
               <div data-id="{{ flight.id }}">
-                <div class="span4" style="width: 320px !important;">
+                <div class="span4" style="width: 374px !important;">
                   <img src="{{ flight.image_url }}"/>
                 </div>
-                <div class="span8" style="width: 648px !important;">
+                <div class="span8" style="width: 580px !important;">
                   <a class="main-title fg-grayDark" href="{% url 'website:flight:flight_detail' flight.id %}" target="_blank">{{ flight.name }}</a>
                   <p class="fg-gray" style="font-size: 17px; line-height: 28px;">{{ flight.summary }}</p>
                   <span class="currency">
