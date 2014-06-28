@@ -20,7 +20,7 @@ def searching(request):
     # price_min = 1000
     # price_max = 3000
     # # END TEST # #
-    packages = Package.active_objects.select_related('hotels', 'flights').filter(
+    packages = Package.active_objects.filter(is_published=True).select_related('hotels', 'flights').filter(
         start_city=start_address,
         price=price_range,
         start_date__lte=start_date,
