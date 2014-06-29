@@ -15,10 +15,14 @@ class OrderForm(forms.Form):
                                     help_text=u'必填.')
 
     phone = forms.RegexField(label=u'手机号',
-                            max_length=11,
-                            help_text=u'必填.',
-                            regex="^1[\d]{10}$",
-                            error_message=u"请输入正确的手机号")
+                             max_length=11,
+                             help_text=u'必填.',
+                             regex="^1[\d]{10}$",
+                             error_message=u"请输入正确的手机号")
+
+    qq = forms.CharField(label=u'qq',
+                         max_length=32,
+                         help_text=u'qq号码')
 
     start_address = forms.CharField(label=u'出发地址',
                                     max_length=64,
@@ -39,10 +43,14 @@ class OrderForm(forms.Form):
     def save(self, request):
         package_id = request.POST['package_id']
         package = Package.objects.get(id=package_id)
+        qq = ''
         if not isinstance(request.user, AnonymousUser):
             customer = request.user.customer
+            qq = customer.qq
         else:
             customer = None
+        if self.cleaned_data['qq']:
+            qq = self.cleaned_data['qq']
         hotel_id = request.POST['hotel_id']
         hotel = Hotel.objects.get(id=hotel_id)
         flight_id = request.POST['flight_id']
@@ -55,6 +63,7 @@ class OrderForm(forms.Form):
                       phone=self.cleaned_data['phone'],
                       start_address=self.cleaned_data['start_address'],
                       start_date=self.cleaned_data['start_date'],
+                      qq=qq
                       )
         order.save()
         return order

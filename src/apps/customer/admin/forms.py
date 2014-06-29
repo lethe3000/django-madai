@@ -27,6 +27,9 @@ class CustomerDatatablesBuilder(DatatablesBuilder):
     phone = DatatablesTextColumn(label=u'电话',
                                  is_searchable=True)
 
+    qq = DatatablesTextColumn(label=u'qq',
+                              is_searchable=True)
+
     is_active = DatatablesBooleanColumn((('', u'全部'), (1, u'启用'), (0, u'禁用')),
                                         label='状态',
                                         is_searchable=True,

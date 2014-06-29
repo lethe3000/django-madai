@@ -120,10 +120,14 @@ class CustomerRegisterForm(forms.Form):
                             error_message=u"只能包含数字、字母、'.'、'+'、'-'、'@'")
 
     phone = forms.RegexField(label=u'手机号',
-                            max_length=11,
-                            help_text=u'必填.',
-                            regex="^1[\d]{10}$",
-                            error_message=u"请输入正确的手机号")
+                             max_length=11,
+                             help_text=u'必填.',
+                             regex="^1[\d]{10}$",
+                             error_message=u"请输入正确的手机号")
+
+    qq = forms.CharField(label=u'qq',
+                          max_length=31,
+                          help_text=u'qq号码.',)
 
     password1 = forms.CharField(label=u'创建密码',
                                 widget=forms.PasswordInput,
@@ -156,10 +160,12 @@ class CustomerRegisterForm(forms.Form):
         name = self.cleaned_data['name']
         password = self.cleaned_data['password1']
         phone = self.cleaned_data['phone']
+        qq = self.cleaned_data['qq']
         new_user = Customer(is_active=True,
                             is_staff=False,
                             name=name,
-                            phone=phone)
+                            phone=phone,
+                            qq=qq)
         new_user.set_password(password)
         new_user.save()
         self.auth_user = auth.authenticate(name=self.cleaned_data['name'],

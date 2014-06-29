@@ -35,6 +35,11 @@ class User(AbstractBaseUser, PermissionsMixin):
                              blank=True,
                              verbose_name=u'电话')
 
+    qq = models.CharField(max_length=32,
+                          default='',
+                          blank=True,
+                          verbose_name=u'qq')
+
     GENDER_MALE = 'M'
     GENDER_FEMALE = 'F'
     GENDER_CHOICES = (

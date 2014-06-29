@@ -107,6 +107,7 @@
       $('#order-btn').on('click', function() {
         var loginUsername = '';
         var loginPhone = '';
+        var loginQQ = '';
         var startDate = '{{ start_date }}';
         var startAddress = '{{ start_address }}';
         var packageId = '{{ package.id }}'
@@ -120,6 +121,7 @@
         {% if user.is_authenticated %}
           loginUsername = '{{ user.name }}';
           loginPhone = '{{ user.phone }}';
+          loginQQ = '{{ user.qq }}';
         {% endif %}
         $.Dialog({
           overlay: true,
@@ -156,6 +158,14 @@
               '                  <label class="normal" for="">手机号：</label>' +
               '                  <div class="input-control text" data-role="input-control">' +
               '                    <input id="id_phone" name="phone" type="text" value="' + loginPhone + '">' +
+              '                  </div>' +
+              '                </div>' +
+              '              </div>' +
+              '             <div class="row">' +
+              '                <div class="span5">' +
+              '                  <label class="normal" for="">QQ号：</label>' +
+              '                  <div class="input-control text" data-role="input-control">' +
+              '                    <input id="id_qq" name="qq" type="text" value="' + loginQQ + '">' +
               '                  </div>' +
               '                </div>' +
               '              </div>' +

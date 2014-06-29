@@ -49,6 +49,12 @@ class Order(TimeBaseModel):
                              default="",
                              blank=True)
 
+    # 未登录用户需要记录QQ号码
+    qq = models.CharField(verbose_name=u'qq',
+                          max_length=31,
+                          default="",
+                          blank=True)
+
     # 出发地址可能是来自combo，也可能直接读取用户的信息，这里作最终判定的地址
     start_address = models.CharField(verbose_name=u'出发地址',
                                      max_length=255,
