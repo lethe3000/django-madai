@@ -26,7 +26,7 @@
         <li>
           <div class="grid">
             <div class="row cursor-pointer">
-              <div data-id="{{ hotel.id }}">
+              <div data-id="{{ hotel.id }}" data-name="{{ hotel.name }}">
                 <div class="span4" style="width: 374px !important;">
                   <img src="{{ hotel.image_url }}"/>
                 </div>
@@ -37,7 +37,7 @@
                         <a class="main-title fg-grayDark" href="{% url 'website:hotel:hotel_detail' hotel.id %}" target="_blank">{{ hotel.name }}</a>
                         <p class="fg-grayLight" style="font-size: 17px; line-height: 28px;">{{ hotel.summary }}</p>
                         <span class="currency">
-                          <strong>{{ hotel.get_pretty_price }}</strong>
+                          <strong>{{ hotel.price }}</strong>
                         </span>
                       </div>
                       <div class="span4">
@@ -67,7 +67,7 @@
         <li>
           <div class="grid">
             <div class="row cursor-pointer">
-              <div data-id="{{ flight.id }}">
+              <div data-id="{{ flight.id }}" data-name="{{ flight.name }}">
                 <div class="span4" style="width: 374px !important;">
                   <img src="{{ flight.image_url }}"/>
                 </div>
@@ -93,6 +93,12 @@
 {% block extrajs %}
   <script type="text/javascript" src="{% static 'website/scripts/plugin/jquery-form/jquery-form.min.js' %}"></script>
   <script>
+    function getUrlParam(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r!=null) return unescape(r[2]); return null; //返回参数值
+    }
     $(document).ready(function() {
       $('.sorted-list.hotel > li > .grid > .row').on('click', function() {
         $('.sorted-list.hotel .selected').removeClass('selected');
@@ -105,6 +111,7 @@
       });
 
       $('#order-btn').on('click', function() {
+        var price = '';
         var loginUsername = '';
         var loginPhone = '';
         var loginQQ = '';
@@ -113,6 +120,8 @@
         var packageId = '{{ package.id }}'
         var hotelId = $('.sorted-list.hotel > li > .grid > .row > div.selected').data('id');
         var flightId = $('.sorted-list.flight > li > .grid > .row > div.selected').data('id');
+        var hotelName = $('.sorted-list.hotel > li > .grid > .row > div.selected').data('name');
+        var flightName = $('.sorted-list.flight > li > .grid > .row > div.selected').data('name');
 
         if (!hotelId || !flightId) {
           return false;
@@ -141,10 +150,21 @@
               '      <div class="grid fluid">' +
               '        <div class="row">' +
               '          <div class="span4 offset1">' +
-              '            <label class="title" for="">确认入住信息</label>' +
+              '            <label class="title" for="">所选组合的参考价格为</label>' +
+              '            <label>人民币<strong>'+ getUrlParam("price_range") +'</strong></label>' +
+              '            <label>为了节省您的沟通时间敬请确认右侧意向信息生成您专属的流水单号以便同小麻袋咨询预定</label>' +
+              '            <label class="normal" for="">心仪酒店：</label>' +
+              '            <div class="input-control text" data-role="input-control">' +
+              '              <input id="" name="" type="text" value="' + hotelName + '">' +
+              '            </div>' +
+              '            <label class="normal" for="">心仪机票：</label>' +
+              '            <div class="input-control text" data-role="input-control">' +
+              '              <input id="" name="" type="text" value="' + flightName + '">' +
+              '            </div>' +
               '          </div>' +
               '          <div class="span7 input-group">' +
               '            <div class="grid fluid">' +
+                    '<div class="row">'+ '<label class="title" for="">请确认您的联系方式</label>' + '</div>'+
               '              <div class="row">' +
               '                <div class="span5">' +
               '                  <label class="normal" for="">姓名：</label>' +
@@ -221,14 +241,15 @@
               if (mm < 10) {mm = '0' + mm}
               if (dd < 10) {dd = '0' + dd}
               var success_content = '' +
-                '<h2 class="text-center">您的订单我们已经收到，工作人员将尽快与您联系。</h2>' +
+                '<h2 class="text-center">小麻袋已经了解您的心仪行程，我们将尽快与您沟通!</h2>' +
                 '<dl class="horizontal">' +
-                '  <dt>订单号：</dt>' +
+                '  <dt>流水单号：</dt>' +
                 '  <dd>XMD' + yyyy + '' + mm + '' + dd + '' + data['order'].id + '</dd>' +
-                '  <dt>联系QQ：</dt>' +
-                '  <dd>1473655783</dd>' +
-                '  <dt>联系电话：</dt>' +
+                '<h2>同样欢迎您的主动咨询！</h2>' +
+                '  <dt>电话：</dt>' +
                 '  <dd>028-89992896</dd>' +
+                '  <dt>企鹅：</dt>' +
+                '  <dd>1473655783</dd>' +
                 '</dl>';
               $('.order-group').append(success_content);
             }
