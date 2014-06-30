@@ -197,7 +197,7 @@ class HotelForm(forms.ModelForm):
 
     class Meta:
         model = Hotel
-        fields = ('name', 'address', 'price', 'image_file', 'summary', 'advantages', 'display_order', 'is_promotion',
+        fields = ('name', 'address', 'display_price', 'real_price', 'image_file', 'summary', 'advantages', 'display_order', 'is_promotion',
                   'is_banner', 'images_html', 'phone_contact', 'short_index')
 
         widgets = {
@@ -220,6 +220,10 @@ class HotelDatatablesBuilder(DatatablesBuilder):
     phone = DatatablesBooleanColumn(label=u'电话',
                                     render=(lambda request, model, field_name:
                                             u'<ul><li>%s</li></ul>' % model.phone_contact))
+
+    display_price = DatatablesTextColumn(label=u'显示价格',)
+
+    real_price = DatatablesIntegerColumn(label=u'真实价格',)
 
     display_order = DatatablesIntegerColumn(label=u'显示顺序',
                                             is_searchable=True,

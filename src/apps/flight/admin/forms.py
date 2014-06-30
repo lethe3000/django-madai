@@ -228,7 +228,7 @@ class FlightForm(forms.ModelForm):
 
     class Meta:
         model = Flight
-        fields = ('name', 'address', 'price', 'image_file', 'summary', 'advantages', 'display_order', 'content_html', 'phone_contact')
+        fields = ('name', 'address', 'display_price', 'real_price', 'image_file', 'summary', 'advantages', 'display_order', 'content_html', 'phone_contact')
 
         widgets = {
             # use FileInput widget to avoid show clearable link and text
@@ -247,7 +247,9 @@ class FlightDatatablesBuilder(DatatablesBuilder):
 
     summary = DatatablesTextColumn(label=u'简介',)
 
-    price = DatatablesTextColumn(label=u'价格',)
+    display_price = DatatablesTextColumn(label=u'显示价格',)
+
+    real_price = DatatablesIntegerColumn(label=u'真实价格',)
 
     phone = DatatablesBooleanColumn(label=u'电话',
                                     render=(lambda request, model, field_name:

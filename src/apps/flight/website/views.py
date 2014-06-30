@@ -41,7 +41,7 @@ class FlightListView(TemplateResponseMixin, View):
                                          "img": flight.image_url(),
                                          "name": flight.name,
                                          "summary": flight.summary,
-                                         "price": flight.price,
+                                         "price": flight.display_price,
                                          "updated": flight.updated_timestamp()})
             return HttpResponseJson(result=flight_json_list)
         else:

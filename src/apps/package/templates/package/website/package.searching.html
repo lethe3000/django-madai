@@ -26,7 +26,7 @@
         <li>
           <div class="grid">
             <div class="row cursor-pointer">
-              <div data-id="{{ hotel.id }}" data-name="{{ hotel.name }}">
+              <div data-id="{{ hotel.id }}" data-name="{{ hotel.name }}" data-price="{{ hotel.real_price }}">
                 <div class="span4" style="width: 374px !important;">
                   <img src="{{ hotel.image_url }}"/>
                 </div>
@@ -67,7 +67,7 @@
         <li>
           <div class="grid">
             <div class="row cursor-pointer">
-              <div data-id="{{ flight.id }}" data-name="{{ flight.name }}">
+              <div data-id="{{ flight.id }}" data-name="{{ flight.name }}" data-price="{{ flight.real_price }}">
                 <div class="span4" style="width: 374px !important;">
                   <img src="{{ flight.image_url }}"/>
                 </div>
@@ -111,17 +111,21 @@
       });
 
       $('#order-btn').on('click', function() {
-        var price = '';
         var loginUsername = '';
         var loginPhone = '';
         var loginQQ = '';
         var startDate = '{{ start_date }}';
         var startAddress = '{{ start_address }}';
         var packageId = '{{ package.id }}'
-        var hotelId = $('.sorted-list.hotel > li > .grid > .row > div.selected').data('id');
-        var flightId = $('.sorted-list.flight > li > .grid > .row > div.selected').data('id');
-        var hotelName = $('.sorted-list.hotel > li > .grid > .row > div.selected').data('name');
-        var flightName = $('.sorted-list.flight > li > .grid > .row > div.selected').data('name');
+        var hotelSelector = $('.sorted-list.hotel > li > .grid > .row > div.selected');
+        var flightSelector = $('.sorted-list.flight > li > .grid > .row > div.selected');
+        var hotelId = hotelSelector.data('id');
+        var hotelName = hotelSelector.data('name');
+        var hotelPrice = hotelSelector.data('price');
+        var flightId = flightSelector.data('id');
+        var flightName = flightSelector.data('name');
+        var flightPrice = flightSelector.data('price');
+        var price = parseInt(hotelPrice) + parseInt(flightPrice);
 
         if (!hotelId || !flightId) {
           return false;
@@ -151,7 +155,7 @@
               '        <div class="row">' +
               '          <div class="span4 offset1">' +
               '            <label class="title" for="">所选组合的参考价格为</label>' +
-              '            <label>人民币<strong>'+ getUrlParam("price_range") +'</strong></label>' +
+              '            <label>人民币<strong>'+ price +'</strong></label>' +
               '            <label>为了节省您的沟通时间敬请确认右侧意向信息生成您专属的流水单号以便同小麻袋咨询预定</label>' +
               '            <label class="normal" for="">心仪酒店：</label>' +
               '            <div class="input-control text" data-role="input-control">' +

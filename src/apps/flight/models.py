@@ -110,10 +110,14 @@ class Flight(TimeBaseModel):
                                default="",
                                blank=True)
 
-    price = models.CharField(max_length=32,
-                             verbose_name=u"价格",
-                             default="",
-                             blank=True)
+    display_price = models.CharField(max_length=32,
+                                     verbose_name=u"显示价格文本",
+                                     default="",
+                                     blank=True)
+
+    real_price = models.IntegerField(verbose_name=u'真实价格',
+                                     default=0,
+                                     blank=True)
 
     image_file = models.ImageField(upload_to=unique_image_name,
                                    blank=True,
