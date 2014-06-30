@@ -142,8 +142,8 @@
               '<div class="order-group bg-white">' +
               '  <form id="order_form" action="{% url 'website:order:order_create' %}" method="post">' + "{% csrf_token %}" +
               '    <input id="package_id" name="package_id" type="hidden" value="' + packageId + '">' +
-              '    <input id="hotel_id" name="hotel_id" type="hidden" value="' + packageId + '">' +
-              '    <input id="flight_id" name="flight_id" type="hidden" value="' + packageId + '">' +
+              '    <input id="hotel_id" name="hotel_id" type="hidden" value="' + hotelId + '">' +
+              '    <input id="flight_id" name="flight_id" type="hidden" value="' + flightId + '">' +
               '    <input id="id_start_address" name="start_address" type="hidden" value="' + startAddress + '">' +
               '    <input id="id_start_date" name="start_date" type="hidden" value="' + startDate + '">' +
               '    <fieldset>' +

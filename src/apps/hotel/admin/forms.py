@@ -11,7 +11,7 @@ from apps.hotel.models import HotelArticle
 from apps.common.ace import AceClearableFileInput, AceBooleanField
 from apps.common.admin.datatables import DatatablesIdColumn, DatatablesBuilder, DatatablesImageColumn, DatatablesTextColumn,\
     DatatablesBooleanColumn, DatatablesUserChoiceColumn, DatatablesDateTimeColumn, DatatablesColumnActionsRender,\
-    DatatablesActionsColumn, DatatablesModelChoiceColumn, DatatablesIntegerColumn
+    DatatablesActionsColumn, DatatablesModelChoiceColumn, DatatablesIntegerColumn, DatatablesChoiceColumn
 from apps.hotel.models import Hotel, InfoType, HotelImage
 from apps.foundation.models import Image
 
@@ -225,19 +225,21 @@ class HotelDatatablesBuilder(DatatablesBuilder):
                                             is_searchable=True,
                                             col_width="4%")
 
-    is_pinned = DatatablesIntegerColumn(label=u'首页显示',
-                                        is_searchable=True)
+    is_pinned = DatatablesChoiceColumn(((1, u'是'), (0, u'否')),
+                                       label=u'首页显示',
+                                       is_searchable=True)
 
-    is_promotion = DatatablesIntegerColumn(label=u'是否促销酒店',
-                                           is_searchable=True)
+    is_promotion = DatatablesChoiceColumn(((1, u'是'), (0, u'否')),
+                                          label=u'是否促销酒店',
+                                          is_searchable=True)
 
-    is_published = DatatablesBooleanColumn((('', u'全部'), (1, u'发布'), (0, u'草稿')),
-                                           label='状态',
-                                           is_searchable=True,
-                                           col_width='5%',
-                                           render=(lambda request, model, field_name:
-                                                   u'<span class="label label-info"> 发布 </span>' if model.is_published else
-                                                   u'<span class="label label-warning"> 草稿 </span>'))
+    is_published = DatatablesChoiceColumn(((1, u'发布'), (0, u'草稿')),
+                                          label='状态',
+                                          is_searchable=True,
+                                          col_width='5%',
+                                          render=(lambda request, model, field_name:
+                                                  u'<span class="label label-info"> 发布 </span>' if model.is_published else
+                                                  u'<span class="label label-warning"> 草稿 </span>'))
 
     def actions_render(request, model, field_name):
         action_url_builder = lambda model, action: reverse('admin:hotel:hotel_update', kwargs={'pk': model.id, 'action_method': action})
