@@ -192,9 +192,9 @@
           {% for travel_note in travel_notes %}
             <li>
               <a class="travel-note bg-white" href="{% url 'website:share:travelnote_detail' travel_note.id %}">
-                <p style="display: inline-block; color: #0896FF; width: 210px; font-size: 22px;">{{ travel_note.title }}</p>
-                <img class="cycle" src="{{ travel_note.image_url }}" style="display: inline-block; width: 80px; height: 80px;"/>
-                <p style="font-size: 16px; color: #3f3f3f; width: 210px; height: 140px; overflow: hidden; margin-top: 30px; line-height: 25px; padding: 0 10px;">{{ travel_note.summary }}</p>
+                <p style="display: inline-block; color: #0896FF; width: 210px; font-size: 25px;">{{ travel_note.title }}</p>
+                <img class="rounded" src="{{ travel_note.image_url }}" style="display: inline-block; width: 80px; height: 80px;"/>
+                <p style="font-size: 16px; color: #3f3f3f; width: 250px; height: 140px; overflow: hidden; margin-top: 30px; line-height: 25px; padding: 0 10px;">{{ travel_note.summary }}</p>
                 <p style="display: inline-block; width: 210px; font-size: 16px; color: #666666; margin-top: 10px;">{{ travel_note.updated|date:'Y/m/d' }}</p>
                 <div class="button large fg-white bg-color-orange">查看</div>
               </a>
