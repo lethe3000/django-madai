@@ -16,9 +16,9 @@
     <div class="product-group">
       {% for knowledge in knowledge_list %}
         <a class="product place-left bg-white" href="{% url 'website:knowledge:knowledge_detail' knowledge.id %}">
-          <p style="display: inline-block; color: #0896FF; width: 210px; font-size: 22px;">{{ knowledge.title }}</p>
-          <img class="cycle" src="{{ knowledge.image_url }}" style="display: inline-block; width: 80px; height: 80px;"/>
-          <p style="font-size: 16px; color: #3f3f3f; width: 210px; height: 140px; overflow: hidden; margin-top: 30px; line-height: 25px; padding: 0 10px;">{{ knowledge.summary }}</p>
+          <p style="display: inline-block; color: #0896FF; width: 210px; font-size: 22px;">{{ knowledge.title|slice:":9" }}...</p>
+          <img class="rounded" src="{{ knowledge.image_url }}" style="display: inline-block; width: 80px; height: 80px;"/>
+          <p style="font-size: 16px; color: #3f3f3f; width: 210px; height: 140px; overflow: hidden; margin-top: 0px; line-height: 20px; padding: 0 10px; text-indent: 30px;">{{ knowledge.summary }}</p>
           <p style="display: inline-block; width: 210px; font-size: 16px; color: #666666; margin-top: 10px;">{{ knowledge.updated|date:'Y/m/d' }}</p>
           <div class="button large fg-white bg-color-orange">查看</div>
         </a>
