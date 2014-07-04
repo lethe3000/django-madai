@@ -24,7 +24,6 @@ class OrderListView(NavigationHomeMixin, ModelAwareMixin, DatatablesBuilderMixin
         return context_data
 
 
-
 class OrderListDatatablesView(AjaxDatatablesView):
     model = Order
     datatables_builder_class = OrderListView.datatables_builder_class
