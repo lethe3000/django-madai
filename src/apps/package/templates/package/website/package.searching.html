@@ -155,11 +155,8 @@
               '        <div class="row">' +
               '          <div class="span4 offset1">' +
               '            <label class="title" for="">所选组合的参考价格为</label>' +
-              '            <span>人民币<strong style="color: orange">'+ price +'</strong>元</span>' +
-              '            <label style="font-size:30px">为了节省您的沟通时间<br>' +
-              '              敬请确认右侧意向信息<br>' +
-              '              生成您专属的流水单号<br>' +
-              '              以便同小麻袋咨询预定</label>' +
+              '            <span style="font-size: 20px;">人民币<strong style="color: orange">'+ price +'</strong>元</span>' +
+              '            <label class="fg-grayLight" style="position: relative; margin-top: 48px; padding-left: 20px;"><span class="icon-info" style="position: absolute; left: 0; top: 2px;"></span>为了节省您的沟通时间，敬请确认右侧意向信息，生成您专属的流水单号，以便同小麻袋咨询预定。</label>' +
               '          </div>' +
               '          <div class="span7 input-group">' +
               '            <div class="grid fluid">' +
@@ -171,8 +168,6 @@
               '                    <input id="id_customer_name" name="customer_name" type="text" value="' + loginUsername + '">' +
               '                  </div>' +
               '                </div>' +
-              '              </div>' +
-              '              <div class="row">' +
               '                <div class="span5">' +
               '                  <label class="normal" for="">手机号：</label>' +
               '                  <div class="input-control text" data-role="input-control">' +
@@ -203,7 +198,7 @@
               '                </div>' +
               '              </div>' +
               '              <div class="row">' +
-              '                <div class="span5">' +
+              '                <div class="span10">' +
               '                  <label class="normal" for="">心仪酒店：</label>' +
               '                  <div class="input-control text" data-role="input-control">' +
               '                    <input id="" name="" type="text" value="' + hotelName + '">' +
@@ -211,7 +206,7 @@
               '                </div>' +
               '              </div>' +
               '             <div class="row">' +
-              '                <div class="span5">' +
+              '                <div class="span10">' +
               '                  <label class="normal" for="">心仪机票：</label>' +
               '                  <div class="input-control text" data-role="input-control">' +
               '                    <input id="" name="" type="text" value="' + flightName + '">' +
@@ -256,16 +251,42 @@
               if (mm < 10) {mm = '0' + mm}
               if (dd < 10) {dd = '0' + dd}
               var success_content = '' +
-                '<h2 class="text-center">小麻袋已经了解您的心仪行程，我们将尽快与您沟通!</h2>' +
-                '<dl class="horizontal">' +
-                '  <dt>流水单号：</dt>' +
-                '  <dd>XMD' + yyyy + '' + mm + '' + dd + '' + data['order'].id + '</dd>' +
-                '<h2>同样欢迎您的主动咨询！</h2>' +
-                '  <dt>电话：</dt>' +
-                '  <dd>028-89992896</dd>' +
-                '  <dt>企鹅：</dt>' +
-                '  <dd>1473655783</dd>' +
-                '</dl>';
+                '<div class="grid fluid order-confirm">' +
+                '  <div class="row">' +
+                '    <div class="span11 offset1">' +
+                '      <h2>小麻袋已经了解您的心仪行程，我们将尽快与您沟通！</h2>' +
+                '    </div>' +
+                '  </div>' +
+                '  <div class="row">' +
+                '    <div class="span2 offset1 confirm-label">' +
+                '      <p>流水单号：</p>' +
+                '    </div>' +
+                '    <div class="span9">' +
+                '      <p class="fg-color-orange">XMD' + yyyy + '' + mm + '' + dd + '' + data['order'].id + '</p>' +
+                '    </div>' +
+                '  </div>' +
+                '  <div class="row">' +
+                '    <div class="span11 offset1">' +
+                '      <h2>同样欢迎您的主动咨询！</h2>' +
+                '    </div>' +
+                '  </div>' +
+                '  <div class="row">' +
+                '    <div class="span2 offset1 confirm-label">' +
+                '      <p>电话：</p>' +
+                '    </div>' +
+                '    <div class="span9">' +
+                '      <p class="fg-color-orange">028-89992896</p>' +
+                '    </div>' +
+                '  </div>' +
+                '  <div class="row">' +
+                '    <div class="span2 offset1 confirm-label">' +
+                '      <p>企鹅：</p>' +
+                '    </div>' +
+                '    <div class="span9">' +
+                '      <p class="fg-color-orange">1473655783</p>' +
+                '    </div>' +
+                '  </div>' +
+                '</div>';
               $('.order-group').append(success_content);
             }
           }
