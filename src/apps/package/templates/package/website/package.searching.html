@@ -143,7 +143,7 @@
           width: 1020,
           onShow: function(_dialog) {
             var content = '' +
-              '<div class="order-group bg-white">' +
+              '<div class="order-group">' +
               '  <form id="order_form" action="{% url 'website:order:order_create' %}" method="post">' + "{% csrf_token %}" +
               '    <input id="package_id" name="package_id" type="hidden" value="' + packageId + '">' +
               '    <input id="hotel_id" name="hotel_id" type="hidden" value="' + hotelId + '">' +
@@ -286,6 +286,12 @@
                 '      <p class="fg-color-orange">1473655783</p>' +
                 '    </div>' +
                 '  </div>' +
+                '  <hr class="separator solid">' +
+                '  <div class="row">' +
+                '    <div class="span2 offset10">' +
+                '      <button class="button large confirm" onclick="closeModal();">返回</button>' +
+                '    </div>' +
+                '  </div>' +
                 '</div>';
               $('.order-group').append(success_content);
             }
@@ -294,6 +300,10 @@
         $(this).off('submit');
         return false;
       });
+    }
+
+    function closeModal() {
+      $('.btn-close').trigger('click');
     }
   </script>
 {% endblock extrajs %}

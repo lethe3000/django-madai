@@ -175,7 +175,7 @@ button.button.confirm {
 }
 
 .order-group .order-confirm .confirm-label {
-    padding-left: 30px;
+    padding-left: 80px;
 }
 
 .main-title {
@@ -208,4 +208,9 @@ button.button.confirm {
 
 .sorted-list .notice .icon-checkmark {
     color: #df633a;
+}
+
+.metro .window.flat {
+    background: url("../../website/img/modal-bg.jpeg") no-repeat center top !important;
+    background-size: 100% auto !important;
 }
