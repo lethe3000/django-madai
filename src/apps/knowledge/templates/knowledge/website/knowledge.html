@@ -9,29 +9,30 @@
 
 {% block main_content %}
   {% include 'website/header.inc.html' %}
-  <div class="main-section bg-color-dark bg-pattern-diag travel-header">
-    <div class="bottom-shade-large"></div>
-    <div class="main-article">
-      <div class="bg-image-white-light"></div>
-      <h2 class="fg-white title">{{ knowledge.title }}</h2>
-    </div>
-  </div>
-  <div class="main-section bg-image-clouds travel-body">
-    <div class="main-article">
-      <div class="grid fluid">
-        <div class="row">
-          <div class="span5"><img src="{{ knowledge.image_url }}" alt="" style="max-width: 400px; max-height: 300px;"/></div>
-          <div class="span7 bg-white" style="padding: 15px; min-height: 270px;"><div class="content-body"></div></div>
+    <div class="main-section bg-color-dark bg-pattern-diag travel-header">
+        <div class="bottom-shade-large"></div>
+        <div class="main-article">
+            <div class="bg-image-white-light"></div>
+            <h2 class="fg-white title">{{ knowledge.title }}</h2>
         </div>
-      </div>
     </div>
-  </div>
+    <div class="main-section bg-image-clouds travel-body">
+        <div class="main-article content bg-white" style="padding: 50px">
+            <div class="grid fluid">
+                <div class="row">
+                    <div class="span11"><img class="cycle" src="{{ knowledge.image_url }}" style="width: 50px; height: 50px; display: inline-block; margin-right: 20px;" /><p class="fg-grayLight inline-block"></p></div>
+                    <div class="span1"><p class="fg-grayLight inline-block">{{ knowledge.updated|date:'Y/m/d' }}</p></div>
+                </div>
+            </div>
+            <div class="content-body"></div>
+        </div>
+    </div>
 {% endblock main_content %}
 
 {% block extrajs %}
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.travel-body .content-body').load('{{ knowledge.content_url }}');
-    });
-  </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.travel-body .content-body').load('{{ knowledge.content_url }}');
+        });
+    </script>
 {% endblock extrajs %}
