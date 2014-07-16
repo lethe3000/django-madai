@@ -20,5 +20,5 @@ class KnowledgeListView(TemplateResponseMixin, View):
     template_name = 'knowledge/website/knowledge.list.html'
 
     def get(self, request, *args, **kwargs):
-        knowledge_list = Knowledge.active_objects.filter(is_published=True)
+        knowledge_list = Knowledge.active_objects.order_by("-display_order").filter(is_published=True)
         return self.render_to_response(locals())
