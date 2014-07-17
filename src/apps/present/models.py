@@ -47,7 +47,7 @@ class Present(BaseModel):
     class Meta:
         verbose_name = u"礼品"
         get_latest_by = "updated"
-        ordering = ('display_order',)
+        ordering = ('-display_order',)
 
     STATUS_OK = 0
     STATUS_DELETE = -1

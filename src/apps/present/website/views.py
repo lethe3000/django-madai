@@ -11,7 +11,7 @@ class PresentListView(TemplateResponseMixin, View):
     template_name = 'present/website/present.list.html'
 
     def get(self, request, *args, **kwargs):
-        present_category = PresentCategory.active_objects.order_by("-display_order").filter(is_published=True)
+        present_category = PresentCategory.active_objects.filter(is_published=True)
         return self.render_to_response(locals())
 
 
