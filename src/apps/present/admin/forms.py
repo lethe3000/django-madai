@@ -25,7 +25,7 @@ class PresentForm(forms.ModelForm):
 
     class Meta:
         model = Present
-        fields = ('name', 'desc', 'price', 'image_file', 'is_pinned', 'content_html')
+        fields = ('name', 'desc', 'price', 'image_file', 'display_order', 'is_pinned', 'content_html')
     RESPONSIVE_HEADER = """\
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -72,6 +72,8 @@ class PresentDatatablesBuilder(DatatablesBuilder):
 
     desc = DatatablesTextColumn(label=u'描述',
                                 is_searchable=True)
+
+    display_order = DatatablesIntegerColumn(label=u'显示顺序')
 
     is_pinned = DatatablesBooleanColumn((('', u'全部'), (1, u'首页显示'), (0, u'非首页显示')),
                                         label='状态',

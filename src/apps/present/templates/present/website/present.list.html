@@ -4,37 +4,42 @@
 
 
 {% block extracss %}
-<link rel="stylesheet" href="{% static 'present/styles/app.css' %}" media="screen"/>
+  <link rel="stylesheet" href="{% static 'present/styles/app.css' %}" media="screen"/>
 {% endblock extracss %}
 
 {% block main_content %}
-{% include 'website/header.inc.html' %}
-<div class="main-section bg-image-clouds" style="background-color: #d3e9f6;">
-  <div class="bottom-shade-large"></div>
-  <div class="main-article">
-    <h2 class="fg-color-orange category-title">小麻袋礼</h2>
-    <div class="product-group">
-      {% for category in present_category %}
-        {% for present in category.presents.all %}
-            <a class="product place-left" href="{% url 'website:present:present_detail' present.id %}">
-                <img src="{{ present.image_url }}" />
-                <div class="product-title-complex">
-                  <div class="grid fluid" style="margin: 0 !important;">
-                    <div class="row" style="margin: 0 !important;">
-                      <div class="span8" style="margin: 20px 0 0 20px; height: 110px; width: 185px !important;">
-                        <h4>{{ present.name }}</h4>
-                        <p>{{ present.desc }}</p>
-                      </div>
-                      <div class="span4" style="height: 110px; width: 106px !important; margin-top: 20px;">
-                        <p class="price-fg-lime" style="font-size: 30px;"><em><small style="font-size: 12px;">价值</small><b style="font-family: 'Segoe UI_';">{{ present.price }}</b><small style="font-size: 12px;">元</small></em></p>
-                      </div>
-                    </div>
+  {% include 'website/header.inc.html' %}
+  <div class="main-section bg-image-clouds" style="background-color: #d3e9f6;">
+    <div class="bottom-shade-large"></div>
+    <div class="main-article">
+      <h2 class="fg-color-orange category-title">小麻袋礼</h2>
+
+      <div class="product-group">
+        {% for present in presents %}
+          <a class="product place-left" href="{% url 'website:present:present_detail' present.id %}">
+            <img src="{{ present.image_url }}"/>
+
+            <div class="product-title-complex">
+              <div class="grid fluid" style="margin: 0 !important;">
+                <div class="row" style="margin: 0 !important;">
+                  <div class="span8" style="margin: 20px 0 0 20px; height: 110px; width: 185px !important;">
+                    <h4>{{ present.name }}</h4>
+
+                    <p>{{ present.desc }}</p>
+                  </div>
+                  <div class="span4" style="height: 110px; width: 106px !important; margin-top: 20px;">
+                    <p class="price-fg-lime" style="font-size: 30px;"><em>
+                      <small style="font-size: 12px;">价值</small>
+                      <b style="font-family: 'Segoe UI_';">{{ present.price }}</b>
+                      <small style="font-size: 12px;">元</small>
+                    </em></p>
                   </div>
                 </div>
-            </a>
+              </div>
+            </div>
+          </a>
         {% endfor %}
-      {% endfor %}
+      </div>
     </div>
   </div>
-</div>
 {% endblock main_content %}
