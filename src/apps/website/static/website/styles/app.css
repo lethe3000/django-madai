@@ -263,6 +263,7 @@ have a fixed width and height (but it's not required).
     bottom: 20px;
     right: 40px;
     color: #df633a !important;
+    font-weight: bold;
 }
 
 .banner-link:hover {
