@@ -262,7 +262,7 @@ have a fixed width and height (but it's not required).
     position: absolute;
     bottom: 20px;
     right: 40px;
-    color: #FFF !important;
+    color: #df633a !important;
 }
 
 .banner-link:hover {
