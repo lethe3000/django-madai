@@ -198,7 +198,7 @@ class HotelForm(forms.ModelForm):
     class Meta:
         model = Hotel
         fields = ('name', 'address', 'display_price', 'real_price', 'image_file', 'summary', 'advantages', 'display_order', 'is_promotion',
-                  'is_banner', 'images_html', 'phone_contact', 'short_index')
+                  'is_banner', 'is_special', 'images_html', 'phone_contact', 'short_index')
 
         widgets = {
             # use FileInput widget to avoid show clearable link and text
@@ -215,27 +215,32 @@ class HotelDatatablesBuilder(DatatablesBuilder):
 
     image_file = DatatablesImageColumn(label=u'图片')
 
-    summary = DatatablesTextColumn(label=u'简介',)
-
     phone = DatatablesBooleanColumn(label=u'电话',
                                     render=(lambda request, model, field_name:
                                             u'<ul><li>%s</li></ul>' % model.phone_contact))
 
     display_price = DatatablesTextColumn(label=u'显示价格',)
 
-    real_price = DatatablesIntegerColumn(label=u'真实价格',)
+    real_price = DatatablesIntegerColumn(label=u'真实价格', col_width='5%',)
 
     display_order = DatatablesIntegerColumn(label=u'显示顺序',
                                             is_searchable=True,
-                                            col_width="4%")
+                                            col_width="2%")
 
     is_pinned = DatatablesChoiceColumn(((1, u'是'), (0, u'否')),
                                        label=u'首页显示',
+                                       col_width='2%',
                                        is_searchable=True)
 
     is_promotion = DatatablesChoiceColumn(((1, u'是'), (0, u'否')),
                                           label=u'是否促销酒店',
+                                          col_width='2%',
                                           is_searchable=True)
+
+    is_special = DatatablesChoiceColumn(((1, u'是'), (0, u'否')),
+                                        label=u'是否特殊酒店',
+                                        col_width='2%',
+                                        is_searchable=True)
 
     is_published = DatatablesChoiceColumn(((1, u'发布'), (0, u'草稿')),
                                           label='状态',

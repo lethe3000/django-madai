@@ -326,6 +326,10 @@ class Hotel(TimeBaseModel):
                                     blank=True,
                                     verbose_name=u'Banner显示')
 
+    is_special = models.BooleanField(default=False,
+                                     blank=True,
+                                     verbose_name=u'特殊酒店，不显示在列表中')
+
     objects = HotelManager()
     active_objects = ActiveDataManager()
     cache_objects = SimpleCacheManager()
