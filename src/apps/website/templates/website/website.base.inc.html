@@ -49,8 +49,16 @@
     <!-- PAGE RELATED js -->
     {% block extraincjs %}{% endblock extraincjs %}
   {% endcompress %}
+  <script type="text/javascript">
+      $(window).load(function() {
+          $(".loader").fadeOut("slow");
+      })
+  </script>
   </head>
   <body class="metro">
+    <div class="loader" style="background-color: rgb(24, 30, 37)">
+        <code style="width:100%; border-width: 0; color: #FFFFFF; font-size: 30px; background-color: rgb(24, 30, 37); position: absolute; top: 20%;  text-align: center">正在进入小麻袋...</code>
+    </div>
     {% block main_content %}{% endblock main_content %}
     <nav class="bg-white index">
       <div class="foot-box margin-0-center fixed-width">

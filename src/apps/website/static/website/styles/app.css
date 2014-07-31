@@ -286,3 +286,16 @@ have a fixed width and height (but it's not required).
 nav.index {
     margin-top: -1px;
 }
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    /*background: url('../img/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);*/
+    /*background: url('../img/loading.gif') 50% 50% no-repeat rgb(249,249,249);*/
+    background: url('../img/loading-tube.gif') 50% 50% no-repeat rgb(249,249,249);
+    background-size: auto auto;
+}
