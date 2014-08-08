@@ -70,6 +70,6 @@ class Knowledge(BaseModel):
     cache_objects = SimpleCacheManager()
 
     class Meta:
-        verbose_name = u"小知识库"
+        verbose_name = u"麻袋宝典"
         ordering = ('-updated',)
         get_latest_by = "updated"

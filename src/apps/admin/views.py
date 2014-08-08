@@ -64,7 +64,7 @@ def build_menu(request):
     ]
 
     SUBMENU_KNOWLEDGE = [
-        ('小知识库', reverse('admin:knowledge:knowledge_list'), None),
+        ('麻袋宝典', reverse('admin:knowledge:knowledge_list'), None),
     ]
 
     MENU = (
@@ -79,7 +79,7 @@ def build_menu(request):
         {'menu': '礼包管理', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_PRESENT},
         {'menu': '订单', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_ORDER},
         {'menu': '游记', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_SHARE},
-        {'menu': '小知识库', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_KNOWLEDGE},
+        {'menu': '麻袋宝典', 'url': '', 'icon': 'icon-bookmark', 'submenu': SUBMENU_KNOWLEDGE},
     )
     menus = []
     for item in MENU:
