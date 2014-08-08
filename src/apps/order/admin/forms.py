@@ -36,6 +36,9 @@ class OrderDatatablesBuilder(DatatablesBuilder):
     phone = DatatablesTextColumn(label=u'联系电话',
                                  is_searchable=True)
 
+    qq = DatatablesTextColumn(label=u'qq',
+                              is_searchable=True)
+
     start_address = DatatablesTextColumn(label=u'出发地址',
                                          is_searchable=True)
 
@@ -47,6 +50,8 @@ class OrderDatatablesBuilder(DatatablesBuilder):
     status = DatatablesChoiceColumn(Order.ORDER_STATUS_CODES,
                                     label=u'状态',
                                     is_searchable=True)
+
+    created = DatatablesDateTimeColumn(label=u'订单创建时间')
 
     def actions_render(request, model, field_name):
         actions = [
