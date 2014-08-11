@@ -4,6 +4,8 @@ import logging
 import os
 from apps.common.admin.views import AjaxSimpleUpdateView, ModelAwareMixin, AjaxDetailView, RequestAwareMixin, \
     NavigationHomeMixin, DatatablesBuilderMixin, AjaxListView, AjaxCreateView, AjaxUpdateView, AjaxDatatablesView, ModelActiveView, AdminRequiredMixin
+from apps.flight.models import Flight
+from apps.hotel.models import Hotel
 from apps.package.models import Package
 from .forms import PackageForm, PackageDatatablesBuilder
 
@@ -34,6 +36,16 @@ class PackageEditView(ModelAwareMixin, AjaxUpdateView):
     form_class = PackageForm
     form_action_url_name = 'admin:package:package_edit'
     template_name = 'package/admin/package.form.inc.html'
+
+    def get_initial(self):
+        initial = super(PackageEditView, self).get_initial()
+        if self.object:
+            initial["hotels"] = self.object.hotels.only("name")
+            initial["flights"] = self.object.flights.only("name")
+        else:
+            initial["hotels"] = Hotel.objects.only("name")
+            initial["flights"] = Flight.objects.only("name")
+        return initial
 
 
 class PackageDeleteView(ModelActiveView):
