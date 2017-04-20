@@ -1,0 +1,50 @@
+- type: parallel
+  steps:
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
+  - service: app
+    command: echo "Running command"
