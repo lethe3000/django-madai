@@ -1,0 +1,11 @@
+machine:
+	timezone:
+		Asia/Chongqing
+	environment:
+		foo: bar
+		baz: 123
+  python:
+    version: 2.7.5
+test:
+	post:
+		- pip freeze
